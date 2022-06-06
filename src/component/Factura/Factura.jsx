@@ -36,9 +36,13 @@ import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
 import ModalNuevoProveedor from "component/ModalProveedor";
 import BusquedaPr from "component/BusquedaProveedor";
+import ModalFormaPago from "component/FormaPago";
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import ModalSubirXML from "component/ModalSubirXML";
 const Factura = () => {
-    const [factBuscadorPr, setFactBuscadorPr] = useState(false);
+
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const [factBuscadorPr, setFactBuscadorPr] = useState(false);
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -55,18 +59,48 @@ const Factura = () => {
     const handleCloseMR = () => {
         setOpenMR(false);
     };
-    //////////////////////////
+    ///////MODAL FORMA PAGO
+    const [openMFP, setOpenMFP] = React.useState(false);
+    const handleClickOpenMFP = (scrollType) => () => {
+        setOpenMFP(true);
+        setScroll(scrollType);
+    };
+
+    const handleCloseMFP = () => {
+        setOpenMFP(false);
+    };
+    /////////////////////////
+    const [openXML, setOpenXML] = React.useState(false);
+
+
+    const handleClickOpenXML = (scrollType) => () => {
+        setOpenXML(true);
+        setScroll(scrollType);
+    };
+    const handleCloseXML = () => {
+        setOpenXML(false);
+    };
+
     var muestraBuscador;
     if (!factBuscadorPr) {
         muestraBuscador = <TipoFactura handleEvent={setFactBuscadorPr} />;
     }
     else {
-        muestraBuscador = <BusquedaPr />;
+        muestraBuscador =
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={8} sm={12} lg={8}>
+                    <BusquedaPr />
+                </Grid>
+
+                <Grid item xs={12} md={4} sm={12} lg={4}>
+                    <Button onClick={handleClickOpenXML('paper')} variant="outlined" startIcon={<FileUploadIcon />}>
+                        XML
+                    </Button>
+                </Grid>
+            </Grid>
+
+            ;
     }
-
-
-
-
     return (
         <MainCard title="FACTURA" >
             <Grid container spacing={gridSpacing}>
@@ -74,13 +108,12 @@ const Factura = () => {
                     muestraBuscador
                 }
 
-
-
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} md={12} sm={12} lg={12}>
                     <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-                            <Grid item xs={6}>
-                                <FormControl sx={{ minWidth: '100%' }}>
+
+                        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
+                            <Grid item xs={12} md={6} sm={6} lg={6}>
+                                <FormControl sx={{ minWidth: '100%' }} xs={12} md={6} sm={6} lg={6}>
                                     <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-helper-label"
@@ -92,52 +125,61 @@ const Factura = () => {
                                     >
                                         <MenuItem value={10}>FACTURA</MenuItem>
                                         <MenuItem value={20}>NOTA DE VENTA</MenuItem>
-
                                     </Select>
-
                                 </FormControl>
                             </Grid>
-                            <Grid item xs={12}  >
-                                <Stack direction="row" spacing={2}>
-                                    <small style={{ width: "50%" }} ><b>N° Factura:</b></small>
-                                    <TextField
-                                        id="outlined-basic"
-                                        label="xxx"
-                                        style={{ width: "50%" }}
-                                        {...register("establecimiento")}
-                                    />
-                                    <TextField
-                                        id="outlined-basic"
-                                        label="xxx"
-                                        style={{ width: "50%" }}
-                                        {...register("puntoEmision")}
-                                    />
-                                    <TextField
-                                        id="outlined-basic"
-                                        label="xxx"
-                                        style={{ width: "50%" }}
-                                        {...register("secuencial")}
-                                    />
 
-                                    <Grid item xs={12}>
+
+                            <Grid item xs={12} md={12} sm={12} lg={12} >
+                                <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <small ><b>N° Factura:</b></small>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="outlined-basic"
+                                            label="000"
+                                            style={{ width: "100%" }}
+                                            {...register("emision")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="outlined-basic"
+                                            label="000 "
+                                            style={{ width: "100%" }}
+                                            {...register("puntoEmision")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="outlined-textarea"
+                                            label="000000000"
+                                            multiline
+                                            style={{ width: "100%" }}
+                                            {...register("secuencial")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
 
                                             id="outlined-date"
                                             label="F. Emisión:"
                                             type="date"
+
                                             style={{ width: "100%", float: "right" }}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            {...register("fechaEmision")}
+                                            {...register("fechaEmsion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6} sm={12} lg={6}>
                                         <TextField
-
                                             id="outlined-date"
                                             label="F. Registro:"
                                             type="date"
+
                                             style={{ width: "100%", float: "right" }}
                                             InputLabelProps={{
                                                 shrink: true,
@@ -145,11 +187,10 @@ const Factura = () => {
                                             {...register("fechaRegistro")}
                                         />
                                     </Grid>
-                                </Stack>
-
-                               
+                                </Grid>
                             </Grid>
                         </Grid>
+
                         <br></br>
                         <Card >
                             <CardHeader
@@ -161,81 +202,122 @@ const Factura = () => {
                                     </Button>
                                 }
                             />
-
                             <CardContent >
-                                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+                                <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
 
-                                    <Grid item xs={6} spacing={2}>
-                                        <Grid item xs={12} padding={1} >
-                                            <TextField
-                                                id="outlined-basic"
-                                                label="Numero Ruc: "
-                                                style={{ width: "100%" }}
-                                                {...register("numeroRuc")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} padding={1}>
-                                            <TextField
-                                                id="outlined-basic"
-                                                label="Numero Autorización:"
-                                                style={{ width: "100%" }}
-                                                {...register("numeroAutorizacion")}
-                                            />
-                                        </Grid>
-
-                                    </Grid>
-                                    <Grid item xs={6} spacing={2}>
-                                        <Grid item xs={12} padding={1} >
-                                            <TextField
-                                                id="outlined-basic"
-                                                label="Telefono: "
-                                                style={{ width: "100%" }}
-                                                {...register("telefono")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} padding={1}>
-                                            <TextField
-                                                id="outlined-date"
-                                                label="Dirección:"
-                                                style={{ width: "100%" }}
-                                                {...register("direccionDomiciliaria")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} padding={1}>
-                                            <TextField
-                                                id="outlined-date"
-                                                label="Email:"
-                                                style={{ width: "100%" }}
-                                                {...register("correo")}
-                                            />
+                                    <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
+                                        <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                            <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                <TextField
+                                                    id="outlined-basic"
+                                                    label="Numero Ruc: "
+                                                    style={{ width: "100%" }}
+                                                    {...register("numeroRuc")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                <TextField
+                                                    id="outlined-basic"
+                                                    label="Numero Autorización:"
+                                                    style={{ width: "100%" }}
+                                                    {...register("numeroAutorizacion")}
+                                                />
+                                            </Grid>
                                         </Grid>
                                     </Grid>
+
+                                    <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
+                                        <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                            <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                <TextField
+                                                    id="outlined-basic"
+                                                    label="Telefono: "
+                                                    style={{ width: "100%" }}
+                                                    {...register("telefono")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Dirección:"
+                                                    style={{ width: "100%" }}
+                                                    {...register("direccionDomiciliaria")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Email:"
+                                                    style={{ width: "100%" }}
+                                                    {...register("correo")}
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+
                                 </Grid>
-
                             </CardContent>
                         </Card>
                     </SubCard>
-
                 </Grid>
-                <Grid item xs={12} sm={12}>
 
+                <Grid item xs={12} sm={12} md={12} lg={12}>
                     <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                        <FormControl sx={{ minWidth: '25%', float: "left" }}>
-                            <InputLabel id="demo-simple-select-helper-label">::Seleccionar::</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-helper-label"
-                                id="sustentoTributario"
-                                style={{ width: "100%" }}
-                                required
-                                label="::Seleccionar::"
-                                {...register("sustentoTributario")}
-                            >
-                                <MenuItem value={10}>Iva 12%</MenuItem>
-                                <MenuItem value={20}>Iva 8%</MenuItem>
+                        
+                            <Grid container  xs={12} md={12} sm={12} lg={12} spacing={2}>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Iva</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Iva"
+                                            {...register("sustentoTributario")}
+                                        >
+                                            <MenuItem value={10}>Iva 12%</MenuItem>
+                                            <MenuItem value={20}>Iva 8%</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Departamento"
+                                            {...register("departamento")}
+                                        >
+                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
 
-                            </Select>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Subcuenta"
+                                            {...register("subcuenta")}
+                                        >
+                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
 
-                        </FormControl>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
                         <div>
                             <TableContainer >
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -265,7 +347,7 @@ const Factura = () => {
                                             <center>
                                                 <Checkbox
                                                     style={{
-                                                        transform: "scale(2)",
+                                                        transform: "scale(1)",
                                                     }} />
                                             </center>
                                         </TableCell>
@@ -342,49 +424,52 @@ const Factura = () => {
                             </TableContainer>
                         </div>
                         <br></br>
-                        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid item xs={4}>
 
-                                <TextField id="outlined-basic" label="Subtotal 12%" variant="outlined" {...register("subtotal12")} />
+                        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Subtotal 12%" variant="outlined" {...register("subtotal12")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Base No Objeto IVA:" variant="outlined"  {...register("baseObjIVA")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Base No Objeto IVA:" variant="outlined"  {...register("baseObjIVA")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Subtotal:" variant="outlined" {...register("subtotal")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Subtotal:" variant="outlined" {...register("subtotal")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Subtotal 0%:" variant="outlined"  {...register("subtotal0")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Subtotal 0%:" variant="outlined"  {...register("subtotal0")} />
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
                                 <label>
                                     <Checkbox
                                         style={{
-                                            marginRight: "10px",
+                                            width: "20%",
                                             transform: "scale(1)",
                                         }} />
                                 </label>
                                 <TextField style={{
-                                    marginRight: "50px",
+                                    width: "80%",
                                 }} id="outlined-basic" label="Ice:" variant="outlined" {...register("ice")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField {...register("iva12")} id="outlined-basic" label="Iva 12 %:" variant="outlined" />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} {...register("iva12")} id="outlined-basic" label="Iva 12 %:" variant="outlined" />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Descuento 12%:" variant="outlined" {...register("descuento12")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Descuento 12%:" variant="outlined" {...register("descuento12")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Propina Tip (Serv. 10%):" variant="outlined" {...register("propina")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Propina Tip (Serv. 10%):" variant="outlined" {...register("propina")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Valor Total:" variant="outlined" {...register("valorTotal")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Valor Total:" variant="outlined" {...register("valorTotal")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Descuento 0%:" variant="outlined" {...register("descuento0")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="Descuento 0%:" variant="outlined" {...register("descuento0")} />
                             </Grid>
-                            <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="IMP. IRBPNR:" variant="outlined" {...register("impIRBPNR")} />
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <TextField style={{ width: "100%" }} id="outlined-basic" label="IMP. IRBPNR:" variant="outlined" {...register("impIRBPNR")} />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <Button style={{ width: "100%" }} variant="contained" onClick={handleClickOpenMFP('paper')}>Forma de Pago</Button>
                             </Grid>
                         </Grid>
                         <Grid>
@@ -410,6 +495,13 @@ const Factura = () => {
             <ModalRetencion
                 open={openMR}
                 onClose={handleCloseMR}
+            />
+            <ModalFormaPago
+                open={openMFP}
+                onClose={handleCloseMFP} />
+            <ModalSubirXML
+                open={openXML}
+                onClose={handleCloseXML}
             />
         </MainCard>
     );

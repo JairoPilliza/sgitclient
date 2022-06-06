@@ -77,23 +77,23 @@ const Reembolso = () => {
 
 
                                     <Stack direction="row" spacing={3}>
-                                        <small ><b>N° Factura:</b></small>
+                                        <small  style={{ width: "100%" }}><b>N° Factura:</b></small>
                                         <TextField
                                             id="outlined-basic"
                                             label="Establecimiento"
-                                            style={{ width: "120px" }}
+                                            style={{ width: "100%" }}
                                         />
 
                                         <TextField
                                             id="outlined-basic"
                                             label="Punto de emisión"
-                                            style={{ width: "120px" }}
+                                            style={{ width: "100%" }}
                                         />
                                         <TextField
                                             id="outlined-basic"
                                             label="Secuencial"
                                             placeholder="Digite Secuencial"
-                                            style={{ width: "120px" }}
+                                            style={{ width: "100%" }}
                                         />
                                     </Stack>
 
@@ -103,7 +103,7 @@ const Reembolso = () => {
                                             id="outlined-date"
                                             label="F. Emisión:"
                                             type="date"
-                                            style={{ width: "250px" }}
+                                            style={{ width: "100%" }}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
@@ -114,7 +114,7 @@ const Reembolso = () => {
                                             id="outlined-date"
                                             label="F. Registro:"
                                             type="date"
-                                            style={{ width: "250px" }}
+                                            style={{ width: "100%" }}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
@@ -211,7 +211,6 @@ const Reembolso = () => {
                         <br></br>
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid item xs={4}>
-
                                 <TextField id="outlined-basic" label="Subtotal 12%" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>
@@ -232,7 +231,7 @@ const Reembolso = () => {
                                         }} />
                                 </label>
                                 <TextField style={{
-                                    marginRight: "50px",
+                                    marginRight: "45px",
                                 }} id="outlined-basic" label="Ice:" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>

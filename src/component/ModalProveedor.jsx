@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Link, Stack } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, CardHeader, Grid, Link, Stack, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -28,20 +28,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from "@mui/system";
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const ModalNuevoProveedor = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 1000,
-        p: 4,
-    };
-
 
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
@@ -64,6 +54,45 @@ const ModalNuevoProveedor = (props) => {
             }
         }
     }, [open]);
+
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 1000,
+        p: 4,
+    };
+
+    const TAX_RATE = 0.07;
+
+    function ccyFormat(num) {
+        return `${num.toFixed(2)}`;
+    }
+
+    function priceRow(qty, unit) {
+        return qty * unit;
+    }
+
+    function createRow(desc, qty, unit) {
+        const price = priceRow(qty, unit);
+        return { desc, qty, unit, price };
+    }
+
+    function subtotal(items) {
+        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+    }
+
+    const rows = [
+        createRow('Paperclips (Box)', 100, 1.15),
+        createRow('Paper (Case)', 10, 45.99),
+        createRow('Waste Basket', 2, 17.99),
+    ];
+
+    const invoiceSubtotal = subtotal(rows);
+    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+    const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 
 
@@ -108,7 +137,7 @@ const ModalNuevoProveedor = (props) => {
                                         </Select>
 
                                     </FormControl>
-                                    
+
 
                                     <TextField
                                         id="outlined-date"
@@ -122,7 +151,7 @@ const ModalNuevoProveedor = (props) => {
 
                                 </Stack>
                                 <Stack direction="row" spacing={2}>
-                                <TextField
+                                    <TextField
                                         id="outlined-date"
                                         label="Razón Social:"
                                         style={{ width: "100%" }}
@@ -132,17 +161,16 @@ const ModalNuevoProveedor = (props) => {
                                     <TextField
                                         id="outlined-date"
                                         label="Nombre:"
-
                                         style={{ width: "100%" }}
                                         required
                                         {...register("nombre")}
                                     />
 
-                                   
+
 
                                 </Stack>
                                 <Stack direction="row" spacing={2}>
-                                <TextField
+                                    <TextField
                                         id="outlined-date"
                                         label="Dirección:"
 
@@ -158,12 +186,12 @@ const ModalNuevoProveedor = (props) => {
                                         required
                                         {...register("telefono")}
                                     />
-                                  
+
 
 
                                 </Stack>
                                 <Stack direction="row" spacing={2}>
-                                <FormControl sx={{ minWidth: '50%' }}>
+                                    <FormControl sx={{ minWidth: '50%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">País</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -182,17 +210,12 @@ const ModalNuevoProveedor = (props) => {
                                     <TextField
                                         id="outlined-date"
                                         label="Celular:"
-
                                         style={{ width: "100%" }}
-
                                         {...register("celular")}
                                     />
-                                   
-
-
                                 </Stack>
                                 <Stack direction="row" spacing={2}>
-                                <FormControl sx={{ minWidth: '50%' }}>
+                                    <FormControl sx={{ minWidth: '50%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Ciudad</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -204,54 +227,9 @@ const ModalNuevoProveedor = (props) => {
                                         >
                                             <MenuItem value={10}>Ten</MenuItem>
                                             <MenuItem value={20}>Twenty</MenuItem>
-
                                         </Select>
 
                                     </FormControl>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="N° Autorización:"
-
-                                        style={{ width: "100%" }}
-
-                                        {...register("numeroAutorizacion")}
-                                    />
-
-
-
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Fecha Caducidad:"
-                                        type="date"
-                                        style={{ width: "100%" }}
-
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        {...register("fechaCaducidad")}
-                                    />
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Punto de Facturación:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("puntoFacturacion")}
-                                    />
-
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Sucursal:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("sucursal")}
-                                    />
-
                                     <TextField
                                         id="outlined-date"
                                         label="Email:"
@@ -260,18 +238,9 @@ const ModalNuevoProveedor = (props) => {
                                         required
                                         {...register("correo")}
                                     />
-
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Secuencial Min:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("secuencialMin")}
-                                    />
-
+                                </Stack>                              
+                            
+                                <Stack direction="row" spacing={2}>                                   
                                     <TextField
                                         id="outlined-date"
                                         label="Observación:"
@@ -282,17 +251,87 @@ const ModalNuevoProveedor = (props) => {
                                     />
 
                                 </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Secuencial Max:"
-
-                                        style={{ width: "50%" }}
-                                        required
-                                        {...register("secuencialMax")}
-                                    />
-                                </Stack>
+                                
                             </Stack>
+                            <br></br>
+                            <div>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        style={{ backgroundColor: "gray" }}
+                                    >
+                                        <Typography color="white">Establecimiento <small></small></Typography>
+
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <br></br>
+                                        <Stack spacing={2}>
+                                            <Stack direction="row" spacing={2}>
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Fecha Caducidad:"
+                                                    type="date"
+                                                    style={{ width: "100%" }}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    {...register("fechaCaducidad")}
+                                                />
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="N° Autorización:"
+                                                    style={{ width: "100%" }}
+                                                    {...register("numeroAutorizacion")}
+                                                />
+                                            </Stack>
+
+                                            <Stack direction="row" spacing={2}>
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Sucursal:"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    {...register("sucursal")}
+                                                />
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Punto de Facturación:"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    {...register("puntoFacturacion")}
+                                                />
+
+                                            </Stack>
+                                          
+                                            <Stack direction="row" spacing={2}>
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Secuencial Min:"
+
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    {...register("secuencialMin")}
+                                                />
+
+                                                <TextField
+                                                    id="outlined-date"
+                                                    label="Secuencial Max:"
+
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    {...register("secuencialMax")}
+                                                />
+
+                                            </Stack>
+
+                                        </Stack>
+                                    </AccordionDetails>
+                                </Accordion>
+
+                            </div>
+
                         </Card>
                     </DialogContentText>
                 </DialogContent>

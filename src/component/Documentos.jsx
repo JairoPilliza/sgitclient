@@ -26,7 +26,7 @@ const Documentos = () => {
     );
     return (
         <MainCard>
-            <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', border: 1, margin: 'auto' }}>
+            <Box sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper', border: 1, margin: 'auto' }}>
                 <Box sx={{ my: 2, mx: 2 }}>
                     <Grid container alignItems="center">
                         <Grid item xs>
@@ -37,25 +37,32 @@ const Documentos = () => {
                     </Grid>
                 </Box>
                 <Divider variant="middle" />
-                <Box sx={{ m: 2 }}>
+                <Box sx={{ m: 2 }} xs={12} sm={12} md={6} lg={6}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <FormControl sx={{ m: 1, minWidth: "100%" }}>
+                                <InputLabel id="demo-simple-select-helper-label">Escoga el comprabante</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-helper-label"
+                                    id="demo-simple-select-helper"
+                                    style={{ width: "100%" }}
+                                    label="Escoga el comprobante:"
+                                >
+                                    <MenuItem value={10}>Factura</MenuItem>
+                                    <MenuItem value={20}>Nota de venta</MenuItem>
+                                    <MenuItem value={30}>Ticket</MenuItem>
+                                </Select>
 
-                    <Stack direction="row" spacing={1}>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel  id="demo-simple-select-helper-label">Escoga el comprabante</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-helper-label"
-                                id="demo-simple-select-helper"
-                                style={{ width: "250px" }}
-                                label="Escoga el comprabante:"
-                            >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Button   style={{ width: "100%" }}  variant="contained" >Aceptar</Button>
+                        </Grid>
 
-                        </FormControl>
-                        <Button size="small" sx={{ margin: "auto" }} >Aceptar</Button>
-                    </Stack>
+                    </Grid>
+
+
+
 
                 </Box>
             </Box>

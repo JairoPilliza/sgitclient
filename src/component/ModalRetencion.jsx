@@ -27,13 +27,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import BuscarPtoEmision from "./BuscarPtoEmision";
 
 
 const ModalRetencion = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
+    const [factBuscadorPtoEmision, setBuscadorPtoEmision] = useState(false);
+   
     const style = {
         position: 'absolute',
         top: '50%',
@@ -95,6 +95,14 @@ const ModalRetencion = (props) => {
         }
     }, [open]);
 
+    var muestraBuscador;
+    if (factBuscadorPtoEmision) {
+        muestraBuscador = <BuscarPtoEmision  />;
+    }
+    else {
+      
+    }
+
 
 
     return (
@@ -117,22 +125,28 @@ const ModalRetencion = (props) => {
                     >
                         <SubCard className="col-12" container title="Datos de Retención" style={{ textAlign: "center" }} >
                             <Stack direction="row" spacing={6}>
-                                <label><b>Retención electronica</b></label>
-                                <Checkbox />
-                                <Button variant="outlined" size="small" startIcon={<SearchIcon />} >
+                                <label style={{ width: "100%"}}><b>Retención electronica</b></label>
+                                <Checkbox  style={{ width: "100%"}}/>
+                                <Button variant="outlined" size="small" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%"}}>
                                     <small>Ayuda</small>
                                 </Button>
                                 <TextField
                                     id="outlined-date"
                                     label="Fecha:"
                                     type="date"
-                                    style={{ width: "280px", float: "right" }}
+                                    style={{ width: "100%" }}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
                                     {...register("fechaEmision")}
                                 />
                             </Stack>
+                            <br></br>
+                            <Stack>                                
+                            {muestraBuscador}
+
+                            </Stack>
+                           
                             <br></br>
                             <Stack direction="row" spacing={7}>
                                 <label >

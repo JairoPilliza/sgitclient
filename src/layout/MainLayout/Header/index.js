@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
+import { Avatar, Box, Button, ButtonBase, Typography } from '@mui/material';
 
 // project imports
 import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
-
+import ShareIcon from '@mui/icons-material/Share';
 // assets
 import { IconMenu2 } from '@tabler/icons';
 
@@ -61,6 +61,10 @@ const Header = ({ handleLeftDrawerToggle }) => {
             <Box sx={{ flexGrow: 1 }} />
 
             {/* notification & profile */}
+            <Typography variant="h5" color="text.secondary">
+               Ambiente:Produccion
+            </Typography>
+            <Button startIcon={<ShareIcon/>}></Button>
             <NotificationSection />
             <ProfileSection />
         </>

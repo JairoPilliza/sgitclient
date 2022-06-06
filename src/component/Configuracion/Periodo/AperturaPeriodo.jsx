@@ -49,10 +49,11 @@ const AperturaPeriodo = () => {
                 <Divider></Divider>
 
                 <CardContent>
-
-                    <Button variant='contained' startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')} >Aperturar</Button>
+                    <center>
+                        <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')} >Aperturar</Button>
+                    </center>
                     <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                        <Table sx={{ minWidth: "50%" }} aria-label="caption table">
 
                             <TableHead>
                                 <TableRow>
@@ -92,8 +93,8 @@ const AperturaPeriodo = () => {
                 </CardContent>
             </Card >
             <ModalAperturaPeriodo
-            open={open}
-            onClose={handleClose}/>
+                open={open}
+                onClose={handleClose} />
         </Box>
     );
 }

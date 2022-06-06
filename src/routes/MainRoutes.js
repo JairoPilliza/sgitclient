@@ -12,6 +12,8 @@ const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')))
 const AperturaEntidad = Loadable(lazy(() => import('component/Configuracion/Entidad/AperturaEntidad')));
 const AperturaPeriodo = Loadable(lazy(() => import('component/Configuracion/Periodo/AperturaPeriodo')));
 const Usuarios = Loadable(lazy(() => import('component/Configuracion/Usuario/Usuario')));
+const MiPerfil = Loadable(lazy(() => import('component/Configuracion/Usuario/MiPerfil')));
+
 const SolicitudUsuario = Loadable(lazy(() => import('component/Configuracion/SolicitudUsuario/SolicitudUsuario')));
 const RegistroRetencion = Loadable(lazy(() => import('component/Configuracion/Retencion/RegistroRetencion')));
 const RegistroLiquidacion = Loadable(lazy(() => import('component/Configuracion/Liquidacion/RegistroLiquidacion')));
@@ -30,6 +32,8 @@ const ATS = Loadable(lazy(() => import('component/ATS/GenerarATS')));
 const FacturasEmitidas = Loadable(lazy(() => import('component/Comprobante/FacturasEmitidas')));
 const FacturasSinReten = Loadable(lazy(() => import('component/Comprobante/FacturasSinReten')));
 const LiquidacionSinReten = Loadable(lazy(() => import('component/Comprobante/LiquidacionSinReten')));
+//XML COMPRA
+const XMLCompra = Loadable(lazy(() => import('component/XmlCompra/GenerarXmlCompra')));
 
 
 const UtilsDocumentos = Loadable(lazy(() => import('component/Documentos')));
@@ -81,6 +85,10 @@ const MainRoutes = {
             element: <Usuarios />
         },
         {
+            path: '/Configuracion/Usuario/MiPerfil',
+            element: <MiPerfil />
+        },
+        {
             path: '/Configuracion/SolicitudUsuario',
             element: <SolicitudUsuario />
         },
@@ -122,6 +130,10 @@ const MainRoutes = {
         {
             path: '/Comprobante/LiquidacionSinReten',
             element: <LiquidacionSinReten />
+        },
+        {
+            path: '/XmlCompra/GenerarXmlCompra',
+            element: <XMLCompra />
         },
         {
             path: '/documentos',

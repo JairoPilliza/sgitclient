@@ -51,7 +51,15 @@ const comprobante = {
                 
              
             ]
-        }
+        },
+        {
+            id: 'geXMLCompras',
+            title: 'Generar xml compras',
+            type: 'item',
+            url: '/XmlCompra/GenerarXmlCompra',
+            icon: FileDownloadIcon,
+            breadcrumbs: false
+        },
     ]
 };
 

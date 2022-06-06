@@ -18,12 +18,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import ModalEditarPerfil from "./Configuracion/Usuario/ModalEditarPerfil";
 const BuscarFactura = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [scroll, setScroll] = React.useState('paper');
+
+    const handleClickOpen = (scrollType) => () => {
+        setOpen(true);
+        setScroll(scrollType);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
@@ -51,10 +60,10 @@ const BuscarFactura = () => {
                     <TableBody >
                         {rows.map((row) => (
                             <TableRow
-                                hover
+                                
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                onClick={e => setTable(false)}
+                               
                             >
                                 <TableCell component="th" scope="row">
                                     {row.name}
@@ -63,7 +72,7 @@ const BuscarFactura = () => {
                                 <TableCell align="right">{row.fat}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
+                                <TableCell align="right"><Button variant="contained" onClick={handleClickOpen('paper')} startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -100,7 +109,10 @@ const BuscarFactura = () => {
                 </SubCard>
 
             </Grid>
-          
+          <ModalEditarPerfil
+          open={open}
+          onClose={handleClose} 
+          />
         </Grid >
 
     );

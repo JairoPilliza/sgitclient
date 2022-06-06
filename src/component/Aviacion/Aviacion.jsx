@@ -35,10 +35,10 @@ const Aviacion = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     return (
         <MainCard title="Pasajes emitidos por empresa de Aviación" >
-            <Grid container spacing={gridSpacing}>                
+            <Grid container spacing={gridSpacing}>
                 <Grid item xs={12} sm={12}>
                     <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                             <Grid item xs={6}>
                                 <FormControl sx={{ minWidth: '100%' }}>
                                     <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
@@ -107,7 +107,7 @@ const Aviacion = () => {
                                     </Grid>
                                 </Stack>
 
-                               
+
                             </Grid>
                         </Grid>
                         <br></br>
@@ -172,7 +172,7 @@ const Aviacion = () => {
                     </SubCard>
 
                 </Grid>
-                <Grid item xs={12} sm={12}>                  
+                <Grid item xs={12} sm={12}>
                     <SubCard className="col-12" container title="Detalle del pasaje de Aviación" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
                         <div>
                             <TableContainer >
@@ -279,13 +279,13 @@ const Aviacion = () => {
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid item xs={4}>
 
-                                <TextField id="outlined-basic" label="Subtotal 12%" variant="outlined"  {...register("subtotal12")}/>
+                                <TextField id="outlined-basic" label="Subtotal 12%" variant="outlined"  {...register("subtotal12")} />
                             </Grid>
                             <Grid item xs={4}>
                                 <TextField id="outlined-basic" label="Base No Objeto IVA:" variant="outlined"  {...register("baseNoObjIVA")} />
                             </Grid>
                             <Grid item xs={4}>
-                                <TextField id="outlined-basic" label="Subtotal:" variant="outlined"   {...register("Ssubtotal")}/>
+                                <TextField id="outlined-basic" label="Subtotal:" variant="outlined"   {...register("Ssubtotal")} />
                             </Grid>
                             <Grid item xs={4}>
                                 <TextField id="outlined-basic" label="Subtotal 0%:" variant="outlined"  {...register("subtotal0")} />
@@ -306,13 +306,13 @@ const Aviacion = () => {
                                 <TextField {...register("IVA12")} id="outlined-basic" label="Iva 12 %:" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>
-                                <TextField  {...register("descuento12")} id="outlined-basic"  label="Descuento 12%:" variant="outlined" />
+                                <TextField  {...register("descuento12")} id="outlined-basic" label="Descuento 12%:" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>
                                 <TextField  {...register("propina")} id="outlined-basic" label="Propina Tip (Serv. 10%):" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>
-                                <TextField   {...register("valorTotal")}id="outlined-basic" label="Valor Total:" variant="outlined" />
+                                <TextField   {...register("valorTotal")} id="outlined-basic" label="Valor Total:" variant="outlined" />
                             </Grid>
                             <Grid item xs={4}>
                                 <TextField  {...register("descuento0")} id="outlined-basic" label="Descuento 0%:" variant="outlined" />

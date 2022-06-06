@@ -17,12 +17,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import ModalSubirXML from "./ModalSubirXML";
+
 const BusquedaPr = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+
+
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -73,7 +79,7 @@ const BusquedaPr = () => {
             <Grid item xs={12} sm={12} lg={12} md={12} >
                 <SubCard className="col-12" title="Busqueda del proveedor" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item xs={12}  sm={12} md={6} lg={6}>
                             <TextField
                                 required
                                 id="outlined-basic"
@@ -83,16 +89,17 @@ const BusquedaPr = () => {
                                 {...register("razonSocial")}
                             />
                         </Grid>
-                        <Grid item xs={12} md={3} sm={3} lg={3} >
+                        <Grid item xs={12} md={3} sm={12} lg={3} >
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
                         </Grid>
-                        <Grid item xs={12} md={3} sm={3} lg={3}>
+                        <Grid item xs={12} md={3} sm={12} lg={3}>
                             <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />}>
                                 Nuevo
                             </Button>
                         </Grid>
+                       
                     </Grid><br></br>
                     <Divider />
                     {
@@ -105,6 +112,7 @@ const BusquedaPr = () => {
             <ModalNuevoProveedor
                 open={open}
                 onClose={handleClose} />
+                
         </Grid >
 
     );
