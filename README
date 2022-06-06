@@ -1,0 +1,47 @@
+// --------------------------------------------------------
+/*VERSION REACT : 17.0.2
+VERSION REACT DOM : 17.0.2
+VERSION MATERIAL UI : 5.0.3
+VERSION DOCUMENTACION MATERIAL UI : 5.8.2
+
+Material ui funciona mediante componentes, cualquier componente(TextField, card, checkbox ...) que se desee
+utilizar se lo debe importar  (import Checkbox from '@mui/material/Checkbox';)
+
+Existen diferentes componentes de layout que tienen funcion similar => Grid => Stack 
+!Grid vendria a remplazar a <div class='col-12'> que se usa en boopstrap¡
+
+El sistema esta realzado las vistas de los documentos en diferentes items del menu, se encuentra el apartado 
+de configuraciones y Proveedores asemejando al sigt. Algunas partes estan realziadas en componentes 
+como los modales, busqueda de proveedor, TipoFactura..., todos los elementos de las diferentes vsitas estan copiadas y 
+pegadas directamente de la documentacion de material ui, solo se cambio el tamaño y en algunas el color. 
+
+La rutas para visualizar las diferentes vsitas se las maneja en carpeta "routes":
+MainRoutes=> Se declara una variable = importar la ruta donde se encuentra la vista
+Si se realiza otro archivo js con rutas se las debe declarar en index.js dentro de useRoutes.
+
+Los menus con el nombre de la vista se encuentra en la carpeta "menu-items":
+utilities.js se encuentra los menus para los documentos.
+proveedor.js se encuentra los apartados de proveedor & persona liquidacion.
+configuracion.jsx se encuentra los diferentes apartados de config
+
+Si se realiza otro archivo js con item de menu se las debe declarar en index.js dentro de items.
+
+
+23/05=>
+24/05=>
+25/05=>
+26/05=>
+27/05=>
+
+30/05=>
+31/05=>
+01/06=>
+
+
+
+
+
+
+
+
+*/
