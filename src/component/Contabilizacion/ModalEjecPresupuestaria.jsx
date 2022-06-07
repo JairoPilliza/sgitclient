@@ -200,7 +200,7 @@ const ModalEjecPresupuestaria = (props) => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit" >Guardar</Button>
+                        {/* <Button type="submit" >Guardar</Button> */}
                     </DialogActions>
                 </Dialog>
 
