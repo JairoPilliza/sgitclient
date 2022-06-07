@@ -84,43 +84,47 @@ const ModalAperturaPeriodo = (props) => {
                         ref={descriptionElementRef}
                         tabIndex={-1}
                     >
-                        <Card className="col-12" container style={{border:'1'}}>
+                        <Card className="col-12" container style={{ border: '1' }}>
                             <CardHeader title="Registro de Periodos "
-                            subheader=" se recomienda escoger el 1er día de cada mes.
+                                subheader=" se recomienda escoger el 1er día de cada mes.
                             " />
                             <Divider></Divider>
                             <CardContent>
-                            <Stack spacing={2}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                                <FormControl sx={{ m: 1, minWidth: 150 }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        style={{ width: "100%", float: "right" }}
-                                        required
-                                        label="Entidad"
-                                        {...register("entidad")}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
-                                    </Select>
+                                        <FormControl sx={{ minWidth: "100%" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="demo-simple-select-helper"
+                                                style={{ width: "100%", float: "right" }}
+                                                required
+                                                label="Entidad"
+                                                {...register("entidad")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={30}>Thirty</MenuItem>
+                                            </Select>
 
-                                </FormControl>
-                                <TextField
-                                    id="outlined-date"
-                                    label="Fecha Apertura:"
-                                    type="date"
-                                    style={{ width: "100%"}}
-                                    required
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    {...register("fechaApertura")}
-                                />
-                               
-                            </Stack>
+                                        </FormControl>
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-date"
+                                            label="Fecha Apertura:"
+                                            type="date"
+                                            style={{ width: "100%" }}
+                                            required
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            {...register("fechaApertura")}
+                                        />
+                                    </Grid>
+                                </Grid>
                             </CardContent>
                         </Card>
 

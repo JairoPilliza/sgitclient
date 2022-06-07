@@ -21,7 +21,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Divider } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 
 
 import Table from '@mui/material/Table';
@@ -43,6 +43,7 @@ import SubCard from 'ui-component/cards/SubCard';
 import SolcitudAnulacion from './SolicitudAnulacion';
 import AutorizadasAnulacion from './AutorizadasAnulacion';
 import RetencionesAnuladas from './RetencionesAnuladas';
+import { gridSpacing } from 'store/constant';
 const AnulacionRetencion = () => {
 
     const [value, setValue] = React.useState('1');
@@ -53,22 +54,27 @@ const AnulacionRetencion = () => {
 
     return (
         <MainCard title="Lista de Solicitudes de Anulación de Retenciones Autorizadas por el SRI">
-            <Box sx={{ width: '100%', typography: 'body1' }}>                
-                <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider',  }}>
-                        <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label="Solicitadas para anulación" value="1"/>
-                            <Tab label="Autorizadas para anulación" value="2" />
-                            <Tab label="Retenciones Anuladas" value="3" />
+            <Grid container spacing={gridSpacing}>
 
-                        </TabList>
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Box sx={{ width: '100%', typography: 'body1' }}>
+                        <TabContext value={value}>
+                            <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>
+                                <TabList onChange={handleChange} aria-label="lab API tabs example">
+                                    <Tab label="Solicitadas para anulación" value="1" />
+                                    <Tab label="Autorizadas para anulación" value="2" />
+                                    <Tab label="Retenciones Anuladas" value="3" />
+
+                                </TabList>
+                            </Box>
+                            <TabPanel value="1"><SolcitudAnulacion /> </TabPanel>
+                            <TabPanel value="2"><AutorizadasAnulacion /></TabPanel>
+                            <TabPanel value="3"><RetencionesAnuladas /></TabPanel>
+
+                        </TabContext>
                     </Box>
-                    <TabPanel value="1"><SolcitudAnulacion/> </TabPanel>
-                    <TabPanel value="2"><AutorizadasAnulacion/></TabPanel>
-                    <TabPanel value="3"><RetencionesAnuladas/></TabPanel>
-
-                </TabContext>
-            </Box>
+                </Grid>
+            </Grid>
         </MainCard>
     );
 }

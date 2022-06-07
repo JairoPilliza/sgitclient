@@ -11,7 +11,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 
-import { Divider } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -24,8 +24,9 @@ import Paper from '@mui/material/Paper';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
 import ModalAperturaEntidad from './ModalAperturaEntidad';
+import { gridSpacing } from 'store/constant';
 
-const   Entidad = () =>  {
+const Entidad = () => {
     const [value, setValue] = React.useState('1');
 
     const [open, setOpen] = React.useState(false);
@@ -59,61 +60,67 @@ const   Entidad = () =>  {
 
     return (
         <MainCard>
-            <Card sx={{ maxWidth: "100%" }}>
-                <CardHeader
-                    title="Apertura de Entidades"
-                />
-                <Divider />
-                <CardContent>
-                    <center>
-                        <Button variant='contained' style={{ width: "50%" }} startIcon={ <EventNoteIcon/>} onClick={handleClickOpen('paper')}>Aperturar</Button></center>
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: "50%" }} aria-label="caption table">
+            <Grid container spacing={gridSpacing} >
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Card sx={{ maxWidth: "100%" }}>
+                        <CardHeader
+                            title="Apertura de Entidades"
+                        />
+                        <Divider />
+                        <CardContent>
+                            
+                                    <center>
+                                        <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')}>Aperturar</Button></center>
+                               
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: "50%" }} aria-label="caption table">
 
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>#</TableCell>
-                                    <TableCell align="center">Código</TableCell>
-                                    <TableCell align="center">Razón Social</TableCell>
-                                    <TableCell align="center">Ruc</TableCell>
-                                    <TableCell align="center">Teléfono</TableCell>
-                                    <TableCell align="center">Email</TableCell>
-                                    <TableCell align="center">Acciones</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow hover key={row.name}>
-                                        <TableCell >
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="center">{row.calories}</TableCell>
-                                        <TableCell align="center">{row.fat}</TableCell>
-                                        <TableCell align="center">{row.carbs}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">
-                                            <Button variant="contained" startIcon={<EditIcon />}>
-                                                
-                                            </Button>
-                                            <Button variant="contained" startIcon={<DeleteIcon />} >
-                                                
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </CardContent>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>#</TableCell>
+                                            <TableCell align="center">Código</TableCell>
+                                            <TableCell align="center">Razón Social</TableCell>
+                                            <TableCell align="center">Ruc</TableCell>
+                                            <TableCell align="center">Teléfono</TableCell>
+                                            <TableCell align="center">Email</TableCell>
+                                            <TableCell align="center">Acciones</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rows.map((row) => (
+                                            <TableRow hover key={row.name}>
+                                                <TableCell >
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="center">{row.calories}</TableCell>
+                                                <TableCell align="center">{row.fat}</TableCell>
+                                                <TableCell align="center">{row.carbs}</TableCell>
+                                                <TableCell align="center">{row.protein}</TableCell>
+                                                <TableCell align="center">{row.protein}</TableCell>
+                                                <TableCell align="center">
+                                                    <Button variant="contained" startIcon={<EditIcon />}>
+
+                                                    </Button>
+                                                    <Button variant="contained" startIcon={<DeleteIcon />} >
+
+                                                    </Button>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </CardContent>
 
 
-            </Card>
-            <ModalAperturaEntidad
-            open={open}
-            onClose={handleClose}
-            />
-        </MainCard>
+                    </Card>
+                    <ModalAperturaEntidad
+                        open={open}
+                        onClose={handleClose}
+                    />
+                </Grid>
+            </Grid>
+        </MainCard >
     );
 }
 

@@ -56,8 +56,8 @@ const ModalNuevaPersona = (props) => {
 
     const onSubmit = (data, evento) => {
         alert();
-      console.log(data);
-        
+        console.log(data);
+
     }
 
 
@@ -84,18 +84,21 @@ const ModalNuevaPersona = (props) => {
                         >
                             <Card className="col-12" container style={{ textAlign: "center" }} >
                                 <br />
-                                <Stack spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Apellidos y Nombres:"
-                                        placeholder="Ingrese Apellidos y Nombres de la persona"
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-date"
+                                            label="Apellidos y Nombres:"
+                                            placeholder="Ingrese Apellidos y Nombres de la persona"
 
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("apellidosNombres")}
-                                    />
-                                    <Stack direction="row" spacing={2}>
-                                        <FormControl sx={{ minWidth: '50%' }}>
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("apellidosNombres")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+
+                                        <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Documento:</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
@@ -111,7 +114,8 @@ const ModalNuevaPersona = (props) => {
                                             </Select>
 
                                         </FormControl>
-
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
                                             id="outlined-date"
                                             label="Doc Identificación:"
@@ -121,8 +125,8 @@ const ModalNuevaPersona = (props) => {
                                             {...register("numeroIdentificacion")}
                                         />
 
-                                    </Stack>
-                                    <Stack direction="row" spacing={2}>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
                                             id="outlined-date"
                                             label="Teléfono:"
@@ -131,7 +135,8 @@ const ModalNuevaPersona = (props) => {
                                             required
                                             {...register("telefono")}
                                         />
-
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
                                             id="outlined-date"
                                             label="Email:"
@@ -140,24 +145,26 @@ const ModalNuevaPersona = (props) => {
                                             required
                                             {...register("correo")}
                                         />
-                                    </Stack>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Dirección:"
-                                        placeholder="Ingrese dirección domiciliaria"
-                                        style={{ width: "100%" }}
-                                        multiline
-                                        required
-                                        {...register("direccionDomiciliaria")}
-                                    />
-                                </Stack>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-date"
+                                            label="Dirección:"
+                                            placeholder="Ingrese dirección domiciliaria"
+                                            style={{ width: "100%" }}
+                                            multiline
+                                            required
+                                            {...register("direccionDomiciliaria")}
+                                        />
+                                    </Grid>
+                                </Grid>
                             </Card>
 
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit" >Registar Proveedor</Button>
+                        <Button type="submit" >Registar Persona</Button>
                     </DialogActions>
                 </Dialog>
 

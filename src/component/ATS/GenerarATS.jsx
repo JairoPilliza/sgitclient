@@ -11,7 +11,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 
-import { Divider, Input, Stack } from '@mui/material';
+import { Divider, Grid, Input, Stack } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -28,6 +28,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import TableATS from './TableATS';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import { gridSpacing } from "store/constant";
 
 const ATS = () => {
 
@@ -46,34 +47,45 @@ const ATS = () => {
 
     return (
         <MainCard>
-            <Card sx={{ maxWidth: "100%" }}>
-                <CardHeader
-                    title="Apertura de Entidades"
-                />
+            <Grid container spacing={gridSpacing} >
+                <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                <Divider />
-                <CardContent>
-                    <center>
-                        <Stack direction="row" alignItems="center" spacing={2} margin="auto">
-                            <label htmlFor="contained-button-file">
-                                <Input id="contained-button-file" multiple type="file" />
-                                <Button variant="contained" component="span" startIcon={<FileUploadIcon />}>
-                                    Cargar XML
-                                </Button>
-                            </label>
-                            <Button variant='contained' startIcon={<VisibilityIcon />} onClick={e => setShowTable(true)} onDoubleClick={e => setShowTable(false)}></Button>
-                        </Stack>
-                    </center>
-                </CardContent>
 
-                {
-                    muestraTable
-                }
-                <Divider></Divider><center>              
-                <Button variant="contained" startIcon={<DownloadForOfflineIcon/>}>Generar Anexo Transaccional Simplificado (ATS)</Button>
-                </center>
-            </Card>
+                    <Card sx={{ maxWidth: "100%" }}>
+                        <CardHeader
+                            title="Apertura de Entidades"
+                        />
 
+                        <Divider />
+
+                        <CardContent>
+                            <Grid container>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <label htmlFor="contained-button-file">
+                                        <Input id="contained-button-file" multiple type="file" />
+                                        <Button variant="contained" component="span" startIcon={<FileUploadIcon />}>
+                                            Cargar XML
+                                        </Button>
+                                    </label>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Button variant='contained' startIcon={<VisibilityIcon />} onClick={e => setShowTable(true)} onDoubleClick={e => setShowTable(false)}></Button>
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+
+
+                        {
+                            muestraTable
+                        }
+                        <br />
+                        <Divider />
+                        <center>
+                            <Button variant="contained" startIcon={<DownloadForOfflineIcon />}>Generar Anexo Transaccional Simplificado (ATS)</Button>
+                        </center>
+                    </Card>
+                </Grid>
+            </Grid>
         </MainCard>
     );
 }

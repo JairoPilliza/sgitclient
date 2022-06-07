@@ -88,26 +88,33 @@ const ModalEditarPerfil = (props) => {
                         tabIndex={-1}
                     >
                         <SubCard className="col-12" container title="Personaliza:" style={{ textAlign: "center" }} >
-                            <Stack spacing={2}>                               
-                                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }} lg={12} xs={12} sm={12} >
-                                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }}  />
-                                        <TextField id="input-with-sx" label="Nombre Usuario" variant="standard" style={{ width: "50%" }}  />
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}  >
+                                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                        <TextField id="input-with-sx" label="Nombre Usuario" variant="standard" style={{ width: "100%" }} />
                                     </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Usuario" variant="standard"   style={{ width: "50%" }} />
+                                        <TextField id="input-with-sx" label="Usuario" variant="standard" style={{ width: "100%" }} />
                                     </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Correo" variant="standard"  style={{ width: "50%" }}  />
+                                        <TextField id="input-with-sx" label="Correo" variant="standard" style={{ width: "100%" }} />
                                     </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <VpnKeyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Contraseña" variant="standard"   style={{ width: "50%" }} />
-                                    </Box>       
-                                
-                            </Stack>
+                                        <TextField id="input-with-sx" label="Contraseña" variant="standard" style={{ width: "100%" }} />
+                                    </Box>
 
+                                </Grid>
+                            </Grid>
                         </SubCard>
 
                     </DialogContentText>

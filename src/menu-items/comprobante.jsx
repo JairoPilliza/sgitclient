@@ -8,7 +8,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const comprobante = {
     id: 'comprobante',
-   
+   title:'Jefferson',
     type: 'group',
     children: [    
         {
@@ -16,6 +16,7 @@ const comprobante = {
             title: 'Generar ATS',
             type: 'item',
             url: '/ATS/GenerarATS',
+
             icon: FileDownloadIcon,
             breadcrumbs: false
         },

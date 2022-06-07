@@ -41,7 +41,7 @@ const BuscarPtoEmision = () => {
 
 
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={6} lg={6}>
+                <Grid item xs={12} sm={12} md={6} lg={6}>
                     <TextField
                         required
                         id="outlined-basic"

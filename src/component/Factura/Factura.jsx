@@ -101,6 +101,7 @@ const Factura = () => {
 
             ;
     }
+    
     return (
         <MainCard title="FACTURA" >
             <Grid container spacing={gridSpacing}>
@@ -112,13 +113,16 @@ const Factura = () => {
                     <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
-                            <Grid item xs={12} md={6} sm={6} lg={6}>
+                            <Grid item xs={12} md={6} sm={12} lg={6}>
+
+                            </Grid>
+                            <Grid item xs={12} md={6} sm={12} lg={6}>
                                 <FormControl sx={{ minWidth: '100%' }} xs={12} md={6} sm={6} lg={6}>
                                     <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-helper-label"
                                         id="sustentoTributario"
-                                        style={{ width: "100%" }}
+                                        style={{ width: "100%", float: "right" }}
                                         required
                                         label="Sustento Tributario"
                                         {...register("sustentoTributario")}
@@ -129,11 +133,10 @@ const Factura = () => {
                                 </FormControl>
                             </Grid>
 
-
                             <Grid item xs={12} md={12} sm={12} lg={12} >
-                                <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                <Grid container spacing={2} >
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
-                                        <small ><b>N° Factura:</b></small>
+                                        <small style={{ width: "100%" }} ><b>N° Factura:</b></small>
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
@@ -197,16 +200,18 @@ const Factura = () => {
                                 title="Datos del proveedor"
                                 style={{ backgroundColor: "yellow", textAlign: "center", height: "60px" }}
                                 action={
+
                                     <Button aria-label="settings" size="small" variant="contained" startIcon={<EditIcon />} onClick={handleOpen}>
                                         Editar Proveedor
                                     </Button>
+
+
                                 }
                             />
                             <CardContent >
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
-
                                     <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                        <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                        <Grid container spacing={2} >
                                             <Grid item xs={12} sm={12} md={12} lg={12} >
                                                 <TextField
                                                     id="outlined-basic"
@@ -227,7 +232,7 @@ const Factura = () => {
                                     </Grid>
 
                                     <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                        <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
+                                        <Grid container spacing={2} >
                                             <Grid item xs={12} sm={12} md={12} lg={12} >
                                                 <TextField
                                                     id="outlined-basic"
@@ -263,61 +268,61 @@ const Factura = () => {
 
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                     <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                        
-                            <Grid container  xs={12} md={12} sm={12} lg={12} spacing={2}>
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
-                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Iva</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="sustentoTributario"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Iva"
-                                            {...register("sustentoTributario")}
-                                        >
-                                            <MenuItem value={10}>Iva 12%</MenuItem>
-                                            <MenuItem value={20}>Iva 8%</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
-                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="sustentoTributario"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Departamento"
-                                            {...register("departamento")}
-                                        >
-                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
-                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
-                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
 
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
-                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="sustentoTributario"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Subcuenta"
-                                            {...register("subcuenta")}
-                                        >
-                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
-                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
-                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
+                        <Grid container xs={12} md={12} sm={12} lg={12} spacing={2}>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Iva</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="sustentoTributario"
+                                        style={{ width: "100%" }}
+                                        required
+                                        label="Iva"
+                                        {...register("sustentoTributario")}
+                                    >
+                                        <MenuItem value={10}>Iva 12%</MenuItem>
+                                        <MenuItem value={20}>Iva 8%</MenuItem>
+                                    </Select>
+                                </FormControl>
                             </Grid>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="sustentoTributario"
+                                        style={{ width: "100%" }}
+                                        required
+                                        label="Departamento"
+                                        {...register("departamento")}
+                                    >
+                                        <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                        <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                        <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="sustentoTributario"
+                                        style={{ width: "100%" }}
+                                        required
+                                        label="Subcuenta"
+                                        {...register("subcuenta")}
+                                    >
+                                        <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                        <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                        <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                        </Grid>
                         <div>
                             <TableContainer >
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -472,19 +477,29 @@ const Factura = () => {
                                 <Button style={{ width: "100%" }} variant="contained" onClick={handleClickOpenMFP('paper')}>Forma de Pago</Button>
                             </Grid>
                         </Grid>
-                        <Grid>
-                            <CardActions >
+                        <br></br>
+                        <Divider />
+                        <CardActions >
+                            <Grid container spacing={2}>
 
-                                <Button variant="contained" style={{ backgroundColor: "#536dfe" }}>
-                                    Guardar
-                                </Button>
-                                <Button onClick={handleClickOpen('paper')} variant="contained" >Retener</Button>
-                                <Button variant="contained" style={{ backgroundColor: "#f57f17" }}>
-                                    Cancelar
-                                </Button>
 
-                            </CardActions>
-                        </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Button variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
+                                        Guardar
+                                    </Button>
+                                </Grid>
+
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Button onClick={handleClickOpen('paper')} style={{ width: "100%" }} variant="contained" >Retener</Button>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                        Cancelar
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </CardActions>
+
                     </SubCard>
 
                 </Grid>
@@ -503,7 +518,7 @@ const Factura = () => {
                 open={openXML}
                 onClose={handleCloseXML}
             />
-        </MainCard>
+        </MainCard >
     );
 }
 

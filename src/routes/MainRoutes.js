@@ -36,7 +36,9 @@ const LiquidacionSinReten = Loadable(lazy(() => import('component/Comprobante/Li
 const XMLCompra = Loadable(lazy(() => import('component/XmlCompra/GenerarXmlCompra')));
 
 
+const EjecucionPresupuestaria = Loadable(lazy(() => import('component/Contabilizacion/EjecucionPresupuestaria')));
 const UtilsDocumentos = Loadable(lazy(() => import('component/Documentos')));
+
 const UtilsFactura = Loadable(lazy(() => import('component/Factura/Factura')));
 const UtilsNotaVenta = Loadable(lazy(() => import('component/NotaVenta/NotaVenta')));
 const UtilsLiquidacionCompra = Loadable(lazy(() => import('component/LiquidacionCompra/LiquidacionCompra')));
@@ -134,6 +136,10 @@ const MainRoutes = {
         {
             path: '/XmlCompra/GenerarXmlCompra',
             element: <XMLCompra />
+        },
+        {
+            path: '/Contabilizacion/EjecucionPresupuestaria',
+            element: <EjecucionPresupuestaria />
         },
         {
             path: '/documentos',

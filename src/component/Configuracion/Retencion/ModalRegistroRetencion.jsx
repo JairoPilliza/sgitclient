@@ -87,69 +87,81 @@ const ModalRegistroRetencion = (props) => {
                         <SubCard className="col-12" container title="Registro de Talonarios" style={{ textAlign: "center" }} >
 
 
-                            <Stack spacing={2}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                                <FormControl sx={{ minWidth: '50%' }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
+                                    <FormControl sx={{ minWidth: '100%' }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="demo-simple-select-helper"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Sucursal"
+                                            {...register("sucursal")}
+                                        >
+                                            <MenuItem value={10}>Ten</MenuItem>
+                                            <MenuItem value={20}>Twenty</MenuItem>
+
+                                        </Select>
+
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField
+                                        id="outlined-date"
+                                        label="N° Autorización:"
+
                                         style={{ width: "100%" }}
                                         required
-                                        label="Sucursal"
-                                        {...register("sucursal")}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-
-                                    </Select>
-
-                                </FormControl>
-                                <TextField
-                                    id="outlined-date"
-                                    label="N° Autorización:"
-
-                                    style={{ width: "100%" }}
-                                    required
-                                    {...register("nAutorizacion")}
-                                />
-                                <TextField
+                                        {...register("nAutorizacion")}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField
                                         id="outlined-date"
                                         label="Punto de Emisión:"
-                                       
+
                                         style={{ width: "100%" }}
                                         required
                                         {...register("puntoEmision")}
                                     />
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <TextField
                                         id="outlined-date"
                                         label="Secuencial Min:"
-                                       
+
                                         style={{ width: "100%" }}
                                         required
                                         {...register("secuencialMin")}
                                     />
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <TextField
                                         id="outlined-date"
                                         label="Secuencial Max:"
-                                       
+
                                         style={{ width: "100%" }}
                                         required
                                         {...register("secuencialMax")}
                                     />
-                                     <TextField
-                                    id="outlined-date"
-                                    label="Fecha Caducidad:"
-                                    type="date"
-                                    style={{ width: "100%" }}
-                                    required
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    {...register("fechaCaducidad")}
-                                />
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField
+                                        id="outlined-date"
+                                        label="Fecha Caducidad:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        required
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        {...register("fechaCaducidad")}
+                                    />
+                                </Grid>
+                            </Grid>
 
-                            </Stack>
 
                         </SubCard>
 

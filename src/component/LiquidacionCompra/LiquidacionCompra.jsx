@@ -49,10 +49,10 @@ const LiquidacionCompra = () => {
         <MainCard title="Liquidación de compra" >
             <Grid container spacing={gridSpacing}>
 
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={12} lg={12}>
                     <SubCard className="col-12" container title="Datos de Liquidación" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
                         <Grid container>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <FormControl sx={{ minWidth: '100%' }}>
                                     <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                     <Select
@@ -73,7 +73,7 @@ const LiquidacionCompra = () => {
                         </Grid>
                         <br></br>
                         <Grid container spacing={2}>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} sm={12} md={4} lg={4}>
                                 <TextField
                                     id="outlined-textarea"
                                     label="Sr/Sra:"
@@ -84,17 +84,17 @@ const LiquidacionCompra = () => {
                                 />
 
                             </Grid>
-                            <Grid item xs={2}>
-                                <Button variant="outlined" startIcon={<SearchIcon />}>
+                            <Grid item xs={12} sm={12} md={2} lg={2}>
+                                <Button variant="outlined" startIcon={<SearchIcon />} style={{ width: "100%" }}>
                                     Buscar
                                 </Button>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />}>
+                            <Grid item xs={12} sm={12} md={3} lg={3}>
+                                <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />} style={{ width: "100%" }}>
                                     Añadir Persona
                                 </Button>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs={12} sm={12} md={3} lg={3}>
                                 <TextField
                                     id="outlined-date"
                                     helperText="Ingrese una fecha"
@@ -109,8 +109,8 @@ const LiquidacionCompra = () => {
                             </Grid>
                         </Grid>
                         <br></br>
-                        <Grid container  >
-                            <Grid item xs={4} >
+                        <Grid container spacing={2} >
+                            <Grid item xs={12} sm={12} md={4} lg={4} >
                                 <TextField
                                     id="outlined-textarea"
                                     label="Lugar de Transacción:"
@@ -122,12 +122,12 @@ const LiquidacionCompra = () => {
 
                             </Grid>
 
-                            <Grid item xs={8} >
-                                <Grid container spacing={2} xs={10}>
-                                    <Grid item xs={3}>
-                                        <small  style={{ width: "100%" }}><b>N° Liquidación:</b></small>
+                            <Grid item xs={12} sm={12} md={8} lg={8} >
+                                <Grid container spacing={2} >
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <small style={{ width: "100%" }}><b>N° Liquidación:</b></small>
                                     </Grid>
-                                    <Grid item xs={3}>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
                                             id="outlined-basic"
                                             label="Emision"
@@ -136,7 +136,7 @@ const LiquidacionCompra = () => {
                                             {...register("emision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={3}>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
                                             id="outlined-basic"
                                             label="punto emision "
@@ -145,14 +145,14 @@ const LiquidacionCompra = () => {
                                             {...register("puntoEmision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={3}>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Secuencial de la liquidacion"
                                             helperText="Secuencial de la liquidacion"
                                             placeholder="Diguite Secuencial"
-                                            multiline
-                                            style={{ width: "170px" }}
+
+                                            style={{ width: "100%" }}
                                             {...register("secuencial")}
                                         />
                                     </Grid>
@@ -167,9 +167,9 @@ const LiquidacionCompra = () => {
                                 style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
                             />
 
-                            <CardContent xs={12} >
+                            <CardContent  >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} md={12}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Nombres:"
@@ -179,7 +179,7 @@ const LiquidacionCompra = () => {
                                             {...register("nombreCompleto")}
                                         />
                                     </Grid>
-                                    <Grid item xs={6} md={6}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Tipo Identificación:"
@@ -189,7 +189,7 @@ const LiquidacionCompra = () => {
                                             {...register("tipoIdentificacion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={5} md={5}>
+                                    <Grid item xs={12} sm={12} md={5} lg={5}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="CI/Pasaporte:"
@@ -200,10 +200,10 @@ const LiquidacionCompra = () => {
                                         />
 
                                     </Grid>
-                                    <Grid item xs={1} md={1}>
+                                    <Grid item xs={12} sm={12} md={1} lg={1}>
                                         <Button variant="contained" size="small"><CheckIcon /></Button>
                                     </Grid>
-                                    <Grid item xs={6} md={6}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Telefono:"
@@ -213,7 +213,7 @@ const LiquidacionCompra = () => {
                                             {...register("telefonoCelular")}
                                         />
                                     </Grid>
-                                    <Grid item xs={6} md={6}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Email:"
@@ -223,7 +223,7 @@ const LiquidacionCompra = () => {
                                             {...register("correo")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} md={12}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="Dirección:"
@@ -341,40 +341,84 @@ const LiquidacionCompra = () => {
                         </div>
                         <br></br>
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid container item xs={6} rowSpacing={2} >
-                                <Grid item xs={12}>
-                                    <TextField id="outlined-basic" label="Subtotal" variant="outlined" style={{ width: "70%" }}  {...register("subtotal")} />
+                            <Grid container item rowSpacing={2} xs={12} sm={12} md={6} lg={6}>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField id="outlined-basic" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <TextField id="outlined-basic" label="Base IVA 0%:" variant="outlined" style={{ width: "70%" }}  {...register("baseIVA0")} />
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField id="outlined-basic" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <TextField id="outlined-basic" label="Base IVA 12%:" variant="outlined" style={{ width: "70%" }}  {...register("baseIVA12")} />
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField id="outlined-basic" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <TextField {...register("Iva12")} id="outlined-basic" label="Iva 12 %:" variant="outlined" style={{ width: "70%" }} />
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField id="outlined-basic" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")}  />
                                 </Grid>
 
                             </Grid>
-                            <Grid container item xs={6} rowSpacing={2}>
-                                <Grid item xs={12}>
-                                    <TextField id="outlined-basic" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "70%" }} />
+                            <Grid container item rowSpacing={2}   xs={12} sm={12} md={6} lg={6}>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <TextField id="outlined-basic" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
                                 </Grid>
+
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <FormControl sx={{ minWidth: '100%'}}>
+                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Departamento"
+                                            {...register("departamento")}
+                                        >
+                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <FormControl sx={{ minWidth: '100%'}}>
+                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Subcuenta"
+                                            {...register("subcuenta")}
+                                        >
+                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                
                             </Grid>
 
 
                         </Grid>
                     </SubCard>
-                    <Grid>
-                        <CardActions >
-                            <Button variant="contained" style={{ backgroundColor: "#536dfe" }}>
-                                Guardar Liquidación
-                            </Button>
-                            <Button variant="contained" onClick={handleClickOpen('paper')} style={{ backgroundColor: "#f06292" }}>
-                                Retener
-                            </Button>
-                        </CardActions>
-                    </Grid>
+
+                    <CardActions >
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
+                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
+                                    Guardar
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
+                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                    Cancelar
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </CardActions>
+
 
                 </Grid>
             </Grid>

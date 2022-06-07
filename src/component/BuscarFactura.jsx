@@ -18,7 +18,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import ModalEditarPerfil from "./Configuracion/Usuario/ModalEditarPerfil";
+
 const BuscarFactura = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
@@ -72,7 +72,7 @@ const BuscarFactura = () => {
                                 <TableCell align="right">{row.fat}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" onClick={handleClickOpen('paper')} startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
+                                <TableCell align="right"><Button variant="contained"  startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -109,10 +109,7 @@ const BuscarFactura = () => {
                 </SubCard>
 
             </Grid>
-          <ModalEditarPerfil
-          open={open}
-          onClose={handleClose} 
-          />
+          
         </Grid >
 
     );

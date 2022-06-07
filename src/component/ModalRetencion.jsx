@@ -33,7 +33,7 @@ import BuscarPtoEmision from "./BuscarPtoEmision";
 const ModalRetencion = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [factBuscadorPtoEmision, setBuscadorPtoEmision] = useState(false);
-   
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -97,10 +97,18 @@ const ModalRetencion = (props) => {
 
     var muestraBuscador;
     if (factBuscadorPtoEmision) {
-        muestraBuscador = <BuscarPtoEmision  />;
+        muestraBuscador =  
+        <TextField
+        required
+        id="outlined-basic"
+        label="Filtro Pto Emision:"
+        placeholder="Buscar Pto. Emision"
+        style={{ width: "100%" }}
+        {...register("ptoEmision")}
+    />;
     }
     else {
-      
+
     }
 
 
@@ -124,75 +132,102 @@ const ModalRetencion = (props) => {
                         tabIndex={-1}
                     >
                         <SubCard className="col-12" container title="Datos de Retención" style={{ textAlign: "center" }} >
-                            <Stack direction="row" spacing={6}>
-                                <label style={{ width: "100%"}}><b>Retención electronica</b></label>
-                                <Checkbox  style={{ width: "100%"}}/>
-                                <Button variant="outlined" size="small" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%"}}>
-                                    <small>Ayuda</small>
-                                </Button>
-                                <TextField
-                                    id="outlined-date"
-                                    label="Fecha:"
-                                    type="date"
-                                    style={{ width: "100%" }}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    {...register("fechaEmision")}
-                                />
-                            </Stack>
-                            <br></br>
-                            <Stack>                                
-                            {muestraBuscador}
 
-                            </Stack>
-                           
-                            <br></br>
-                            <Stack direction="row" spacing={7}>
-                                <label >
-                                    <b>N. Retencion: *</b>
-                                </label>
+                            <Grid container spacing={2} >
+                                <Grid container item spacing={2}>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <label style={{ width: "100%" }}><b>Retención electronica</b></label>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Checkbox style={{ width: "100%" }} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%" }}>
+                                            <small>Ayuda</small>
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="outlined-date"
+                                            label="Fecha:"
+                                            type="date"
+                                            style={{ width: "100%" }}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            {...register("fechaEmision")}
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Grid container item spacing={2} >
 
-                                <TextField
-                                    id="outlined-date"
-                                    label="N° Establecimiento:"
-                                    {...register("numeroRetencion")}
-                                />
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        {muestraBuscador}
+                                    </Grid>
+                                </Grid>
 
-                                <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Pto emisión</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        style={{ width: "280px", float: "right" }}
-                                        label="Pto emisión"
-                                        {...register("puntoEmision")}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
-                                    </Select>
+                                <Grid container item spacing={2} >
 
-                                </FormControl>
-                            </Stack>
-                            <br></br>
-                            <Stack spacing={2}>
-                                <FormControl sx={{ m: 1, minWidth: 150 }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Sustención Tributario</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        style={{ width: "6 80px", float: "right" }}
-                                        label="Sustención Tributario"
-                                        {...register("sustentoTributario")}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
-                                    </Select>
+                                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <label style={{ width: "100%" }} >
+                                            <b>N. Retencion: *</b>
+                                        </label>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={4} lg={4}>
 
-                                </FormControl>
-                            </Stack>
+                                        <TextField
+                                            id="outlined-date"
+                                            label="N° Establecimiento:"
+                                            style={{ width: "100%" }}
+                                            {...register("numeroRetencion")}
+                                        />
+
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <FormControl sx={{ minWidth: "100%" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Pto emisión</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="demo-simple-select-helper"
+                                                style={{ width: "100%" }}
+                                                label="Pto emisión"
+                                                {...register("puntoEmision")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={30}>Thirty</MenuItem>
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container item spacing={2} >
+
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <FormControl sx={{  minWidth: "100%" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Sustención Tributario</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="demo-simple-select-helper"
+                                                style={{ width: "100%", float: "right" }}
+                                                label="Sustención Tributario"
+                                                {...register("sustentoTributario")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={30}>Thirty</MenuItem>
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
+
+
+                            </Grid>
+
+
+
                         </SubCard>
                         <br></br>
                         <SubCard className="col-12" container title="Retención de Renta" style={{ textAlign: "center" }} >
@@ -230,8 +265,8 @@ const ModalRetencion = (props) => {
                                                     InputLabelProps={{
                                                         shrink: true
                                                     }}
-                                                    variant="standard" 
-                                                    {...register("base")}/>
+                                                    variant="standard"
+                                                    {...register("base")} />
                                             </TableCell>
                                             <TableCell>
                                                 <FormControl sx={{ m: 1, minWidth: 150 }}>
@@ -258,8 +293,8 @@ const ModalRetencion = (props) => {
                                                     InputLabelProps={{
                                                         shrink: true
                                                     }}
-                                                    variant="standard" 
-                                                    {...register("porcentaje")}/>
+                                                    variant="standard"
+                                                    {...register("porcentaje")} />
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
@@ -268,8 +303,8 @@ const ModalRetencion = (props) => {
                                                     InputProps={{
                                                         readOnly: true
                                                     }}
-                                                    variant="standard" 
-                                                    {...register("total")}/>
+                                                    variant="standard"
+                                                    {...register("total")} />
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Button variant="contained">
@@ -331,7 +366,7 @@ const ModalRetencion = (props) => {
                                                 <TableCell align="right">
                                                     <label align="left"><b>Bienes</b> </label>
                                                 </TableCell>
-                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"  {...register("bienes")}/></TableCell>
+                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"  {...register("bienes")} /></TableCell>
                                                 <TableCell align="left">
                                                     <FormControl sx={{ m: 1, minWidth: 120 }}>
                                                         <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
@@ -350,8 +385,8 @@ const ModalRetencion = (props) => {
                                                     </FormControl>
 
                                                 </TableCell>
-                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"  {...register("porcentaje")}/></TableCell>
-                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"   {...register("total")}/></TableCell>
+                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"  {...register("porcentaje")} /></TableCell>
+                                                <TableCell align="left">  <TextField id="outlined-basic" type="number" label="-" variant="outlined"   {...register("total")} /></TableCell>
                                             </TableRow>
                                             <TableRow hover>
                                                 <TableCell align="right">

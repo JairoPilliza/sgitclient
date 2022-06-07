@@ -88,9 +88,9 @@ const ModalRegistroLiquidacion = (props) => {
 
                         <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                             <br></br>
-                            <Stack spacing={2}>
-                                <Stack direction="row" spacing={2}>
-                                    <FormControl sx={{ minWidth: '50%' }}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Establecimiento</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -106,26 +106,30 @@ const ModalRegistroLiquidacion = (props) => {
                                         </Select>
 
                                     </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={3} lg={3}>
                                     <TextField
                                         id="outlined-date"
                                         label="N° Autorización:"
 
-                                        style={{ width: "25%" }}
+                                        style={{ width: "100%" }}
                                         required
                                         {...register("nAutorizacion")}
                                     />
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={3} lg={3}>
                                     <TextField
                                         id="outlined-date"
                                         label="Punto Emisión:"
 
-                                        style={{ width: "25 %" }}
+                                        style={{ width: "100%" }}
                                         required
                                         {...register("puntoEmision")}
                                     />
+                                </Grid>
 
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <FormControl sx={{ minWidth: '50%' }}>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Secuencial Inicial</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -142,12 +146,14 @@ const ModalRegistroLiquidacion = (props) => {
                                         </Select>
 
                                     </FormControl>
-                                    <FormControl sx={{ minWidth: '50%' }}>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Secuencial Fin</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
                                             id="demo-simple-select-helper"
-                                            style={{ width: "96%" }}
+                                            style={{ width: "100%" }}
                                             required
                                             placeholder="Número de secuencia Final (100)"
                                             label="Secuencial Fin"
@@ -159,15 +165,14 @@ const ModalRegistroLiquidacion = (props) => {
                                         </Select>
 
                                     </FormControl>
+                                </Grid>
 
-                                </Stack>
-
-                                <Stack direction="row" spacing={2}>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
                                     <TextField
                                         id="outlined-date"
                                         label="Fecha Apertura:"
                                         type="date"
-                                        style={{ width: "50%" }}
+                                        style={{ width: "100%" }}
                                         required
                                         InputLabelProps={{
                                             shrink: true,
@@ -175,8 +180,8 @@ const ModalRegistroLiquidacion = (props) => {
                                         {...register("fechaApertura")}
                                     />
 
-                                </Stack>
-                            </Stack>
+                                </Grid>
+                            </Grid>
 
                         </Card>
 
@@ -188,7 +193,7 @@ const ModalRegistroLiquidacion = (props) => {
                     <Button >Registar Usuario</Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </div >
 
     );
 }

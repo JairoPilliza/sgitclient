@@ -35,9 +35,9 @@ const Ticket = () => {
                     <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
                         <br />
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid container spacing={2} rowSpacing={2}  xs={12} md={6} sm={6} lg={6}  >
+                            <Grid container spacing={2} rowSpacing={2} xs={12} md={6} sm={12} lg={6}  >
                                 <Grid item xs={12} md={12} sm={12} lg={12}>
-                                    <FormControl sx={{ m: 1, minWidth: 120 }} style={{ width: "75%" }}>
+                                    <FormControl sx={{ minWidth: "1005" }} style={{ width: "100%" }}>
                                         <InputLabel id="demo-simple-select-helper-label">Sustento Tributario:</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -54,23 +54,23 @@ const Ticket = () => {
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12} md={12} sm={12} lg={12}>
-                                    <TextField id="outlined-basic" label="RUC:" variant="outlined" style={{ width: "75%" }}  {...register("ruc")} />
-                                </Grid>
-                                <Grid item xs={12} md={12} sm={12} lg={12}> 
-                                    <TextField id="outlined-basic" label="Telefono:" variant="outlined" style={{ width: "75%" }}  {...register("telefono")} />
+                                    <TextField id="outlined-basic" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
                                 </Grid>
                                 <Grid item xs={12} md={12} sm={12} lg={12}>
-                                    <TextField id="outlined-basic" label="N° Autorización:" variant="outlined" style={{ width: "75%" }}  {...register("nAutorizacion")} />
+                                    <TextField id="outlined-basic" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
+                                </Grid>
+                                <Grid item xs={12} md={12} sm={12} lg={12}>
+                                    <TextField id="outlined-basic" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("nAutorizacion")} />
                                 </Grid>
                             </Grid>
 
 
-                            <Grid item xs={12} md={6} sm={6} lg={6} >
-                                <Grid container spacing={2} xs={12} md={12} sm={12} lg={12}>
-                                    <Grid item xs={12} md={3} sm={3} lg={3}>
-                                        <small ><b>N° Ticket:</b></small>
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
+                                <Grid container spacing={2} >
+                                    <Grid item xs={12} md={3} sm={12} lg={3}>
+                                        <small style={{ width: "100%" }} ><b>N° Ticket:</b></small>
                                     </Grid>
-                                    <Grid item xs={12} md={3} sm={3} lg={3}>
+                                    <Grid item xs={12} md={3} sm={12} lg={3}>
                                         <TextField
                                             id="outlined-basic"
                                             label="000"
@@ -78,7 +78,7 @@ const Ticket = () => {
                                             {...register("emision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} md={3} sm={3} lg={3}>
+                                    <Grid item xs={12} md={3} sm={12} lg={3}>
                                         <TextField
                                             id="outlined-basic"
                                             label="000 "
@@ -86,7 +86,7 @@ const Ticket = () => {
                                             {...register("puntoEmision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} md={3} sm={3} lg={3}>
+                                    <Grid item xs={12} md={3} sm={12} lg={3}>
                                         <TextField
                                             id="outlined-textarea"
                                             label="000000000"
@@ -95,7 +95,7 @@ const Ticket = () => {
                                             {...register("secuencial")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12}  md={12} sm={12} lg={12}>
+                                    <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <TextField
 
                                             id="outlined-date"
@@ -186,27 +186,70 @@ const Ticket = () => {
                         <br></br>
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid item xs={12} md={6} sm={6} lg={6} >
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <FormControl sx={{ minWidth: '100%' }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="sustentoTributario"
+                                        style={{ width: "100%" }}
+                                        required
+                                        label="Departamento"
+                                        {...register("departamento")}
+                                    >
+                                        <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                        <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                        <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <FormControl sx={{ minWidth: '100%' }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="sustentoTributario"
+                                        style={{ width: "100%" }}
+                                        required
+                                        label="Subcuenta"
+                                        {...register("subcuenta")}
+                                    >
+                                        <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                        <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                        <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} md={6} sm={12} lg={6} />
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
                                 <TextField id="outlined-basic" label="Valor Total:" variant="outlined" InputProps={{
                                     readOnly: true,
-                                    type:"number"
-                                    
+                                    type: "number"
+
                                 }} style={{ width: "100%", float: "right" }}
                                     {...register("valorTotal")} />
                             </Grid>
                         </Grid>
 
                     </SubCard>
-                    <Grid >
-                        <CardActions >
-                            <Button variant="contained" style={{ backgroundColor: "#536dfe" }}>
-                                Guardar
-                            </Button>
-                            <Button variant="contained" style={{ backgroundColor: "#f57f17" }}>
-                                Cancelar
-                            </Button>
-                        </CardActions>
-                    </Grid>
+
+                    <CardActions >
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
+                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
+                                    Guardar
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12} md={6} sm={12} lg={6} >
+                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                    Cancelar
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </CardActions>
+
                 </Grid>
             </Grid >
             <ModalNuevoProveedor />

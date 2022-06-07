@@ -87,17 +87,19 @@ const ModalUsuario = (props) => {
                         <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
 
 
-                            <Stack  spacing={2}>
-                                <Stack direction="row" spacing={2}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
                                     <TextField
                                         id="outlined-date"
                                         label="Nombre Completo:"
-                                       
-                                        style={{ width: "50%" }}
+
+                                        style={{ width: "100%" }}
                                         required
                                         {...register("nombreCompleto")}
                                     />
-                                    <FormControl sx={{ minWidth: '50%' }}>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -113,17 +115,20 @@ const ModalUsuario = (props) => {
                                         </Select>
 
                                     </FormControl>
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+
                                     <TextField
                                         id="outlined-date"
                                         label="Email:"
-                                      placeholder="Example@gmail.com "
-                                        style={{ width: "50%" }}
+                                        placeholder="Example@gmail.com "
+                                        style={{ width: "100%" }}
                                         required
                                         {...register("correo")}
                                     />
-                                    <FormControl sx={{ minWidth: '50%' }}>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
@@ -139,56 +144,58 @@ const ModalUsuario = (props) => {
                                         </Select>
 
                                     </FormControl>
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Usuario:"
-                                       
-                                        style={{ width: "50%" }}
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <TextField
+                                    id="outlined-date"
+                                    label="Usuario:"
+
+                                    style={{ width: "100%" }}
+                                    required
+                                    {...register("usuario")}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <FormControl sx={{ minWidth: '100%' }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        style={{ width: "100%" }}
                                         required
-                                        {...register("usuario")}
-                                    />
-                                    <FormControl sx={{ minWidth: '50%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Estado"
-                                            {...register("estado")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
+                                        label="Estado"
+                                        {...register("estado")}
+                                    >
+                                        <MenuItem value={10}>Ten</MenuItem>
+                                        <MenuItem value={20}>Twenty</MenuItem>
 
-                                        </Select>
+                                    </Select>
 
-                                    </FormControl>
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Contraseña:"
-                                      
-                                        style={{ width: "50%" }}
-                                        required
-                                        {...register("contraseña")}
-                                    />
-                                   
-                                </Stack>
-                            </Stack>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <TextField
+                                    id="outlined-date"
+                                    label="Contraseña:"
 
-                        </SubCard>
+                                    style={{ width: "100%" }}
+                                    required
+                                    {...register("contraseña")}
+                                />
 
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancel</Button>
-                    <Button >Registar Usuario</Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+                            </Grid>
+                        </Grid>
+
+                    </SubCard>
+
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={props.onClose}>Cancel</Button>
+                <Button >Registar Usuario</Button>
+            </DialogActions>
+        </Dialog>
+        </div >
 
     );
 }

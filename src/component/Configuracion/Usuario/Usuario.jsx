@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider, IconButton, Stack, TextField } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Divider, Grid, IconButton, Stack, TextField } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -51,19 +51,23 @@ const Usuario = () => {
                 <Divider></Divider>
 
                 <CardContent>
-                    <Stack direction="row" spacing={2}>
-                        <Button variant='contained' startIcon={<GroupAddIcon />} onClick={handleClickOpen('paper')}> Registrar Usuario</Button>
-                        <TextField
-                            id="outlined-basic"
-                            label="Ingrese nombre persona o Identificación"
-                            style={{ width: "400px"}}
-                            placeholder="Ingrese nombre persona o Identificación"
-                            {...register("identificacion")}
-                        />
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Stack>
+                <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Agregar Usuario </Button>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <TextField
+                                id="outlined-basic"
+                                label="Ingrese persona o Identificación"
+                                style={{ width: "70%" }}
+                                placeholder="Ingrese persona o Identificación"
+                                {...register("razonSocial")}
+                            />
+                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                                <SearchIcon />
+                            </IconButton>
+                        </Grid>
+                    </Grid>
 
 
                     <TableContainer component={Paper}>

@@ -73,59 +73,69 @@ const ListarPersonaLiquidacion = () => {
 
     return (
         <MainCard title="Listado de Personas Liquidación" >
-            <Stack direction="row" spacing={2}>
-                <Button variant='contained' startIcon={<GroupAddIcon />} onClick={handleClickOpen('paper')}> Agregar Persona Liquidacion</Button>
-                <TextField
-                    id="outlined-basic"
-                    label="Ingrese nombre persona o Identificación"
-                    style={{ width: "400px" }}
-                    placeholder="Ingrese nombre persona o Identificación"
-                    {...register("establecimiento")}
-                />
-                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                    <SearchIcon />
-                </IconButton>
-            </Stack>
-            <br></br>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <Grid container spacing={gridSpacing} >
+                <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Nombres</TableCell>
-                            <TableCell align="center">Identificación</TableCell>
-                            <TableCell align="center">Telefono</TableCell>
-                            <TableCell align="center">Email</TableCell>
-                            <TableCell align="center">Dirección</TableCell>
-                            <TableCell align="center">Opciones</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <TableRow hover key={row.name}>
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="center">{row.calories}</TableCell>
-                                <TableCell align="center">{row.fat}</TableCell>
-                                <TableCell align="center">{row.carbs}</TableCell>
-                                <TableCell align="center">{row.protein}</TableCell>
-                                <TableCell align="center">
-                                    <Button variant="contained">
-                                        <EditIcon />
-                                    </Button>
-                                    <Button variant="contained" >
-                                        <DeleteIcon />
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <ModalNuevaPersona
-            open={open}
-            onClose={handleClose}/>
+
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Agregar Persona Liquidacion </Button>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <TextField
+                                id="outlined-basic"
+                                label="Ingrese persona o Identificación"
+                                style={{ width: "70%" }}
+                                placeholder="Ingrese persona o Identificación"
+                                {...register("razonSocial")}
+                            />
+                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                                <SearchIcon />
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                    <br></br>
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650 }} aria-label="caption table">
+
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Nombres</TableCell>
+                                    <TableCell align="center">Identificación</TableCell>
+                                    <TableCell align="center">Telefono</TableCell>
+                                    <TableCell align="center">Email</TableCell>
+                                    <TableCell align="center">Dirección</TableCell>
+                                    <TableCell align="center">Opciones</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map((row) => (
+                                    <TableRow hover key={row.name}>
+                                        <TableCell component="th" scope="row">
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell align="center">{row.calories}</TableCell>
+                                        <TableCell align="center">{row.fat}</TableCell>
+                                        <TableCell align="center">{row.carbs}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">
+                                            <Button variant="contained">
+                                                <EditIcon />
+                                            </Button>
+                                            <Button variant="contained" >
+                                                <DeleteIcon />
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <ModalNuevaPersona
+                        open={open}
+                        onClose={handleClose} />
+                </Grid>
+            </Grid>
         </MainCard>
     );
 }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import React, { Fragment, useEffect, useState } from "react";
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Box, Button, ButtonBase, Typography } from '@mui/material';
@@ -12,12 +12,22 @@ import NotificationSection from './NotificationSection';
 import ShareIcon from '@mui/icons-material/Share';
 // assets
 import { IconMenu2 } from '@tabler/icons';
+import ModalQr from 'component/ModalQr';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme();
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [scroll, setScroll] = React.useState('paper');
 
+    const handleClickOpen = (scrollType) => () => {
+        setOpen(true);
+        setScroll(scrollType);
+    };
+    
     return (
         <>
             {/* logo & toggler button */}
@@ -64,9 +74,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
             <Typography variant="h5" color="text.secondary">
                Ambiente:Produccion
             </Typography>
-            <Button startIcon={<ShareIcon/>}></Button>
+            <Button startIcon={<ShareIcon/>}  onClick={handleClickOpen('paper')}></Button>
             <NotificationSection />
             <ProfileSection />
+            <ModalQr
+              open={open}
+              onClose={handleClose} />
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Card, CardHeader, Grid, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imp
 
@@ -20,7 +20,7 @@ import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-const ModalFormaPago = (props) => {
+const ModalEjecPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
     const style = {
@@ -83,7 +83,7 @@ const ModalFormaPago = (props) => {
                     fullWidth
                     maxWidth="md"
                 >
-                    <DialogTitle id="scroll-dialog-title">Información del pago de la transaccion</DialogTitle>
+                    <DialogTitle id="scroll-dialog-title">Cuentas</DialogTitle>
 
                     <DialogContent dividers={scroll === 'paper'}>
                         <DialogContentText
@@ -96,37 +96,80 @@ const ModalFormaPago = (props) => {
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Forma de Pago:</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Forma de Pago:"
-                                            {...register("tipoDocumento")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-                                        </Select>
-                                    </FormControl>
+                                            <Typography variant="h5" gutterBottom component="div">
+                                                Factura N°: 56696
+                                            </Typography>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
-                                        <Button variant="contained" style={{ width: "100%" }}>Agregar</Button>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <Typography variant="h5" gutterBottom component="div">
+                                                Valor Total:200
+                                            </Typography>
+                                        </Grid>
+
+
+                                    </Grid>
+                                    <Grid container item spacing={2}>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="sustentoTributario"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    label="Departamento"
+                                                    {...register("departamento")}
+                                                >
+                                                    <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                                    <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                                    <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="sustentoTributario"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    label="Subcuenta"
+                                                    {...register("subcuenta")}
+                                                >
+                                                    <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                                    <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                                    <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <TextField
+                                                id="outlined-basic"
+                                                label="Valor: "
+                                                type="number"
+                                                style={{ width: "100%" }}
+                                                {...register("valor")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <Button variant="contained" style={{ width: "100%" }}>Agregar</Button>
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                                
+
 
                                 <TableContainer component={Paper}>
                                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                         <TableHead>
                                             <TableRow>
                                                 <TableCell align="center">#</TableCell>
-                                                <TableCell align="center">Forma de pago</TableCell>
-                                                <TableCell align="center">Fat&nbsp;(g)</TableCell>
+                                                <TableCell align="center">Departamento</TableCell>
+                                                <TableCell align="center">Subcuenta</TableCell>
 
-                                                <TableCell align="center">Acciones</TableCell>
+                                                <TableCell align="center">Valor</TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody >
@@ -139,12 +182,12 @@ const ModalFormaPago = (props) => {
                                                 >
 
                                                     <TableCell align="center">{row.calories}</TableCell>
-                                                    <TableCell component="th" scope="row">
+                                                    <TableCell align="center" component="th" scope="row">
                                                         {row.name}
                                                     </TableCell>
                                                     <TableCell align="center">{row.fat}</TableCell>
 
-                                                    <TableCell align="center"><Button variant="contained" startIcon={<DeleteForeverIcon />} ></Button></TableCell>
+                                                    <TableCell align="center">100</TableCell>
                                                 </TableRow>
                                             ))}
                                         </TableBody>
@@ -167,4 +210,4 @@ const ModalFormaPago = (props) => {
     );
 }
 
-export default ModalFormaPago;
+export default ModalEjecPresupuestaria;

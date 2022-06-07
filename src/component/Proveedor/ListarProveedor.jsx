@@ -16,13 +16,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from "@mui/material/TextField";
 import Divider from '@mui/material/Divider';
-import { Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
 import ModalNuevoProveedor from "component/ModalProveedor";
+import { gridSpacing } from "store/constant";
 
 
 const ListarProveedor = () => {
@@ -52,66 +53,77 @@ const ListarProveedor = () => {
 
     return (
         <MainCard title="Proveedores" >
-            <Card >              
-                <CardContent >
-                
-                    <Stack direction="row" spacing={2}>
-                        <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Registrar Proveedor</Button>
-                        <TextField
-                            id="outlined-basic"
-                            label="Razón Social, Nombre o Ruc"
-                            style={{ width: "400px" }}
-                            placeholder="Razón Social, Nombre o Ruc"
-                            {...register("razonSocial")}
-                        />
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                            <SearchIcon />
-                        </IconButton>
-                    </Stack>
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            <Grid container spacing={gridSpacing} >
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Card >
+                        <CardContent >
 
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>#</TableCell>
-                                    <TableCell align="center">Código</TableCell>
-                                    <TableCell align="center">Razón Social</TableCell>
-                                    <TableCell align="center">Ruc</TableCell>
-                                    <TableCell align="center">Teléfono</TableCell>
-                                    <TableCell align="center">Email</TableCell>
-                                    <TableCell align="center">Acciones</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow hover key={row.name}>
-                                        <TableCell >
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="center">{row.calories}</TableCell>
-                                        <TableCell align="center">{row.fat}</TableCell>
-                                        <TableCell align="center">{row.carbs}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">
-                                            <Button variant="contained">
-                                                <EditIcon />
-                                            </Button>
-                                            <Button variant="contained" >
-                                                <DeleteIcon />
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Registrar Proveedor</Button>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <TextField
+                                        id="outlined-basic"
+                                        label="Razón Social, Nombre o Ruc"
+                                        style={{ width: "70%" }}
+                                        placeholder="Razón Social, Nombre o Ruc"
+                                        {...register("razonSocial")}
+                                    />
+                                    <IconButton type="submit" sx={{ p: '10px' }}  aria-label="search">
+                                        <SearchIcon />
+                                    </IconButton>
+                                </Grid>
+                            </Grid>
 
-                </CardContent>
-            </Card>
-            <ModalNuevoProveedor
-                open={open}
-                onClose={handleClose} />
+
+
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 650 }} aria-label="caption table">
+
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>#</TableCell>
+                                            <TableCell align="center">Código</TableCell>
+                                            <TableCell align="center">Razón Social</TableCell>
+                                            <TableCell align="center">Ruc</TableCell>
+                                            <TableCell align="center">Teléfono</TableCell>
+                                            <TableCell align="center">Email</TableCell>
+                                            <TableCell align="center">Acciones</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rows.map((row) => (
+                                            <TableRow hover key={row.name}>
+                                                <TableCell >
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="center">{row.calories}</TableCell>
+                                                <TableCell align="center">{row.fat}</TableCell>
+                                                <TableCell align="center">{row.carbs}</TableCell>
+                                                <TableCell align="center">{row.protein}</TableCell>
+                                                <TableCell align="center">{row.protein}</TableCell>
+                                                <TableCell align="center">
+                                                    <Button variant="contained">
+                                                        <EditIcon />
+                                                    </Button>
+                                                    <Button variant="contained" >
+                                                        <DeleteIcon />
+                                                    </Button>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                        </CardContent>
+                    </Card>
+                    <ModalNuevoProveedor
+                        open={open}
+                        onClose={handleClose} />
+                </Grid>
+            </Grid>
         </MainCard>
     );
 }

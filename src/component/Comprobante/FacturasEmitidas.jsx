@@ -41,9 +41,6 @@ const  FacturasEmitidas = () =>  {
         setOpen(false);
     };
 
-
-
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

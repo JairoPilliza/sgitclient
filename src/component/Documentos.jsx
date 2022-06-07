@@ -40,7 +40,7 @@ const Documentos = () => {
                 <Box sx={{ m: 2 }} xs={12} sm={12} md={6} lg={6}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <FormControl sx={{ m: 1, minWidth: "100%" }}>
+                            <FormControl sx={{ minWidth: "100%" }}>
                                 <InputLabel id="demo-simple-select-helper-label">Escoga el comprabante</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-helper-label"

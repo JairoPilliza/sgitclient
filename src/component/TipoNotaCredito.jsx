@@ -3,17 +3,9 @@ import { Grid, Link } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
-import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import Checkbox from '@mui/material/Checkbox';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import CachedIcon from '@mui/icons-material/Cached';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
 
-import CardActions from '@mui/material/CardActions';
 
 
 const TipoNotaCredito = ({ handleEvent }) => {

@@ -2,6 +2,7 @@
 import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 // constant
 const icons = {
     IconTypography,
@@ -17,6 +18,14 @@ const utilities = {
     title: 'Utilities',
     type: 'group',
     children: [
+        {
+            id: 'ejecucionPresupuestaria',
+            title: 'Ejecucion Presupuestaria',
+            type: 'item',
+            url: '/Contabilizacion/EjecucionPresupuestaria',
+            icon: PointOfSaleIcon,
+            breadcrumbs: false
+        },
         {
             id: 'documentos',
             title: 'Documentos',
