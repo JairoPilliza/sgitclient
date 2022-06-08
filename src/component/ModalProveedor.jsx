@@ -94,7 +94,11 @@ const ModalNuevoProveedor = (props) => {
     const invoiceTaxes = TAX_RATE * invoiceSubtotal;
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
 
+    }
 
     return (
         <div>
@@ -107,6 +111,7 @@ const ModalNuevoProveedor = (props) => {
                 fullWidth
                 maxWidth="md"
             >
+                 <form onSubmit={handleSubmit(onSubmit)}>
                 <DialogTitle id="scroll-dialog-title">Registrar Proveedor</DialogTitle>
 
                 <DialogContent dividers={scroll === 'paper'}>
@@ -125,11 +130,12 @@ const ModalNuevoProveedor = (props) => {
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Contribuyente</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
-                                                id="demo-simple-select-helper"
+                                                id="tipoContribuyente"
+                                                name="tipoContribuyente"
                                                 style={{ width: "100%" }}
                                                 required
                                                 placeholder="Número de secuencia inicial (1)"
-                                                label="Secuencial Inicial"
+                                                label="Tipo Contribuyente"
                                                 {...register("tipoContribuyente")}
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
@@ -139,7 +145,8 @@ const ModalNuevoProveedor = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="ruc"
+                                            name="ruc"
                                             label="RUC:"
                                             placeholder="13 dígitos"
                                             helperText='Clickee fuera para validar el "RUC"'
@@ -152,7 +159,8 @@ const ModalNuevoProveedor = (props) => {
                                 <Grid container item spacing={2}>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="razonSocial"
+                                            name="razonSocial"
                                             label="Razón Social:"
                                             style={{ width: "100%" }}
                                             required
@@ -161,7 +169,8 @@ const ModalNuevoProveedor = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="nombre"
+                                            name="nombre"
                                             label="Nombre:"
                                             style={{ width: "100%" }}
                                             required
@@ -172,19 +181,19 @@ const ModalNuevoProveedor = (props) => {
                                 <Grid container item spacing={2}>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="direccionDomiciliaria"
+                                            name="direccionDomiciliaria"
                                             label="Dirección:"
-
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("direccion")}
+                                            {...register("direccionDomiciliaria")}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="telefono"
+                                            name="telefono"
                                             label="Teléfono:"
-
                                             style={{ width: "100%" }}
                                             required
                                             {...register("telefono")}
@@ -197,52 +206,52 @@ const ModalNuevoProveedor = (props) => {
                                             <InputLabel id="demo-simple-select-helper-label">País</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
-                                                id="demo-simple-select-helper"
+                                                id="pais"
+                                                name="pais"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="País"
                                                 {...register("pais")}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-
+                                                <MenuItem value={10}>Ecuador</MenuItem>
+                                                <MenuItem value={20}>Peru</MenuItem>
                                             </Select>
-
                                         </FormControl>
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="celular"
+                                            name="celular"
                                             label="Celular:"
                                             style={{ width: "100%" }}
                                             {...register("celular")}
                                         />
                                     </Grid>
                                 </Grid>
-
                                 <Grid container item spacing={2}>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Ciudad</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
-                                                id="demo-simple-select-helper"
+                                                id="ciudad"
+                                                name="ciudad"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Ciudad"
                                                 {...register("ciudad")}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={10}>Pujili</MenuItem>
+                                                <MenuItem value={20}>Quito</MenuItem>
                                             </Select>
 
                                         </FormControl>
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="correo"
+                                            name="correo"
                                             label="Email:"
-
                                             style={{ width: "100%" }}
                                             required
                                             {...register("correo")}
@@ -253,7 +262,8 @@ const ModalNuevoProveedor = (props) => {
                                 <Grid container item spacing={2}>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="observacion"
+                                            name="observacion"
                                             label="Observación:"
                                             multiline
                                             style={{ width: "100%" }}
@@ -282,7 +292,8 @@ const ModalNuevoProveedor = (props) => {
                                             <Grid container item spacing={2}>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="fechaCaducidad"
+                                                        name="fechaCaducidad"
                                                         label="Fecha Caducidad:"
                                                         type="date"
                                                         style={{ width: "100%" }}
@@ -294,32 +305,33 @@ const ModalNuevoProveedor = (props) => {
                                                 </Grid>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="numeroAutorizacion"
+                                                        name="numeroAutorizacion"
                                                         label="N° Autorización:"
                                                         style={{ width: "100%" }}
                                                         {...register("numeroAutorizacion")}
                                                     />
                                                 </Grid>
                                             </Grid>
-
-
                                             <Grid container item spacing={2}>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="establecimiento"
+                                                        name="establecimiento"
                                                         label="Establecimiento:"
                                                         style={{ width: "100%" }}
                                                         required
-                                                        {...register("sucursal")}
+                                                        {...register("establecimiento")}
                                                     />
                                                 </Grid>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="puntoEmision"
+                                                        name="puntoEmision"
                                                         label="Punto emisión:"
                                                         style={{ width: "100%" }}
                                                         required
-                                                        {...register("puntoFacturacion")}
+                                                        {...register("puntoEmision")}
                                                     />
                                                 </Grid>
                                             </Grid>
@@ -327,7 +339,8 @@ const ModalNuevoProveedor = (props) => {
                                             <Grid container item spacing={2}>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="secuencialMin"
+                                                        name="secuencialMin"
                                                         label="Secuencial Min:"
 
                                                         style={{ width: "100%" }}
@@ -337,9 +350,9 @@ const ModalNuevoProveedor = (props) => {
                                                 </Grid>
                                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                                     <TextField
-                                                        id="outlined-date"
+                                                        id="secuencialMax"
+                                                        name="secuencialMax"
                                                         label="Secuencial Max:"
-
                                                         style={{ width: "100%" }}
                                                         required
                                                         {...register("secuencialMax")}
@@ -349,16 +362,15 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                     </AccordionDetails>
                                 </Accordion>
-
                             </div>
-
                         </Card>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button >Registar Proveedor</Button>
+                    <Button type="submit">Registar Proveedor</Button>
                 </DialogActions>
+                </form>
             </Dialog>
         </div >
 

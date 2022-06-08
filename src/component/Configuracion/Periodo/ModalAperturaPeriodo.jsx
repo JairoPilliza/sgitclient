@@ -64,7 +64,11 @@ const ModalAperturaPeriodo = (props) => {
         }
     }, [open]);
 
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
 
+    }
 
     return (
         <div>
@@ -77,63 +81,67 @@ const ModalAperturaPeriodo = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <Card className="col-12" container style={{ border: '1' }}>
-                            <CardHeader title="Registro de Periodos "
-                                subheader=" se recomienda escoger el 1er día de cada mes.
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
+                    <DialogContent dividers={scroll === 'paper'}>
+                        <DialogContentText
+                            id="scroll-dialog-description"                            
+                            tabIndex={-1}
+                        >
+                            <Card className="col-12" container style={{ border: '1' }}>
+                                <CardHeader title="Registro de Periodos "
+                                    subheader=" se recomienda escoger el 1er día de cada mes.
                             " />
-                            <Divider></Divider>
-                            <CardContent>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                <Divider></Divider>
+                                <CardContent>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                                        <FormControl sx={{ minWidth: "100%" }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-helper-label"
-                                                id="demo-simple-select-helper"
-                                                style={{ width: "100%", float: "right" }}
+                                            <FormControl sx={{ minWidth: "100%" }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="entidad"
+                                                    name="entidad"
+                                                    style={{ width: "100%", float: "right" }}
+                                                    required
+                                                    label="Entidad"
+                                                    {...register("entidad")}
+                                                >
+                                                    <MenuItem value={10}>Ten</MenuItem>
+                                                    <MenuItem value={20}>Twenty</MenuItem>
+                                                    <MenuItem value={30}>Thirty</MenuItem>
+                                                </Select>
+
+                                            </FormControl>
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                            <TextField
+                                                id="fechaApertura"
+                                                name="fechaApertura"
+                                                label="Fecha Apertura:"
+                                                type="date"
+                                                style={{ width: "100%" }}
                                                 required
-                                                label="Entidad"
-                                                {...register("entidad")}
-                                            >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
-                                            </Select>
-
-                                        </FormControl>
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                                {...register("fechaApertura")}
+                                            />
+                                        </Grid>
                                     </Grid>
+                                </CardContent>
+                            </Card>
 
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                        <TextField
-                                            id="outlined-date"
-                                            label="Fecha Apertura:"
-                                            type="date"
-                                            style={{ width: "100%" }}
-                                            required
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                            {...register("fechaApertura")}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </CardContent>
-                        </Card>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancelar</Button>
+                        <Button type="submit">Registar Apertura</Button>
+                    </DialogActions>
 
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button >Registar Apertura</Button>
-                </DialogActions>
+                </form>
             </Dialog>
         </div>
 

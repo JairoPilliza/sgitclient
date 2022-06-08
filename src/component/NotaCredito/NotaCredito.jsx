@@ -45,6 +45,7 @@ const NotaCredito = () => {
                                     <Select
                                         labelId="demo-simple-select-helper-label"
                                         id="sustentoTributario"
+                                        name="sustentoTributario"
                                         style={{ width: "100%" }}
                                         required
                                         label="Sustento Tributario"
@@ -64,7 +65,8 @@ const NotaCredito = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-basic"
+                                            id="emision"
+                                            name="emision"
                                             label="000"
                                             style={{ width: "100%" }}
                                             {...register("emision")}
@@ -72,7 +74,8 @@ const NotaCredito = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-basic"
+                                            id="puntoEmision"
+                                            name="puntoEmision"
                                             label="000 "
                                             style={{ width: "100%" }}
                                             {...register("puntoEmision")}
@@ -80,7 +83,8 @@ const NotaCredito = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="secuencial"
+                                            name="secuencial"
                                             label="000000000"
                                             multiline
                                             style={{ width: "100%" }}
@@ -90,7 +94,8 @@ const NotaCredito = () => {
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
 
-                                            id="outlined-date"
+                                            id="fechaEmsion"
+                                            name="fechaEmsion"
                                             label="F. Emisión:"
                                             type="date"
 
@@ -103,11 +108,11 @@ const NotaCredito = () => {
                                     </Grid>
                                     <Grid item xs={12} md={6} sm={12} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="fechaRegistro"
+                                            name="fechaRegistro"
                                             label="F. Registro:"
                                             type="date"
-
-                                            style={{ width: "100%", float: "right" }}
+                                            style={{ width: "100%" }}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
@@ -131,7 +136,8 @@ const NotaCredito = () => {
                                         <Grid container spacing={2} >
                                             <Grid item xs={12} md={12} sm={12} lg={12} >
                                                 <TextField
-                                                    id="outlined-basic"
+                                                    id="proveedor"
+                                                    name="proveedor"
                                                     label="Proveedor: "
                                                     style={{ width: "100%" }}
                                                     {...register("proveedor")}
@@ -139,7 +145,8 @@ const NotaCredito = () => {
                                             </Grid>
                                             <Grid item xs={12} md={12} sm={12} lg={12}>
                                                 <TextField
-                                                    id="outlined-basic"
+                                                    id="numeroFactura"
+                                                    name="numeroFactura"
                                                     label="N° Factura:"
                                                     style={{ width: "100%" }}
                                                     {...register("numeroFactura")}
@@ -147,7 +154,8 @@ const NotaCredito = () => {
                                             </Grid>
                                             <Grid item xs={12} md={12} sm={12} lg={12}>
                                                 <TextField
-                                                    id="outlined-date"
+                                                    id="fechaEmision"
+                                                    name="fechaEmision"
                                                     label="Fecha de Emision:"
                                                     type="date"
                                                     style={{ width: "100%" }}
@@ -157,10 +165,7 @@ const NotaCredito = () => {
                                                     {...register("fechaEmision")}
                                                 />
                                             </Grid>
-
                                         </Grid>
-
-
                                     </CardContent>
                                 </Card>
                             </Grid>
@@ -170,14 +175,12 @@ const NotaCredito = () => {
                                         title="Datos de la Nota de Credito"
                                         style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
                                     />
-
                                     <CardContent >
-
-
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} md={12} sm={12} lg={12} >
                                                 <TextField
-                                                    id="outlined-basic"
+                                                    id="numeroAutorizacion"
+                                                    name="numeroAutorizacion"
                                                     label="Numero Autorización: "
                                                     style={{ width: "100%" }}
                                                     {...register("numeroAutorizacion")}
@@ -185,7 +188,8 @@ const NotaCredito = () => {
                                             </Grid>
                                             <Grid item xs={12} md={12} sm={12} lg={12}>
                                                 <TextField
-                                                    id="outlined-basic"
+                                                    id="razonModificacion"
+                                                    name="razonModificacion"
                                                     label="Razón de Modificación:"
                                                     style={{ width: "100%" }}
                                                     {...register("razonModificacion")}
@@ -197,35 +201,38 @@ const NotaCredito = () => {
                             </Grid>
                         </Grid>
                     </SubCard>
-
                 </Grid>
-
                 <Grid item xs={12} md={12} sm={12} lg={12}>
-
                     <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
                         <div>
                             <Grid container>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
                                     <center>
                                         <Checkbox
+                                            id="devolucion"
+                                            name="devolucion"
                                             style={{
                                                 transform: "scale(1)",
-                                            }} />
+                                            }}    {...register("devolucion")}/>
+                                     
                                         <small>Devolucion</small>
                                     </center>
                                 </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
                                     <center>
                                         <Checkbox
+                                            id="descuento"
+                                            name="descuento"
                                             style={{
                                                 transform: "scale(1)",
-                                            }} />
+                                            }}
+                                            {...register("descuento")} />
                                         <small>Descuento</small>
                                     </center>
                                 </Grid>
                                 <Grid item xs={12} md={12} sm={12} lg={12}>
                                     <Typography variant="h5" gutterBottom component="div">
-                                    Total Factura Restante:
+                                        Total Factura Restante:
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -237,7 +244,8 @@ const NotaCredito = () => {
                                     <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-helper-label"
-                                        id="sustentoTributario"
+                                        id="departamento"
+                                        name="departamento"
                                         style={{ width: "100%" }}
                                         required
                                         label="Departamento"
@@ -255,7 +263,8 @@ const NotaCredito = () => {
                                     <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-helper-label"
-                                        id="sustentoTributario"
+                                        id="subcuenta"
+                                        name="subcuenta"
                                         style={{ width: "100%" }}
                                         required
                                         label="Subcuenta"
@@ -270,27 +279,25 @@ const NotaCredito = () => {
                             </Grid>
                             <Grid item xs={12} md={6} sm={12} lg={6}>
 
-                                <TextField id="outlined-basic" label="Subtotal " variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                                <TextField id="subtotal" name="subtotal" label="Subtotal " variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                             </Grid>
                             <Grid item xs={12} md={6} sm={12} lg={6}>
-                                <TextField id="outlined-basic" label="Descuento:" variant="outlined" style={{ width: "100%" }}  {...register("descuento")} />
+                                <TextField id="descuento" name="descuento" label="Descuento:" variant="outlined" style={{ width: "100%" }}  {...register("descuento")} />
                             </Grid>
                             <Grid item xs={12} md={6} sm={12} lg={6}>
-                                <TextField id="outlined-basic" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal12")} />
+                                <TextField id="subtotal12" name="subtotal12" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal12")} />
                             </Grid>
                             <Grid item xs={12} md={6} sm={12} lg={6}>
-                                <TextField id="outlined-basic" label="Iva 12%:" variant="outlined" style={{ width: "100%" }} />
+                                <TextField id="iva12" name="iva12" label="Iva 12%:" variant="outlined" style={{ width: "100%" }}  {...register("iva12")} />
                             </Grid>
 
                             <Grid item xs={12} md={6} sm={12} lg={6}>
-                                <TextField {...register("iva12")} id="outlined-basic" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} />
+                                <TextField  id="subtotal0" name="subtotal0" label="Subtotal 0%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal0")}/>
                             </Grid>
                             <Grid item xs={12} md={6} sm={12} lg={6}>
-                                <TextField id="outlined-basic" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                                <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
                             </Grid>
-
                         </Grid>
-
                     </SubCard>
                     <CardActions >
                         <Grid container>
@@ -300,11 +307,7 @@ const NotaCredito = () => {
                                 </Button>
                             </Grid>
                         </Grid>
-
-
                     </CardActions>
-
-
                 </Grid>
             </Grid>
         </MainCard>

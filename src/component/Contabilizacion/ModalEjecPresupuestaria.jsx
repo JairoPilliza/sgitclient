@@ -72,27 +72,29 @@ const ModalEjecPresupuestaria = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
 
-                <Dialog
-                    open={props.open}
-                    onClose={props.onClose}
-                    scroll={scroll}
-                    aria-labelledby="scroll-dialog-title"
-                    aria-describedby="scroll-dialog-description"
-                    fullWidth
-                    maxWidth="md"
-                >
-                    <DialogTitle id="scroll-dialog-title">Cuentas</DialogTitle>
 
-                    <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            ref={descriptionElementRef}
-                            tabIndex={-1}
-                        >
-                            <Card className="col-12" container style={{ textAlign: "center" }} >
-                                <br />
+            <Dialog
+                open={props.open}
+                onClose={props.onClose}
+                scroll={scroll}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
+                fullWidth
+                maxWidth="md"
+            >
+
+                <DialogTitle id="scroll-dialog-title">Cuentas</DialogTitle>
+
+                <DialogContent dividers={scroll === 'paper'}>
+                    <DialogContentText
+                        id="scroll-dialog-description"
+                        ref={descriptionElementRef}
+                        tabIndex={-1}
+                    >
+                        <Card className="col-12" container style={{ textAlign: "center" }} >
+                            <br />
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -108,13 +110,15 @@ const ModalEjecPresupuestaria = (props) => {
 
 
                                     </Grid>
+
                                     <Grid container item spacing={2}>
                                         <Grid item xs={12} sm={12} md={3} lg={3}>
                                             <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                                 <Select
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="sustentoTributario"
+                                                    id="departamento"
+                                                    name="departamento"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Departamento"
@@ -132,7 +136,8 @@ const ModalEjecPresupuestaria = (props) => {
                                                 <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                                 <Select
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="sustentoTributario"
+                                                    id="subcuenta"
+                                                    name="subcuenta"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Subcuenta"
@@ -147,7 +152,8 @@ const ModalEjecPresupuestaria = (props) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={3} lg={3}>
                                             <TextField
-                                                id="outlined-basic"
+                                                id="valor"
+                                                name="valor"
                                                 label="Valor: "
                                                 type="number"
                                                 style={{ width: "100%" }}
@@ -155,56 +161,57 @@ const ModalEjecPresupuestaria = (props) => {
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={3} lg={3}>
-                                            <Button variant="contained" style={{ width: "100%" }}>Agregar</Button>
+                                            <Button type="submit" variant="contained" style={{ width: "100%" }}>Agregar</Button>
                                         </Grid>
                                     </Grid>
+
                                 </Grid>
+                            </form>
 
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="center">#</TableCell>
+                                            <TableCell align="center">Departamento</TableCell>
+                                            <TableCell align="center">Subcuenta</TableCell>
+                                            <TableCell align="center">Valor</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody >
+                                        {rows.map((row) => (
+                                            <TableRow
+                                                hover
+                                                key={row.name}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                onClick={e => setTable(false)}
+                                            >
 
-                                <TableContainer component={Paper}>
-                                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell align="center">#</TableCell>
-                                                <TableCell align="center">Departamento</TableCell>
-                                                <TableCell align="center">Subcuenta</TableCell>
+                                                <TableCell align="center">{row.calories}</TableCell>
+                                                <TableCell align="center" component="th" scope="row">
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="center">{row.fat}</TableCell>
 
-                                                <TableCell align="center">Valor</TableCell>
+                                                <TableCell align="center">100</TableCell>
                                             </TableRow>
-                                        </TableHead>
-                                        <TableBody >
-                                            {rows.map((row) => (
-                                                <TableRow
-                                                    hover
-                                                    key={row.name}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                    onClick={e => setTable(false)}
-                                                >
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
 
-                                                    <TableCell align="center">{row.calories}</TableCell>
-                                                    <TableCell align="center" component="th" scope="row">
-                                                        {row.name}
-                                                    </TableCell>
-                                                    <TableCell align="center">{row.fat}</TableCell>
+                        </Card>
 
-                                                    <TableCell align="center">100</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={props.onClose}>Cancelar</Button>
+                    {/* <Button type="submit" >Guardar</Button> */}
+                </DialogActions>
 
-                            </Card>
+            </Dialog>
 
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancelar</Button>
-                        {/* <Button type="submit" >Guardar</Button> */}
-                    </DialogActions>
-                </Dialog>
 
-            </form>
         </div >
 
     );

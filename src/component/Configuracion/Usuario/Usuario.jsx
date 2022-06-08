@@ -61,7 +61,7 @@ const Usuario = () => {
                                 label="Ingrese persona o Identificación"
                                 style={{ width: "70%" }}
                                 placeholder="Ingrese persona o Identificación"
-                                {...register("razonSocial")}
+                                {...register("personaIdentificacion")}
                             />
                             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
                                 <SearchIcon />
@@ -76,11 +76,14 @@ const Usuario = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>#</TableCell>
-                                    <TableCell align="center">Código</TableCell>
-                                    <TableCell align="center">Razón Social</TableCell>
-                                    <TableCell align="center">Ruc</TableCell>
-                                    <TableCell align="center">Teléfono</TableCell>
-                                    <TableCell align="center">Email</TableCell>
+                                    <TableCell align="center">Usuario</TableCell>
+                                    <TableCell align="center">Nombre Usuario</TableCell>
+                                    <TableCell align="center">Sucursal</TableCell>
+                                    <TableCell align="center">Politica</TableCell>
+                                    <TableCell align="center">Fecha Registro</TableCell>
+                                    <TableCell align="center">Estado</TableCell>
+                                    <TableCell align="center">Fecha Baja</TableCell>
+
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -93,6 +96,8 @@ const Usuario = () => {
                                         <TableCell align="center">{row.calories}</TableCell>
                                         <TableCell align="center">{row.fat}</TableCell>
                                         <TableCell align="center">{row.carbs}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">

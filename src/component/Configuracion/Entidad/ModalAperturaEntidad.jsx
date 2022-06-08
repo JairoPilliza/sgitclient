@@ -54,16 +54,12 @@ const ModalAperturaEntidad = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
 
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
+
+    }
 
 
     return (
@@ -77,84 +73,84 @@ const ModalAperturaEntidad = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <DialogTitle id="scroll-dialog-title">Registrar Apertura de Entidad</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <SubCard className="col-12" container title="Datos de la Apertura" style={{ textAlign: "center" }} >
-
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <FormControl sx={{ minWidth: "100%" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogTitle id="scroll-dialog-title">Registrar Apertura de Entidad</DialogTitle>
+                    <DialogContent dividers={scroll === 'paper'}>
+                        <DialogContentText
+                            id="scroll-dialog-description"
+                            tabIndex={-1}
+                        >
+                            <SubCard className="col-12" container title="Datos de la Apertura" style={{ textAlign: "center" }} >
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <FormControl sx={{ minWidth: "100%" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="entidad"
+                                                name="entidad"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Entidad"
+                                                {...register("entidad")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={30}>Thirty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="fechaApertura"
+                                            name="fechaApertura"
+                                            label="Fecha Apertura:"
+                                            type="date"
                                             style={{ width: "100%" }}
                                             required
-                                            label="Entidad"
-                                            {...register("entidad")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-                                            <MenuItem value={30}>Thirty</MenuItem>
-                                        </Select>
-
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Fecha Apertura:"
-                                        type="date"
-                                        style={{ width: "100%" }}
-                                        required
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        {...register("fechaApertura")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Gestion:"
-                                        placeholder="Ej. 2022"
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("gestion")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <FormControl sx={{ minWidth: "100%" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            {...register("fechaApertura")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="gestion"
+                                            name="gestion"
+                                            label="Gestion:"
+                                            placeholder="Ej. 2022"
                                             style={{ width: "100%" }}
                                             required
-                                            label="Estado"
-                                            {...register("estado")}
-                                        >
-                                            <MenuItem value={1}>Activo</MenuItem>
-                                            <MenuItem value={2}>Inactivo</MenuItem>
-
-                                        </Select>
-
-                                    </FormControl>
+                                            {...register("gestion")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <FormControl sx={{ minWidth: "100%" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="estado"
+                                                name="estado"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Estado"
+                                                {...register("estado")}
+                                            >
+                                                <MenuItem value={1}>Activo</MenuItem>
+                                                <MenuItem value={2}>Inactivo</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </SubCard>
-
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button >Registar Apertura</Button>
-                </DialogActions>
+                            </SubCard>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancelar</Button>
+                        <Button type="submit" >Registar Apertura</Button>
+                    </DialogActions>
+                </form>
             </Dialog>
         </div>
 

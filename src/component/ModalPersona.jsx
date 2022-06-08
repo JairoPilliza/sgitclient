@@ -63,17 +63,18 @@ const ModalNuevaPersona = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
 
-                <Dialog
-                    open={props.open}
-                    onClose={props.onClose}
-                    scroll={scroll}
-                    aria-labelledby="scroll-dialog-title"
-                    aria-describedby="scroll-dialog-description"
-                    fullWidth
-                    maxWidth="md"
-                >
+
+            <Dialog
+                open={props.open}
+                onClose={props.onClose}
+                scroll={scroll}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
+                fullWidth
+                maxWidth="md"
+            >
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogTitle id="scroll-dialog-title">Registrar Persona Liquidación</DialogTitle>
 
                     <DialogContent dividers={scroll === 'paper'}>
@@ -87,7 +88,8 @@ const ModalNuevaPersona = (props) => {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="apellidosNombres"
+                                            name="apellidosNombres"
                                             label="Apellidos y Nombres:"
                                             placeholder="Ingrese Apellidos y Nombres de la persona"
 
@@ -102,7 +104,8 @@ const ModalNuevaPersona = (props) => {
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Documento:</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
-                                                id="demo-simple-select-helper"
+                                                id="tipoDocumento"
+                                                name="tipoDocumento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Tipo Documento:"
@@ -117,7 +120,8 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="numeroIdentificacion"
+                                            name="numeroIdentificacion"
                                             label="Doc Identificación:"
                                             placeholder="Ingrese Cédula o Ruc"
                                             style={{ width: "100%" }}
@@ -128,7 +132,8 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="telefono"
+                                            name="telefono"
                                             label="Teléfono:"
                                             placeholder="Ingrese número telefónico"
                                             style={{ width: "100%" }}
@@ -138,7 +143,8 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="correo"
+                                            name="correo"
                                             label="Email:"
                                             placeholder="gold@example.com"
                                             style={{ width: "100%" }}
@@ -148,7 +154,8 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-date"
+                                            id="direccionDomiciliaria"
+                                            name="direccionDomiciliaria"
                                             label="Dirección:"
                                             placeholder="Ingrese dirección domiciliaria"
                                             style={{ width: "100%" }}
@@ -159,16 +166,15 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                 </Grid>
                             </Card>
-
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Registar Persona</Button>
                     </DialogActions>
-                </Dialog>
+                </form>
+            </Dialog>
 
-            </form>
         </div >
 
     );

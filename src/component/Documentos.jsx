@@ -16,6 +16,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 const Documentos = () => {
+    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const bull = (
         <Box
             component="span"
@@ -44,9 +45,11 @@ const Documentos = () => {
                                 <InputLabel id="demo-simple-select-helper-label">Escoga el comprabante</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-helper-label"
-                                    id="demo-simple-select-helper"
+                                    id="comprobante"
+                                    name="comprobante"
                                     style={{ width: "100%" }}
                                     label="Escoga el comprobante:"
+                                    {...register("comprobante")}
                                 >
                                     <MenuItem value={10}>Factura</MenuItem>
                                     <MenuItem value={20}>Nota de venta</MenuItem>
@@ -56,7 +59,7 @@ const Documentos = () => {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Button   style={{ width: "100%" }}  variant="contained" >Aceptar</Button>
+                            <Button type="submit"  style={{ width: "100%" }}  variant="contained" >Aceptar</Button>
                         </Grid>
 
                     </Grid>

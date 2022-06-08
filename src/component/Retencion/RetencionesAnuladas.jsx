@@ -46,12 +46,17 @@ const RetencionesAnuladas = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>#</TableCell>
-                        <TableCell align="center">Código</TableCell>
-                        <TableCell align="center">Razón Social</TableCell>
-                        <TableCell align="center">Ruc</TableCell>
-                        <TableCell align="center">Teléfono</TableCell>
-                        <TableCell align="center">Email</TableCell>
-                        <TableCell align="center">Acciones</TableCell>
+                        <TableCell align="center">N° Documento</TableCell>
+                        <TableCell align="center">Fecha Solicitud</TableCell>
+                        <TableCell align="center">Usuario Solicitante</TableCell>
+                        <TableCell align="center">Nombre Solicitante</TableCell>
+                        <TableCell align="center">Descripcion Solicitud</TableCell>
+                        <TableCell align="center">Proveedor</TableCell>
+                        <TableCell align="center">Fecha Autorización</TableCell>
+                        <TableCell align="center">Usuario Autorizó</TableCell>
+                        <TableCell align="center">Nombre Autorizó</TableCell>
+                        <TableCell align="center">Descripcion Autorización</TableCell>                       
+                        <TableCell align="center">Ver Pdf</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -65,10 +70,14 @@ const RetencionesAnuladas = () => {
                             <TableCell align="center">{row.carbs}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
                             <TableCell align="center">                        
                                 <Button variant="contained" startIcon={<LocalPrintshopIcon />}>
                                 </Button>                               
-                               
                             </TableCell>
                         </TableRow>
                     ))}

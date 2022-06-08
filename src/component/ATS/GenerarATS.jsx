@@ -49,15 +49,11 @@ const ATS = () => {
         <MainCard>
             <Grid container spacing={gridSpacing} >
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-
-
                     <Card sx={{ maxWidth: "100%" }}>
                         <CardHeader
                             title="Apertura de Entidades"
                         />
-
                         <Divider />
-
                         <CardContent>
                             <Grid container>
                                 <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -73,8 +69,6 @@ const ATS = () => {
                                 </Grid>
                             </Grid>
                         </CardContent>
-
-
                         {
                             muestraTable
                         }

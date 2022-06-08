@@ -30,9 +30,6 @@ const SolcitudAnulacion = () => {
 
 
 
-
-
-
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -46,17 +43,21 @@ const SolcitudAnulacion = () => {
     return (
 
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="caption table">
-
+            <Table sx={{ minWidth: "100%" }} aria-label="caption table">
                 <TableHead>
                     <TableRow>
                         <TableCell>#</TableCell>
-                        <TableCell align="center">Código</TableCell>
-                        <TableCell align="center">Razón Social</TableCell>
-                        <TableCell align="center">Ruc</TableCell>
-                        <TableCell align="center">Teléfono</TableCell>
-                        <TableCell align="center">Email</TableCell>
-                        <TableCell align="center">Acciones</TableCell>
+                        <TableCell align="center">Sucursal</TableCell>
+                        <TableCell align="center">N° Documento</TableCell>
+                        <TableCell align="center">Fecha Solicitud</TableCell>
+                        <TableCell align="center">Usuario</TableCell>
+                        <TableCell align="center">Nombre</TableCell>
+                        <TableCell align="center">Descripción Anulación</TableCell>
+                        <TableCell align="center">Fecha de Emisión</TableCell>
+                        <TableCell align="center">Proveedor</TableCell>
+                        <TableCell align="center">Ver Pdf</TableCell>
+
+                        <TableCell align="center" width="1000px">Acciones</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -70,22 +71,25 @@ const SolcitudAnulacion = () => {
                             <TableCell align="center">{row.carbs}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
-                            <TableCell align="center">
-                                <Stack direction="row" spacing={2}>
-                                <Button variant="contained" startIcon={<LocalPrintshopIcon />} size="small">
-                                </Button>                            
-                                <FormControl >                                
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center">{row.protein}</TableCell>
+                            <TableCell align="center"><Button variant="contained" startIcon={<LocalPrintshopIcon />} size="small">
+                            </Button>   </TableCell>
+                            <TableCell align="center"  >
+
+                                <FormControl >
                                     <RadioGroup
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="position"
                                     >
-                                        <FormControlLabel value="enProceso" control={<Radio />} label="En proceso"  labelPlacement="top"/>
-                                        <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />      
-                                        <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top"/>                                     
+                                        <FormControlLabel value="enProceso" control={<Radio />} label="En proceso" labelPlacement="top" />
+                                        <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
+                                        <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
                                     </RadioGroup>
                                 </FormControl>
-                                </Stack>
+
                             </TableCell>
                         </TableRow>
                     ))}

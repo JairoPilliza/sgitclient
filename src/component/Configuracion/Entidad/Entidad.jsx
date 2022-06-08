@@ -68,21 +68,18 @@ const Entidad = () => {
                         />
                         <Divider />
                         <CardContent>
-                            
-                                    <center>
-                                        <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')}>Aperturar</Button></center>
-                               
+                            <center>
+                                <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')}>Aperturar</Button>
+                            </center>
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: "50%" }} aria-label="caption table">
-
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>#</TableCell>
-                                            <TableCell align="center">Código</TableCell>
-                                            <TableCell align="center">Razón Social</TableCell>
-                                            <TableCell align="center">Ruc</TableCell>
-                                            <TableCell align="center">Teléfono</TableCell>
-                                            <TableCell align="center">Email</TableCell>
+                                            <TableCell align="center">Entidad</TableCell>
+                                            <TableCell align="center">Fecha Apertura</TableCell>
+                                            <TableCell align="center">Fecha Cierre</TableCell>
+                                            <TableCell align="center">Estado</TableCell>                                           
                                             <TableCell align="center">Acciones</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -94,16 +91,13 @@ const Entidad = () => {
                                                 </TableCell>
                                                 <TableCell align="center">{row.calories}</TableCell>
                                                 <TableCell align="center">{row.fat}</TableCell>
-                                                <TableCell align="center">{row.carbs}</TableCell>
-                                                <TableCell align="center">{row.protein}</TableCell>
+                                                <TableCell align="center">{row.carbs}</TableCell>                                               
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">
-                                                    <Button variant="contained" startIcon={<EditIcon />}>
+                                                    <Button variant="contained" startIcon={<EditIcon />} size="small" />
 
-                                                    </Button>
-                                                    <Button variant="contained" startIcon={<DeleteIcon />} >
+                                                    <Button variant="contained" startIcon={<DeleteIcon />} size="small" />
 
-                                                    </Button>
                                                 </TableCell>
                                             </TableRow>
                                         ))}
@@ -111,8 +105,6 @@ const Entidad = () => {
                                 </Table>
                             </TableContainer>
                         </CardContent>
-
-
                     </Card>
                     <ModalAperturaEntidad
                         open={open}

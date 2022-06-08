@@ -72,96 +72,101 @@ const ModalFormaPago = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
 
-                <Dialog
-                    open={props.open}
-                    onClose={props.onClose}
-                    scroll={scroll}
-                    aria-labelledby="scroll-dialog-title"
-                    aria-describedby="scroll-dialog-description"
-                    fullWidth
-                    maxWidth="md"
-                >
-                    <DialogTitle id="scroll-dialog-title">Información del pago de la transaccion</DialogTitle>
 
-                    <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            ref={descriptionElementRef}
-                            tabIndex={-1}
-                        >
-                            <Card className="col-12" container style={{ textAlign: "center" }} >
-                                <br />
+            <Dialog
+                open={props.open}
+                onClose={props.onClose}
+                scroll={scroll}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
+                fullWidth
+                maxWidth="md"
+            >
+                <DialogTitle id="scroll-dialog-title">Información del pago de la transaccion</DialogTitle>
+
+                <DialogContent dividers={scroll === 'paper'}>
+                    <DialogContentText
+                        id="scroll-dialog-description"
+                        ref={descriptionElementRef}
+                        tabIndex={-1}
+                    >
+                        <Card className="col-12" container style={{ textAlign: "center" }} >
+                            <br />
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Forma de Pago:</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Forma de Pago:"
-                                            {...register("tipoDocumento")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-                                        </Select>
-                                    </FormControl>
+                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                            <FormControl sx={{ minWidth: '100%' }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Forma de Pago:</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="tipoPago"
+                                                    name="tipoPago"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    label="Forma de Pago:"
+                                                    {...register("tipoPago")}
+                                                >
+                                                    <MenuItem value={10}>Ten</MenuItem>
+                                                    <MenuItem value={20}>Twenty</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={4} lg={4}>
-                                        <Button variant="contained" style={{ width: "100%" }}>Agregar</Button>
+                                            <TextField type="number" style={{ width: "100%" }} {...register("valor")} id="valor" name="valor" label="Valor:" variant="outlined" />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                            <Button variant="contained" type="submit" style={{ width: "100%" }}>Agregar</Button>
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                                
 
-                                <TableContainer component={Paper}>
-                                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <TableCell align="center">#</TableCell>
-                                                <TableCell align="center">Forma de pago</TableCell>
-                                                <TableCell align="center">Fat&nbsp;(g)</TableCell>
+                            </form>
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="center">#</TableCell>
+                                            <TableCell align="center">Forma de pago</TableCell>
+                                            <TableCell align="center">Fat&nbsp;(g)</TableCell>
 
-                                                <TableCell align="center">Acciones</TableCell>
+                                            <TableCell align="center">Acciones</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody >
+                                        {rows.map((row) => (
+                                            <TableRow
+                                                hover
+                                                key={row.name}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                onClick={e => setTable(false)}
+                                            >
+
+                                                <TableCell align="center">{row.calories}</TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="center">{row.fat}</TableCell>
+
+                                                <TableCell align="center"><Button variant="contained" startIcon={<DeleteForeverIcon />} ></Button></TableCell>
                                             </TableRow>
-                                        </TableHead>
-                                        <TableBody >
-                                            {rows.map((row) => (
-                                                <TableRow
-                                                    hover
-                                                    key={row.name}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                    onClick={e => setTable(false)}
-                                                >
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
 
-                                                    <TableCell align="center">{row.calories}</TableCell>
-                                                    <TableCell component="th" scope="row">
-                                                        {row.name}
-                                                    </TableCell>
-                                                    <TableCell align="center">{row.fat}</TableCell>
+                        </Card>
 
-                                                    <TableCell align="center"><Button variant="contained" startIcon={<DeleteForeverIcon />} ></Button></TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={props.onClose}>Cancelar</Button>
+                    <Button type="submit" >Guardar</Button>
+                </DialogActions>
+            </Dialog>
 
-                            </Card>
 
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit" >Guardar</Button>
-                    </DialogActions>
-                </Dialog>
-
-            </form>
         </div >
 
     );

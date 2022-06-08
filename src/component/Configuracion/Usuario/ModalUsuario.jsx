@@ -54,17 +54,12 @@ const ModalUsuario = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
 
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
 
+    }
 
     return (
         <div>
@@ -77,124 +72,121 @@ const ModalUsuario = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <DialogTitle id="scroll-dialog-title">Registrar Usuario</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
-
-
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Nombre Completo:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("nombreCompleto")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogTitle id="scroll-dialog-title">Registrar Usuario</DialogTitle>
+                    <DialogContent dividers={scroll === 'paper'}>
+                        <DialogContentText
+                            id="scroll-dialog-description"
+                        
+                            tabIndex={-1}
+                        >
+                            <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <TextField
+                                            id="nombreCompleto"
+                                            name="nombreCompleto"
+                                            label="Nombre Completo:"
                                             style={{ width: "100%" }}
                                             required
-                                            label="Sucursal"
-                                            {...register("sucursal")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-
-                                        </Select>
-
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Email:"
-                                        placeholder="Example@gmail.com "
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("correo")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                                            {...register("nombreCompleto")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="sucursal"
+                                                name="sucursal"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Sucursal"
+                                                {...register("sucursal")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <TextField
+                                            id="correo"
+                                            name="correo"
+                                            label="Email:"
+                                            placeholder="Example@gmail.com "
                                             style={{ width: "100%" }}
                                             required
-                                            label="Politica"
-                                            {...register("politica")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
+                                            {...register("correo")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="politica"
+                                                name="politica"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Politica"
+                                                {...register("politica")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <TextField
+                                            id="usuario"
+                                            name="usuario"
+                                            label="Usuario:"
 
-                                        </Select>
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("usuario")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="estado"
+                                                name="estado"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Estado"
+                                                {...register("estado")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
 
-                                    </FormControl>
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <TextField
+                                            id="contraseña"
+                                            name="contraseña"
+                                            label="Contraseña:"
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("contraseña")}
+                                        />
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <TextField
-                                    id="outlined-date"
-                                    label="Usuario:"
-
-                                    style={{ width: "100%" }}
-                                    required
-                                    {...register("usuario")}
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <FormControl sx={{ minWidth: '100%' }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="demo-simple-select-helper"
-                                        style={{ width: "100%" }}
-                                        required
-                                        label="Estado"
-                                        {...register("estado")}
-                                    >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-
-                                    </Select>
-
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <TextField
-                                    id="outlined-date"
-                                    label="Contraseña:"
-
-                                    style={{ width: "100%" }}
-                                    required
-                                    {...register("contraseña")}
-                                />
-
-                            </Grid>
-                        </Grid>
-
-                    </SubCard>
-
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={props.onClose}>Cancel</Button>
-                <Button >Registar Usuario</Button>
-            </DialogActions>
-        </Dialog>
+                            </SubCard>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancel</Button>
+                        <Button type="submit" >Registar Usuario</Button>
+                    </DialogActions>
+                </form>
+            </Dialog>
         </div >
 
     );

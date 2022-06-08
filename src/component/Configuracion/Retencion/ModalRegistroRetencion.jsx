@@ -54,15 +54,11 @@ const ModalRegistroRetencion = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
+
+    }
 
 
 
@@ -77,100 +73,102 @@ const ModalRegistroRetencion = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <DialogTitle id="scroll-dialog-title">Retenciones Fisicas</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <SubCard className="col-12" container title="Registro de Talonarios" style={{ textAlign: "center" }} >
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogTitle id="scroll-dialog-title">Retenciones Fisicas</DialogTitle>
+                    <DialogContent dividers={scroll === 'paper'}>
+                        <DialogContentText
+                            id="scroll-dialog-description"
+
+                            tabIndex={-1}
+                        >
+                            <SubCard className="col-12" container title="Registro de Talonarios" style={{ textAlign: "center" }} >
 
 
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
 
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="sucursal"
+                                                name="sucursal"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Sucursal"
+                                                {...register("sucursal")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="numeroAutorizacion"
+                                            name="numeroAutorizacion"
+                                            label="N° Autorización:"
+
                                             style={{ width: "100%" }}
                                             required
-                                            label="Sucursal"
-                                            {...register("sucursal")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-
-                                        </Select>
-
-                                    </FormControl>
+                                            {...register("numeroAutorizacion")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="puntoEmision"
+                                            name="puntoEmision"
+                                            label="Punto de Emisión:"
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("puntoEmision")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="secuencialMin"
+                                            name="secuencialMin"
+                                            label="Secuencial Min:"
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("secuencialMin")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="secuencialMax"
+                                            name="secuencialMax"
+                                            label="Secuencial Max:"
+                                            style={{ width: "100%" }}
+                                            required
+                                            {...register("secuencialMax")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField
+                                            id="fechaCaducidad"
+                                            name="fechaCaducidad"
+                                            label="Fecha Caducidad:"
+                                            type="date"
+                                            style={{ width: "100%" }}
+                                            required
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            {...register("fechaCaducidad")}
+                                        />
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="N° Autorización:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("nAutorizacion")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Punto de Emisión:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("puntoEmision")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Secuencial Min:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("secuencialMin")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Secuencial Max:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("secuencialMax")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Fecha Caducidad:"
-                                        type="date"
-                                        style={{ width: "100%" }}
-                                        required
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        {...register("fechaCaducidad")}
-                                    />
-                                </Grid>
-                            </Grid>
-
-
-                        </SubCard>
-
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button >Guardar</Button>
-                </DialogActions>
+                            </SubCard>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancelar</Button>
+                        <Button type="submit" >Guardar</Button>
+                    </DialogActions>
+                </form>
             </Dialog>
         </div>
 

@@ -55,16 +55,11 @@ const ModalRegistroLiquidacion = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
 
+    }
 
 
     return (
@@ -78,120 +73,118 @@ const ModalRegistroLiquidacion = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <DialogTitle id="scroll-dialog-title">Crear registro de autorización de liquidación</DialogTitle>
-                <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogTitle id="scroll-dialog-title">Crear registro de autorización de liquidación</DialogTitle>
+                    <DialogContent dividers={scroll === 'paper'}>
+                        <DialogContentText
+                            id="scroll-dialog-description"
+                       
+                            tabIndex={-1}
+                        >
 
-                        <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
-                            <br></br>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Establecimiento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                            <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
+                                <br></br>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Establecimiento</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="establecimiento"
+                                                name="establecimiento"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Establecimiento"
+                                                {...register("establecimiento")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="numeroAutorizacion"
+                                            name="numeroAutorizacion"
+                                            label="N° Autorización:"
                                             style={{ width: "100%" }}
                                             required
-                                            label="Establecimiento"
-                                            {...register("establecimiento")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-
-                                        </Select>
-
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={3} lg={3}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="N° Autorización:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("nAutorizacion")}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={3} lg={3}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Punto Emisión:"
-
-                                        style={{ width: "100%" }}
-                                        required
-                                        {...register("puntoEmision")}
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Secuencial Inicial</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                                            {...register("numeroAutorizacion")}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <TextField
+                                            id="puntoEmision"
+                                            name="puntoEmision"
+                                            label="Punto Emisión:"
                                             style={{ width: "100%" }}
                                             required
-                                            placeholder="Número de secuencia inicial (1)"
-                                            label="Secuencial Inicial"
-                                            {...register("secuencialIni")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
+                                            {...register("puntoEmision")}
+                                        />
+                                    </Grid>
 
-                                        </Select>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Secuencial Inicial</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="secuencialIni"
+                                                name="secuencialIni"
+                                                style={{ width: "100%" }}
+                                                required
+                                                placeholder="Número de secuencia inicial (1)"
+                                                label="Secuencial Inicial"
+                                                {...register("secuencialIni")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
 
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Secuencial Fin</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="demo-simple-select-helper"
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Secuencial Fin</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="secuencialFin"
+                                                name="secuencialFin"
+                                                style={{ width: "100%" }}
+                                                required
+                                                placeholder="Número de secuencia Final (100)"
+                                                label="Secuencial Fin"
+                                                {...register("secuencialFin")}
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <TextField
+                                            id="fechaApertura"
+                                            name="fechaApertura"
+                                            label="Fecha Apertura:"
+                                            type="date"
                                             style={{ width: "100%" }}
                                             required
-                                            placeholder="Número de secuencia Final (100)"
-                                            label="Secuencial Fin"
-                                            {...register("secuencialFin")}
-                                        >
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-
-                                        </Select>
-
-                                    </FormControl>
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            {...register("fechaApertura")}
+                                        />
+                                    </Grid>
                                 </Grid>
-
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <TextField
-                                        id="outlined-date"
-                                        label="Fecha Apertura:"
-                                        type="date"
-                                        style={{ width: "100%" }}
-                                        required
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        {...register("fechaApertura")}
-                                    />
-
-                                </Grid>
-                            </Grid>
-
-                        </Card>
-
-
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button >Registar Usuario</Button>
-                </DialogActions>
+                            </Card>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancelar</Button>
+                        <Button type="submit">Registar Usuario</Button>
+                    </DialogActions>
+                </form>
             </Dialog>
         </div >
 

@@ -58,6 +58,7 @@ const LiquidacionCompra = () => {
                                     <Select
                                         labelId="demo-simple-select-helper-label"
                                         id="sustentoTributario"
+                                        name="sustentoTributario"
                                         style={{ width: "100%" }}
                                         required
                                         label="Sustento Tributario"
@@ -75,7 +76,8 @@ const LiquidacionCompra = () => {
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={12} md={4} lg={4}>
                                 <TextField
-                                    id="outlined-textarea"
+                                    id="nombrePersona"
+                                    name="nombrePersona"
                                     label="Sr/Sra:"
                                     placeholder="Ingrese el nombre de la persona"
                                     multiline
@@ -96,7 +98,8 @@ const LiquidacionCompra = () => {
                             </Grid>
                             <Grid item xs={12} sm={12} md={3} lg={3}>
                                 <TextField
-                                    id="outlined-date"
+                                    id="fechaRegistro"
+                                    name="fechaRegistro"
                                     helperText="Ingrese una fecha"
                                     label="Fecha registro:"
                                     type="date"
@@ -112,7 +115,8 @@ const LiquidacionCompra = () => {
                         <Grid container spacing={2} >
                             <Grid item xs={12} sm={12} md={4} lg={4} >
                                 <TextField
-                                    id="outlined-textarea"
+                                    id="lugarTransaccion"
+                                    name="lugarTransaccion"
                                     label="Lugar de Transacción:"
                                     placeholder="Escriba lugar donde se realiza la Transfacción"
                                     multiline
@@ -129,7 +133,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-basic"
+                                            id="emision"
+                                            name="emision"
                                             label="Emision"
                                             helperText="emision"
                                             style={{ width: "100%" }}
@@ -138,7 +143,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-basic"
+                                            id="puntoEmision"
+                                            name="puntoEmision"
                                             label="punto emision "
                                             helperText="punto emision "
                                             style={{ width: "100%" }}
@@ -147,7 +153,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3} lg={3}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="secuencial"
+                                            name="secuencial"
                                             label="Secuencial de la liquidacion"
                                             helperText="Secuencial de la liquidacion"
                                             placeholder="Diguite Secuencial"
@@ -171,7 +178,8 @@ const LiquidacionCompra = () => {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="nombreCompleto"
+                                            name="nombreCompleto"
                                             label="Nombres:"
                                             placeholder="Nombres Completos de la persona"
                                             multiline
@@ -181,7 +189,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="tipoIdentificacion"
+                                            name="tipoIdentificacion"
                                             label="Tipo Identificación:"
                                             placeholder="Tipo Identificación"
                                             multiline
@@ -191,7 +200,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={5} lg={5}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="numeroIdentificacion"
+                                            name="numeroIdentificacion"
                                             label="CI/Pasaporte:"
                                             placeholder="Numero de Identificación"
                                             multiline
@@ -205,7 +215,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="telefonoCelular"
+                                            name="telefonoCelular"
                                             label="Telefono:"
                                             placeholder="Telefono convencional o celular"
                                             multiline
@@ -215,7 +226,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="correo"
+                                            name="correo"
                                             label="Email:"
                                             placeholder="gold@example.com"
                                             multiline
@@ -225,7 +237,8 @@ const LiquidacionCompra = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         <TextField
-                                            id="outlined-textarea"
+                                            id="direccionDomiciliaria"
+                                            name="direccionDomiciliaria"
                                             label="Dirección:"
                                             placeholder="Dirección domiciliaria"
                                             multiline
@@ -260,7 +273,8 @@ const LiquidacionCompra = () => {
                                             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                                                 <Select
                                                     labelId="demo-simple-select-standard-label"
-                                                    id="demo-simple-select-standard"
+                                                    id="tipoBase"
+                                                    name="tipoBase"
                                                     {...register("tipoBase")}>
                                                     <MenuItem value={"Bienes"}>Bienes</MenuItem>
                                                     <MenuItem value={"Servicios"}>Servicios</MenuItem>
@@ -270,7 +284,8 @@ const LiquidacionCompra = () => {
 
                                         <TableCell>
                                             <TextField
-                                                id="standard-number"
+                                                id="cantidad"
+                                                name="cantidad"
                                                 type="number"
                                                 style={{ width: "50px" }}
                                                 InputLabelProps={{
@@ -281,7 +296,8 @@ const LiquidacionCompra = () => {
                                         </TableCell>
                                         <TableCell>
                                             <TextField
-                                                id="standard-number"
+                                                id="descripcion"
+                                                name="descripcion"
                                                 style={{ width: "300px" }}
                                                 InputLabelProps={{
                                                     shrink: true
@@ -292,18 +308,20 @@ const LiquidacionCompra = () => {
                                         </TableCell>
                                         <TableCell>
                                             <TextField
-                                                id="standard-number"
+                                                id="valorUnit"
+                                                name="valorUnit"
                                                 type="number"
                                                 style={{ width: "70px" }}
                                                 InputLabelProps={{
                                                     shrink: true
                                                 }}
                                                 variant="standard"
-                                                {...register("valUnit")} />
+                                                {...register("valorUnit")} />
                                         </TableCell>
                                         <TableCell>
                                             <TextField
-                                                id="standard-read-only-input"
+                                                id="total"
+                                                name="total"
                                                 style={{ width: "70px" }}
                                                 InputProps={{
                                                     readOnly: true
@@ -343,30 +361,29 @@ const LiquidacionCompra = () => {
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid container item rowSpacing={2} xs={12} sm={12} md={6} lg={6}>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="outlined-basic" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                                    <TextField id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="outlined-basic" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
+                                    <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="outlined-basic" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
+                                    <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="outlined-basic" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")}  />
+                                    <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")}  />
                                 </Grid>
-
                             </Grid>
                             <Grid container item rowSpacing={2}   xs={12} sm={12} md={6} lg={6}>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="outlined-basic" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                                    <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
                                 </Grid>
-
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <FormControl sx={{ minWidth: '100%'}}>
                                         <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
-                                            id="sustentoTributario"
+                                            id="departamento"
+                                            name="departamento"
                                             style={{ width: "100%" }}
                                             required
                                             label="Departamento"
@@ -384,7 +401,8 @@ const LiquidacionCompra = () => {
                                         <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-helper-label"
-                                            id="sustentoTributario"
+                                            id="subcuenta"
+                                            name="subcuenta"
                                             style={{ width: "100%" }}
                                             required
                                             label="Subcuenta"
@@ -397,13 +415,9 @@ const LiquidacionCompra = () => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                                
                             </Grid>
-
-
                         </Grid>
                     </SubCard>
-
                     <CardActions >
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={6} sm={12} lg={6} >
@@ -418,8 +432,6 @@ const LiquidacionCompra = () => {
                             </Grid>
                         </Grid>
                     </CardActions>
-
-
                 </Grid>
             </Grid>
             <ModalRetencion

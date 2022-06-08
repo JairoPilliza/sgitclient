@@ -58,11 +58,13 @@ const AperturaPeriodo = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>#</TableCell>
-                                    <TableCell align="center">Código</TableCell>
-                                    <TableCell align="center">Razón Social</TableCell>
-                                    <TableCell align="center">Ruc</TableCell>
-                                    <TableCell align="center">Teléfono</TableCell>
-                                    <TableCell align="center">Email</TableCell>
+                                    <TableCell align="center">Period</TableCell>
+                                    <TableCell align="center">Año</TableCell>
+                                    <TableCell align="center">Sucursal</TableCell>
+                                    <TableCell align="center">Fecha Apertura</TableCell>
+                                    <TableCell align="center">Fecha Cierre</TableCell>
+                                    <TableCell align="center">Estado</TableCell>
+                                    <TableCell align="center">Periodo Anterior</TableCell>
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -75,6 +77,8 @@ const AperturaPeriodo = () => {
                                         <TableCell align="center">{row.calories}</TableCell>
                                         <TableCell align="center">{row.fat}</TableCell>
                                         <TableCell align="center">{row.carbs}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">

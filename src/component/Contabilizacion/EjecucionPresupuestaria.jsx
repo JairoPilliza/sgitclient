@@ -12,7 +12,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 
-import { Divider, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { CardActions, Divider, FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -149,10 +149,9 @@ const EjecucionPresupuestaria = () => {
                                 <Table size="small" aria-label="purchases">
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell>Date</TableCell>
-                                            <TableCell>Customer</TableCell>
-                                            <TableCell align="right">Amount</TableCell>
-                                            <TableCell align="right">Total price ($)</TableCell>
+                                            <TableCell>Departamento</TableCell>
+                                            <TableCell>Subcuenta</TableCell>                                            
+                                            <TableCell align="right">Valor</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -161,10 +160,10 @@ const EjecucionPresupuestaria = () => {
                                                 <TableCell component="th" scope="row">
                                                     {historyRow.date}
                                                 </TableCell>
-                                                <TableCell>{historyRow.customerId}</TableCell>
-                                                <TableCell align="right">{historyRow.amount}</TableCell>
+                                                
+                                                <TableCell>{historyRow.amount}</TableCell>
                                                 <TableCell align="right">
-                                                    {Math.round(historyRow.amount * row.price * 100) / 100}
+                                                    100
                                                 </TableCell>
                                             </TableRow>
                                         ))}
@@ -209,7 +208,20 @@ const EjecucionPresupuestaria = () => {
                     </TableContainer>
 
                 </CardContent>
+                <CardActions >
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>                                   
+                                </Grid>
 
+                                <Grid item xs={12} sm={12} md={4} lg={4}>                                 
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                       Generar Asiento Contable
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </CardActions>
 
             </Card>
             <ModalEjecPresupuestaria

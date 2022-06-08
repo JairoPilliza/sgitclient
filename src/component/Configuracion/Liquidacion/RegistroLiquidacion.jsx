@@ -59,12 +59,16 @@ const RegistroLiquidacion = () => {
 
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>#</TableCell>
-                                    <TableCell align="center">Código</TableCell>
-                                    <TableCell align="center">Razón Social</TableCell>
-                                    <TableCell align="center">Ruc</TableCell>
-                                    <TableCell align="center">Teléfono</TableCell>
-                                    <TableCell align="center">Email</TableCell>
+                                <TableCell>Sucursal</TableCell>
+                                    <TableCell align="center">N° Autorizacion</TableCell>
+                                    <TableCell align="center">Fecha Reg</TableCell>
+                                    <TableCell align="center">Punto Facturazion</TableCell>
+                                    <TableCell align="center">Secuencial Ini</TableCell>
+                                    <TableCell align="center">Secuencial Fin</TableCell>
+                                    <TableCell align="center">Secuencial Actual</TableCell>
+                                    <TableCell align="center">Fecha Cad</TableCell>
+                                    <TableCell align="center">Usuario</TableCell>
+                                    <TableCell align="center">Estado</TableCell>
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -77,6 +81,10 @@ const RegistroLiquidacion = () => {
                                         <TableCell align="center">{row.calories}</TableCell>
                                         <TableCell align="center">{row.fat}</TableCell>
                                         <TableCell align="center">{row.carbs}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
+                                        <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">

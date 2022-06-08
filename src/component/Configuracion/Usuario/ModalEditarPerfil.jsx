@@ -92,25 +92,25 @@ const ModalEditarPerfil = (props) => {
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}  >
                                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Nombre Usuario" variant="standard" style={{ width: "100%" }} />
+                                        <TextField id="nombreUsuario" name="nombreUsuario" label="Nombre Usuario" variant="standard" style={{ width: "100%" }}   {...register("nombreUsuario")} />
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Usuario" variant="standard" style={{ width: "100%" }} />
+                                        <TextField id="usuario" name="usuario" label="Usuario" variant="standard" style={{ width: "100%" }}  {...register("usuario")} />
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Correo" variant="standard" style={{ width: "100%" }} />
+                                        <TextField id="correo" name="correo"label="Correo" variant="standard" style={{ width: "100%" }} {...register("correo")} />
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
                                         <VpnKeyIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                        <TextField id="input-with-sx" label="Contraseña" variant="standard" style={{ width: "100%" }} />
+                                        <TextField id="contraseña" name="contraseña" label="Contraseña" variant="standard" style={{ width: "100%" }} {...register("contraseña")} />
                                     </Box>
 
                                 </Grid>
