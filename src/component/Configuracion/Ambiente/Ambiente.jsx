@@ -21,6 +21,10 @@ const Ambiente = () => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const onSubmit = (data, evento) => {
+        alert();
+        console.log(data);
+    }
 
     return (
         <Card sx={{ maxWidth: 345, margin: 'auto' }}>
@@ -29,23 +33,27 @@ const Ambiente = () => {
                 title="Gestion Ambiente"
             />
             <Divider />
-            <CardContent><center>
-                <FormControl sx={{ margin: 'auto' }}>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                    >
-                        <FormControlLabel value="Pruebas" control={<Radio />} label="Pruebas" {...register("pruebas")} />
-                        <FormControlLabel value="Produccion" control={<Radio />} label="Produccion" {...register("produccion")} />
-                    </RadioGroup>
-                </FormControl>
-            </center>
-            </CardContent>
-            <Divider />
-            <CardActions >
-                <Button variant='contained' sx={{ margin: 'auto' }}><CheckBoxIcon />Actualizar</Button>
-            </CardActions>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <CardContent>
+
+                    <center>
+                        <FormControl sx={{ margin: 'auto' }}>
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                            >
+                                <FormControlLabel value="Pruebas" control={<Radio />} label="Pruebas" {...register("pruebas")} />
+                                <FormControlLabel value="Produccion" control={<Radio />} label="Produccion" {...register("produccion")} />
+                            </RadioGroup>
+                        </FormControl>
+                    </center>
+                </CardContent>
+                <Divider />
+                <CardActions >
+                    <Button type='submit' variant='contained' sx={{ margin: 'auto' }}><CheckBoxIcon />Actualizar</Button>
+                </CardActions>
+            </form>
         </Card>
     );
 }

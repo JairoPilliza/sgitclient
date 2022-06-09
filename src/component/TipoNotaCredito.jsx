@@ -20,7 +20,9 @@ const TipoNotaCredito = ({ handleEvent }) => {
                         <Checkbox
                             style={{
                                 transform: "scale(2)",
-                            }} onClick={e => handleEvent(true)} />
+                            }} onClick={e => handleEvent(true)} 
+                            {...register("notaCreditoFisico")}/>
+                             
                     </center>
                 </SubCard>
             </Grid>
@@ -30,7 +32,8 @@ const TipoNotaCredito = ({ handleEvent }) => {
                         <Checkbox
                             style={{
                                 transform: "scale(2)",
-                            }}  onClick={e => handleEvent(true)}/>
+                            }}  onClick={e => handleEvent(true)}
+                            {...register("notaCreditoElect")}/>
                     </center>
                 </SubCard>
             </Grid>

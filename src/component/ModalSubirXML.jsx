@@ -23,9 +23,9 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const ModalSubirXML = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
-   
-   
-   
+
+
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -48,35 +48,32 @@ const ModalSubirXML = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
+
 
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
 
     }
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
     const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+        createData('Frozen yoghurt', "hola", 6.0, 24, 4.0),
+        createData('Ice cream sandwich', "chao", 9.0, 37, 4.3),
 
     ];
+    const [selectedValue, setSelectedValue] = React.useState(false);
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+        //alert(event.target.value)
+    };
 
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-
                 <Dialog
                     open={props.open}
                     onClose={props.onClose}
@@ -91,13 +88,13 @@ const ModalSubirXML = (props) => {
                     <DialogContent dividers={scroll === 'paper'}>
                         <DialogContentText
                             id="scroll-dialog-description"
-                            ref={descriptionElementRef}
+
                             tabIndex={-1}
                         >
                             <Card className="col-12" container style={{ textAlign: "center" }} >
                                 <div>
                                     <Stack direction="row" spacing={2}>
-                                        <Button variant="contained" startIcon={<CheckCircleOutlineIcon />}>
+                                        <Button variant="contained" value="bien" startIcon={<CheckCircleOutlineIcon />} >
                                             Bienes
                                         </Button>
                                         <Button variant="contained" startIcon={<CheckCircleOutlineIcon />}>
@@ -110,8 +107,8 @@ const ModalSubirXML = (props) => {
                                         <TableHead>
                                             <TableRow>
                                                 <TableCell align="center">#</TableCell>
-                                                <TableCell align="center">Bien</TableCell>
-                                                <TableCell align="center">Servicio</TableCell>
+                                                <TableCell align="left">Bien / Servicio</TableCell>
+
                                                 <TableCell align="center">Gr.Iva</TableCell>
                                                 <TableCell align="center">Cant.</TableCell>
                                                 <TableCell align="center">Detalle</TableCell>
@@ -129,27 +126,18 @@ const ModalSubirXML = (props) => {
                                                     onClick={e => setTable(false)}
                                                 >
 
-                                                    <TableCell align="center">{row.calories}</TableCell>
-                                                    <TableCell component="th" scope="row">
-                                                        <FormControl >
-                                                            <Radio
-                                                                value="a"
-                                                                name="radio-buttons"
-                                                                inputProps={{ 'aria-label': 'B' }}
-                                                            />
-                                                        </FormControl>
-
+                                                    <TableCell align="center">{row.name}</TableCell>
+                                                    <TableCell align="center" colSpan={1}>
+                                                        <RadioGroup
+                                                            row
+                                                            aria-labelledby="demo-row-radio-buttons-group-label"
+                                                            name="row-radio-buttons-group"
+                                                        >
+                                                            <FormControlLabel value="bien" control={<Radio checked={selectedValue} />} label="" />
+                                                            <FormControlLabel value="servicio" control={<Radio checked={selectedValue} />} label="" />
+                                                        </RadioGroup>
                                                     </TableCell>
-                                                    <TableCell align="center">
-                                                        <Radio
 
-
-                                                            value="b"
-                                                            name="radio-buttons"
-                                                            inputProps={{ 'aria-label': 'B' }}
-                                                        />
-
-                                                    </TableCell>
                                                     <TableCell align="center">{row.fat}</TableCell>
                                                     <TableCell align="center">{row.fat}</TableCell>
                                                     <TableCell align="center">ddddddddddddddd</TableCell>
@@ -171,7 +159,7 @@ const ModalSubirXML = (props) => {
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Guardar</Button>
                     </DialogActions>
-                 
+
                 </Dialog>
 
             </form>

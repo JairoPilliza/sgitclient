@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Card, CardHeader, Grid, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imp
 
@@ -45,15 +45,6 @@ const ModalFormaPago = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
 
     const onSubmit = (data, evento) => {
         alert();
@@ -64,8 +55,8 @@ const ModalFormaPago = (props) => {
         return { name, calories, fat, carbs, protein };
     }
     const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+        createData('Tarjeta Debito', 159, 6.0, 24, 4.0),
+        createData('Tarjeta Credito', 237, 9.0, 37, 4.3),
 
     ];
 
@@ -88,13 +79,24 @@ const ModalFormaPago = (props) => {
                 <DialogContent dividers={scroll === 'paper'}>
                     <DialogContentText
                         id="scroll-dialog-description"
-                        ref={descriptionElementRef}
                         tabIndex={-1}
                     >
                         <Card className="col-12" container style={{ textAlign: "center" }} >
                             <br />
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Grid container spacing={2} >
+                                    <Grid container item spacing={2}>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                           
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <Typography variant="h5" color="red" gutterBottom component="div">
+                                                Valor Total: 1500
+                                            </Typography>
+                                        </Grid>
+
+
+                                    </Grid>
                                     <Grid container item spacing={2}>
                                         <Grid item xs={12} sm={12} md={4} lg={4}>
                                             <FormControl sx={{ minWidth: '100%' }}>
@@ -108,8 +110,8 @@ const ModalFormaPago = (props) => {
                                                     label="Forma de Pago:"
                                                     {...register("tipoPago")}
                                                 >
-                                                    <MenuItem value={10}>Ten</MenuItem>
-                                                    <MenuItem value={20}>Twenty</MenuItem>
+                                                    <MenuItem value={10}>Tarjeta Debito</MenuItem>
+                                                    <MenuItem value={20}>Tarjeta Credito</MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </Grid>
@@ -121,7 +123,6 @@ const ModalFormaPago = (props) => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-
                             </form>
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -129,7 +130,7 @@ const ModalFormaPago = (props) => {
                                         <TableRow>
                                             <TableCell align="center">#</TableCell>
                                             <TableCell align="center">Forma de pago</TableCell>
-                                            <TableCell align="center">Fat&nbsp;(g)</TableCell>
+                                            <TableCell align="center">Valor</TableCell>
 
                                             <TableCell align="center">Acciones</TableCell>
                                         </TableRow>
@@ -152,6 +153,15 @@ const ModalFormaPago = (props) => {
                                                 <TableCell align="center"><Button variant="contained" startIcon={<DeleteForeverIcon />} ></Button></TableCell>
                                             </TableRow>
                                         ))}
+                                        <TableRow >
+                                        <TableCell align="center"></TableCell>
+                                        <TableCell align="center"></TableCell>                                       
+                                        <TableCell align="center"><Typography variant="h6" color="red" gutterBottom component="div">
+                                                Valor Total: 1500
+                                            </Typography></TableCell>
+                                        <TableCell align="center"></TableCell>
+
+                                        </TableRow>
                                     </TableBody>
                                 </Table>
                             </TableContainer>

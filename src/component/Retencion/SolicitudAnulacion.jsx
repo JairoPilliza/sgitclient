@@ -78,7 +78,7 @@ const SolcitudAnulacion = () => {
                             </Button>   </TableCell>
                             <TableCell align="center"  >
 
-                                <FormControl >
+                              
                                     <RadioGroup
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -88,7 +88,7 @@ const SolcitudAnulacion = () => {
                                         <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
                                         <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
                                     </RadioGroup>
-                                </FormControl>
+                                
 
                             </TableCell>
                         </TableRow>

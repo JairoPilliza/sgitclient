@@ -47,7 +47,7 @@ const ListaRetencionesAut = () => {
                 <Grid item xs={12} sm={12} md={6} lg={6}>
                     <TextField
                         id="outlined-basic"
-                        label="-"
+                        label="Buscar Retencion Aut"
                         style={{ width: "70%" }}
                         placeholder="Busca por N° Secuencial"
                         {...register("razonSocial")}

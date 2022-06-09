@@ -91,7 +91,7 @@ const BuscarFactura = () => {
                                 label="Ruc | Proveedor| N° Fact.:"
                                 placeholder="N° Factura - Proveedor - Ruc"
                                 style={{ width: "100%" }}
-                                {...register("razonSocial")}
+                                {...register("proveedor")}
                             />
                         </Grid>
                         <Grid item xs={12}  sm={6} md={6} lg={6}>

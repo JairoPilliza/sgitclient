@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, InputLabel, Link } from '@mui/material';
+import { Divider, Grid, InputLabel, Link } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -50,293 +50,294 @@ const LiquidacionCompra = () => {
             <Grid container spacing={gridSpacing}>
 
                 <Grid item xs={12} sm={12} lg={12}>
-                    <SubCard className="col-12" container title="Datos de Liquidación" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                        <Grid container>
-                            <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <FormControl sx={{ minWidth: '100%' }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="sustentoTributario"
-                                        name="sustentoTributario"
+                    <from>
+                        <SubCard className="col-12" container title="Datos de Liquidación" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                            <Grid container>
+                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <FormControl sx={{ minWidth: '100%' }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-helper-label"
+                                            id="sustentoTributario"
+                                            name="sustentoTributario"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Sustento Tributario"
+                                            {...register("sustentoTributario")}
+                                        >
+                                            <MenuItem value={10}>FACTURA</MenuItem>
+                                            <MenuItem value={20}>NOTA DE VENTA</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                            <br></br>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <TextField
+                                        id="nombrePersona"
+                                        name="nombrePersona"
+                                        label="Sr/Sra:"
+                                        placeholder="Ingrese el nombre de la persona"
+                                        multiline
                                         style={{ width: "100%" }}
-                                        required
-                                        label="Sustento Tributario"
-                                        {...register("sustentoTributario")}
-                                    >
-                                        <MenuItem value={10}>FACTURA</MenuItem>
-                                        <MenuItem value={20}>NOTA DE VENTA</MenuItem>
-
-                                    </Select>
-
-                                </FormControl>
-                            </Grid>
-                        </Grid>
-                        <br></br>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={12} md={4} lg={4}>
-                                <TextField
-                                    id="nombrePersona"
-                                    name="nombrePersona"
-                                    label="Sr/Sra:"
-                                    placeholder="Ingrese el nombre de la persona"
-                                    multiline
-                                    style={{ width: "100%" }}
-                                    {...register("nombrePersona")}
-                                />
-
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={2} lg={2}>
-                                <Button variant="outlined" startIcon={<SearchIcon />} style={{ width: "100%" }}>
-                                    Buscar
-                                </Button>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                                <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />} style={{ width: "100%" }}>
-                                    Añadir Persona
-                                </Button>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={3} lg={3}>
-                                <TextField
-                                    id="fechaRegistro"
-                                    name="fechaRegistro"
-                                    helperText="Ingrese una fecha"
-                                    label="Fecha registro:"
-                                    type="date"
-                                    style={{ width: "100%" }}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    {...register("fechaRegistro")}
-                                />
-                            </Grid>
-                        </Grid>
-                        <br></br>
-                        <Grid container spacing={2} >
-                            <Grid item xs={12} sm={12} md={4} lg={4} >
-                                <TextField
-                                    id="lugarTransaccion"
-                                    name="lugarTransaccion"
-                                    label="Lugar de Transacción:"
-                                    placeholder="Escriba lugar donde se realiza la Transfacción"
-                                    multiline
-                                    style={{ width: "100%", float: "left" }}
-                                    {...register("lugarTransaccion")}
-                                />
-
-                            </Grid>
-
-                            <Grid item xs={12} sm={12} md={8} lg={8} >
-                                <Grid container spacing={2} >
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
-                                        <small style={{ width: "100%" }}><b>N° Liquidación:</b></small>
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
-                                        <TextField
-                                            id="emision"
-                                            name="emision"
-                                            label="Emision"
-                                            helperText="emision"
-                                            style={{ width: "100%" }}
-                                            {...register("emision")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
-                                        <TextField
-                                            id="puntoEmision"
-                                            name="puntoEmision"
-                                            label="punto emision "
-                                            helperText="punto emision "
-                                            style={{ width: "100%" }}
-                                            {...register("puntoEmision")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
-                                        <TextField
-                                            id="secuencial"
-                                            name="secuencial"
-                                            label="Secuencial de la liquidacion"
-                                            helperText="Secuencial de la liquidacion"
-                                            placeholder="Diguite Secuencial"
-
-                                            style={{ width: "100%" }}
-                                            {...register("secuencial")}
-                                        />
-                                    </Grid>
+                                        {...register("nombrePersona")}
+                                    />
 
                                 </Grid>
+                                <Grid item xs={12} sm={12} md={2} lg={2}>
+                                    <Button variant="outlined" startIcon={<SearchIcon />} style={{ width: "100%" }}>
+                                        Buscar
+                                    </Button>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={3} lg={3}>
+                                    <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />} style={{ width: "100%" }}>
+                                        Añadir Persona
+                                    </Button>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={3} lg={3}>
+                                    <TextField
+                                        id="fechaRegistro"
+                                        name="fechaRegistro"
+                                        helperText="Ingrese una fecha"
+                                        label="Fecha registro:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        {...register("fechaRegistro")}
+                                    />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <br></br>
-                        <Card >
-                            <CardHeader
-                                title="Datos de la persona"
-                                style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
-                            />
+                            <br></br>
+                            <Grid container spacing={2} >
+                                <Grid item xs={12} sm={12} md={4} lg={4} >
+                                    <TextField
+                                        id="lugarTransaccion"
+                                        name="lugarTransaccion"
+                                        label="Lugar de Transacción:"
+                                        placeholder="Escriba lugar donde se realiza la Transfacción"
+                                        multiline
+                                        style={{ width: "100%", float: "left" }}
+                                        {...register("lugarTransaccion")}
+                                    />
 
-                            <CardContent  >
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                        <TextField
-                                            id="nombreCompleto"
-                                            name="nombreCompleto"
-                                            label="Nombres:"
-                                            placeholder="Nombres Completos de la persona"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("nombreCompleto")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                                        <TextField
-                                            id="tipoIdentificacion"
-                                            name="tipoIdentificacion"
-                                            label="Tipo Identificación:"
-                                            placeholder="Tipo Identificación"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("tipoIdentificacion")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={5} lg={5}>
-                                        <TextField
-                                            id="numeroIdentificacion"
-                                            name="numeroIdentificacion"
-                                            label="CI/Pasaporte:"
-                                            placeholder="Numero de Identificación"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("numeroIdentificacion")}
-                                        />
-
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={1} lg={1}>
-                                        <Button variant="contained" size="small"><CheckIcon /></Button>
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                                        <TextField
-                                            id="telefonoCelular"
-                                            name="telefonoCelular"
-                                            label="Telefono:"
-                                            placeholder="Telefono convencional o celular"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("telefonoCelular")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                                        <TextField
-                                            id="correo"
-                                            name="correo"
-                                            label="Email:"
-                                            placeholder="gold@example.com"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("correo")}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                        <TextField
-                                            id="direccionDomiciliaria"
-                                            name="direccionDomiciliaria"
-                                            label="Dirección:"
-                                            placeholder="Dirección domiciliaria"
-                                            multiline
-                                            style={{ width: "100%" }}
-                                            {...register("direccionDomiciliaria")}
-                                        />
-                                    </Grid>
                                 </Grid>
 
-                            </CardContent>
-                        </Card>
-                    </SubCard>
+                                <Grid item xs={12} sm={12} md={8} lg={8} >
+                                    <Grid container spacing={2} >
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <small style={{ width: "100%" }}><b>N° Liquidación:</b></small>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <TextField
+                                                id="emision"
+                                                name="emision"
+                                                label="Emision"
+                                                helperText="emision"
+                                                style={{ width: "100%" }}
+                                                {...register("emision")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <TextField
+                                                id="puntoEmision"
+                                                name="puntoEmision"
+                                                label="punto emision "
+                                                helperText="punto emision "
+                                                style={{ width: "100%" }}
+                                                {...register("puntoEmision")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                            <TextField
+                                                id="secuencial"
+                                                name="secuencial"
+                                                label="Secuencial de la liquidacion"
+                                                helperText="Secuencial de la liquidacion"
+                                                placeholder="Diguite Secuencial"
 
+                                                style={{ width: "100%" }}
+                                                {...register("secuencial")}
+                                            />
+                                        </Grid>
+
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <br></br>
+                            <Card >
+                                <CardHeader
+                                    title="Datos de la persona"
+                                    style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
+                                />
+
+                                <CardContent  >
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                            <TextField
+                                                id="nombreCompleto"
+                                                name="nombreCompleto"
+                                                label="Nombres:"
+                                                placeholder="Nombres Completos de la persona"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("nombreCompleto")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <TextField
+                                                id="tipoIdentificacion"
+                                                name="tipoIdentificacion"
+                                                label="Tipo Identificación:"
+                                                placeholder="Tipo Identificación"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("tipoIdentificacion")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                                            <TextField
+                                                id="numeroIdentificacion"
+                                                name="numeroIdentificacion"
+                                                label="CI/Pasaporte:"
+                                                placeholder="Numero de Identificación"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("numeroIdentificacion")}
+                                            />
+
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={1} lg={1}>
+                                            <Button variant="contained" size="small"><CheckIcon /></Button>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <TextField
+                                                id="telefonoCelular"
+                                                name="telefonoCelular"
+                                                label="Telefono:"
+                                                placeholder="Telefono convencional o celular"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("telefonoCelular")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <TextField
+                                                id="correo"
+                                                name="correo"
+                                                label="Email:"
+                                                placeholder="gold@example.com"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("correo")}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                            <TextField
+                                                id="direccionDomiciliaria"
+                                                name="direccionDomiciliaria"
+                                                label="Dirección:"
+                                                placeholder="Dirección domiciliaria"
+                                                multiline
+                                                style={{ width: "100%" }}
+                                                {...register("direccionDomiciliaria")}
+                                            />
+                                        </Grid>
+                                    </Grid>
+
+                                </CardContent>
+                            </Card>
+                        </SubCard>
+                    </from>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <SubCard className="col-12" container title="Calculo (Valor Liquido a Recibir)" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
                         <div>
-                            <TableContainer >
-                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Tipo Base</TableCell>
-                                            <TableCell align="center">Cant.</TableCell>
-                                            <TableCell align="center">Descripción</TableCell>
-                                            <TableCell align="center">V.Unit.</TableCell>
-                                            <TableCell align="center">Total</TableCell>
-                                            <TableCell align="center"></TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        <TableCell>
-                                            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                                <Select
-                                                    labelId="demo-simple-select-standard-label"
-                                                    id="tipoBase"
-                                                    name="tipoBase"
-                                                    {...register("tipoBase")}>
-                                                    <MenuItem value={"Bienes"}>Bienes</MenuItem>
-                                                    <MenuItem value={"Servicios"}>Servicios</MenuItem>
-                                                </Select>
-                                            </FormControl>
-                                        </TableCell>
+                            <from>
+                                <TableContainer >
+                                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell>Tipo Base</TableCell>
+                                                <TableCell align="center">Cant.</TableCell>
+                                                <TableCell align="center">Descripción</TableCell>
+                                                <TableCell align="center">V.Unit.</TableCell>
+                                                <TableCell align="center">Total</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            <TableCell>
+                                                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                                                    <Select
+                                                        labelId="demo-simple-select-standard-label"
+                                                        id="tipoBase"
+                                                        name="tipoBase"
+                                                        {...register("tipoBase")}>
+                                                        <MenuItem value={"Bienes"}>Bienes</MenuItem>
+                                                        <MenuItem value={"Servicios"}>Servicios</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </TableCell>
 
-                                        <TableCell>
-                                            <TextField
-                                                id="cantidad"
-                                                name="cantidad"
-                                                type="number"
-                                                style={{ width: "50px" }}
-                                                InputLabelProps={{
-                                                    shrink: true
-                                                }}
-                                                variant="standard"
-                                                {...register("cantidad")} />
-                                        </TableCell>
-                                        <TableCell>
-                                            <TextField
-                                                id="descripcion"
-                                                name="descripcion"
-                                                style={{ width: "300px" }}
-                                                InputLabelProps={{
-                                                    shrink: true
-                                                }}
-                                                variant="standard"
-                                                {...register("descripcion")} />
+                                            <TableCell>
+                                                <TextField
+                                                    id="cantidad"
+                                                    name="cantidad"
+                                                    type="number"
+                                                    style={{ width: "50px" }}
+                                                    InputLabelProps={{
+                                                        shrink: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("cantidad")} />
+                                            </TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    id="descripcion"
+                                                    name="descripcion"
+                                                    style={{ width: "300px" }}
+                                                    InputLabelProps={{
+                                                        shrink: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("descripcion")} />
 
-                                        </TableCell>
-                                        <TableCell>
-                                            <TextField
-                                                id="valorUnit"
-                                                name="valorUnit"
-                                                type="number"
-                                                style={{ width: "70px" }}
-                                                InputLabelProps={{
-                                                    shrink: true
-                                                }}
-                                                variant="standard"
-                                                {...register("valorUnit")} />
-                                        </TableCell>
-                                        <TableCell>
-                                            <TextField
-                                                id="total"
-                                                name="total"
-                                                style={{ width: "70px" }}
-                                                InputProps={{
-                                                    readOnly: true
-                                                }}
-                                                variant="standard"
-                                                {...register("total")} />
-                                        </TableCell>
-                                        <TableCell align="center">
-                                            <Button variant="contained">
-                                                <AddIcon />
-                                            </Button>
-                                        </TableCell>
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                                            </TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    id="valorUnit"
+                                                    name="valorUnit"
+                                                    type="number"
+                                                    style={{ width: "70px" }}
+                                                    InputLabelProps={{
+                                                        shrink: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("valorUnit")} />
+                                            </TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    id="total"
+                                                    name="total"
+                                                    style={{ width: "70px" }}
+                                                    InputProps={{
+                                                        readOnly: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("total")} />
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                <Button variant="contained">
+                                                    <AddIcon />
+                                                </Button>
+                                            </TableCell>
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </from>
                         </div>
                         <div >
                             <TableContainer >
@@ -358,80 +359,84 @@ const LiquidacionCompra = () => {
                             </TableContainer>
                         </div>
                         <br></br>
-                        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid container item rowSpacing={2} xs={12} sm={12} md={6} lg={6}>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                        <from>
+                            <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                                <Grid container item rowSpacing={2} xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")} />
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")}  />
+                                <Grid container item rowSpacing={2} xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="departamento"
+                                                name="departamento"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Departamento"
+                                                {...register("departamento")}
+                                            >
+                                                <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                                <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                                <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="subcuenta"
+                                                name="subcuenta"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Subcuenta"
+                                                {...register("subcuenta")}
+                                            >
+                                                <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                                <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                                <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid container item rowSpacing={2}   xs={12} sm={12} md={6} lg={6}>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                            <br></br>
+                            <Divider />
+                            <CardActions >
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} md={6} sm={12} lg={6} >
+                                        <Button variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
+                                            Guardar
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={12} md={6} sm={12} lg={6} >
+                                        <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                            Cancelar
+                                        </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <FormControl sx={{ minWidth: '100%'}}>
-                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="departamento"
-                                            name="departamento"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Departamento"
-                                            {...register("departamento")}
-                                        >
-                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
-                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
-                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <FormControl sx={{ minWidth: '100%'}}>
-                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="subcuenta"
-                                            name="subcuenta"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Subcuenta"
-                                            {...register("subcuenta")}
-                                        >
-                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
-                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
-                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                            </CardActions>
+                        </from>
                     </SubCard>
-                    <CardActions >
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} md={6} sm={12} lg={6} >
-                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
-                                    Guardar
-                                </Button>
-                            </Grid>
-                            <Grid item xs={12} md={6} sm={12} lg={6} >
-                                <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
-                                    Cancelar
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </CardActions>
                 </Grid>
             </Grid>
             <ModalRetencion

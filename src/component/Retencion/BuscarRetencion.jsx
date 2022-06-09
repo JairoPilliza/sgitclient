@@ -39,11 +39,14 @@ const BuscarRetencion = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                            <TableCell>Tipo Documento</TableCell>
+                            <TableCell align="right">N° Documento</TableCell>
+                            <TableCell align="right">Base Imp.</TableCell>
+                            <TableCell align="right">Fecha Retención</TableCell>
+                            <TableCell align="right">Gestion</TableCell>
+                            <TableCell align="right">Periodo</TableCell>
+                            <TableCell align="right">Autorizado</TableCell>
+                            <TableCell align="right">Fecha Autorizado</TableCell>
                             <TableCell align="right">Acciones</TableCell>
                         </TableRow>
                     </TableHead>
@@ -61,6 +64,9 @@ const BuscarRetencion = () => {
                                 <TableCell align="right">{row.calories}</TableCell>
                                 <TableCell align="right">{row.fat}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>
+                                <TableCell align="right">{row.protein}</TableCell>
+                                <TableCell align="right">{row.protein}</TableCell>
+                                <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right"><Button variant="contained" startIcon={<LocalPrintshopIcon/>}></Button> 
                                 <Button variant="contained" startIcon={<MailOutlineIcon/>}></Button></TableCell>

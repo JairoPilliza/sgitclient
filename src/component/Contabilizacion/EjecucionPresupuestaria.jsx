@@ -113,7 +113,6 @@ const EjecucionPresupuestaria = () => {
                                 <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
                                 <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
                                 <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
-
                             </Select>
                         </FormControl>
                     </TableCell>
@@ -130,7 +129,6 @@ const EjecucionPresupuestaria = () => {
                             <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
                             <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
                             <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
                         </Select>
                     </FormControl></TableCell>
                     <TableCell align="center">{row.fat}</TableCell>
@@ -151,7 +149,7 @@ const EjecucionPresupuestaria = () => {
                                         <TableRow>
                                             <TableCell>Departamento</TableCell>
                                             <TableCell>Subcuenta</TableCell>                                            
-                                            <TableCell align="right">Valor</TableCell>
+                                            <TableCell >Valor</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -162,7 +160,7 @@ const EjecucionPresupuestaria = () => {
                                                 </TableCell>
                                                 
                                                 <TableCell>{historyRow.amount}</TableCell>
-                                                <TableCell align="right">
+                                                <TableCell >
                                                     100
                                                 </TableCell>
                                             </TableRow>
