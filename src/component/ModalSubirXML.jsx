@@ -133,8 +133,8 @@ const ModalSubirXML = (props) => {
                                                             aria-labelledby="demo-row-radio-buttons-group-label"
                                                             name="row-radio-buttons-group"
                                                         >
-                                                            <FormControlLabel value="bien" control={<Radio checked={selectedValue} />} label="" />
-                                                            <FormControlLabel value="servicio" control={<Radio checked={selectedValue} />} label="" />
+                                                            <FormControlLabel value="bien" control={<Radio />} label="" />
+                                                            <FormControlLabel value="servicio" control={<Radio  />} label="" />
                                                         </RadioGroup>
                                                     </TableCell>
 

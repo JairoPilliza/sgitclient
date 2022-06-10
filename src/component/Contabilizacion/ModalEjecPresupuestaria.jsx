@@ -19,7 +19,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 const ModalEjecPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
@@ -176,6 +176,8 @@ const ModalEjecPresupuestaria = (props) => {
                                             <TableCell align="center">Departamento</TableCell>
                                             <TableCell align="center">Subcuenta</TableCell>
                                             <TableCell align="center">Valor</TableCell>
+                                            <TableCell align="center"></TableCell>
+
                                         </TableRow>
                                     </TableHead>
                                     <TableBody >
@@ -194,6 +196,10 @@ const ModalEjecPresupuestaria = (props) => {
                                                 <TableCell align="center">{row.fat}</TableCell>
 
                                                 <TableCell align="center">100</TableCell>
+                                                <TableCell align="center">
+                                                    <Button  variant="contained" size="small"> <DeleteIcon/></Button>
+                                                    </TableCell>
+
                                             </TableRow>
                                         ))}
                                     </TableBody>

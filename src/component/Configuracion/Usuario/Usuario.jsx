@@ -101,8 +101,8 @@ const Usuario = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" onClick={handleClickOpen('paper')}  startIcon={<EditIcon />}>
-
+                                            <Button variant="contained" size='small' onClick={handleClickOpen('paper')}  >
+                                            <EditIcon />
                                             </Button>                                           
                                         </TableCell>
                                     </TableRow>

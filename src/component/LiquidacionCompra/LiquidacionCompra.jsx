@@ -27,7 +27,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CheckIcon from '@mui/icons-material/Check';
 import ModalNuevaPersona from "component/ModalPersona";
 import ModalRetencion from "component/ModalRetencion";
-
+import EditIcon from '@mui/icons-material/Edit';
 const LiquidacionCompra = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [open, setOpen] = React.useState(false);
@@ -175,6 +175,12 @@ const LiquidacionCompra = () => {
 
                                 <CardContent  >
                                     <Grid container spacing={2}>
+                                        
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                            <Button onClick={handleOpen} variant="outlined" startIcon={<EditIcon />} style={{ width: "100%" }}>
+                                                Editar
+                                            </Button>
+                                        </Grid>
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <TextField
                                                 id="nombreCompleto"

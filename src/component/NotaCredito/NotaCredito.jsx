@@ -15,7 +15,7 @@ import CardContent from '@mui/material/CardContent';
 
 import CardActions from '@mui/material/CardActions';
 import TipoNotaCredito from "component/TipoNotaCredito";
-import BuscarFactura from "component/BuscarRetencion";
+import BuscarFactura from "component/BuscarFactura";
 import { Formik } from "formik";
 
 
@@ -48,7 +48,7 @@ const NotaCredito = () => {
                         }
                     </Grid>
                     <Grid item xs={12} sm={12}>
-                        <SubCard className="col-12" container title="DATOS DE NOTA DE CREDITO" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                        <SubCard className="col-12" container title="DATOS DE NOTA DE CREDITO" style={{ textAlign: "center" }} >
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                                 <Grid item xs={12} sm={12} md={6} lg={6} />
                                 <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -217,7 +217,7 @@ const NotaCredito = () => {
                     </Grid>
 
                     <Grid item xs={12} md={12} sm={12} lg={12}>
-                        <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                        <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
                             <div>
                                 <Grid container>
                                     <Grid item xs={12} md={6} sm={12} lg={6}>

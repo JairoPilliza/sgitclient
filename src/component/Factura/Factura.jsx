@@ -37,12 +37,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import ModalNuevoProveedor from "component/ModalProveedor";
 import BusquedaPr from "component/BusquedaProveedor";
 import ModalFormaPago from "component/FormaPago";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
+
 import ModalSubirXML from "component/ModalSubirXML";
+import BusquedaProveedorCargarXML from "component/BusquedaProveedorXML";
 const Factura = () => {
 
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [factBuscadorPr, setFactBuscadorPr] = useState(false);
+    const [muestraXML, setMuestraXML] = useState(false);
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -70,41 +72,35 @@ const Factura = () => {
         setOpenMFP(false);
     };
     /////////////////////////
-    const [openXML, setOpenXML] = React.useState(false);
 
-
-    const handleClickOpenXML = (scrollType) => () => {
-        setOpenXML(true);
-        setScroll(scrollType);
-    };
-    const handleCloseXML = () => {
-        setOpenXML(false);
-    };
 
     var muestraBuscador;
     if (!factBuscadorPr) {
-        muestraBuscador = <TipoFactura handleEvent={setFactBuscadorPr} />;
+        muestraBuscador = <TipoFactura handleEvent={setFactBuscadorPr} muestraXML={setMuestraXML} />;
     }
-
     else {
+        if (factBuscadorPr == true) {
+            muestraBuscador =
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                        <BusquedaPr />
+                    </Grid>
+                </Grid>;
+        }
+        if (muestraXML == true) {
+            muestraBuscador =
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                        <BusquedaProveedorCargarXML />
+                    </Grid>
+                </Grid>;
+        }
 
-        muestraBuscador =
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={8} sm={12} lg={8}>
-                    <BusquedaPr />
-                </Grid>
-                <Grid item xs={12} md={4} sm={12} lg={4}>
-                    <Button onClick={handleClickOpenXML('paper')} variant="outlined" startIcon={<FileUploadIcon />}>
-                        XML
-                    </Button>
-                </Grid>
-            </Grid>;
     }
 
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
-
     }
 
     return (
@@ -112,15 +108,14 @@ const Factura = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <MainCard title="FACTURA" >
                     <Grid container spacing={gridSpacing}>
-
                         <Grid item xs={12} md={12} sm={12} lg={12}>
-
                             {
                                 muestraBuscador
                             }
+
                         </Grid>
                         <Grid item xs={12} md={12} sm={12} lg={12}>
-                            <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                            <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }}>
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
                                     <Grid item xs={12} md={6} sm={12} lg={6}>
 
@@ -206,74 +201,88 @@ const Factura = () => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-
                                 <br></br>
-                                <Card >
+                                <Card xs={12} sm={12} md={12} lg={12} >
                                     <CardHeader
                                         title="Datos del proveedor"
                                         style={{ backgroundColor: "yellow", textAlign: "center", height: "60px" }}
-                                        action={
-                                            <Button aria-label="settings" size="small" variant="contained" startIcon={<EditIcon />} onClick={handleOpen}>
-                                                Editar Proveedor
-                                            </Button>
-                                        }
+
                                     />
                                     <CardContent >
                                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
-                                            <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                                <Grid container spacing={2} >
-                                                    <Grid item xs={12} sm={12} md={12} lg={12} >
-                                                        <TextField
-                                                            id="ruc"
-                                                            name="ruc"
-                                                            label="Numero Ruc: "
-                                                            style={{ width: "100%" }}
-                                                            {...register("ruc")}
-                                                        />
+
+                                            <Grid container item xs={12} md={12} sm={12} lg={12}>
+                                                <Grid item xs={12} md={12} sm={12} lg={12} >
+                                                    <Grid container spacing={2}>
+                                                        {/* <Grid item xs={12} md={6} sm={12} lg={6} /> */}
+                                                        <Grid item xs={12} md={12} sm={12} lg={12}>
+                                                            <Button aria-label="settings" style={{ width: "100%", float: "right" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
+                                                                Editar Proveedor
+                                                            </Button>
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                        <TextField
-                                                            id="numeroAutorizacion"
-                                                            name="numeroAutorizacion"
-                                                            label="Numero Autorización:"
-                                                            style={{ width: "100%" }}
-                                                            {...register("numeroAutorizacion")}
-                                                        />
+                                                </Grid>
+                                            </Grid>
+                                            <Grid container item xs={12} sm={12} md={6} lg={6}>
+                                                <Grid item spacing={2} xs={12} sm={12} md={12} lg={12}>
+                                                    <Grid container spacing={2} >
+
+                                                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                            <TextField
+                                                                id="ruc"
+                                                                name="ruc"
+                                                                label="Numero Ruc: "
+                                                                style={{ width: "100%" }}
+                                                                {...register("ruc")}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                            <TextField
+                                                                id="numeroAutorizacion"
+                                                                name="numeroAutorizacion"
+                                                                label="Numero Autorización:"
+                                                                style={{ width: "100%" }}
+                                                                {...register("numeroAutorizacion")}
+                                                            />
+                                                        </Grid>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid container item xs={12} sm={12} md={6} lg={6}>
+                                                <Grid item spacing={2} xs={12} sm={12} md={12} lg={12}>
+                                                    <Grid container spacing={2} >
+                                                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                            <TextField
+                                                                id="telefono"
+                                                                name="telefono"
+                                                                label="Telefono: "
+                                                                style={{ width: "100%" }}
+                                                                {...register("telefono")}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                            <TextField
+                                                                id="direccionDomiciliaria"
+                                                                name="direccionDomiciliaria"
+                                                                label="Dirección:"
+                                                                style={{ width: "100%" }}
+                                                                {...register("direccionDomiciliaria")}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                            <TextField
+                                                                id="correo"
+                                                                name="correo"
+                                                                label="Email:"
+                                                                style={{ width: "100%" }}
+                                                                {...register("correo")}
+                                                            />
+                                                        </Grid>
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
 
-                                            <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                                <Grid container spacing={2} >
-                                                    <Grid item xs={12} sm={12} md={12} lg={12} >
-                                                        <TextField
-                                                            id="telefono"
-                                                            name="telefono"
-                                                            label="Telefono: "
-                                                            style={{ width: "100%" }}
-                                                            {...register("telefono")}
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                        <TextField
-                                                            id="direccionDomiciliaria"
-                                                            name="direccionDomiciliaria"
-                                                            label="Dirección:"
-                                                            style={{ width: "100%" }}
-                                                            {...register("direccionDomiciliaria")}
-                                                        />
-                                                    </Grid>
-                                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                        <TextField
-                                                            id="correo"
-                                                            name="correo"
-                                                            label="Email:"
-                                                            style={{ width: "100%" }}
-                                                            {...register("correo")}
-                                                        />
-                                                    </Grid>
-                                                </Grid>
-                                            </Grid>
+
 
                                         </Grid>
                                     </CardContent>
@@ -282,7 +291,7 @@ const Factura = () => {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={12} lg={12}>
-                            <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                            <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
 
                                 <Grid container xs={12} md={12} sm={12} lg={12} spacing={2}>
                                     <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -538,23 +547,20 @@ const Factura = () => {
 
                         </Grid>
                     </Grid>
-                   
+
                 </MainCard >
             </form>
             <ModalNuevoProveedor
-                        open={open}
-                        onClose={handleClose} />
-                    <ModalRetencion
-                        open={openMR}
-                        onClose={handleCloseMR}
-                    />
-                    <ModalFormaPago
-                        open={openMFP}
-                        onClose={handleCloseMFP} />
-                    <ModalSubirXML
-                        open={openXML}
-                        onClose={handleCloseXML}
-                    />
+                open={open}
+                onClose={handleClose} />
+            <ModalRetencion
+                open={openMR}
+                onClose={handleCloseMR}
+            />
+            <ModalFormaPago
+                open={openMFP}
+                onClose={handleCloseMFP} />
+
         </div>
     );
 }

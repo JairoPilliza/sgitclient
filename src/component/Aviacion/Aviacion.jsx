@@ -32,12 +32,16 @@ import Divider from '@mui/material/Divider';
 import CardActions from '@mui/material/CardActions';
 import { Stack } from "@mui/material";
 import ModalRetencion from "component/ModalRetencion";
+import EditIcon from '@mui/icons-material/Edit';
+import ModalNuevoProveedor from "component/ModalProveedor";
 const Aviacion = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     /////////MODAL RETENCION
     const [openMR, setOpenMR] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
-
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const handleClickOpen = (scrollType) => () => {
         setOpenMR(true);
         setScroll(scrollType);
@@ -50,7 +54,7 @@ const Aviacion = () => {
             <Grid container spacing={gridSpacing}>
 
                 <Grid item xs={12} md={12} sm={12} lg={12}>
-                    <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                    <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} >
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
                             <Grid item xs={12} md={6} sm={12} lg={6}>
@@ -147,60 +151,77 @@ const Aviacion = () => {
                             />
                             <CardContent >
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
-                                    <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                        <Grid container spacing={2} >
-                                            <Grid item xs={12} sm={12} md={12} lg={12} >
-                                                <TextField
-                                                    id="ruc"
-                                                    name="ruc"
-                                                    label="Numero Ruc: "
-                                                    style={{ width: "100%" }}
-                                                    {...register("ruc")}
-                                                />
+                                    <Grid container item xs={12} md={12} sm={12} lg={12}>
+                                        <Grid item xs={12} md={12} sm={12} lg={12} >
+                                            <Grid container spacing={2}>
+                                                {/* <Grid item xs={12} md={6} sm={12} lg={6} /> */}
+                                                <Grid item xs={12} md={12} sm={12} lg={12}>
+                                                    <Button aria-label="settings" style={{ width: "100%", float: "right" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
+                                                        Editar Proveedor
+                                                    </Button>
+                                                </Grid>
                                             </Grid>
-                                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                <TextField
-                                                    id="numeroAutorizacion"
-                                                    name="numeroAutorizacion"
-                                                    label="Numero Autorización:"
-                                                    style={{ width: "100%" }}
-                                                    {...register("numeroAutorizacion")}
-                                                />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item spacing={2} xs={12} sm={12} md={12} lg={12}>
+                                            <Grid container spacing={2} >
+                                                <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                    <TextField
+                                                        id="ruc"
+                                                        name="ruc"
+                                                        label="Numero Ruc: "
+                                                        style={{ width: "100%" }}
+                                                        {...register("ruc")}
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                    <TextField
+                                                        id="numeroAutorizacion"
+                                                        name="numeroAutorizacion"
+                                                        label="Numero Autorización:"
+                                                        style={{ width: "100%" }}
+                                                        {...register("numeroAutorizacion")}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item spacing={2} xs={12} sm={12} md={12} lg={12}>
+                                            <Grid container spacing={2} >
+                                                <Grid item xs={12} sm={12} md={12} lg={12} >
+                                                    <TextField
+                                                        id="telefono"
+                                                        name="telefono"
+                                                        label="Telefono: "
+                                                        style={{ width: "100%" }}
+                                                        {...register("telefono")}
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                    <TextField
+                                                        id="direccionDomiciliaria"
+                                                        name="direccionDomiciliaria"
+                                                        label="Dirección:"
+                                                        style={{ width: "100%" }}
+                                                        {...register("direccionDomiciliaria")}
+                                                    />
+                                                </Grid>
+                                                <Grid item xs={12} sm={12} md={12} lg={12}>
+                                                    <TextField
+                                                        id="correo"
+                                                        name="correo"
+                                                        label="Email:"
+                                                        style={{ width: "100%" }}
+                                                        {...register("correo")}
+                                                    />
+                                                </Grid>
                                             </Grid>
                                         </Grid>
                                     </Grid>
 
-                                    <Grid item spacing={2} xs={12} sm={12} md={6} lg={6}>
-                                        <Grid container spacing={2} >
-                                            <Grid item xs={12} sm={12} md={12} lg={12} >
-                                                <TextField
-                                                    id="telefono"
-                                                    name="telefono"
-                                                    label="Telefono: "
-                                                    style={{ width: "100%" }}
-                                                    {...register("telefono")}
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                <TextField
-                                                    id="direccionDomiciliaria"
-                                                    name="direccionDomiciliaria"
-                                                    label="Dirección:"
-                                                    style={{ width: "100%" }}
-                                                    {...register("direccionDomiciliaria")}
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} sm={12} md={12} lg={12}>
-                                                <TextField
-                                                    id="correo"
-                                                    name="correo"
-                                                    label="Email:"
-                                                    style={{ width: "100%" }}
-                                                    {...register("correo")}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+
 
                                 </Grid>
                             </CardContent>
@@ -209,7 +230,7 @@ const Aviacion = () => {
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                    <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
 
                         <Grid container xs={12} md={12} sm={12} lg={12} spacing={2}>
                             <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -321,7 +342,7 @@ const Aviacion = () => {
                                 }} id="ice" name="ice" label="Ice:" variant="outlined" {...register("ice")} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={4} lg={4}>
-                                <TextField style={{ width: "100%" }} id="iva12" name="iva12" label="Iva 12 %:" variant="outlined"  {...register("iva12")}/>
+                                <TextField style={{ width: "100%" }} id="iva12" name="iva12" label="Iva 12 %:" variant="outlined"  {...register("iva12")} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={4} lg={4}>
                                 <TextField style={{ width: "100%" }} id="descuento12" name="descuento12" label="Descuento 12%:" variant="outlined" {...register("descuento12")} />
@@ -368,8 +389,11 @@ const Aviacion = () => {
                 open={openMR}
                 onClose={handleCloseMR}
             />
+            <ModalNuevoProveedor
+                open={open}
+                onClose={handleClose} />
+
         </MainCard>
     );
 }
-
 export default Aviacion;

@@ -17,62 +17,64 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import ModalSubirXML from "./ModalSubirXML";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-const BusquedaPr = () => {
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
+const BuscarComprobantes = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     const [scroll, setScroll] = React.useState('paper');
-    const [muestraXML, setMuestraXML] = useState(false);
 
-
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-    }
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-
-    ];
-
-    const [openXML, setOpenXML] = React.useState(false);
-
-    const handleClickOpenXML = (scrollType) => () => {
-        setOpenXML(true);
+    const handleClickOpen = (scrollType) => () => {
+        setOpen(true);
         setScroll(scrollType);
     };
-    const handleCloseXML = () => {
-        setOpenXML(false);
+
+    const handleClose = () => {
+        setOpen(false);
     };
-
-    var botonXml;
-    if (muestraXML) {
-        botonXml = <Button onClick={handleClickOpenXML('paper')} variant="outlined" startIcon={<FileUploadIcon />}>
-            XML
-        </Button>;
+    
+    function createData(name, tipo, fat, carbs, protein) {
+        return { name, tipo, fat, carbs, protein };
     }
+    const rows = [
+        createData('Frozen yoghurt', 'Factura', 6.0, 24, 4.0),
+        createData('Ice cream sandwich', 'Nota de venta', 9.0, 37, 4.3),
 
+    ];
     var showTable;
     if (table) {
         showTable =
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Nro. Factura</TableCell>
+                            <TableCell>Tipo Comprobante</TableCell>
 
+                            <TableCell align="right">Proveedor</TableCell>
+                            <TableCell align="right">Ruc</TableCell>
+                            <TableCell align="right">Fecha Emisión</TableCell>                          
+                            <TableCell align="right">Acciones</TableCell>
+                        </TableRow>
+                    </TableHead>
                     <TableBody >
                         {rows.map((row) => (
                             <TableRow
-                                hover
+                                
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                onClick={e => setTable(false)}
+                               
                             >
-                                <TableCell component="th" scope="row">{row.calories}</TableCell>
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
+                                <TableCell align="center">{row.tipo}</TableCell>
+
+                                <TableCell align="right">{row.calories}</TableCell>
+                                <TableCell align="right">{row.fat}</TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>                        
+                                <TableCell align="right"><Button variant="contained"  startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -83,33 +85,24 @@ const BusquedaPr = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12} lg={12} md={12} >
-                <SubCard className="col-12" title="Busqueda del proveedor" style={{ textAlign: "center" }} >
+            <Grid item xs={12} sm={12}>
+                <SubCard className="col-12" title="Buscar Comprobantes" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item  xs={12}  sm={6} md={6} lg={6}>
                             <TextField
                                 required
                                 id="outlined-basic"
-                                label="Razón Social / Ruc:"
-                                placeholder="Ingrese RUC o Razon Social"
+                                label="Ruc | Proveedor| N° Fact.:"
+                                placeholder="N° Factura - Proveedor - Ruc"
                                 style={{ width: "100%" }}
-                                {...register("razonSocial")}
+                                {...register("proveedor")}
                             />
                         </Grid>
-                        <Grid item xs={12} md={2} sm={12} lg={3} >
+                        <Grid item xs={12}  sm={6} md={6} lg={6}>
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
-                        </Grid>
-                        <Grid item xs={12} md={2} sm={12} lg={3}>
-                            <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />}>
-                                Nuevo
-                            </Button>
-                        </Grid>
-                        {/* <Grid item xs={12} md={2} sm={12} lg={2}>
-                            {botonXml}
-                        </Grid> */}
-
+                        </Grid>                       
                     </Grid><br></br>
                     <Divider />
                     {
@@ -118,18 +111,10 @@ const BusquedaPr = () => {
                 </SubCard>
 
             </Grid>
-
-            <ModalNuevoProveedor
-                open={open}
-                onClose={handleClose} />
-            <ModalSubirXML
-                open={openXML}
-                onClose={handleCloseXML}
-            />
-
+          
         </Grid >
 
     );
 }
 
-export default BusquedaPr;
+export default BuscarComprobantes;

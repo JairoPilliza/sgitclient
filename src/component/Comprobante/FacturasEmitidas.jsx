@@ -23,7 +23,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
-import BuscarFactura from 'component/BuscarFactura';
+import BuscarFactura from 'component/BuscarComprobantes';
+import BuscarComprobantes from 'component/BuscarComprobantes';
 
 
 const  FacturasEmitidas = () =>  {
@@ -64,7 +65,7 @@ const  FacturasEmitidas = () =>  {
                 <Divider />
                 <CardContent>
                     
-                <BuscarFactura/>
+                <BuscarComprobantes/>
                 </CardContent>
 
 

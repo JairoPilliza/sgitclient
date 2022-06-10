@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import AddIcon from '@mui/icons-material/Add';
 import CardActions from '@mui/material/CardActions';
-
+import EditIcon from '@mui/icons-material/Edit';
 import ModalNuevoProveedor from "component/ModalProveedor";
 import BusquedaPr from "component/BusquedaProveedor";
 
@@ -42,9 +42,38 @@ const Ticket = () => {
                     <Grid item xs={12} sm={12}>
 
                         <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-                            <br />
-                            <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                <Grid container spacing={2} rowSpacing={2} xs={12} md={6} sm={12} lg={6}  >
+
+                            <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
+                                <Grid container item xs={12} md={12} sm={12} lg={12}>
+                                    <Grid item xs={12} md={12} sm={12} lg={12} >
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={12} md={6} sm={12} lg={6}>
+                                                <Button aria-label="settings" style={{ width: "100%" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
+                                                    Editar Proveedor
+                                                </Button>
+                                            </Grid>
+                                            <Grid item xs={12} md={6} sm={12} lg={6}>
+
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <Grid container item spacing={2} rowSpacing={2} xs={12} md={6} sm={12} lg={6}  >
+
+                                    
+                                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
+                                    </Grid>
+                                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                                        <TextField id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
+                                    </Grid>
+                                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                                        <TextField id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("numeroAutorizacion")} />
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container spacing={2} item xs={12} md={6} sm={12} lg={6}>
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <FormControl sx={{ minWidth: "1005" }} style={{ width: "100%" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sustento Tributario:</InputLabel>
@@ -62,68 +91,58 @@ const Ticket = () => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} md={12} sm={12} lg={12}>
-                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
-                                    </Grid>
-                                    <Grid item xs={12} md={12} sm={12} lg={12}>
-                                        <TextField id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
-                                    </Grid>
-                                    <Grid item xs={12} md={12} sm={12} lg={12}>
-                                        <TextField id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("numeroAutorizacion")} />
-                                    </Grid>
-                                </Grid>
+                                    <Grid item xs={12} md={12} sm={12} lg={12} >
+                                        <Grid container spacing={2} >
+                                            <Grid item xs={12} md={3} sm={12} lg={3}>
+                                                <small style={{ width: "100%" }} ><b>N° Ticket:</b></small>
+                                            </Grid>
+                                            <Grid item xs={12} md={3} sm={12} lg={3}>
+                                                <TextField
+                                                    id="emision"
+                                                    name="emision"
+                                                    label="000"
+                                                    style={{ width: "100%" }}
+                                                    {...register("emision")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} md={3} sm={12} lg={3}>
+                                                <TextField
+                                                    id="puntoEmision"
+                                                    name="puntoEmision"
+                                                    label="000 "
+                                                    style={{ width: "100%" }}
+                                                    {...register("puntoEmision")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} md={3} sm={12} lg={3}>
+                                                <TextField
+                                                    id="secuencial"
+                                                    name="secuencial"
+                                                    label="000000000"
+                                                    multiline
+                                                    style={{ width: "100%" }}
+                                                    {...register("secuencial")}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} md={12} sm={12} lg={12}>
+                                                <TextField
 
+                                                    id="fechaEmsion"
+                                                    name="fechaEmsion"
+                                                    label="F. Emisión:"
+                                                    type="date"
 
-                                <Grid item xs={12} md={6} sm={12} lg={6} >
-                                    <Grid container spacing={2} >
-                                        <Grid item xs={12} md={3} sm={12} lg={3}>
-                                            <small style={{ width: "100%" }} ><b>N° Ticket:</b></small>
-                                        </Grid>
-                                        <Grid item xs={12} md={3} sm={12} lg={3}>
-                                            <TextField
-                                                id="emision"
-                                                name="emision"
-                                                label="000"
-                                                style={{ width: "100%" }}
-                                                {...register("emision")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} md={3} sm={12} lg={3}>
-                                            <TextField
-                                                id="puntoEmision"
-                                                name="puntoEmision"
-                                                label="000 "
-                                                style={{ width: "100%" }}
-                                                {...register("puntoEmision")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} md={3} sm={12} lg={3}>
-                                            <TextField
-                                                id="secuencial"
-                                                name="secuencial"
-                                                label="000000000"
-                                                multiline
-                                                style={{ width: "100%" }}
-                                                {...register("secuencial")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} md={12} sm={12} lg={12}>
-                                            <TextField
-
-                                                id="fechaEmsion"
-                                                name="fechaEmsion"
-                                                label="F. Emisión:"
-                                                type="date"
-
-                                                style={{ width: "100%", float: "right" }}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                {...register("fechaEmsion")}
-                                            />
+                                                    style={{ width: "100%", float: "right" }}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    {...register("fechaEmsion")}
+                                                />
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
+
 
                             </Grid>
                         </SubCard>

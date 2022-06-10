@@ -18,7 +18,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const BuscarFactura = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
@@ -49,11 +49,14 @@ const BuscarFactura = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Nro. Factura</TableCell>
-                            <TableCell align="right">Proveedor</TableCell>
-                            <TableCell align="right">Ruc</TableCell>
-                            <TableCell align="right">Fecha Emisión</TableCell>                          
-                            <TableCell align="right">Acciones</TableCell>
+                            <TableCell>#</TableCell>
+                            <TableCell align="right">Número</TableCell>
+                            <TableCell align="right">Razón Social</TableCell>
+                            <TableCell align="right">Ci/Ruc</TableCell>                          
+                            <TableCell align="right">Fecha</TableCell>                          
+                            <TableCell align="right">Iva</TableCell>                          
+                            <TableCell align="right">Total</TableCell>                         
+                            <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody >
@@ -65,12 +68,16 @@ const BuscarFactura = () => {
                                
                             >
                                 <TableCell component="th" scope="row">
-                                    {row.name}
+                                    {row.calories}
                                 </TableCell>
                                 <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
+                                <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>                        
-                                <TableCell align="right"><Button variant="contained"  startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>                        
+                                <TableCell align="right">{row.carbs}</TableCell>                        
+                                <TableCell align="right">{row.carbs}</TableCell>                        
+
+                                <TableCell align="right"><Button variant="contained"  startIcon={<CheckCircleOutlineIcon/>}>Nota de credito</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

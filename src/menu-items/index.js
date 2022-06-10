@@ -6,12 +6,13 @@ import proveedor from './proveedor';
 import configuracion from './configuracion'
 import retencion from './retencion'
 import comprobante from './comprobante';
+import reporte from './reporte';
 
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, pages,configuracion,proveedor,retencion ,comprobante,utilities, other]
+    items: [dashboard, pages,configuracion,proveedor,retencion ,comprobante,reporte, utilities, other]
 };
 
 export default menuItems;

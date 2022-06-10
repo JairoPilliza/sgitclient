@@ -44,22 +44,17 @@ const ModalQr = (props) => {
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
-                maxWidth="xs"
+                maxWidth="sm"
             >
                 <DialogTitle id="scroll-dialog-title" > Compartir</DialogTitle>
 
                 <DialogContent dividers={scroll === 'paper'}>
                     <DialogContentText
-                        id="scroll-dialog-description"
-                      
+                        id="scroll-dialog-description"                      
                         tabIndex={-1}
                     >
-
                         <Card container style={{ textAlign: "center" }} >
-
-
-                            <QrCode2Icon />
-
+                            <QrCode2Icon style={{width:"250", height:"250"}} />
                         </Card>
                     </DialogContentText>
                 </DialogContent>
