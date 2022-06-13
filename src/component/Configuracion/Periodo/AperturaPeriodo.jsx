@@ -15,6 +15,9 @@ import Paper from '@mui/material/Paper';
 import { Button, Card, CardContent, CardHeader, Divider } from '@mui/material';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import ModalAperturaPeriodo from './ModalAperturaPeriodo';
+import ClearIcon from '@mui/icons-material/Clear';
+import ArticleIcon from '@mui/icons-material/Article';
+
 
 const AperturaPeriodo = () => {
 
@@ -82,12 +85,9 @@ const AperturaPeriodo = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" startIcon={<EditIcon />}>
+                                            <Button variant="contained" size="small" ><ClearIcon /></Button>
 
-                                            </Button>
-                                            <Button variant="contained" startIcon={<DeleteIcon />} >
-
-                                            </Button>
+                                            <Button variant="contained" size="small" ><ArticleIcon /></Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

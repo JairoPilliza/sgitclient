@@ -7,12 +7,13 @@ import configuracion from './configuracion'
 import retencion from './retencion'
 import comprobante from './comprobante';
 import reporte from './reporte';
+import proyecto from './proyecto';
 
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, pages,configuracion,proveedor,retencion ,comprobante,reporte, utilities, other]
+    items: [dashboard, pages,configuracion,proveedor,retencion,proyecto ,comprobante,reporte, utilities, other]
 };
 
 export default menuItems;

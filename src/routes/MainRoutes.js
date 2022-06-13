@@ -26,6 +26,10 @@ const AnulacionRetencion  = Loadable(lazy(() => import('component/Retencion/Anul
 const Retenciones = Loadable(lazy(() => import('component/Retencion/Retenciones')));
 const RetencionNoAut = Loadable(lazy(() => import('component/Retencion/RetencionNoAut')));
 
+//Proyecto
+const Proyecto = Loadable(lazy(() => import('component/Proyecto/Proyecto')));
+
+
 
 
 //ATS
@@ -118,6 +122,10 @@ const MainRoutes = {
         {
             path: '/Retencion/RetencionNoAut',
             element: <RetencionNoAut />
+        },
+        {
+            path: '/Proyecto/Proyecto',
+            element: <Proyecto />
         },
       
         {

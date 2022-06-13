@@ -25,7 +25,8 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
 import ModalAperturaEntidad from './ModalAperturaEntidad';
 import { gridSpacing } from 'store/constant';
-
+import ClearIcon from '@mui/icons-material/Clear';
+import ArticleIcon from '@mui/icons-material/Article';
 const Entidad = () => {
     const [value, setValue] = React.useState('1');
 
@@ -94,9 +95,8 @@ const Entidad = () => {
                                                 <TableCell align="center">{row.carbs}</TableCell>                                               
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">
-                                                    <Button variant="contained" startIcon={<EditIcon />} size="small" />
-
-                                                    <Button variant="contained" startIcon={<DeleteIcon />} size="small" />
+                                                    <Button variant="contained" size="small" ><ClearIcon /></Button>
+                                                    <Button variant="contained" size="small" ><ArticleIcon /></Button>
 
                                                 </TableCell>
                                             </TableRow>
