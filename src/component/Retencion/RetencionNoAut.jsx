@@ -98,8 +98,8 @@ const  RetencionesNoAut = () =>  {
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" startIcon={<LocalPrintshopIcon/>}></Button> 
-                                <Button variant="contained" startIcon={<MailOutlineIcon/>}></Button></TableCell>
+                                <TableCell align="right"><Button variant="contained" ><LocalPrintshopIcon/></Button> 
+                                <Button variant="contained"> <MailOutlineIcon/></Button></TableCell>
                             </TableRow> 
                         ))}
                     </TableBody>

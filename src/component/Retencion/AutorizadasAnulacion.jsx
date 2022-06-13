@@ -74,7 +74,7 @@ const AutorizadasAnulacion = () => {
                             <TableCell align="center">{row.protein}</TableCell>
                             
                             <TableCell align="center">        
-                                <Button variant="contained" startIcon={<LocalPrintshopIcon />}>
+                                <Button variant="contained"> <LocalPrintshopIcon />
                                 </Button>
                             </TableCell>
                         </TableRow>

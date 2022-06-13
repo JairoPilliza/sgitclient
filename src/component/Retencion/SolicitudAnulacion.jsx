@@ -57,7 +57,7 @@ const SolcitudAnulacion = () => {
                         <TableCell align="center">Proveedor</TableCell>
                         <TableCell align="center">Ver Pdf</TableCell>
                         <TableCell align="center">Acciones</TableCell>
-                        
+
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -74,18 +74,19 @@ const SolcitudAnulacion = () => {
                             <TableCell align="center">{row.protein}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
                             <TableCell align="center">{row.protein}</TableCell>
-                            <TableCell align="center"><Button variant="contained" startIcon={<LocalPrintshopIcon />} size="small">
+                            <TableCell align="center"><Button variant="contained" size="small">
+                                <LocalPrintshopIcon />
                             </Button>   </TableCell>
                             <TableCell align="center" >
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="position"
-                                    >
-                                        <FormControlLabel value="enProceso" control={<Radio />} label="En proceso" labelPlacement="top" />
-                                        <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
-                                        <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
-                                    </RadioGroup>                   
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="position"
+                                >
+                                    <FormControlLabel value="enProceso" control={<Radio />} label="En proceso" labelPlacement="top" />
+                                    <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
+                                    <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
+                                </RadioGroup>
                             </TableCell>
                         </TableRow>
                     ))}
