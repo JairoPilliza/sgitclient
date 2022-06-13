@@ -65,8 +65,8 @@ const ProfileSection = () => {
         }
         setOpen(false);
     };
-
-    const handleListItemClick = (event, index, route = '/free/Configuracion/AperturaPeriodo') => {
+/* url llevaba free */
+    const handleListItemClick = (event, index, route = '/Configuracion/AperturaPeriodo') => {
         setSelectedIndex(index);
         handleClose(event);
 
@@ -194,7 +194,8 @@ const ProfileSection = () => {
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 1}
-                                                    onClick={(event) => handleListItemClick(event, 1, '/free/Configuracion/Usuario/MiPerfil')}
+                                                    /* url llevaba free */
+                                                    onClick={(event) => handleListItemClick(event, 1, '/Configuracion/Usuario/MiPerfil')}
                                                 >
                                                     <ListItemIcon>
                                                         <IconUser stroke={1.5} size="1.3rem" />

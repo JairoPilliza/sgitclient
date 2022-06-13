@@ -48,7 +48,12 @@ const Breadcrumbs = ({ card, divider, icon, icons, maxItems, navigation, rightAl
                 if (collapse.type && collapse.type === 'collapse') {
                     getCollapse(collapse);
                 } else if (collapse.type && collapse.type === 'item') {
+                    // console.log("url: "+collapse.url)
+                    // console.log("base name: "+config.basename)
+                    // console.log("document.location.pathname: "+ document.location.pathname)
+                    // console.log("config.basename + collapse.url: " +config.basename + collapse.url)
                     if (document.location.pathname === config.basename + collapse.url) {
+                        //alert("error, no deberia entrar, add jsonMC")
                         setMain(menu);
                         setItem(collapse);
                     }

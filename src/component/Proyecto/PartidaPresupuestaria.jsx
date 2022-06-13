@@ -30,7 +30,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from "@mui/system";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const ModalNuevoProyecto = (props) => {
+const PartidaPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
 
     const [open, setOpen] = React.useState(false);
@@ -223,4 +223,4 @@ const ModalNuevoProyecto = (props) => {
     );
 }
 
-export default ModalNuevoProyecto;
+export default PartidaPresupuestaria;
