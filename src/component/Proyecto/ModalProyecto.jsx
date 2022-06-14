@@ -1,34 +1,18 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardHeader, Grid, Link, Stack, Typography } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
-// project imports
-import SubCard from 'ui-component/cards/SubCard';
-
 import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import SearchIcon from '@mui/icons-material/Search';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import AddIcon from '@mui/icons-material/Add';
-import Paper from '@mui/material/Paper';
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Box } from "@mui/system";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 const ModalNuevoProyecto = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
@@ -45,25 +29,6 @@ const ModalNuevoProyecto = (props) => {
         setOpen(false);
     };
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
-
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 1000,
-        p: 4,
-    };
 
     const TAX_RATE = 0.07;
 
@@ -113,14 +78,11 @@ const ModalNuevoProyecto = (props) => {
             >
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogTitle id="scroll-dialog-title">Registrar Proyecto - Departamento</DialogTitle>
-
                     <DialogContent dividers={scroll === 'paper'}>
                         <DialogContentText
                             id="scroll-dialog-description"
-                            ref={descriptionElementRef}
                             tabIndex={-1}
                         >
-
                             <Card container style={{ textAlign: "center" }} >
                                 <br />
                                 <Grid container spacing={2}>

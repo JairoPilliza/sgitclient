@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Divider, Grid, Link } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import { useForm } from "react-hook-form";
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -7,7 +7,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -33,15 +33,11 @@ const NotaVenta = (props) => {
             <Grid container spacing={gridSpacing} >
                 <Grid item xs={12} sm={12}>
                     <BusquedaPr />
-
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <form>
                         <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }}
                         >
-
-
-
                             <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                                 <Grid container item xs={12} md={12} sm={12} lg={12}>
                                     <Grid item xs={12} md={12} sm={12} lg={12} >
@@ -160,6 +156,47 @@ const NotaVenta = (props) => {
 
                         <div>
                             <form>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="departamento"
+                                                name="departamento"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Departamento"
+                                                {...register("departamento")}
+                                            >
+                                                <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                                <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                                <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%', float: "left" }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="subcuenta"
+                                                name="subcuenta"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Subcuenta"
+                                                {...register("subcuenta")}
+                                            >
+                                                <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                                <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                                <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
+
                                 <TableContainer >
                                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                         <TableHead>
@@ -230,6 +267,7 @@ const NotaVenta = (props) => {
                         </div>
 
                         <div >
+
                             <TableContainer >
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                     <TableHead>
@@ -250,44 +288,7 @@ const NotaVenta = (props) => {
                         <br></br>
                         <from>
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="departamento"
-                                            name="departamento"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Departamento"
-                                            {...register("departamento")}
-                                        >
-                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
-                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
-                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
 
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="subcuenta"
-                                            name="subcuenta"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Subcuenta"
-                                            {...register("subcuenta")}
-                                        >
-                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
-                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
-                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
 
                                 <Grid item xs={12} md={6} sm={12} lg={6} />
                                 <Grid item xs={12} md={6} sm={12} lg={6}>

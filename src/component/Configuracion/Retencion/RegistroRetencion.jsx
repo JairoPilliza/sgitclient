@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useForm } from "react-hook-form"
-import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,10 +10,8 @@ import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider, IconButton, Stack, TextField } from '@mui/material';
-
+import { Button, Card, CardContent, CardHeader, Divider, Grid } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import ModalRegistroRetencion from './ModalRegistroRetencion';
 
 const RegistroRetencion = () => {
@@ -32,7 +28,7 @@ const RegistroRetencion = () => {
         setOpen(false);
     };
 
-    
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -52,11 +48,11 @@ const RegistroRetencion = () => {
                 <Divider></Divider>
 
                 <CardContent>
-                    <Stack direction="row" spacing={2}>
-                        <Button variant='contained' startIcon={<AddCircleOutlineOutlinedIcon />} onClick={handleClickOpen('paper')}>  Crear</Button>
-                       
-                    </Stack>
-
+                    <Grid container>
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Button variant='contained' startIcon={<AddCircleOutlineOutlinedIcon />} onClick={handleClickOpen('paper')}>  Crear</Button>
+                        </Grid>
+                    </Grid>
 
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="caption table">
@@ -92,12 +88,16 @@ const RegistroRetencion = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" startIcon={<EditIcon />}>
-
-                                            </Button>
-                                            <Button variant="contained" startIcon={<DeleteIcon />} >
-
-                                            </Button>
+                                            <Grid container spacing={2}>
+                                                <Grid item>
+                                                    <Button variant="contained" > <EditIcon />
+                                                    </Button>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Button variant="contained" ><DeleteIcon />
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
                                         </TableCell>
                                     </TableRow>
                                 ))}
@@ -107,8 +107,8 @@ const RegistroRetencion = () => {
                 </CardContent>
             </Card >
             <ModalRegistroRetencion
-            open={open}
-            onClose={handleClose}/>
+                open={open}
+                onClose={handleClose} />
         </Box>
     );
 }

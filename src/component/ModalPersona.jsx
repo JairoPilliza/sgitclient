@@ -1,23 +1,19 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, CardHeader, Grid, Link, Stack } from '@mui/material';
+import { Card, Grid} from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imp
 
 import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Button from "@mui/material/Button";
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useFormik } from 'formik';
-
 
 const ModalNuevaPersona = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();

@@ -1,21 +1,16 @@
 import * as React from 'react';
 import { useForm } from "react-hook-form"
-import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider, Grid, IconButton, Stack, TextField } from '@mui/material';
-
+import { Button, Card, CardContent, CardHeader, Divider, Grid, IconButton, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import ModalUsuario from './ModalUsuario';
 const Usuario = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
@@ -31,7 +26,7 @@ const Usuario = () => {
         setOpen(false);
     };
 
-    
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -51,7 +46,7 @@ const Usuario = () => {
                 <Divider></Divider>
 
                 <CardContent>
-                <Grid container spacing={2}>
+                    <Grid container spacing={2}>
                         <Grid item xs={12} sm={12} md={6} lg={6}>
                             <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Agregar Usuario </Button>
                         </Grid>
@@ -83,7 +78,6 @@ const Usuario = () => {
                                     <TableCell align="center">Fecha Registro</TableCell>
                                     <TableCell align="center">Estado</TableCell>
                                     <TableCell align="center">Fecha Baja</TableCell>
-
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -101,9 +95,13 @@ const Usuario = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" size='small' onClick={handleClickOpen('paper')}  >
-                                            <EditIcon />
-                                            </Button>                                           
+                                            <Grid container>
+                                                <Grid item>
+                                                    <Button variant="contained" size='small' onClick={handleClickOpen('paper')}  >
+                                                        <EditIcon />
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
                                         </TableCell>
                                     </TableRow>
                                 ))}
@@ -113,8 +111,8 @@ const Usuario = () => {
                 </CardContent>
             </Card >
             <ModalUsuario
-            open={open}
-            onClose={handleClose}/>
+                open={open}
+                onClose={handleClose} />
         </Box>
     );
 }

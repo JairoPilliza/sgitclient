@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useForm } from "react-hook-form"
-import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,9 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider, IconButton, Stack, TextField } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Divider, Grid } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 
@@ -33,7 +30,7 @@ const SolicitudUsuario = () => {
             <Card>
                 <CardHeader
                     avatar={
-                        <PersonIcon  />
+                        <PersonIcon />
                     }
                     title="Solicitudes de Usuarios"
                 />
@@ -67,12 +64,18 @@ const SolicitudUsuario = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" startIcon={<LockIcon />}>
+                                            <Grid container spacing={2}>
+                                                <Grid item >
+                                                    <Button variant="contained"><LockIcon />
+                                                    </Button>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Button variant="contained"  ><DeleteIcon />
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
 
-                                            </Button>
-                                            <Button variant="contained" startIcon={<DeleteIcon />} >
 
-                                            </Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

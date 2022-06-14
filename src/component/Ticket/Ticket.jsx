@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { FormControl, Grid, InputLabel, Link, MenuItem, Select } from '@mui/material';
+import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { useForm } from "react-hook-form"
 // project imports
@@ -8,7 +8,6 @@ import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,33 +17,59 @@ import TableRow from '@mui/material/TableRow';
 import AddIcon from '@mui/icons-material/Add';
 import CardActions from '@mui/material/CardActions';
 import EditIcon from '@mui/icons-material/Edit';
-import ModalNuevoProveedor from "component/ModalProveedor";
 import BusquedaPr from "component/BusquedaProveedor";
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const Ticket = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [showTableDatosTicket, setShowTableDatosTicket] = useState(false);
     const handleOpen = () => setOpen(true);
 
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
+    }
+    var tableDatosTicket;
+
+    if (showTableDatosTicket) {
+        tableDatosTicket = <TableContainer >
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+
+                <TableBody>
+
+                    <TableCell align="center" style={{ width: "100px" }}>3</TableCell>
+                    <TableCell colSpan={6} align="center" style={{ width: "300px" }}>Super</TableCell>
+                    <TableCell colSpan={1}  align="center" style={{ width: "100px" }}>$ 2.74</TableCell>
+                    <TableCell align="center" style={{ width: "100px" }}>$ 8.93</TableCell>
+                    <TableCell >
+                        <Grid container spacing={2}>
+
+                            <Grid item>
+                                <Button variant="contained" onClick={() => setShowTableDatosTicket(false)}><DeleteForeverIcon /></Button>
+                            </Grid>
+                        </Grid>
+
+
+                    </TableCell>
+
+
+                </TableBody>
+            </Table>
+        </TableContainer>;
 
     }
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <MainCard title="Registrar Ticket">
-                <Grid container spacing={gridSpacing} >
+                <Grid container spacing={gridSpacing}>
                     <Grid item xs={12} sm={12}>
                         <BusquedaPr />
                     </Grid>
                     <Grid item xs={12} sm={12}>
-
-                        <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
-
+                        <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }}>
                             <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
                                 <Grid container item xs={12} md={12} sm={12} lg={12}>
                                     <Grid item xs={12} md={12} sm={12} lg={12} >
                                         <Grid container spacing={2}>
@@ -60,8 +85,6 @@ const Ticket = () => {
                                     </Grid>
                                 </Grid>
                                 <Grid container item spacing={2} rowSpacing={2} xs={12} md={6} sm={12} lg={6}  >
-
-                                    
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
                                     </Grid>
@@ -142,15 +165,50 @@ const Ticket = () => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-
-
                             </Grid>
                         </SubCard>
-
                     </Grid>
                     <Grid item xs={12} sm={12}>
-                        <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                        <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }} >
                             <div>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="departamento"
+                                                name="departamento"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Departamento"
+                                                {...register("departamento")}
+                                            >
+                                                <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                                <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                                <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="subcuenta"
+                                                name="subcuenta"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Subcuenta"
+                                                {...register("subcuenta")}
+                                            >
+                                                <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                                <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                                <MenuItem value={"Gastos"}>Gastos</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
                                 <from>
                                     <TableContainer >
                                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -181,6 +239,7 @@ const Ticket = () => {
                                                         id="descripcion"
                                                         name="descripcion"
                                                         style={{ width: "300px" }}
+                                                        multiline
                                                         InputLabelProps={{
                                                             shrink: true
                                                         }}
@@ -211,7 +270,7 @@ const Ticket = () => {
                                                         {...register("total")} />
                                                 </TableCell>
                                                 <TableCell align="center">
-                                                    <Button variant="contained">
+                                                    <Button variant="contained" onClick={() => setShowTableDatosTicket(true)}>
                                                         <AddIcon />
                                                     </Button>
                                                 </TableCell>
@@ -220,59 +279,21 @@ const Ticket = () => {
                                     </TableContainer>
                                 </from>
                             </div>
-
+                            <div>
+                                {tableDatosTicket}
+                            </div>
                             <br></br>
-
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="departamento"
-                                            name="departamento"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Departamento"
-                                            {...register("departamento")}
-                                        >
-                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
-                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
-                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
 
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="subcuenta"
-                                            name="subcuenta"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Subcuenta"
-                                            {...register("subcuenta")}
-                                        >
-                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
-                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
-                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6} />
                                 <Grid item xs={12} md={6} sm={12} lg={6} >
                                     <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" InputProps={{
                                         readOnly: true,
                                         type: "number"
-
                                     }} style={{ width: "100%" }}
                                         {...register("valorTotal")} />
                                 </Grid>
                             </Grid>
-
                             <CardActions >
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} md={6} sm={12} lg={6} >
@@ -287,7 +308,6 @@ const Ticket = () => {
                                     </Grid>
                                 </Grid>
                             </CardActions>
-
                         </SubCard>
                     </Grid>
                 </Grid >

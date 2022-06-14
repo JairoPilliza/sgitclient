@@ -1,16 +1,9 @@
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
 import MainCard from 'ui-component/cards/MainCard';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-
 import { Divider } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -18,12 +11,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
-import BuscarRetencion from './BuscarRetencion';
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 

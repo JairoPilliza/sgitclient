@@ -4,10 +4,7 @@ import { useForm } from "react-hook-form"
 import MainCard from 'ui-component/cards/MainCard';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,14 +12,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from "@mui/material/TextField";
-import Divider from '@mui/material/Divider';
-import { Grid, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import ModalNuevoProveedor from "component/ModalProveedor";
 import { gridSpacing } from "store/constant";
 import ModalNuevoProyecto from "./ModalProyecto";
 
@@ -63,7 +58,7 @@ const Proyecto = () => {
                                 <Grid item xs={12} sm={12} md={6} lg={6}>
                                     <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Registrar Proyecto</Button>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                {/* <Grid item xs={12} sm={12} md={6} lg={6}>
                                     <TextField
                                         id="outlined-basic"
                                         label="Razón Social, Nombre o Ruc"
@@ -74,14 +69,10 @@ const Proyecto = () => {
                                     <IconButton type="submit" sx={{ p: '10px' }}  aria-label="search">
                                         <SearchIcon />
                                     </IconButton>
-                                </Grid>
+                                </Grid> */}
                             </Grid>
-
-
-
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label="caption table">
-
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>#</TableCell>
@@ -105,19 +96,24 @@ const Proyecto = () => {
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">
-                                                    <Button variant="contained">
-                                                        <EditIcon />
-                                                    </Button>
-                                                    <Button variant="contained" >
-                                                        <DeleteIcon />
-                                                    </Button>
+                                                    <Grid container spacing={2}>
+                                                        <Grid item>
+                                                            <Button variant="contained" >
+                                                                <EditIcon />
+                                                            </Button>
+                                                        </Grid>
+                                                        <Grid item>
+                                                            <Button variant="contained" >
+                                                                <DeleteIcon />
+                                                            </Button>
+                                                        </Grid>
+                                                    </Grid>
                                                 </TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
-
                         </CardContent>
                     </Card>
                     <ModalNuevoProyecto

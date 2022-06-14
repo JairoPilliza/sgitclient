@@ -1,10 +1,5 @@
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
 import MainCard from 'ui-component/cards/MainCard';
 
 import Card from '@mui/material/Card';
@@ -18,8 +13,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
@@ -80,7 +73,7 @@ const Entidad = () => {
                                             <TableCell align="center">Entidad</TableCell>
                                             <TableCell align="center">Fecha Apertura</TableCell>
                                             <TableCell align="center">Fecha Cierre</TableCell>
-                                            <TableCell align="center">Estado</TableCell>                                           
+                                            <TableCell align="center">Estado</TableCell>
                                             <TableCell align="center">Acciones</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -92,12 +85,17 @@ const Entidad = () => {
                                                 </TableCell>
                                                 <TableCell align="center">{row.calories}</TableCell>
                                                 <TableCell align="center">{row.fat}</TableCell>
-                                                <TableCell align="center">{row.carbs}</TableCell>                                               
+                                                <TableCell align="center">{row.carbs}</TableCell>
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">
-                                                    <Button variant="contained" size="small" ><ClearIcon /></Button>
-                                                    <Button variant="contained" size="small" ><ArticleIcon /></Button>
-
+                                                    <Grid container spacing={2} >
+                                                        <Grid item>
+                                                            <Button variant="contained" size="small" ><ClearIcon /></Button>
+                                                        </Grid>
+                                                        <Grid item>
+                                                            <Button variant="contained" size="small" ><ArticleIcon /></Button>
+                                                        </Grid>
+                                                    </Grid>
                                                 </TableCell>
                                             </TableRow>
                                         ))}

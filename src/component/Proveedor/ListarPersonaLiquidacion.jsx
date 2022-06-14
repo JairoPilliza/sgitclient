@@ -1,44 +1,20 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, IconButton, Link } from '@mui/material';
-import MuiTypography from '@mui/material/Typography';
+import { Grid, IconButton } from '@mui/material';
 import { useForm } from "react-hook-form"
-// project imports
-import SubCard from 'ui-component/cards/SubCard';
 import MainCard from 'ui-component/cards/MainCard';
-import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
-import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import CachedIcon from '@mui/icons-material/Cached';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import AddIcon from '@mui/icons-material/Add';
-import Divider from '@mui/material/Divider';
-import CardActions from '@mui/material/CardActions';
-import { Stack } from "@mui/material";
-import ModalRetencion from "component/ModalRetencion";
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import TablePagination from '@mui/material/TablePagination';
 import SearchIcon from '@mui/icons-material/Search';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import ModalNuevaPersona from "component/ModalPersona";
 
 const ListarPersonaLiquidacion = () => {

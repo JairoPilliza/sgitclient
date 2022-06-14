@@ -1,12 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Divider, Grid, Link } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
-// project imports
-import SubCard from 'ui-component/cards/SubCard';
 import { gridSpacing } from 'store/constant';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
 import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ModalNuevoProveedor from "./ModalProveedor";
@@ -14,11 +11,9 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ModalSubirXML from "./ModalSubirXML";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
 const BusquedaPr = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
@@ -48,16 +43,12 @@ const BusquedaPr = () => {
         setOpenXML(false);
     };
 
-    var botonXml;
-    if (muestraXML) {
-        botonXml = <Button onClick={handleClickOpenXML('paper')} variant="outlined" startIcon={<FileUploadIcon />}>
-            XML
-        </Button>;
-    }
+
 
     var showTable;
     if (table) {
-        showTable =
+        showTable = <div>
+            <Divider />
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
 
@@ -77,48 +68,40 @@ const BusquedaPr = () => {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>;
+            </TableContainer>
+            <Divider />
+        </div>;
     }
-
 
     return (
         <Grid container spacing={gridSpacing} >
             <Grid item xs={12} sm={12} lg={12} md={12} >
-                <SubCard className="col-12" title="Busqueda del proveedor" style={{ textAlign: "center" }} >
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <TextField
-                                required
-                                id="outlined-basic"
-                                label="Razón Social / Ruc:"
-                                placeholder="Ingrese RUC o Razon Social"
-                                style={{ width: "100%" }}
-                                {...register("razonSocial")}
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={2} sm={12} lg={3} >
-                            <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
-                                Buscar
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12} md={2} sm={12} lg={3}>
-                            <Button onClick={handleOpen} variant="outlined" startIcon={<AddCircleIcon />}>
-                                Nuevo
-                            </Button>
-                        </Grid>
-                        {/* <Grid item xs={12} md={2} sm={12} lg={2}>
-                            {botonXml}
-                        </Grid> */}
-
-                    </Grid><br></br>
-                    <Divider />
-                    {
-                        showTable
-                    }
-                </SubCard>
-
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <TextField
+                            required
+                            id="outlined-basic"
+                            label="Buscar Proveedor:"
+                            placeholder="Ingrese RUC o Razon Social"
+                            style={{ width: "100%" }}
+                            {...register("razonSocial")}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={2} sm={12} lg={3} >
+                        <Button variant="outlined" style={{ width: "100%" }} startIcon={<SearchIcon />} onClick={e => setTable(true)}>
+                            Buscar
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} md={2} sm={12} lg={3}>
+                        <Button onClick={handleOpen} variant="outlined" style={{ width: "100%" }} startIcon={<AddCircleIcon />}>
+                            Nuevo
+                        </Button>
+                    </Grid>
+                </Grid><br></br>
+                {
+                    showTable
+                }
             </Grid>
-
             <ModalNuevoProveedor
                 open={open}
                 onClose={handleClose} />

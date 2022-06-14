@@ -4,11 +4,9 @@ import MainCard from 'ui-component/cards/MainCard';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import { Divider, FormControl, Grid, Input, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Divider, FormControl, Grid, InputLabel, MenuItem, Select} from '@mui/material';
 import { Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-
 
 const XmlCompra = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();

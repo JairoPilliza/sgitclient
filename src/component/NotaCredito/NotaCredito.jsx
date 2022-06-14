@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { FormControl, Grid, InputLabel, Link, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { FormControl, FormControlLabel, Grid, InputLabel, MenuItem, RadioGroup, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -8,20 +8,20 @@ import { gridSpacing } from 'store/constant';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import CachedIcon from '@mui/icons-material/Cached';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-
 import CardActions from '@mui/material/CardActions';
 import TipoNotaCredito from "component/TipoNotaCredito";
 import BuscarFactura from "component/BuscarFactura";
-import { Formik } from "formik";
-
-
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const NotaCredito = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [buscadorFactura, setBuscadorFactura] = useState(false);
+    const [showTableDtNotaCredito, setShowTableDtNotaCredito] = useState(false);
+    const [disable, setDisable] = useState(true);
     var muestraBuscador;
     if (!buscadorFactura) {
         muestraBuscador = <TipoNotaCredito handleEvent={setBuscadorFactura} />;
@@ -30,12 +30,153 @@ const NotaCredito = () => {
         muestraBuscador = <BuscarFactura />;
     }
 
+    const devolucion = () => {
+        setDisable(true);
+        setShowTableDtNotaCredito(true);
+
+    }
+    const descuento = () => {
+        setDisable(false);
+        setShowTableDtNotaCredito(false);
+    }
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
 
     }
 
+    var tableDetalleNotaCredito;
+    if (showTableDtNotaCredito) {
+        tableDetalleNotaCredito =
+            <div>
+                <div>
+                    <form >
+                        <TableContainer >
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+
+                                        <TableCell align="center" >Grava Iva</TableCell>
+                                        <TableCell align="center">Cant.</TableCell>
+                                        <TableCell align="center">Detalle</TableCell>
+                                        <TableCell align="center">Precio Unit.</TableCell>
+                                        <TableCell align="center">Total</TableCell>
+                                        <TableCell align="center"></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableCell>
+                                        <center>
+                                            <Checkbox
+                                                id="grabaIva"
+                                                name="grabaIva"
+                                                defaultChecked
+                                                style={{
+                                                    transform: "scale(1)",
+
+                                                }}
+                                                {...register("grabaIva")} />
+                                        </center>
+                                    </TableCell>
+                                    <TableCell>
+                                        <TextField
+                                            id="cantidad"
+                                            name="cantidad"
+                                            type="number"
+                                            style={{ width: "50px" }}
+                                            InputLabelProps={{
+                                                shrink: true
+                                            }}
+                                            variant="standard"
+                                            {...register("cantidad")} />
+                                    </TableCell>
+                                    <TableCell>
+                                        <TextField
+                                            id="detalle"
+                                            name="detalle"
+                                            style={{ width: "300px" }}
+                                            InputLabelProps={{
+                                                shrink: true
+                                            }}
+                                            variant="standard"
+                                            {...register("detalle")} />
+                                    </TableCell>
+                                    <TableCell>
+                                        <TextField
+                                            id="precioUnit"
+                                            name="precioUnit"
+                                            type="number"
+                                            style={{ width: "70px" }}
+                                            InputLabelProps={{
+                                                shrink: true
+                                            }}
+                                            variant="standard"
+                                            {...register("precioUnit")} />
+                                    </TableCell>
+                                    <TableCell>
+                                        <TextField
+                                            id="total"
+                                            name="total"
+                                            style={{ width: "70px" }}
+                                            InputProps={{
+                                                readOnly: true
+                                            }}
+                                            variant="standard"
+                                            {...register("total")} />
+                                    </TableCell>
+                                    <TableCell align="center">
+                                        <Button variant="contained" >
+                                            <AddIcon />
+                                        </Button>
+                                    </TableCell>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </form>
+                </div>
+
+                <div >
+                    <TableContainer >
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead style={{ backgroundColor: "skyblue", color: "black" }}>
+                                <TableRow>
+                                    <TableCell>#</TableCell>
+                                    <TableCell>Grava Iva</TableCell>
+                                    <TableCell align="center">Cantidad</TableCell>
+                                    <TableCell align="center">Descripción</TableCell>
+                                    <TableCell align="center">Precio Unit.</TableCell>
+                                    <TableCell align="center">Total</TableCell>
+                                    <TableCell align="center">Opciones</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                <TableCell>1</TableCell>
+                                <TableCell>GRAVA IVA</TableCell>
+                                <TableCell>3</TableCell>
+                                <TableCell>Super</TableCell>
+                                <TableCell>$ 2.74</TableCell>
+                                <TableCell>$ 8.93</TableCell>
+                                <TableCell>
+                                    <Grid container spacing={2}>
+                                        <Grid item>
+                                            <Button variant="contained"><EditIcon /></Button>
+                                        </Grid>
+                                        <Grid item>
+                                            <Button variant="contained"><DeleteForeverIcon /></Button>
+
+                                        </Grid>
+                                    </Grid>
+
+
+                                </TableCell>
+
+
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>;
+            </div>
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -140,7 +281,8 @@ const NotaCredito = () => {
                                     <Card >
                                         <CardHeader
                                             title="Datos de la Factura"
-                                            style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
+                                            style={{ backgroundColor: "yellow", height: "50px" }}
+
                                         />
 
                                         <CardContent >
@@ -217,8 +359,48 @@ const NotaCredito = () => {
                     </Grid>
 
                     <Grid item xs={12} md={12} sm={12} lg={12}>
-                        <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
+                        <SubCard className="col-12" container title="Detalle de Nota de credito" style={{ textAlign: "center" }} >
                             <div>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="departamento"
+                                                name="departamento"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Departamento"
+                                                {...register("departamento")}
+                                            >
+                                                <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
+                                                <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
+                                                <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-helper-label"
+                                                id="subcuenta"
+                                                name="subcuenta"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Subcuenta"
+                                                {...register("subcuenta")}
+                                            >
+                                                <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
+                                                <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
+                                                <MenuItem value={"Gastos"}>Gastos</MenuItem>
+
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
                                 <Grid container>
                                     <Grid item xs={12} md={6} sm={12} lg={6}>
                                         <center>
@@ -227,7 +409,8 @@ const NotaCredito = () => {
                                                 name="devolucion"
                                                 style={{
                                                     transform: "scale(1)",
-                                                }}    {...register("devolucion")} />
+                                                }}    {...register("devolucion")}
+                                                onClick={() => devolucion()} />
 
                                             <small>Devolucion</small>
                                         </center>
@@ -236,14 +419,16 @@ const NotaCredito = () => {
                                         <center>
                                             <Checkbox
                                                 id="descuento"
-                                                name="descuento"
+                                                name="devolucion"
                                                 style={{
                                                     transform: "scale(1)",
                                                 }}
-                                                {...register("descuento")} />
+                                                {...register("descuento")}
+                                                onClick={() => descuento()} />
                                             <small>Descuento</small>
                                         </center>
                                     </Grid>
+                                   
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <Typography variant="h5" gutterBottom component="div">
                                             Total Factura Restante:
@@ -251,65 +436,31 @@ const NotaCredito = () => {
                                     </Grid>
                                 </Grid>
                             </div>
+                            {
+                                tableDetalleNotaCredito
+                            }
                             <br></br>
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="departamento"
-                                            name="departamento"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Departamento"
-                                            {...register("departamento")}
-                                        >
-                                            <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
-                                            <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
-                                            <MenuItem value={"Esmeraldas"}>Esmeraldas</MenuItem>
 
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-helper-label"
-                                            id="subcuenta"
-                                            name="subcuenta"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Subcuenta"
-                                            {...register("subcuenta")}
-                                        >
-                                            <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
-                                            <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
-                                            <MenuItem value={"Gastos"}>Gastos</MenuItem>
-
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
 
-                                    <TextField id="subtotal" name="subtotal" label="Subtotal " variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                                    <TextField id="subtotal" disabled name="subtotal" label="Subtotal " variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                                 </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
-                                    <TextField id="descuento" name="descuento" label="Descuento:" variant="outlined" style={{ width: "100%" }}  {...register("descuento")} />
+                                    <TextField id="descuento" disabled={disable} name="descuento" label="Descuento:" variant="outlined" style={{ width: "100%" }}  {...register("descuento")} />
                                 </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
-                                    <TextField id="subtotal12" name="subtotal12" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal12")} />
+                                    <TextField id="subtotal12" disabled name="subtotal12" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal12")} />
                                 </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
-                                    <TextField id="iva12" name="iva12" label="Iva 12%:" variant="outlined" style={{ width: "100%" }}  {...register("iva12")} />
+                                    <TextField id="iva12" disabled name="iva12" label="Iva 12%:" variant="outlined" style={{ width: "100%" }}  {...register("iva12")} />
                                 </Grid>
 
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
-                                    <TextField id="subtotal0" name="subtotal0" label="Subtotal 0%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal0")} />
+                                    <TextField id="subtotal0" disabled name="subtotal0" label="Subtotal 0%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal0")} />
                                 </Grid>
                                 <Grid item xs={12} md={6} sm={12} lg={6}>
-                                    <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                                    <TextField id="valorTotal" disabled name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
                                 </Grid>
                             </Grid>
                         </SubCard>
@@ -322,13 +473,8 @@ const NotaCredito = () => {
                                 </Grid>
                             </Grid>
                         </CardActions>
-
                     </Grid>
-
-
                 </Grid>
-
-
             </MainCard >
         </form>
     );

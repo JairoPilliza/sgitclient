@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Divider, Grid, InputLabel, Link } from '@mui/material';
+import { Divider, Grid, InputLabel } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -8,20 +8,12 @@ import { gridSpacing } from 'store/constant';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import CachedIcon from '@mui/icons-material/Cached';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -30,7 +22,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import AddIcon from '@mui/icons-material/Add';
 import CardActions from '@mui/material/CardActions';
-import { Stack } from "@mui/material";
 import ModalReembolso from "./ModalReembolso";
 import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
@@ -67,7 +58,7 @@ const Reembolso = () => {
                 <MainCard title="Comprobante de venta emitido por Reembolso" >
                     <Grid container spacing={gridSpacing}>
                         <Grid item xs={12} sm={12}>
-                            <SubCard container title="Datos de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                            <SubCard container title="Datos de Factura" style={{ textAlign: "center" }} >
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
                                     <Grid item xs={12} md={6} sm={12} lg={6} />
                                     <Grid item xs={12} md={6} sm={12} lg={6}>
@@ -244,7 +235,7 @@ const Reembolso = () => {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={12} lg={12}>
-                            <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} sx={{ borderColor: 'yellow' }}>
+                            <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
 
                                 <Grid container xs={12} md={12} sm={12} lg={12} spacing={2}>
                                     <Grid item xs={12} sm={12} md={4} lg={4}>

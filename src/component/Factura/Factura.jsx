@@ -1,26 +1,20 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, Link } from '@mui/material';
-import MuiTypography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
 import MainCard from 'ui-component/cards/MainCard';
-import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import CachedIcon from '@mui/icons-material/Cached';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -30,16 +24,15 @@ import TableRow from '@mui/material/TableRow';
 import AddIcon from '@mui/icons-material/Add';
 import Divider from '@mui/material/Divider';
 import CardActions from '@mui/material/CardActions';
-import { Stack } from "@mui/material";
 import TipoFactura from "component/TipoFactura";
 import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
 import ModalNuevoProveedor from "component/ModalProveedor";
 import BusquedaPr from "component/BusquedaProveedor";
 import ModalFormaPago from "component/FormaPago";
-
+import { styled } from '@mui/material/styles';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ModalSubirXML from "component/ModalSubirXML";
-import BusquedaProveedorCargarXML from "component/BusquedaProveedorXML";
 const Factura = () => {
 
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
@@ -73,7 +66,18 @@ const Factura = () => {
     };
     /////////////////////////
 
+    const [openXML, setOpenXML] = React.useState(false);
 
+    const handleClickOpenXML = (scrollType) => () => {
+        setOpenXML(true);
+        setScroll(scrollType);
+    };
+    const handleCloseXML = () => {
+        setOpenXML(false);
+    };
+    const Input = styled('input')({
+        display: 'none',
+    });
     var muestraBuscador;
     if (!factBuscadorPr) {
         muestraBuscador = <TipoFactura handleEvent={setFactBuscadorPr} muestraXML={setMuestraXML} />;
@@ -90,8 +94,20 @@ const Factura = () => {
         if (muestraXML == true) {
             muestraBuscador =
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={12} sm={12} lg={12}>
-                        <BusquedaProveedorCargarXML />
+                    <Grid item xs={12} md={10} sm={12} lg={10}>
+                        <BusquedaPr></BusquedaPr>
+                    </Grid>
+                    <Grid item xs={12} md={2} sm={12} lg={2} >
+                        {/* <label htmlFor="contained-button-file"> */}
+                        {/* <Input id="contained-button-file" multiple type="file" /> */}
+
+                        <Button style={{ width: "100%" }} onClick={handleClickOpenXML('paper')} variant="outlined" component="span" startIcon={<FileUploadIcon />}>
+                            XML
+                        </Button>
+                        {/* </label> */}
+                        {/* <Button style={{ width: "100%" }} onClick={handleClickOpenXML('paper')} variant="outlined" startIcon={<FileUploadIcon />}>
+                            XML
+                        </Button> */}
                     </Grid>
                 </Grid>;
         }
@@ -560,6 +576,10 @@ const Factura = () => {
             <ModalFormaPago
                 open={openMFP}
                 onClose={handleCloseMFP} />
+            <ModalSubirXML
+                open={openXML}
+                onClose={handleCloseXML}
+            />
 
         </div>
     );

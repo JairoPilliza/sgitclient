@@ -1,23 +1,17 @@
 import * as React from 'react';
-
-import MainCard from 'ui-component/cards/MainCard';
 import Box from '@mui/material/Box';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Divider, Grid } from '@mui/material';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import ModalAperturaPeriodo from './ModalAperturaPeriodo';
 import ClearIcon from '@mui/icons-material/Clear';
 import ArticleIcon from '@mui/icons-material/Article';
-
 
 const AperturaPeriodo = () => {
 
@@ -85,9 +79,14 @@ const AperturaPeriodo = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained" size="small" ><ClearIcon /></Button>
-
-                                            <Button variant="contained" size="small" ><ArticleIcon /></Button>
+                                            <Grid container spacing={2}>
+                                                <Grid item>
+                                                    <Button variant="contained" size="small" ><ClearIcon /></Button>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Button variant="contained" size="small" ><ArticleIcon /></Button>
+                                                </Grid>
+                                            </Grid>
                                         </TableCell>
                                     </TableRow>
                                 ))}

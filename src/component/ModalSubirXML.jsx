@@ -1,24 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, CardHeader, FormControlLabel, Grid, Link, Radio, RadioGroup, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Card, FormControlLabel, Grid, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useForm } from "react-hook-form"
-// project imp
-
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Button from "@mui/material/Button";
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useFormik } from 'formik';
 import Paper from '@mui/material/Paper';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const ModalSubirXML = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
@@ -93,14 +82,21 @@ const ModalSubirXML = (props) => {
                         >
                             <Card className="col-12" container style={{ textAlign: "center" }} >
                                 <div>
-                                    <Stack direction="row" spacing={2}>
-                                        <Button variant="contained" value="bien" startIcon={<CheckCircleOutlineIcon />} >
-                                            Bienes
-                                        </Button>
-                                        <Button variant="contained" startIcon={<CheckCircleOutlineIcon />}>
-                                            Servicios
-                                        </Button>
-                                    </Stack>
+                                    <Grid container spacing={2}>
+
+                                        <Grid container item  xs={12} sm={12} md={6} lg={6} spacing={2}>
+                                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                <Button variant="contained" value="bien" startIcon={<CheckCircleOutlineIcon />} >
+                                                    Bienes
+                                                </Button>
+                                            </Grid>
+                                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                <Button variant="contained" startIcon={<CheckCircleOutlineIcon />}>
+                                                    Servicios
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
                                 </div>
                                 <TableContainer component={Paper}>
                                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -134,7 +130,7 @@ const ModalSubirXML = (props) => {
                                                             name="row-radio-buttons-group"
                                                         >
                                                             <FormControlLabel value="bien" control={<Radio />} label="" />
-                                                            <FormControlLabel value="servicio" control={<Radio  />} label="" />
+                                                            <FormControlLabel value="servicio" control={<Radio />} label="" />
                                                         </RadioGroup>
                                                     </TableCell>
 

@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, Link, Stack, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
-// project imports
 import SubCard from 'ui-component/cards/SubCard';
-
 import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -20,14 +18,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import AddIcon from '@mui/icons-material/Add';
 import Paper from '@mui/material/Paper';
-
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import BuscarPtoEmision from "./BuscarPtoEmision";
 
 
 const ModalRetencion = (props) => {

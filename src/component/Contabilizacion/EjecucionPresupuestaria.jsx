@@ -2,16 +2,10 @@
 import * as React from 'react';
 import { useForm } from "react-hook-form"
 import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
 import MainCard from 'ui-component/cards/MainCard';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-
 import { CardActions, Divider, FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,13 +13,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import EventNoteIcon from '@mui/icons-material/EventNote';
 import { Button } from '@mui/material';
-import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Collapse from '@mui/material/Collapse';
@@ -134,7 +123,14 @@ const EjecucionPresupuestaria = () => {
                     <TableCell align="center">{row.fat}</TableCell>
                     <TableCell align="center">{row.carbs}</TableCell>
 
-                    <TableCell align="center"><Button variant='contained' onClick={handleClickOpen('paper')}>Dividir</Button></TableCell>
+                    <TableCell align="center">
+                        <Grid container>
+                            <Grid item>
+                                <Button variant='contained' onClick={handleClickOpen('paper')}>Dividir</Button>
+                            </Grid>
+                        </Grid>
+
+                    </TableCell>
 
                 </TableRow>
                 <TableRow>
@@ -148,7 +144,7 @@ const EjecucionPresupuestaria = () => {
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>Departamento</TableCell>
-                                            <TableCell>Subcuenta</TableCell>                                            
+                                            <TableCell>Subcuenta</TableCell>
                                             <TableCell >Valor</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -158,7 +154,6 @@ const EjecucionPresupuestaria = () => {
                                                 <TableCell component="th" scope="row">
                                                     {historyRow.date}
                                                 </TableCell>
-                                                
                                                 <TableCell>{historyRow.amount}</TableCell>
                                                 <TableCell >
                                                     100
@@ -207,19 +202,19 @@ const EjecucionPresupuestaria = () => {
 
                 </CardContent>
                 <CardActions >
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={4} lg={4}>                                   
-                                </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                        </Grid>
 
-                                <Grid item xs={12} sm={12} md={4} lg={4}>                                 
-                                </Grid>
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
-                                    <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
-                                       Generar Asiento Contable
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </CardActions>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                            <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
+                                Generar Asiento Contable
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </CardActions>
 
             </Card>
             <ModalEjecPresupuestaria
