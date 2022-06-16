@@ -44,8 +44,8 @@ const Factura = () => {
     const handleClose = () => setOpen(false);
 
     /////////MODAL RETENCION
-    const [openMR, setOpenMR] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
+    const [openMR, setOpenMR] = useState(false);
+    const [scroll, setScroll] = useState('paper');
 
     const handleClickOpen = (scrollType) => () => {
         setOpenMR(true);
@@ -573,6 +573,7 @@ const Factura = () => {
             <ModalRetencion
                 open={openMR}
                 onClose={handleCloseMR}
+                scroll={scroll}
             />
             <ModalFormaPago
                 open={openMFP}

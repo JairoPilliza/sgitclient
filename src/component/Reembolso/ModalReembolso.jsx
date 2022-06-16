@@ -152,7 +152,7 @@ const ModalReembolso = (props) => {
                                         <TextField
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
-                                            label="Tarifa IVA 0%:"
+                                            label="N° Autorización:"
 
                                             style={{ width: "100%" }}
                                             required

@@ -60,6 +60,13 @@ const config = {
                     type: 'item',
                     url: '/Configuracion/RegistroLiquidacion',
                     breadcrumbs: false
+                },
+                {
+                    id: 'anulacionComprobantesFisicos',
+                    title: 'Reg Anulacion de comprobantes fisicos',
+                    type: 'item',
+                    url: '/Configuracion/RegAnulacionComprobanteFisico',
+                    breadcrumbs: false
                 }
              
             ]

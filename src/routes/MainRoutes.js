@@ -17,6 +17,9 @@ const MiPerfil = Loadable(lazy(() => import('component/Configuracion/Usuario/MiP
 const SolicitudUsuario = Loadable(lazy(() => import('component/Configuracion/SolicitudUsuario/SolicitudUsuario')));
 const RegistroRetencion = Loadable(lazy(() => import('component/Configuracion/Retencion/RegistroRetencion')));
 const RegistroLiquidacion = Loadable(lazy(() => import('component/Configuracion/Liquidacion/RegistroLiquidacion')));
+
+const RegistroAulacionCompFisico = Loadable(lazy(() => import('component/Configuracion/ComprobantesFisicos/RegAnulacionComprobanteFisico')));
+
 //Proveedor
 const Proveedor  = Loadable(lazy(() => import('component/Proveedor/ListarProveedor')));
 const PersonaLiquidacion = Loadable(lazy(() => import('component/Proveedor/ListarPersonaLiquidacion')));
@@ -107,6 +110,10 @@ const MainRoutes = {
         {
             path: '/Configuracion/RegistroLiquidacion',
             element: <RegistroLiquidacion />
+        },
+        {
+            path: '/Configuracion/RegAnulacionComprobanteFisico',
+            element: <RegistroAulacionCompFisico />
         },
 
         {
