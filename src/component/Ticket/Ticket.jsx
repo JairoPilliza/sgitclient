@@ -36,27 +36,20 @@ const Ticket = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
 
                 <TableBody>
-
                     <TableCell align="center" style={{ width: "100px" }}>3</TableCell>
                     <TableCell colSpan={6} align="center" style={{ width: "300px" }}>Super</TableCell>
-                    <TableCell colSpan={1}  align="center" style={{ width: "100px" }}>$ 2.74</TableCell>
+                    <TableCell colSpan={1} align="center" style={{ width: "100px" }}>$ 2.74</TableCell>
                     <TableCell align="center" style={{ width: "100px" }}>$ 8.93</TableCell>
                     <TableCell >
                         <Grid container spacing={2}>
-
                             <Grid item>
                                 <Button variant="contained" onClick={() => setShowTableDatosTicket(false)}><DeleteForeverIcon /></Button>
                             </Grid>
                         </Grid>
-
-
                     </TableCell>
-
-
                 </TableBody>
             </Table>
         </TableContainer>;
-
     }
 
 

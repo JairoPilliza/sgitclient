@@ -122,13 +122,14 @@ const Factura = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <MainCard title="FACTURA" >
+                <MainCard title="Factura"
+                
+                 >
                     <Grid container spacing={gridSpacing}>
                         <Grid item xs={12} md={12} sm={12} lg={12}>
                             {
                                 muestraBuscador
                             }
-
                         </Grid>
                         <Grid item xs={12} md={12} sm={12} lg={12}>
                             <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }}>
@@ -221,7 +222,7 @@ const Factura = () => {
                                 <Card xs={12} sm={12} md={12} lg={12} >
                                     <CardHeader
                                         title="Datos del proveedor"
-                                        style={{ backgroundColor: "yellow", textAlign: "center", height: "60px" }}
+                                        style={{ backgroundColor: "#ffc107", textAlign: "center", height: "60px" }}
 
                                     />
                                     <CardContent >

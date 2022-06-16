@@ -55,7 +55,7 @@ const AperturaPeriodo = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>#</TableCell>
-                                    <TableCell align="center">Period</TableCell>
+                                    <TableCell align="center">Periodo</TableCell>
                                     <TableCell align="center">Año</TableCell>
                                     <TableCell align="center">Sucursal</TableCell>
                                     <TableCell align="center">Fecha Apertura</TableCell>

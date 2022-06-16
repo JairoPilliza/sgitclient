@@ -95,12 +95,20 @@ const ListarPersonaLiquidacion = () => {
                                         <TableCell align="center">{row.carbs}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained">
-                                                <EditIcon />
-                                            </Button>
-                                            <Button variant="contained" >
-                                                <DeleteIcon />
-                                            </Button>
+                                            <Grid container spacing={1}>
+                                                <Grid item>
+                                                    <Button variant="contained">
+                                                        <EditIcon />
+                                                    </Button>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Button variant="contained" >
+                                                        <DeleteIcon />
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
+
+
                                         </TableCell>
                                     </TableRow>
                                 ))}

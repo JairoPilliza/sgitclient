@@ -25,6 +25,8 @@ import CardActions from '@mui/material/CardActions';
 import ModalReembolso from "./ModalReembolso";
 import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
 const Reembolso = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [open, setOpen] = React.useState(false);
@@ -145,7 +147,7 @@ const Reembolso = () => {
                                 <Card >
                                     <CardHeader
                                         title="Datos del proveedor"
-                                        style={{ backgroundColor: "yellow", textAlign: "center", height: "60px" }}
+                                        style={{ backgroundColor: "#ffc107", textAlign: "center", height: "60px" }}
                                     />
                                     <CardContent >
                                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
@@ -225,9 +227,10 @@ const Reembolso = () => {
                                     </CardContent>
                                 </Card>
                             </SubCard>
+                            <br/>
                             <Grid container>
                                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <Button variant="contained" onClick={handleClickOpen('paper')} style={{ width: "100%" }}>Agregar Reembolso</Button>
+                                    <Button variant="contained" onClick={handleClickOpen('paper')} style={{ width: "100%" }} startIcon={<MonetizationOnIcon/>}>Agregar Reembolso</Button>
                                 </Grid>
                             </Grid>
 

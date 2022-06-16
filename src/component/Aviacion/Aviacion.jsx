@@ -47,7 +47,7 @@ const Aviacion = () => {
             <Grid container spacing={gridSpacing}>
 
                 <Grid item xs={12} md={12} sm={12} lg={12}>
-                    <SubCard className="col-12" container title="Datos de Factura" style={{ textAlign: "center" }} >
+                    <SubCard container title="Datos de Factura" style={{ textAlign: "center" }} >
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
                             <Grid item xs={12} md={6} sm={12} lg={6}>
@@ -139,7 +139,7 @@ const Aviacion = () => {
                         <Card >
                             <CardHeader
                                 title="Datos del proveedor"
-                                style={{ backgroundColor: "yellow", textAlign: "center", height: "60px" }}
+                                style={{ backgroundColor: "#ffc107", textAlign: "center", height: "60px" }}
 
                             />
                             <CardContent >
@@ -226,23 +226,7 @@ const Aviacion = () => {
                     <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
 
                         <Grid container xs={12} md={12} sm={12} lg={12} spacing={2}>
-                            <Grid item xs={12} sm={12} md={4} lg={4}>
-                                <FormControl sx={{ minWidth: '100%', float: "left" }}>
-                                    <InputLabel id="demo-simple-select-helper-label">Iva</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-helper-label"
-                                        id="iva"
-                                        name="iva"
-                                        style={{ width: "100%" }}
-                                        required
-                                        label="Iva"
-                                        {...register("iva")}
-                                    >
-                                        <MenuItem value={10}>Iva 12%</MenuItem>
-                                        <MenuItem value={20}>Iva 8%</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
+                           
                             <Grid item xs={12} sm={12} md={4} lg={4}>
                                 <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                     <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>

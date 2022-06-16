@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 const TipoFactura = ({ handleEvent, muestraXML }) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    
     const obtiene = (event) => {
         
         if (event.target.value == "1") {

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, FormControlLabel, Grid, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { alertTitleClasses, Card, FormControlLabel, Grid, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useForm } from "react-hook-form"
 import Button from "@mui/material/Button";
 import Dialog from '@mui/material/Dialog';
@@ -12,7 +12,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 const ModalSubirXML = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [table, setTable] = useState(false);
-
+    const [checked, setChecked] = useState(false);
 
 
     const style = {
@@ -58,6 +58,16 @@ const ModalSubirXML = (props) => {
         setSelectedValue(event.target.value);
         //alert(event.target.value)
     };
+    
+    // const checkBienes = (event) => {
+    //     alert(event.target.value);
+    //     if (event.target.value == "bien") {
+           
+          
+           
+    //     }
+        
+    // }
 
 
     return (
@@ -84,14 +94,14 @@ const ModalSubirXML = (props) => {
                                 <div>
                                     <Grid container spacing={2}>
 
-                                        <Grid container item  xs={12} sm={12} md={6} lg={6} spacing={2}>
+                                        <Grid container item xs={12} sm={12} md={6} lg={6} spacing={2}>
                                             <Grid item xs={12} sm={12} md={6} lg={6}>
                                                 <Button variant="contained" value="bien" startIcon={<CheckCircleOutlineIcon />} >
                                                     Bienes
                                                 </Button>
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={6} lg={6}>
-                                                <Button variant="contained" startIcon={<CheckCircleOutlineIcon />}>
+                                                <Button variant="contained" value="servicio" startIcon={<CheckCircleOutlineIcon />} >
                                                     Servicios
                                                 </Button>
                                             </Grid>
@@ -127,20 +137,17 @@ const ModalSubirXML = (props) => {
                                                         <RadioGroup
                                                             row
                                                             aria-labelledby="demo-row-radio-buttons-group-label"
-                                                            name="row-radio-buttons-group"
+                                                            name="bienServicio"
                                                         >
                                                             <FormControlLabel value="bien" control={<Radio />} label="" />
                                                             <FormControlLabel value="servicio" control={<Radio />} label="" />
                                                         </RadioGroup>
                                                     </TableCell>
-
                                                     <TableCell align="center">{row.fat}</TableCell>
                                                     <TableCell align="center">{row.fat}</TableCell>
                                                     <TableCell align="center">ddddddddddddddd</TableCell>
                                                     <TableCell align="center">{row.fat}</TableCell>
-
                                                     <TableCell align="center">{row.fat}</TableCell>
-
                                                 </TableRow>
                                             ))}
                                         </TableBody>

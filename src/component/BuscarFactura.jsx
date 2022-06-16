@@ -73,7 +73,7 @@ const BuscarFactura = () => {
                                 <TableCell align="right">{row.carbs}</TableCell>                        
                                 <TableCell align="right">{row.carbs}</TableCell>                        
 
-                                <TableCell align="right"><Button variant="contained"  startIcon={<CheckCircleOutlineIcon/>}>Nota de credito</Button></TableCell>
+                                <TableCell align="right"><Button variant="contained" onClick={e => setTable(false)} startIcon={<CheckCircleOutlineIcon/>}>Nota de credito</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

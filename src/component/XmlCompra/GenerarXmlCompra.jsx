@@ -16,7 +16,7 @@ const XmlCompra = () => {
     }
 
     return (
-        <MainCard>
+        <MainCard >
             <Card sx={{ maxWidth: "100%" }}>
                 <CardHeader
                     avatar={

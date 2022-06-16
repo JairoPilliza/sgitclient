@@ -59,7 +59,7 @@ const TableATS = () => {
                                 <TableCell align="right">{row.protein}</TableCell>
 
                                 <TableCell align="right">
-                                    <Button variant="contained" startIcon={<MailOutlineIcon />}></Button></TableCell>
+                                    <Button variant="contained" > <MailOutlineIcon /> </Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

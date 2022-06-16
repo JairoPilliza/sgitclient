@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { FormControl, FormControlLabel, Grid, InputLabel, MenuItem, RadioGroup, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, AlertTitle, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, RadioGroup, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -22,6 +22,9 @@ const NotaCredito = () => {
     const [buscadorFactura, setBuscadorFactura] = useState(false);
     const [showTableDtNotaCredito, setShowTableDtNotaCredito] = useState(false);
     const [disable, setDisable] = useState(true);
+    const [checkDevolucion, setCheckDevolucion] = useState(false);
+    const [checkDescuento, setCheckDescuento] = useState(false);
+
     var muestraBuscador;
     if (!buscadorFactura) {
         muestraBuscador = <TipoNotaCredito handleEvent={setBuscadorFactura} />;
@@ -31,18 +34,22 @@ const NotaCredito = () => {
     }
 
     const devolucion = () => {
+        
         setDisable(true);
         setShowTableDtNotaCredito(true);
+        setCheckDescuento(false);
+        setCheckDevolucion(true);
 
     }
     const descuento = () => {
         setDisable(false);
         setShowTableDtNotaCredito(false);
+        setCheckDescuento(true);
+        setCheckDevolucion(false);
     }
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
-
     }
 
     var tableDetalleNotaCredito;
@@ -166,16 +173,14 @@ const NotaCredito = () => {
 
                                         </Grid>
                                     </Grid>
-
-
                                 </TableCell>
-
-
                             </TableBody>
                         </Table>
                     </TableContainer>
-                </div>;
+                </div>
             </div>
+    }else{
+        tableDetalleNotaCredito =null;
     }
 
     return (
@@ -281,7 +286,7 @@ const NotaCredito = () => {
                                     <Card >
                                         <CardHeader
                                             title="Datos de la Factura"
-                                            style={{ backgroundColor: "yellow", height: "50px" }}
+                                            style={{ backgroundColor: "#ffc107", height: "50px" }}
 
                                         />
 
@@ -327,7 +332,7 @@ const NotaCredito = () => {
                                     <Card >
                                         <CardHeader
                                             title="Datos de la Nota de Credito"
-                                            style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
+                                            style={{ backgroundColor: "#ffc107", textAlign: "center", height: "50px" }}
                                         />
                                         <CardContent >
                                             <Grid container spacing={2}>
@@ -407,6 +412,8 @@ const NotaCredito = () => {
                                             <Checkbox
                                                 id="devolucion"
                                                 name="devolucion"
+                                             
+                                                onChange={checkDevolucion}
                                                 style={{
                                                     transform: "scale(1)",
                                                 }}    {...register("devolucion")}
@@ -414,12 +421,16 @@ const NotaCredito = () => {
 
                                             <small>Devolucion</small>
                                         </center>
+
+
                                     </Grid>
                                     <Grid item xs={12} md={6} sm={12} lg={6}>
                                         <center>
                                             <Checkbox
                                                 id="descuento"
                                                 name="devolucion"
+                                                
+                                                onChange={checkDescuento}
                                                 style={{
                                                     transform: "scale(1)",
                                                 }}
@@ -427,8 +438,9 @@ const NotaCredito = () => {
                                                 onClick={() => descuento()} />
                                             <small>Descuento</small>
                                         </center>
+
                                     </Grid>
-                                   
+
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <Typography variant="h5" gutterBottom component="div">
                                             Total Factura Restante:

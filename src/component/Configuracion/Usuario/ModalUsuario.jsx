@@ -108,7 +108,7 @@ const ModalUsuario = (props) => {
                                             {...register("correo")}
                                         />
                                     </Grid>
-                                    {/* <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
                                             <Select
@@ -124,7 +124,7 @@ const ModalUsuario = (props) => {
                                                 <MenuItem value={20}>Twenty</MenuItem>
                                             </Select>
                                         </FormControl>
-                                    </Grid> */}
+                                    </Grid>
                                     <Grid item xs={12} sm={12} md={6} lg={6}>
                                         <TextField
                                             id="usuario"

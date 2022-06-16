@@ -25,24 +25,25 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CheckIcon from '@mui/icons-material/Check';
 import ModalNuevaPersona from "component/ModalPersona";
-import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
+import ModalRegistroLiquidacion from "component/Configuracion/Liquidacion/ModalRegistroLiquidacion";
+import ModalRetencionLiquidacion from "./ModalRetencionLiquidacion";
 const LiquidacionCompra = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
 
-    const [openMR, setOpenMR] = React.useState(false);
+    const [openMRL, setOpenMRL] = useState(false);
     const [scroll, setScroll] = React.useState('paper');
 
     const handleClickOpen = (scrollType) => () => {
-        setOpenMR(true);
+        setOpenMRL(true);
         setScroll(scrollType);
     };
-    const handleCloseMR = () => {
-        setOpenMR(false);
+    const handleCloseMRL = () => {
+        setOpenMRL(false);
     };
     return (
         <MainCard title="Liquidación de compra" >
@@ -169,7 +170,7 @@ const LiquidacionCompra = () => {
                             <Card lg={12}>
                                 <CardHeader
                                     title="Datos de la persona"
-                                    style={{ backgroundColor: "yellow", textAlign: "center", height: "50px" }}
+                                    style={{ backgroundColor: "#ffc107", textAlign: "center", height: "50px" }}
                                 />
 
                                 <CardContent  >
@@ -443,8 +444,8 @@ const LiquidacionCompra = () => {
                                         </Button>
                                     </Grid>
                                     <Grid item xs={12} md={6} sm={12} lg={6} >
-                                        <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
-                                            Cancelar
+                                        <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }} onClick={handleClickOpen('paper')}>
+                                            Retener
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -453,13 +454,14 @@ const LiquidacionCompra = () => {
                     </SubCard>
                 </Grid>
             </Grid>
-            <ModalRetencion
-                open={openMR}
-                onClose={handleCloseMR}
-            />
+
             <ModalNuevaPersona
                 open={open}
                 onClose={handleClose} />
+            <ModalRetencionLiquidacion
+                open={openMRL}
+                onClose={handleCloseMRL}
+            />
         </MainCard>
     );
 }

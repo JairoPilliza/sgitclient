@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import {FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { FormControlLabel, Grid, Radio, RadioGroup } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -64,15 +64,26 @@ const SolcitudAnulacion = () => {
                                 <LocalPrintshopIcon />
                             </Button>   </TableCell>
                             <TableCell align="center" >
-                                <RadioGroup
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    name="position"
-                                >
-                                    <FormControlLabel value="enProceso" control={<Radio />} label="En proceso" labelPlacement="top" />
-                                    <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
-                                    <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
-                                </RadioGroup>
+                                <Grid container width={400}>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="position"
+                                    >
+                                        <Grid item>
+                                            <FormControlLabel value="enProceso" control={<Radio />} label="En proceso" labelPlacement="top" />
+                                        </Grid>
+                                        <Grid item>
+                                            <FormControlLabel value="subidoSri" control={<Radio />} label="Subido al SRI" labelPlacement="top" />
+                                        </Grid>
+                                        <Grid item>
+                                            <FormControlLabel value="autorizado" control={<Radio />} label="Autorizado" labelPlacement="top" />
+                                        </Grid>
+
+
+                                    </RadioGroup>
+                                </Grid>
+
                             </TableCell>
                         </TableRow>
                     ))}
