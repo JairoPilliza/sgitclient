@@ -174,6 +174,19 @@ const ModalNuevoProveedor = (props) => {
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
+
+                                            <TextField
+                                                id="correo"
+                                                name="correo"
+                                                label="Email:"
+                                                style={{ width: "100%" }}
+                                                required
+                                                {...register("correo")}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container item spacing={2}>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
                                             <TextField
                                                 id="telefono"
                                                 name="telefono"
@@ -181,6 +194,16 @@ const ModalNuevoProveedor = (props) => {
                                                 style={{ width: "100%" }}
                                                 required
                                                 {...register("telefono")}
+                                            />
+
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <TextField
+                                                id="celular"
+                                                name="celular"
+                                                label="Celular:"
+                                                style={{ width: "100%" }}
+                                                {...register("celular")}
                                             />
                                         </Grid>
                                     </Grid>
@@ -203,17 +226,6 @@ const ModalNuevoProveedor = (props) => {
                                             </FormControl>
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="celular"
-                                                name="celular"
-                                                label="Celular:"
-                                                style={{ width: "100%" }}
-                                                {...register("celular")}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Ciudad</InputLabel>
                                                 <Select
@@ -230,16 +242,7 @@ const ModalNuevoProveedor = (props) => {
                                                 </Select>
 
                                             </FormControl>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="correo"
-                                                name="correo"
-                                                label="Email:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                {...register("correo")}
-                                            />
+
                                         </Grid>
                                     </Grid>
 

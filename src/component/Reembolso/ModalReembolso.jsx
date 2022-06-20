@@ -58,14 +58,14 @@ const ModalReembolso = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="scroll-dialog-title">Reembolso</DialogTitle>
-                    <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            tabIndex={-1}
-                        >
 
+                <DialogTitle id="scroll-dialog-title">Reembolso</DialogTitle>
+                <DialogContent dividers={scroll === 'paper'}>
+                    <DialogContentText
+                        id="scroll-dialog-description"
+                        tabIndex={-1}
+                    >
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                                 <br></br>
                                 <Grid container spacing={2}>
@@ -252,13 +252,14 @@ const ModalReembolso = (props) => {
                                     </Grid>
                                 </Card>
                             </Card>
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit" >Registar </Button>
-                    </DialogActions>
-                </form>
+                        </form>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={props.onClose}>Cancelar</Button>
+                    <Button type="submit" >Registar </Button>
+                </DialogActions>
+
             </Dialog>
         </div >
 
