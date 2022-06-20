@@ -43,7 +43,7 @@ const RegAnulacionComprobanteFisico = () => {
         <Box sx={{ width: '100%', typography: 'body1' }}>
             <Card>
                 <CardHeader
-                    title="Comprobantes anulados"
+                    title="Anulacion de comprobantes fisicos"
                 />
                 <Divider></Divider>
 
