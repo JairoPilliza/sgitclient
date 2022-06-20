@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Divider, Grid, InputLabel } from '@mui/material';
+import { Checkbox, Divider, Grid, InputLabel } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -175,7 +175,6 @@ const LiquidacionCompra = () => {
 
                                 <CardContent  >
                                     <Grid container spacing={2}>
-
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <Button onClick={handleOpen} variant="outlined" startIcon={<EditIcon />} style={{ width: "100%" }}>
                                                 Editar
@@ -304,6 +303,23 @@ const LiquidacionCompra = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
+                                </Grid>
+                                <Grid container >
+                                    <Grid item >
+                                        <label><b>Grava Iva</b></label>
+                                    
+                                            <Checkbox
+                                                id="grabaIva"
+                                                name="grabaIva"
+                                                checked
+                                                style={{
+                                                    transform: "scale(1)",
+
+                                                }}
+                                                {...register("grabaIva")} />
+                           
+                                    </Grid>
+
                                 </Grid>
                                 <TableContainer >
                                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
