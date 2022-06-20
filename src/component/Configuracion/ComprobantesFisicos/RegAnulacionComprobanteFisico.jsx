@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardHeader, Divider, Grid, IconButton, TextField } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Divider, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ModalUsuario from '../Usuario/ModalUsuario';
 import ModalComprobanteFisico from './ModalAnuCompFisico';
@@ -49,21 +49,44 @@ const RegAnulacionComprobanteFisico = () => {
 
                 <CardContent>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}>Nuevo </Button>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                            <Button variant='contained'  startIcon={<EditIcon />} onClick={handleClickOpen('paper')}>Nuevo </Button>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <TextField
-                                id="outlined-basic"
-                                label="Ingrese persona o Identificación"
-                                style={{ width: "70%" }}
-                                placeholder="Ingrese persona o Identificación"
-                                {...register("personaIdentificacion")}
-                            />
-                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                                <SearchIcon />
-                            </IconButton>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                            <FormControl sx={{ minWidth: '100%' }}>
+                                <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-helper-label"
+                                    id="tipoComprobante"
+                                    name="tipoComprobante"
+                                    style={{ width: "100%" }}
+                                    required
+                                    label="Tipo comprobante"
+                                    {...register("sucursal")}
+                                >
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
+                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                            <FormControl sx={{ minWidth: '100%' }}>
+                                <InputLabel id="demo-simple-select-helper-label">Periodo</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-helper-label"
+                                    id="tipoComprobante"
+                                    name="tipoComprobante"
+                                    style={{ width: "100%" }}
+                                    required
+                                    label="Periodo"
+                                    {...register("sucursal")}
+                                >
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                      
                     </Grid>
 
 
@@ -78,7 +101,7 @@ const RegAnulacionComprobanteFisico = () => {
                                     <TableCell align="center">Secuencial desde</TableCell>
                                     <TableCell align="center">Secuencial hasta</TableCell>
                                     <TableCell align="center">Autorizacion</TableCell>
-                                    
+
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -93,7 +116,7 @@ const RegAnulacionComprobanteFisico = () => {
                                         <TableCell align="center">{row.carbs}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
                                         <TableCell align="center">{row.protein}</TableCell>
-                                       
+
                                         <TableCell align="center">
                                             <Grid container>
                                                 <Grid item>
