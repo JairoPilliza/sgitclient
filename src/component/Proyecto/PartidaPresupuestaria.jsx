@@ -32,6 +32,8 @@ const PartidaPresupuestaria = () => {
     const [acording, setAcording] = useState(false);
     const navigate = useNavigate();
 
+    const titleProject = localStorage.getItem("nameProject");
+
     const handleClickOpen = (scrollType) => () => {
         setOpen(true);
         setScroll(scrollType);
@@ -69,7 +71,7 @@ const PartidaPresupuestaria = () => {
             <Grid container spacing={gridSpacing} >
                 <Grid item lg={12} md={12} sm={12} xs={12}>
                     <Card >
-                        <CardHeader title='PROYECTO USAID SALINAS'>
+                        <CardHeader title={titleProject}>
 
                         </CardHeader>
                         <CardContent >

@@ -175,7 +175,7 @@ const EjecucionPresupuestaria = () => {
         <MainCard>
             <Card sx={{ maxWidth: "100%" }}>
                 <CardHeader
-                    title="Ejecución presupuestaria"
+                    title="Contabilización"
                 />
                 <Divider />
                 <CardContent>

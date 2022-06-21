@@ -35,10 +35,10 @@ const Proyecto = () => {
     };
     const handleClose = () => setOpen(false);
     ///////////////  
-    const handleListItemClick = (event, index, route = '/Proyecto/PartidaPresupuestaria') => {
+    const handleListItemClick = (event, index, route = '/Proyecto/PartidaPresupuestaria', row) => {
 
         handleClose(event);
-
+        localStorage.setItem("nameProject", "Proyecto " + row.calories)
         if (route && route !== '') {
             navigate(route);
         }
@@ -107,7 +107,7 @@ const Proyecto = () => {
                                                 <TableCell align="center">
                                                     <Grid container spacing={2}>
                                                         <Grid item>
-                                                            <Button variant="contained" style={{ width: "100%" }} onClick={(event) => handleListItemClick(event, 1, '/Proyecto/PartidaPresupuestaria')}>
+                                                            <Button variant="contained" style={{ width: "100%" }} onClick={(event) => handleListItemClick(event, 1, '/Proyecto/PartidaPresupuestaria', row)}>
                                                                 <AddIcon />
                                                             </Button>
                                                         </Grid>

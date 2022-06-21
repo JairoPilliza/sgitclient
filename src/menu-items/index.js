@@ -13,7 +13,7 @@ import proyecto from './proyecto';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, pages,configuracion,proveedor,retencion,proyecto ,comprobante,reporte, utilities, other]
+    items: [dashboard, pages,configuracion,proyecto,proveedor,retencion ,comprobante,reporte, utilities]
 };
 
 export default menuItems;
