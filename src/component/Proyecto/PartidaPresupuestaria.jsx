@@ -29,6 +29,7 @@ const PartidaPresupuestaria = () => {
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
+    const [acording, setAcording] = useState(false);
     const navigate = useNavigate();
 
     const handleClickOpen = (scrollType) => () => {
@@ -57,11 +58,16 @@ const PartidaPresupuestaria = () => {
     ];
 
     var cont = 0;
+    var newItem;
+    if (acording) {
+        newItem = <ActividadPresupuestaria />;
+    }
+
 
     return (
         <MainCard title="Partida Presupuestaria" >
             <Grid container spacing={gridSpacing} >
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item   lg={12}  md={12} sm={12} xs={12}>
                     <Card >
                         <CardHeader title='PROYECTO USAID SALINAS'>
 
@@ -69,16 +75,17 @@ const PartidaPresupuestaria = () => {
                         <CardContent >
                             <Grid container spacing={2}>
                                 <Grid container item spacing={2}>
-                                    <Grid item xs={12} sm={12} md={2} lg={2}>
+                                    <Grid item lg={2}  md={2} sm={12} xs={12}>
                                         <Button variant='contained' onClick={(event) => back(event, 1, '/Proyecto/Proyecto')} ><KeyboardReturnIcon /></Button>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={10} lg={10}>
-                                        <Button variant='contained' startIcon={<AddIcon />} > Nueva Actividad</Button>
+                                    <Grid item  lg={10} md={10} sm={12} xs={12} >
+                                        <Button variant='contained' startIcon={<AddIcon />} onClick={()=> setAcording(true)} > Nueva Actividad</Button>
                                     </Grid>
                                 </Grid>
 
                                 <ActividadPresupuestaria />
 
+                                {newItem}
                             </Grid>
                         </CardContent>
                     </Card>
