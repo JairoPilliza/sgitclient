@@ -1,211 +1,93 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card,  Grid  } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
-import TextField from '@mui/material/TextField';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Button from "@mui/material/Button";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
-
-const PartidaPresupuestaria = (props) => {
+import MainCard from 'ui-component/cards/MainCard';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TextField from "@mui/material/TextField";
+import { Accordion, AccordionDetails, AccordionSummary, CardHeader, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import Paper from '@mui/material/Paper';
+import { gridSpacing } from "store/constant";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AddIcon from '@mui/icons-material/Add';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import { useNavigate } from "react-router";
+import ActividadPresupuestaria from "./ActividadPresupuestaria";
+const PartidaPresupuestaria = () => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-
+    /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
+    const navigate = useNavigate();
 
     const handleClickOpen = (scrollType) => () => {
         setOpen(true);
         setScroll(scrollType);
     };
+    const handleClose = () => setOpen(false);
+    ///////////////  
+    const back = (event, index, route = '/Proyecto/Proyecto') => {
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+        handleClose(event);
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
+        if (route && route !== '') {
+            navigate(route);
         }
-    }, [open]);
-
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 1000,
-        p: 4,
     };
 
-    const TAX_RATE = 0.07;
-
-    function ccyFormat(num) {
-        return `${num.toFixed(2)}`;
-    }
-
-    function priceRow(qty, unit) {
-        return qty * unit;
-    }
-
-    function createRow(desc, qty, unit) {
-        const price = priceRow(qty, unit);
-        return { desc, qty, unit, price };
-    }
-
-    function subtotal(items) {
-        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+    function createData(cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total) {
+        return { cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total };
     }
 
     const rows = [
-        createRow('Paperclips (Box)', 100, 1.15),
-        createRow('Paper (Case)', 10, 45.99),
-        createRow('Waste Basket', 2, 17.99),
+        createData('Personal', '-----------', '10', 1, 25, 700, 700),
+        createData('Muebles', '-----------', '10', 1, 30, 500, 500),
+        createData('Pasaje', '-----------', '10', 2, 10, 100, 200),
     ];
 
-    const invoiceSubtotal = subtotal(rows);
-    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-    const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
-    const onSubmit = (data, evento) => {
-        alert();
-        console.log(data);
-
-    }
+    var cont = 0;
 
     return (
-        <div>
-            <Dialog
-                open={props.open}
-                onClose={props.onClose}
-                scroll={scroll}
-                aria-labelledby="scroll-dialog-title"
-                aria-describedby="scroll-dialog-description"
-                fullWidth
-                maxWidth="md"
-            >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="scroll-dialog-title">Registrar Proyecto - Departamento</DialogTitle>
+        <MainCard title="Partida Presupuestaria" >
+            <Grid container spacing={gridSpacing} >
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Card >
+                        <CardHeader title='PROYECTO USAID SALINAS'>
 
-                    <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            ref={descriptionElementRef}
-                            tabIndex={-1}
-                        >
-
-                            <Card container style={{ textAlign: "center" }} >
-                                <br />
-                                <Grid container spacing={2}>
-                                    <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="nombreProyecto"
-                                                name="nombreProyecto"
-                                                label="Nombre del Proyecto:"
-                                                placeholder="Departamento"
-                                                style={{ width: "100%" }}
-                                                required
-                                                {...register("nombreProyecto")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="fechaInicial"
-                                                name="fechaInicial"
-                                                label="Fecha Inicial:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                required
-                                                {...register("fechaInicial")}
-                                            />
-                                        </Grid>
+                        </CardHeader>
+                        <CardContent >
+                            <Grid container spacing={2}>
+                                <Grid container item spacing={2}>
+                                    <Grid item xs={12} sm={12} md={2} lg={2}>
+                                        <Button variant='contained' onClick={(event) => back(event, 1, '/Proyecto/Proyecto')} ><KeyboardReturnIcon /></Button>
                                     </Grid>
-                                    <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="fechaFin"
-                                                name="fechaFin"
-                                                label="Fecha Fin:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                required
-                                                {...register("fechaFin")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="nombreResponsable"
-                                                name="nombreResponsable"
-                                                label="Nombre Responsable:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                {...register("nombreResponsable")}
-                                            />
-                                        </Grid>
+                                    <Grid item xs={12} sm={12} md={10} lg={10}>
+                                        <Button variant='contained' startIcon={<AddIcon />} > Nueva Actividad</Button>
                                     </Grid>
-                                    <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <TextField
-                                                id="presupuestoProyecto"
-                                                name="presupuestoProyecto"
-                                                label="Presupuesto del proyecto:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                {...register("presupuestoProyecto")}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                            <FormControl sx={{ minWidth: '100%' }}>
-                                                <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
-                                                <Select
-                                                    labelId="demo-simple-select-helper-label"
-                                                    id="estado"
-                                                    name="estado"
-                                                    style={{ width: "100%" }}
-                                                    required
-                                                    label="Estado"
-                                                    {...register("estado")}
-                                                >
-                                                    <MenuItem value={10}>Activo</MenuItem>
-                                                    <MenuItem value={20}>Finalizado</MenuItem>
-                                                </Select>
-                                            </FormControl>
-                                        </Grid>
-                                    </Grid>
-
                                 </Grid>
 
-                            </Card>
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit">Registar Proveedor</Button>
-                    </DialogActions>
-                </form>
-            </Dialog>
-        </div >
+                                <ActividadPresupuestaria />
 
+                            </Grid>
+                        </CardContent>
+                    </Card>
+
+                </Grid>
+            </Grid>
+        </MainCard>
     );
 }
+
 
 export default PartidaPresupuestaria;
