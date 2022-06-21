@@ -67,7 +67,7 @@ const PartidaPresupuestaria = () => {
     return (
         <MainCard title="Partida Presupuestaria" >
             <Grid container spacing={gridSpacing} >
-                <Grid item   lg={12}  md={12} sm={12} xs={12}>
+                <Grid item lg={12} md={12} sm={12} xs={12}>
                     <Card >
                         <CardHeader title='PROYECTO USAID SALINAS'>
 
@@ -75,14 +75,24 @@ const PartidaPresupuestaria = () => {
                         <CardContent >
                             <Grid container spacing={2}>
                                 <Grid container item spacing={2}>
-                                    <Grid item lg={2}  md={2} sm={12} xs={12}>
+                                    <Grid item lg={2} md={2} sm={12} xs={12}>
                                         <Button variant='contained' onClick={(event) => back(event, 1, '/Proyecto/Proyecto')} ><KeyboardReturnIcon /></Button>
                                     </Grid>
-                                    <Grid item  lg={10} md={10} sm={12} xs={12} >
-                                        <Button variant='contained' startIcon={<AddIcon />} onClick={()=> setAcording(true)} > Nueva Actividad</Button>
+                                    <Grid item lg={10} md={10} sm={12} xs={12} >
+                                        <Button variant='contained' startIcon={<AddIcon />} onClick={() => setAcording(true)} > Nueva Actividad</Button>
                                     </Grid>
                                 </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
+                                    <TextField
+                                        id="actividad"
+                                        name="actividad"
+                                        label="Nombre del Actividad:"
 
+                                        style={{ width: "100%" }}
+                                        required
+                                        {...register("actividad")}
+                                    />
+                                </Grid>
                                 <ActividadPresupuestaria />
 
                                 {newItem}
