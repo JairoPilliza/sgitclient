@@ -90,11 +90,11 @@ const RegistroRetencion = () => {
                                         <TableCell align="center">
                                             <Grid container spacing={2}>
                                                 <Grid item>
-                                                    <Button variant="contained" > <EditIcon />
+                                                    <Button variant="contained" style={{ backgroundColor: "#ffac33" }}> <EditIcon />
                                                     </Button>
                                                 </Grid>
                                                 <Grid item>
-                                                    <Button variant="contained" ><DeleteIcon />
+                                                    <Button variant="contained" style={{ backgroundColor: "#e91e63" }} ><DeleteIcon />
                                                     </Button>
                                                 </Grid>
                                             </Grid>

@@ -4,7 +4,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import { Divider } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,6 +15,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
 
 const  RetencionesNoAut = () =>  {
     const [value, setValue] = React.useState('1');
@@ -87,8 +88,15 @@ const  RetencionesNoAut = () =>  {
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.carbs}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" ><LocalPrintshopIcon/></Button> 
-                                <Button variant="contained"> <MailOutlineIcon/></Button></TableCell>
+                                <TableCell align="right"> <Grid container spacing={1}>
+                                        <Grid item>
+                                            <Button variant="contained" ><LocalPrintshopIcon /></Button>
+                                        </Grid>
+                                        <Grid item>
+                                            <Button variant="contained" style={{ backgroundColor: "#33eb91" }} ><MailOutlineIcon /></Button>
+                                        </Grid>
+
+                                    </Grid></TableCell>
                             </TableRow> 
                         ))}
                     </TableBody>

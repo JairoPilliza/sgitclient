@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Button } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 const TableATS = () => {
     const [value, setValue] = React.useState('1');
 
@@ -59,7 +59,7 @@ const TableATS = () => {
                                 <TableCell align="right">{row.protein}</TableCell>
 
                                 <TableCell align="right">
-                                    <Button variant="contained" > <MailOutlineIcon /> </Button></TableCell>
+                                    <Button variant="contained" style={{ backgroundColor: "#e91e63" }}> <HighlightOffIcon /> </Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

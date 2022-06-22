@@ -97,12 +97,12 @@ const ListarPersonaLiquidacion = () => {
                                         <TableCell align="center">
                                             <Grid container spacing={1}>
                                                 <Grid item>
-                                                    <Button variant="contained">
+                                                    <Button variant="contained" style={{ backgroundColor: "#ffac33" }}>
                                                         <EditIcon />
                                                     </Button>
                                                 </Grid>
                                                 <Grid item>
-                                                    <Button variant="contained" >
+                                                    <Button variant="contained" style={{ backgroundColor: "#e91e63" }} >
                                                         <DeleteIcon />
                                                     </Button>
                                                 </Grid>

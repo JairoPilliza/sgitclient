@@ -10,8 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
 import { Button, Card, CardContent, CardHeader, Divider, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import ModalUsuario from '../Usuario/ModalUsuario';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ModalComprobanteFisico from './ModalAnuCompFisico';
 
 const RegAnulacionComprobanteFisico = () => {
@@ -118,11 +117,12 @@ const RegAnulacionComprobanteFisico = () => {
                                         <TableCell align="center">{row.protein}</TableCell>
 
                                         <TableCell align="center">
-                                            <Grid container>
+                                            <Grid container spacing={2}>
+                                            <Grid item>
+                                                    <Button variant="contained" style={{ backgroundColor: "#ffac33" }}> <EditIcon /></Button>
+                                                </Grid>
                                                 <Grid item>
-                                                    <Button variant="contained" size='small' onClick={handleClickOpen('paper')}  >
-                                                        <EditIcon />
-                                                    </Button>
+                                                    <Button variant="contained" style={{ backgroundColor: "#e91e63" }}><DeleteIcon /></Button>
                                                 </Grid>
                                             </Grid>
                                         </TableCell>

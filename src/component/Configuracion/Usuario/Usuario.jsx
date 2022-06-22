@@ -97,7 +97,7 @@ const Usuario = () => {
                                         <TableCell align="center">
                                             <Grid container>
                                                 <Grid item>
-                                                    <Button variant="contained" size='small' onClick={handleClickOpen('paper')}  >
+                                                    <Button variant="contained" size='small' onClick={handleClickOpen('paper')} style={{ backgroundColor: "#ffac33" }} >
                                                         <EditIcon />
                                                     </Button>
                                                 </Grid>

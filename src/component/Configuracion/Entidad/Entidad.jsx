@@ -90,10 +90,10 @@ const Entidad = () => {
                                                 <TableCell align="center">
                                                     <Grid container spacing={2} >
                                                         <Grid item>
-                                                            <Button variant="contained" size="small" ><ClearIcon /></Button>
+                                                            <Button variant="contained" size="small" style={{  backgroundColor: "#e91e63" }} ><ClearIcon /></Button>
                                                         </Grid>
                                                         <Grid item>
-                                                            <Button variant="contained" size="small" ><ArticleIcon /></Button>
+                                                            <Button variant="contained" size="small" style={{  backgroundColor: "#ffac33" }}><ArticleIcon /></Button>
                                                         </Grid>
                                                     </Grid>
                                                 </TableCell>

@@ -47,7 +47,7 @@ const XmlCompra = () => {
                             </Grid>
                             <br></br>
                             <Grid item lg={12} md={12} sm={12} xs={12}>
-                                <Button type="submit" style={{ width: "100%" }} variant="contained" sx={{ margin: "auto" }} startIcon={<DownloadForOfflineIcon />} >Descargar</Button>
+                                <Button type="submit" style={{ width: "100%" , backgroundColor: "#33eb91" }}  variant="contained" sx={{ margin: "auto" }} startIcon={<DownloadForOfflineIcon />} >Descargar</Button>
                             </Grid>
                         </Grid>
                     </CardContent>

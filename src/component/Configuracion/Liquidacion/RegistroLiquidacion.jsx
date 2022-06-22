@@ -89,10 +89,10 @@ const RegistroLiquidacion = () => {
                                         <TableCell align="center">
                                             <Grid container spacing={2}>
                                                 <Grid item>
-                                                    <Button variant="contained"> <EditIcon /></Button>
+                                                    <Button variant="contained" style={{ backgroundColor: "#ffac33" }}> <EditIcon /></Button>
                                                 </Grid>
                                                 <Grid item>
-                                                    <Button variant="contained" ><DeleteIcon /></Button>
+                                                    <Button variant="contained" style={{ backgroundColor: "#e91e63" }}><DeleteIcon /></Button>
                                                 </Grid>
                                             </Grid>
                                         </TableCell>

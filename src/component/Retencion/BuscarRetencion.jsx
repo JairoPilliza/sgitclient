@@ -67,8 +67,19 @@ const BuscarRetencion = () => {
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" startIcon={<LocalPrintshopIcon />}></Button>
-                                    <Button variant="contained" startIcon={<MailOutlineIcon />}></Button></TableCell>
+                                <TableCell align="right">
+                                    <Grid container spacing={1}>
+                                        <Grid item>
+                                            <Button variant="contained" ><LocalPrintshopIcon /></Button>
+                                        </Grid>
+                                        <Grid item>
+                                            <Button variant="contained" style={{ backgroundColor: "#33eb91" }} ><MailOutlineIcon /></Button>
+                                        </Grid>
+
+                                    </Grid>
+
+
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
