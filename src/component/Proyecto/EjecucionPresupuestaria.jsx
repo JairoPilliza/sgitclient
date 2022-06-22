@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card,  Grid  } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import TextField from '@mui/material/TextField';
@@ -84,7 +84,7 @@ const EjecucionPresupuestaria = (props) => {
         console.log(data);
 
     }
-    
+
 
     return (
         <div>
@@ -111,7 +111,7 @@ const EjecucionPresupuestaria = (props) => {
                                 <br />
                                 <Grid container spacing={2}>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="nombreProyecto"
                                                 name="nombreProyecto"
@@ -122,7 +122,7 @@ const EjecucionPresupuestaria = (props) => {
                                                 {...register("nombreProyecto")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="fechaInicial"
                                                 name="fechaInicial"
@@ -138,7 +138,7 @@ const EjecucionPresupuestaria = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="fechaFin"
                                                 name="fechaFin"
@@ -152,7 +152,7 @@ const EjecucionPresupuestaria = (props) => {
                                                 {...register("fechaFin")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="nombreResponsable"
                                                 name="nombreResponsable"
@@ -164,7 +164,7 @@ const EjecucionPresupuestaria = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="presupuestoProyecto"
                                                 name="presupuestoProyecto"
@@ -174,7 +174,7 @@ const EjecucionPresupuestaria = (props) => {
                                                 {...register("presupuestoProyecto")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                                 <Select

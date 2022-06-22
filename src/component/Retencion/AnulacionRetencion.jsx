@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import MainCard from 'ui-component/cards/MainCard';
-import {Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import SolcitudAnulacion from './SolicitudAnulacion';
 import AutorizadasAnulacion from './AutorizadasAnulacion';
 import RetencionesAnuladas from './RetencionesAnuladas';
@@ -23,7 +23,7 @@ const AnulacionRetencion = () => {
         <MainCard title="Lista de Solicitudes de Anulación de Retenciones Autorizadas por el SRI">
             <Grid container spacing={gridSpacing}>
 
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item lg={12} md={12} sm={12} xs={12} >
                     <Box sx={{ width: '100%', typography: 'body1' }}>
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>

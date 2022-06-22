@@ -81,19 +81,17 @@ const ModalFormaPago = (props) => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                                           
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
+
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <Typography variant="h5" color="red" gutterBottom component="div">
                                                 Valor Total: 1500
                                             </Typography>
                                         </Grid>
-
-
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Forma de Pago:</InputLabel>
                                                 <Select
@@ -110,10 +108,10 @@ const ModalFormaPago = (props) => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <TextField type="number" style={{ width: "100%" }} {...register("valor")} id="valor" name="valor" label="Valor:" variant="outlined" />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12}>
                                             <Button variant="contained" type="submit" style={{ width: "100%" }}>Agregar</Button>
                                         </Grid>
                                     </Grid>
@@ -149,12 +147,12 @@ const ModalFormaPago = (props) => {
                                             </TableRow>
                                         ))}
                                         <TableRow >
-                                        <TableCell align="center"></TableCell>
-                                        <TableCell align="center"></TableCell>                                       
-                                        <TableCell align="center"><Typography variant="h6" color="red" gutterBottom component="div">
+                                            <TableCell align="center"></TableCell>
+                                            <TableCell align="center"></TableCell>
+                                            <TableCell align="center"><Typography variant="h6" color="red" gutterBottom component="div">
                                                 Valor Total: 1500
                                             </Typography></TableCell>
-                                        <TableCell align="center"></TableCell>
+                                            <TableCell align="center"></TableCell>
 
                                         </TableRow>
                                     </TableBody>

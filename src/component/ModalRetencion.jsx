@@ -129,22 +129,22 @@ const ModalRetencion = (props) => {
 
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <label style={{ width: "100%" }}><b>Retención electronica</b></label>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12}  >
                                             <Checkbox
                                                 id="retencionElectronica"
                                                 name="retencionElectronica"
                                                 style={{ width: "100%" }}
                                                 {...register("retencionElectronica")} />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%" }}>
                                                 <small>Ayuda</small>
                                             </Button>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12}  >
                                             <TextField
                                                 id="fecha"
                                                 name="fecha"
@@ -159,17 +159,17 @@ const ModalRetencion = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2} >
-                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}  >
                                             {muestraBuscador}
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2} >
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
                                             <label style={{ width: "100%" }} >
                                                 <b>N. Retencion: *</b>
                                             </label>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
 
                                             <TextField
                                                 id="numeroEstablecimiento"
@@ -179,7 +179,7 @@ const ModalRetencion = (props) => {
                                                 {...register("numeroEstablecimiento")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: "100%" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Pto emisión</InputLabel>
                                                 <Select
@@ -199,7 +199,7 @@ const ModalRetencion = (props) => {
                                     </Grid>
 
                                     <Grid container item spacing={2} >
-                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}  >
                                             <FormControl sx={{ minWidth: "100%" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Sustención Tributario</InputLabel>
                                                 <Select

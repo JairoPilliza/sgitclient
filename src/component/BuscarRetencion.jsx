@@ -20,7 +20,7 @@ const BuscarRetencion = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -68,10 +68,10 @@ const BuscarRetencion = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12}>
+            <Grid item sm={12} xs={12} >
                 <SubCard className="col-12" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item  xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <TextField
                                 required
                                 id="outlined-basic"
@@ -81,11 +81,11 @@ const BuscarRetencion = () => {
                                 {...register("razonSocial")}
                             />
                         </Grid>
-                        <Grid item xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
-                        </Grid>                       
+                        </Grid>
                     </Grid><br></br>
                     <Divider />
                     {
@@ -94,7 +94,7 @@ const BuscarRetencion = () => {
                 </SubCard>
 
             </Grid>
-          
+
         </Grid >
 
     );

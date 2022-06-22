@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, Grid} from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imp
 
@@ -82,7 +82,7 @@ const ModalNuevaPersona = (props) => {
                             <Card className="col-12" container style={{ textAlign: "center" }} >
                                 <br />
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}  >
                                         <TextField
                                             id="apellidosNombres"
                                             name="apellidosNombres"
@@ -94,7 +94,7 @@ const ModalNuevaPersona = (props) => {
                                             {...register("apellidosNombres")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Documento:</InputLabel>
@@ -114,7 +114,7 @@ const ModalNuevaPersona = (props) => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
                                             id="numeroIdentificacion"
                                             name="numeroIdentificacion"
@@ -126,7 +126,7 @@ const ModalNuevaPersona = (props) => {
                                         />
 
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <TextField
                                             id="telefono"
                                             name="telefono"
@@ -137,7 +137,7 @@ const ModalNuevaPersona = (props) => {
                                             {...register("telefono")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <TextField
                                             id="correo"
                                             name="correo"
@@ -148,7 +148,7 @@ const ModalNuevaPersona = (props) => {
                                             {...register("correo")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}  >
                                         <TextField
                                             id="direccionDomiciliaria"
                                             name="direccionDomiciliaria"

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {  Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
+import { Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -70,7 +70,7 @@ const ModalUsuario = (props) => {
                         >
                             <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
                                             id="nombreCompleto"
                                             name="nombreCompleto"
@@ -80,7 +80,7 @@ const ModalUsuario = (props) => {
                                             {...register("nombreCompleto")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
                                             <Select
@@ -97,7 +97,7 @@ const ModalUsuario = (props) => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
                                             id="correo"
                                             name="correo"
@@ -108,7 +108,7 @@ const ModalUsuario = (props) => {
                                             {...register("correo")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
                                             <Select
@@ -125,7 +125,7 @@ const ModalUsuario = (props) => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
                                             id="usuario"
                                             name="usuario"
@@ -136,7 +136,7 @@ const ModalUsuario = (props) => {
                                             {...register("usuario")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                             <Select
@@ -155,7 +155,7 @@ const ModalUsuario = (props) => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
                                             id="contraseña"
                                             name="contraseña"
@@ -165,77 +165,20 @@ const ModalUsuario = (props) => {
                                             {...register("contraseña")}
                                         />
                                     </Grid>
-                                    
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <br/>
-                                    <Divider/>
-                                    <br/>
+
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
+                                        <br />
+                                        <Divider />
+                                        <br />
                                         Politicas
                                         <FormGroup>
                                             <FormControlLabel control={<Checkbox defaultChecked />} label="Administrador" />
-                                            <FormControlLabel  control={<Checkbox />} label="Contador" />
+                                            <FormControlLabel control={<Checkbox />} label="Contador" />
                                         </FormGroup>
                                     </Grid>
                                 </Grid>
                             </SubCard>
                             <br />
-                            {/* <Accordion>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                    style={{ backgroundColor: "yellow" }}
-                                >
-                                    <Typography>Datos del Proveedor</Typography>
-
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-
-                                        <Grid item xs={6} spacing={2}>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    id="outlined-basic"
-                                                    label="Numero Ruc: "
-                                                    style={{ width: "100%" }}
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                <TextField
-                                                    id="outlined-basic"
-                                                    label="Numero Autorización:"
-                                                    style={{ width: "100%" }}
-                                                />
-                                            </Grid>
-
-                                        </Grid>
-                                        <Grid item xs={6} spacing={2}>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    id="outlined-basic"
-                                                    label="Telefono: "
-                                                    style={{ width: "100%" }}
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    id="outlined-date"
-                                                    label="Dirección:"
-                                                    style={{ width: "100%" }}
-
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    id="outlined-date"
-                                                    label="Email:"
-                                                    style={{ width: "100%" }}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </AccordionDetails>
-                            </Accordion> */}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

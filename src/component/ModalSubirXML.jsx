@@ -58,15 +58,15 @@ const ModalSubirXML = (props) => {
         setSelectedValue(event.target.value);
         //alert(event.target.value)
     };
-    
+
     // const checkBienes = (event) => {
     //     alert(event.target.value);
     //     if (event.target.value == "bien") {
-           
-          
-           
+
+
+
     //     }
-        
+
     // }
 
 
@@ -94,13 +94,13 @@ const ModalSubirXML = (props) => {
                                 <div>
                                     <Grid container spacing={2}>
 
-                                        <Grid container item xs={12} sm={12} md={6} lg={6} spacing={2}>
-                                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid container item spacing={2} lg={6} md={6} sm={12} xs={12}  >
+                                            <Grid item lg={6} md={6} sm={12} xs={12}>
                                                 <Button variant="contained" value="bien" startIcon={<CheckCircleOutlineIcon />} >
                                                     Bienes
                                                 </Button>
                                             </Grid>
-                                            <Grid item xs={12} sm={12} md={6} lg={6}>
+                                            <Grid item lg={6} md={6} sm={12} xs={12}>
                                                 <Button variant="contained" value="servicio" startIcon={<CheckCircleOutlineIcon />} >
                                                     Servicios
                                                 </Button>

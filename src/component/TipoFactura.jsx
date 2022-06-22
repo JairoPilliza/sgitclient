@@ -8,12 +8,12 @@ import Checkbox from '@mui/material/Checkbox';
 
 const TipoFactura = ({ handleEvent, muestraXML }) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    
+
     const obtiene = (event) => {
-        
+
         if (event.target.value == "1") {
             handleEvent(true)
-           
+
         }
         if (event.target.value == "2") {
             handleEvent(true);
@@ -23,7 +23,7 @@ const TipoFactura = ({ handleEvent, muestraXML }) => {
     };
     return (
         <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} sm={6}>
+            <Grid item lg={6} md={6} sm={12} xs={12}  >
                 <SubCard title="Factura Física" style={{ textAlign: "center" }} >
                     <center>
                         <Checkbox
@@ -37,7 +37,7 @@ const TipoFactura = ({ handleEvent, muestraXML }) => {
                     </center>
                 </SubCard>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
                 <SubCard title="Factura Elect." style={{ textAlign: "center" }}>
                     <center>
                         <Checkbox

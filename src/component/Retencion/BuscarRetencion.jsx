@@ -67,9 +67,9 @@ const BuscarRetencion = () => {
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
                                 <TableCell align="right">{row.protein}</TableCell>
-                                <TableCell align="right"><Button variant="contained" startIcon={<LocalPrintshopIcon/>}></Button> 
-                                <Button variant="contained" startIcon={<MailOutlineIcon/>}></Button></TableCell>
-                            </TableRow> 
+                                <TableCell align="right"><Button variant="contained" startIcon={<LocalPrintshopIcon />}></Button>
+                                    <Button variant="contained" startIcon={<MailOutlineIcon />}></Button></TableCell>
+                            </TableRow>
                         ))}
                     </TableBody>
                 </Table>
@@ -79,24 +79,24 @@ const BuscarRetencion = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12} lg={12} md={12} >
+            <Grid item lg={12} md={12} sm={12} xs={12} >
                 <SubCard className="col-12" title="Buscador de Retenciones" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <TextField
                                 required
                                 id="outlined-basic"
                                 label="Numero de Retencion:"
-                               
+
                                 style={{ width: "100%" }}
                                 {...register("razonSocial")}
                             />
                         </Grid>
-                        <Grid item xs={12} md={3} sm={3} lg={3} >
+                        <Grid item lg={3} md={3} sm={3} xs={12}  >
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
-                        </Grid>                       
+                        </Grid>
                     </Grid><br></br>
                     <Divider />
                     {
@@ -106,7 +106,7 @@ const BuscarRetencion = () => {
 
             </Grid>
 
-          
+
         </Grid >
 
     );

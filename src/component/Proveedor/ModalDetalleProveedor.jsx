@@ -109,14 +109,14 @@ const ModalDetalleProveedor = (props) => {
                             <br />
 
                             <Grid container spacing={2} >
-                                <Grid item xs={6}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <Grid container>
-                                        <Grid item xs={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} xs={12} >
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
                                                 <b>Razón Social:</b> DISPETROL S.A.
                                             </Typography>
                                         </Grid>
-                                        <Grid item xs={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
                                                 <b>Nombre:</b> DISPETROL S.A.
                                             </Typography>
@@ -134,8 +134,8 @@ const ModalDetalleProveedor = (props) => {
                                     </Grid>
 
                                 </Grid>
-                               
-                                <Grid item xs={6}>
+
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
@@ -164,7 +164,7 @@ const ModalDetalleProveedor = (props) => {
                             <Divider />
                             <br></br>
                             <Grid container spacing={2} >
-                                <Grid item xs={6}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
@@ -178,7 +178,7 @@ const ModalDetalleProveedor = (props) => {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
-                                               <b> Secuencial Min:</b> 000000001
+                                                <b> Secuencial Min:</b> 000000001
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
@@ -188,17 +188,17 @@ const ModalDetalleProveedor = (props) => {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
-                                              <b>  Observación:</b>
+                                                <b>  Observación:</b>
                                             </Typography>
                                         </Grid>
                                     </Grid>
 
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
-                                               <b> Pais: </b>Ecuador
+                                                <b> Pais: </b>Ecuador
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
@@ -213,7 +213,7 @@ const ModalDetalleProveedor = (props) => {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Typography variant="h5" gutterBottom component="div" style={{ float: "left" }}>
-                                               <b> P. de Facturación:</b> 004
+                                                <b> P. de Facturación:</b> 004
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
@@ -232,7 +232,7 @@ const ModalDetalleProveedor = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cerrar</Button>
-                 
+
                 </DialogActions>
 
             </Dialog>

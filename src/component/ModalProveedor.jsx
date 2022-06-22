@@ -109,7 +109,7 @@ const ModalNuevoProveedor = (props) => {
                                 <br />
                                 <Grid container spacing={2}>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Tipo Contribuyente</InputLabel>
                                                 <Select
@@ -127,7 +127,7 @@ const ModalNuevoProveedor = (props) => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="ruc"
                                                 name="ruc"
@@ -141,7 +141,7 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="razonSocial"
                                                 name="razonSocial"
@@ -151,7 +151,7 @@ const ModalNuevoProveedor = (props) => {
                                                 {...register("razonSocial")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="nombre"
                                                 name="nombre"
@@ -163,7 +163,7 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="direccionDomiciliaria"
                                                 name="direccionDomiciliaria"
@@ -173,7 +173,7 @@ const ModalNuevoProveedor = (props) => {
                                                 {...register("direccionDomiciliaria")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
                                                 id="correo"
@@ -186,7 +186,7 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="telefono"
                                                 name="telefono"
@@ -197,7 +197,7 @@ const ModalNuevoProveedor = (props) => {
                                             />
 
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="celular"
                                                 name="celular"
@@ -208,7 +208,7 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">País</InputLabel>
                                                 <Select
@@ -225,7 +225,7 @@ const ModalNuevoProveedor = (props) => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Ciudad</InputLabel>
                                                 <Select
@@ -247,7 +247,7 @@ const ModalNuevoProveedor = (props) => {
                                     </Grid>
 
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="observacion"
                                                 name="observacion"
@@ -277,7 +277,7 @@ const ModalNuevoProveedor = (props) => {
                                             <br></br>
                                             <Grid container spacing={2}>
                                                 <Grid container item spacing={2}>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                                         <TextField
                                                             id="fechaCaducidad"
                                                             name="fechaCaducidad"
@@ -290,7 +290,7 @@ const ModalNuevoProveedor = (props) => {
                                                             {...register("fechaCaducidad")}
                                                         />
                                                     </Grid>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                                         <TextField
                                                             id="numeroAutorizacion"
                                                             name="numeroAutorizacion"
@@ -301,7 +301,7 @@ const ModalNuevoProveedor = (props) => {
                                                     </Grid>
                                                 </Grid>
                                                 <Grid container item spacing={2}>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                                         <TextField
                                                             id="establecimiento"
                                                             name="establecimiento"
@@ -311,7 +311,7 @@ const ModalNuevoProveedor = (props) => {
                                                             {...register("establecimiento")}
                                                         />
                                                     </Grid>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                                         <TextField
                                                             id="puntoEmision"
                                                             name="puntoEmision"
@@ -324,7 +324,7 @@ const ModalNuevoProveedor = (props) => {
                                                 </Grid>
 
                                                 <Grid container item spacing={2}>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                                         <TextField
                                                             id="secuencialMin"
                                                             name="secuencialMin"
@@ -335,7 +335,7 @@ const ModalNuevoProveedor = (props) => {
                                                             {...register("secuencialMin")}
                                                         />
                                                     </Grid>
-                                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                                         <TextField
                                                             id="secuencialMax"
                                                             name="secuencialMax"

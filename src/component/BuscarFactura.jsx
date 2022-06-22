@@ -29,7 +29,7 @@ const BuscarFactura = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
@@ -48,32 +48,32 @@ const BuscarFactura = () => {
                             <TableCell>#</TableCell>
                             <TableCell align="right">Número</TableCell>
                             <TableCell align="right">Razón Social</TableCell>
-                            <TableCell align="right">Ci/Ruc</TableCell>                          
-                            <TableCell align="right">Fecha</TableCell>                          
-                            <TableCell align="right">Iva</TableCell>                          
-                            <TableCell align="right">Total</TableCell>                         
+                            <TableCell align="right">Ci/Ruc</TableCell>
+                            <TableCell align="right">Fecha</TableCell>
+                            <TableCell align="right">Iva</TableCell>
+                            <TableCell align="right">Total</TableCell>
                             <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody >
                         {rows.map((row) => (
                             <TableRow
-                                
+
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                               
+
                             >
                                 <TableCell component="th" scope="row">
                                     {row.calories}
                                 </TableCell>
                                 <TableCell align="right">{row.calories}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>                        
-                                <TableCell align="right">{row.carbs}</TableCell>                        
-                                <TableCell align="right">{row.carbs}</TableCell>                        
-                                <TableCell align="right">{row.carbs}</TableCell>                        
+                                <TableCell align="right">{row.carbs}</TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>
 
-                                <TableCell align="right"><Button variant="contained" onClick={e => setTable(false)} startIcon={<CheckCircleOutlineIcon/>}>Nota de credito</Button></TableCell>
+                                <TableCell align="right"><Button variant="contained" onClick={e => setTable(false)} startIcon={<CheckCircleOutlineIcon />}>Nota de credito</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -84,10 +84,10 @@ const BuscarFactura = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12}>
+            <Grid item lg={12} md={12} sm={12} xs={12} >
                 <SubCard className="col-12" title="Buscar Factura" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item  xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}  >
                             <TextField
                                 required
                                 id="outlined-basic"
@@ -97,11 +97,11 @@ const BuscarFactura = () => {
                                 {...register("proveedor")}
                             />
                         </Grid>
-                        <Grid item xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}  >
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
-                        </Grid>                       
+                        </Grid>
                     </Grid><br></br>
                     <Divider />
                     {
@@ -110,7 +110,7 @@ const BuscarFactura = () => {
                 </SubCard>
 
             </Grid>
-          
+
         </Grid >
 
     );

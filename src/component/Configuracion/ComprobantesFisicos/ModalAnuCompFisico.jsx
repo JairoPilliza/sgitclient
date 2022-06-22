@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {  Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
+import { Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -70,8 +70,8 @@ const ModalComprobanteFisico = (props) => {
                         >
                             <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
+                                        <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-helper-label"
@@ -87,12 +87,12 @@ const ModalComprobanteFisico = (props) => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Grid item lg={4} md={4} sm={12} xs={12} >
                                         <label>
-                                           <b>N° Serie</b> 
+                                            <b>N° Serie</b>
                                         </label>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Grid item lg={4} md={4} sm={12} xs={12} >
                                         <TextField
                                             id="establecimiento"
                                             name="establecimiento"
@@ -102,7 +102,7 @@ const ModalComprobanteFisico = (props) => {
                                             {...register("establecimiento")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                                    <Grid item lg={4} md={4} sm={12} xs={12}>
                                         <TextField
                                             id="puntoEmision"
                                             name="puntoEmision"
@@ -112,19 +112,19 @@ const ModalComprobanteFisico = (props) => {
                                             {...register("puntoEmision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
                                             id="secuencialDesde"
                                             name="secuencialDesde"
                                             label="Secuencial desde:"
-                                            
+
                                             style={{ width: "100%" }}
                                             required
                                             {...register("secuencialDesde")}
                                         />
                                     </Grid>
-                                    
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
                                             id="secuencialHasta"
                                             name="secuencialHasta"
@@ -135,8 +135,8 @@ const ModalComprobanteFisico = (props) => {
                                             {...register("secuencialHasta")}
                                         />
                                     </Grid>
-                                
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
@@ -146,12 +146,12 @@ const ModalComprobanteFisico = (props) => {
                                             {...register("numeroAutorizacion")}
                                         />
                                     </Grid>
-                                    
-                                   
+
+
                                 </Grid>
                             </SubCard>
                             <br />
-                            
+
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

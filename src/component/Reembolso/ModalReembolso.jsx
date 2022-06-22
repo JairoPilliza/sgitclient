@@ -69,7 +69,7 @@ const ModalReembolso = (props) => {
                             <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                                 <br></br>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Identificación</InputLabel>
@@ -90,7 +90,7 @@ const ModalReembolso = (props) => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
                                             id="numeroIdentificacion"
                                             name="numeroIdentificacion"
@@ -100,7 +100,7 @@ const ModalReembolso = (props) => {
                                             {...register("numeroIdentificacion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
                                             <Select
@@ -117,7 +117,7 @@ const ModalReembolso = (props) => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={2} lg={2}>
+                                    <Grid item lg={2} md={2} sm={12} xs={12}  >
                                         <TextField
                                             id="establecimiento"
                                             name="establecimiento"
@@ -127,7 +127,7 @@ const ModalReembolso = (props) => {
                                             {...register("establecimiento")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={2} lg={2}>
+                                    <Grid item lg={2} md={2} sm={12} xs={12} >
                                         <TextField
                                             id="puntoEmision"
                                             name="puntoEmision"
@@ -137,7 +137,7 @@ const ModalReembolso = (props) => {
                                             {...register("puntoEmision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={2} lg={2}>
+                                    <Grid item lg={2} md={2} sm={12} xs={12}  >
                                         <TextField
                                             id="secuencial"
                                             name="secuencial"
@@ -148,7 +148,7 @@ const ModalReembolso = (props) => {
                                         />
                                     </Grid>
 
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
@@ -159,7 +159,7 @@ const ModalReembolso = (props) => {
                                             {...register("numeroAutorizacion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
                                             id="fechaEmision"
                                             name="fechaEmision"
@@ -178,7 +178,7 @@ const ModalReembolso = (props) => {
                                     <CardHeader title="Bases Imponibles" style={{ textAlign: "left" }} />
                                     <Divider />
                                     <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="tarIVA0"
                                                 name="tarIVA0"
@@ -189,8 +189,8 @@ const ModalReembolso = (props) => {
                                                 {...register("tarIVA0")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6} />
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} />
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="tarIVAdif0"
                                                 name="tarIVAdif0"
@@ -201,7 +201,7 @@ const ModalReembolso = (props) => {
                                                 {...register("tarIVAdif0")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="montoIVA"
                                                 name="montoIVA"
@@ -212,7 +212,7 @@ const ModalReembolso = (props) => {
                                                 {...register("montoIVA")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
                                                 id="tarnoObjIVA"
@@ -224,7 +224,7 @@ const ModalReembolso = (props) => {
                                                 {...register("tarnoObjIVA")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="montoIce"
                                                 name="montoIce"
@@ -237,7 +237,7 @@ const ModalReembolso = (props) => {
                                             />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
                                                 id="baseExIVA"

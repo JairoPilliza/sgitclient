@@ -87,7 +87,7 @@ const ModalNuevoProyecto = (props) => {
                                 <br />
                                 <Grid container spacing={2}>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="nombreProyecto"
                                                 name="nombreProyecto"
@@ -98,7 +98,7 @@ const ModalNuevoProyecto = (props) => {
                                                 {...register("nombreProyecto")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="fechaInicial"
                                                 name="fechaInicial"
@@ -114,7 +114,7 @@ const ModalNuevoProyecto = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="fechaFin"
                                                 name="fechaFin"
@@ -128,7 +128,7 @@ const ModalNuevoProyecto = (props) => {
                                                 {...register("fechaFin")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
                                                 id="nombreResponsable"
                                                 name="nombreResponsable"
@@ -140,7 +140,7 @@ const ModalNuevoProyecto = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
                                                 id="presupuestoProyecto"
                                                 name="presupuestoProyecto"
@@ -150,7 +150,7 @@ const ModalNuevoProyecto = (props) => {
                                                 {...register("presupuestoProyecto")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                                 <Select

@@ -49,7 +49,7 @@ const RegistroRetencion = () => {
 
                 <CardContent>
                     <Grid container>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={12} xs={12} >
                             <Button variant='contained' startIcon={<AddCircleOutlineOutlinedIcon />} onClick={handleClickOpen('paper')}>  Crear</Button>
                         </Grid>
                     </Grid>

@@ -10,7 +10,7 @@ const TipoNotaCredito = ({ handleEvent }) => {
 
     return (
         <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} sm={6}>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
                 <SubCard title="N. Credito Física" style={{ textAlign: "center" }} >
                     <center>
                         <Checkbox
@@ -21,7 +21,7 @@ const TipoNotaCredito = ({ handleEvent }) => {
                     </center>
                 </SubCard>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
                 <SubCard title="N. Credito Elect." style={{ textAlign: "center" }}>
                     <center>
                         <Checkbox

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid} from '@mui/material';
+import { Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -73,7 +73,7 @@ const ModalRegistroRetencion = (props) => {
 
 
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
 
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
@@ -93,7 +93,7 @@ const ModalRegistroRetencion = (props) => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <TextField
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
@@ -104,7 +104,7 @@ const ModalRegistroRetencion = (props) => {
                                             {...register("numeroAutorizacion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
                                             id="puntoEmision"
                                             name="puntoEmision"
@@ -114,7 +114,7 @@ const ModalRegistroRetencion = (props) => {
                                             {...register("puntoEmision")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
                                             id="secuencialMin"
                                             name="secuencialMin"
@@ -124,7 +124,7 @@ const ModalRegistroRetencion = (props) => {
                                             {...register("secuencialMin")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
                                             id="secuencialMax"
                                             name="secuencialMax"
@@ -134,7 +134,7 @@ const ModalRegistroRetencion = (props) => {
                                             {...register("secuencialMax")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
                                             id="fechaCaducidad"
                                             name="fechaCaducidad"

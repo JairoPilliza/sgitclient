@@ -29,8 +29,8 @@ const ListaRetencionesAut = () => {
     return (
         <div>
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} md={6} lg={6}/>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
+                <Grid item lg={6} md={6} sm={12} xs={12} />
+                <Grid item lg={6} md={6} sm={12} xs={12}>
                     <TextField
                         id="outlined-basic"
                         label="Buscar Retencion Aut"
@@ -74,7 +74,7 @@ const ListaRetencionesAut = () => {
                                 <TableCell align="center">{row.protein}</TableCell>
                                 <TableCell align="center">{row.protein}</TableCell>
                                 <TableCell align="center">{row.protein}</TableCell>
-                              
+
                                 <TableCell align="center">
                                     <Button variant="contained" > <LocalPrintshopIcon />
                                     </Button>

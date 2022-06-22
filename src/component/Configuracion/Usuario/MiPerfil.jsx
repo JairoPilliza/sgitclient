@@ -48,7 +48,7 @@ const MiPerfil = () => {
                     <br></br>
                     <CardContent>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <label htmlFor="contained-button-file">
                                     <Input id="contained-button-file" multiple type="file" />
                                     <Button variant="contained" component="span" >
@@ -57,17 +57,17 @@ const MiPerfil = () => {
                                 </label>
                             </Grid>
 
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <Typography gutterBottom variant="h2" component="div">
                                     ADMIN
                                 </Typography>
                             </Grid>
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid item lg={12} md={12} sm={12} xs={12} >
                                 <Typography variant="h5" color="text.secondary">
                                     Unión Ecuatoriana - Administrador - admin
                                 </Typography>
                             </Grid>
-                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <Button variant="contained" onClick={handleClickOpen('paper')}>Editar Perfil </Button>
                             </Grid>
                         </Grid>

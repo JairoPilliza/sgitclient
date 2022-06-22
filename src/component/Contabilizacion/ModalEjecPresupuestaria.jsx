@@ -92,12 +92,12 @@ const ModalEjecPresupuestaria = (props) => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <Typography variant="h5" gutterBottom component="div">
                                                 Factura N°: 56696
                                             </Typography>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <Typography variant="h5" gutterBottom component="div">
                                                 Valor Total:200
                                             </Typography>
@@ -107,7 +107,7 @@ const ModalEjecPresupuestaria = (props) => {
                                     </Grid>
 
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                                 <Select
@@ -126,7 +126,7 @@ const ModalEjecPresupuestaria = (props) => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12}>
                                             <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                                 <Select
@@ -145,7 +145,7 @@ const ModalEjecPresupuestaria = (props) => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
                                                 id="valor"
                                                 name="valor"
@@ -155,7 +155,7 @@ const ModalEjecPresupuestaria = (props) => {
                                                 {...register("valor")}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <Button type="submit" variant="contained" style={{ width: "100%" }}>Agregar</Button>
                                         </Grid>
                                     </Grid>
@@ -192,8 +192,8 @@ const ModalEjecPresupuestaria = (props) => {
 
                                                 <TableCell align="center">100</TableCell>
                                                 <TableCell align="center">
-                                                    <Button  variant="contained" size="small"> <DeleteIcon/></Button>
-                                                    </TableCell>
+                                                    <Button variant="contained" size="small"> <DeleteIcon /></Button>
+                                                </TableCell>
 
                                             </TableRow>
                                         ))}

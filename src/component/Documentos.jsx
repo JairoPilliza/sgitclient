@@ -26,7 +26,7 @@ const Documentos = () => {
             <Box sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper', border: 1, margin: 'auto' }}>
                 <Box sx={{ my: 2, mx: 2 }}>
                     <Grid container alignItems="center">
-                        <Grid item xs>
+                        <Grid item >
                             <Typography gutterBottom variant="h4" component="div">
                                 Documentos <small>comprobantes sri</small>
                             </Typography>
@@ -34,9 +34,9 @@ const Documentos = () => {
                     </Grid>
                 </Box>
                 <Divider variant="middle" />
-                <Box sx={{ m: 2 }} xs={12} sm={12} md={6} lg={6}>
+                <Box sx={{ m: 2 }} lg={6}  md={6}  xs={12}  >
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={12}  xs={12}>
                             <FormControl sx={{ minWidth: "100%" }}>
                                 <InputLabel id="demo-simple-select-helper-label">Escoga el comprabante</InputLabel>
                                 <Select
@@ -54,7 +54,7 @@ const Documentos = () => {
 
                             </FormControl>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item  lg={6}  md={6} sm={12} xs={12}>
                             <Button type="submit"  style={{ width: "100%" }}  variant="contained" >Aceptar</Button>
                         </Grid>
 

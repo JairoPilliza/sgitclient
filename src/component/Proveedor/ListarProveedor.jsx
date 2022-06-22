@@ -55,15 +55,15 @@ const ListarProveedor = () => {
     return (
         <MainCard title="Proveedores" >
             <Grid container spacing={gridSpacing} >
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item lg={12} md={12} sm={12} xs={12} >
                     <Card >
                         <CardContent >
 
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
                                     <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Registrar Proveedor</Button>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={6} lg={6}>
+                                <Grid item lg={6} md={6} sm={12} xs={12} >
                                     <TextField
                                         id="outlined-basic"
                                         label="Razón Social, Nombre o Ruc"

@@ -30,7 +30,7 @@ const BuscarComprobantes = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     function createData(name, tipo, fat, carbs, protein) {
         return { name, tipo, fat, carbs, protein };
     }
@@ -51,17 +51,17 @@ const BuscarComprobantes = () => {
 
                             <TableCell align="right">Proveedor</TableCell>
                             <TableCell align="right">Ruc</TableCell>
-                            <TableCell align="right">Fecha Emisión</TableCell>                          
+                            <TableCell align="right">Fecha Emisión</TableCell>
                             <TableCell align="right">Acciones</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody >
                         {rows.map((row) => (
                             <TableRow
-                                
+
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                               
+
                             >
                                 <TableCell component="th" scope="row">
                                     {row.name}
@@ -70,8 +70,8 @@ const BuscarComprobantes = () => {
 
                                 <TableCell align="right">{row.calories}</TableCell>
                                 <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>                        
-                                <TableCell align="right"><Button variant="contained"  startIcon={<VisibilityIcon/>}>Ver Factura</Button></TableCell>
+                                <TableCell align="right">{row.carbs}</TableCell>
+                                <TableCell align="right"><Button variant="contained" startIcon={<VisibilityIcon />}>Ver Factura</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -82,10 +82,10 @@ const BuscarComprobantes = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12}>
+            <Grid item lg={12} md={12} sm={12} xs={12} >
                 <SubCard className="col-12" title="Buscar Comprobantes" style={{ textAlign: "center" }} >
                     <Grid container spacing={2}>
-                        <Grid item  xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <TextField
                                 required
                                 id="outlined-basic"
@@ -95,11 +95,11 @@ const BuscarComprobantes = () => {
                                 {...register("proveedor")}
                             />
                         </Grid>
-                        <Grid item xs={12}  sm={6} md={6} lg={6}>
+                        <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                                 Buscar
                             </Button>
-                        </Grid>                       
+                        </Grid>
                     </Grid><br></br>
                     <Divider />
                     {
@@ -108,7 +108,7 @@ const BuscarComprobantes = () => {
                 </SubCard>
 
             </Grid>
-          
+
         </Grid >
 
     );

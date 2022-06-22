@@ -71,7 +71,7 @@ const ModalAperturaPeriodo = (props) => {
                     <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
                     <DialogContent dividers={scroll === 'paper'}>
                         <DialogContentText
-                            id="scroll-dialog-description"                            
+                            id="scroll-dialog-description"
                             tabIndex={-1}
                         >
                             <Card className="col-12" container style={{ border: '1' }}>
@@ -81,7 +81,7 @@ const ModalAperturaPeriodo = (props) => {
                                 <Divider></Divider>
                                 <CardContent>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
 
                                             <FormControl sx={{ minWidth: "100%" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
@@ -102,7 +102,7 @@ const ModalAperturaPeriodo = (props) => {
                                             </FormControl>
                                         </Grid>
 
-                                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
                                             <TextField
                                                 id="fechaApertura"
                                                 name="fechaApertura"

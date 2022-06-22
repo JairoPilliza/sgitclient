@@ -135,10 +135,10 @@ const ModalRetencionLiquidacion = (props) => {
 
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
                                             <label style={{ width: "100%" }}><b>Retención electronica</b></label>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <Checkbox
                                                 id="retencionElectronica"
                                                 name="retencionElectronica"
@@ -146,7 +146,7 @@ const ModalRetencionLiquidacion = (props) => {
                                                 {...register("retencionElectronica")} />
                                         </Grid>
 
-                                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                                        <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <TextField
                                                 id="fecha"
                                                 name="fecha"

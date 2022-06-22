@@ -75,9 +75,9 @@ const BusquedaPr = () => {
 
     return (
         <Grid container spacing={gridSpacing} >
-            <Grid item xs={12} sm={12} lg={12} md={12} >
+            <Grid item lg={12} md={12} sm={12} xs={12}  >
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                    <Grid item lg={6} md={6} sm={12} xs={12}>
                         <TextField
                             required
                             id="outlined-basic"
@@ -87,12 +87,12 @@ const BusquedaPr = () => {
                             {...register("razonSocial")}
                         />
                     </Grid>
-                    <Grid item xs={12} md={2} sm={12} lg={3} >
+                    <Grid item lg={3} md={2} sm={12} xs={12}>
                         <Button variant="outlined" style={{ width: "100%" }} startIcon={<SearchIcon />} onClick={e => setTable(true)}>
                             Buscar
                         </Button>
                     </Grid>
-                    <Grid item xs={12} md={2} sm={12} lg={3}>
+                    <Grid item lg={3} md={2} sm={12} xs={12} >
                         <Button onClick={handleOpen} variant="outlined" style={{ width: "100%" }} startIcon={<AddCircleIcon />}>
                             Nuevo
                         </Button>

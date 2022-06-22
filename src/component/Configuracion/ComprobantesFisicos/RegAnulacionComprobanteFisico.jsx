@@ -49,10 +49,10 @@ const RegAnulacionComprobanteFisico = () => {
 
                 <CardContent>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={12} md={4} lg={4}>
-                            <Button variant='contained'  startIcon={<EditIcon />} onClick={handleClickOpen('paper')}>Nuevo </Button>
+                        <Grid item lg={4} md={4} sm={12} xs={12} >
+                            <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}>Nuevo </Button>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                        <Grid item lg={4} md={4} sm={12} xs={12}>
                             <FormControl sx={{ minWidth: '100%' }}>
                                 <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
                                 <Select
@@ -69,7 +69,7 @@ const RegAnulacionComprobanteFisico = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={4} lg={4}>
+                        <Grid item lg={4} md={4} sm={12} xs={12} >
                             <FormControl sx={{ minWidth: '100%' }}>
                                 <InputLabel id="demo-simple-select-helper-label">Periodo</InputLabel>
                                 <Select
@@ -86,7 +86,7 @@ const RegAnulacionComprobanteFisico = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                      
+
                     </Grid>
 
 

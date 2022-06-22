@@ -49,7 +49,7 @@ const ATS = () => {
     return (
         <MainCard>
             <Grid container spacing={gridSpacing} >
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item  lg={12} md={12} sm={12} xs={12}>
                     <Card sx={{ maxWidth: "100%" }}>
                         <CardHeader
                             title="Apertura de Entidades"
@@ -57,8 +57,8 @@ const ATS = () => {
                         <Divider />
                         <CardContent>
                             <Grid container>
-                                <Grid item xs={12} sm={12} md={4} lg={4} />
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <Grid item  lg={4}  md={4} sm={12} xs={12} />
+                                <Grid item  lg={4}  md={4}  sm={12} xs={12}>
                                     <Grid container spacing={2}>
                                         <Grid item>
                                             <label htmlFor="contained-button-file">
@@ -73,7 +73,7 @@ const ATS = () => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={4} lg={4} />
+                                <Grid item lg={4} md={4}  sm={12} xs={12}/>
 
                             </Grid>
                         </CardContent>
@@ -84,13 +84,13 @@ const ATS = () => {
                         <Divider />
                         <CardActions>
                             <Grid container>
-                                <Grid item xs={12} sm={12} md={4} lg={4} />
-                                <Grid item xs={12} sm={12} md={4} lg={4}>
+                                <Grid item lg={4}  md={4}  sm={12} xs={12}  />
+                                <Grid item lg={4}  md={4}  sm={12} xs={12}>
 
                                     <Button variant="contained" style={{ width: "100%" }} startIcon={<DownloadForOfflineIcon />}>Generar Anexo Transaccional Simplificado (ATS)</Button>
 
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={4} lg={4} />
+                                <Grid item lg={4}  md={4} sm={12}  xs={12} />
 
                             </Grid>
                         </CardActions>

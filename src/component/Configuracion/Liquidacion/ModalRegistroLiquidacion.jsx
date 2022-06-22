@@ -63,14 +63,14 @@ const ModalRegistroLiquidacion = (props) => {
                     <DialogContent dividers={scroll === 'paper'}>
                         <DialogContentText
                             id="scroll-dialog-description"
-                       
+
                             tabIndex={-1}
                         >
 
                             <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
                                 <br></br>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Establecimiento</InputLabel>
                                             <Select
@@ -87,7 +87,7 @@ const ModalRegistroLiquidacion = (props) => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                    <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
@@ -97,7 +97,7 @@ const ModalRegistroLiquidacion = (props) => {
                                             {...register("numeroAutorizacion")}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={3} lg={3}>
+                                    <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField
                                             id="puntoEmision"
                                             name="puntoEmision"
@@ -108,7 +108,7 @@ const ModalRegistroLiquidacion = (props) => {
                                         />
                                     </Grid>
 
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Secuencial Inicial</InputLabel>
                                             <Select
@@ -128,7 +128,7 @@ const ModalRegistroLiquidacion = (props) => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Secuencial Fin</InputLabel>
                                             <Select
@@ -147,7 +147,7 @@ const ModalRegistroLiquidacion = (props) => {
                                         </FormControl>
                                     </Grid>
 
-                                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
                                             id="fechaApertura"
                                             name="fechaApertura"
