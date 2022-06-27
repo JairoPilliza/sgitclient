@@ -60,24 +60,16 @@ const Ticket = () => {
                     <Grid item lg={12} md={12} sm={12} xs={12} >
                         <BusquedaPr />
                     </Grid>
-                    <Grid item  sm={12} xs={12}>
+                    <Grid item sm={12} xs={12}>
                         <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }}>
                             <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                <Grid container item xs={12} md={12} sm={12} lg={12}>
-                                    <Grid item xs={12} md={12} sm={12} lg={12} >
-                                        <Grid container spacing={2}>
-                                            <Grid item xs={12} md={6} sm={12} lg={6}>
-                                                <Button aria-label="settings" style={{ width: "100%" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
-                                                    Editar Proveedor
-                                                </Button>
-                                            </Grid>
-                                            <Grid item xs={12} md={6} sm={12} lg={6}>
 
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
                                 <Grid container item spacing={2} rowSpacing={2} xs={12} md={6} sm={12} lg={6}  >
+                                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                                        <Button aria-label="settings" style={{ width: "100%" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
+                                            Editar Proveedor
+                                        </Button>
+                                    </Grid>
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
                                     </Grid>
@@ -155,6 +147,21 @@ const Ticket = () => {
                                                     {...register("fechaEmsion")}
                                                 />
                                             </Grid>
+                                            <Grid item xs={12} md={12} sm={12} lg={12}>
+                                                <TextField
+
+                                                    id="fechaRegistro"
+                                                    name="fechaRegistro"
+                                                    label="F. Registro:"
+                                                    type="date"
+
+                                                    style={{ width: "100%", float: "right" }}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    {...register("fechaRegistro")}
+                                                />
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -165,7 +172,7 @@ const Ticket = () => {
                         <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }} >
                             <div>
                                 <Grid container spacing={2}>
-                                    <Grid item lg={6}  md={6}  sm={12} xs={12} >
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                             <Select
@@ -183,7 +190,7 @@ const Ticket = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item lg={6}  md={6} sm={12} xs={12}  >
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                             <Select
@@ -278,8 +285,8 @@ const Ticket = () => {
                             <br></br>
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
-                                <Grid item lg={6}  md={6} sm={12}  xs={12}/>
-                                <Grid item lg={6}  md={6} sm={12}  xs={12}>
+                                <Grid item lg={6} md={6} sm={12} xs={12} />
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" InputProps={{
                                         readOnly: true,
                                         type: "number"
@@ -289,12 +296,12 @@ const Ticket = () => {
                             </Grid>
                             <CardActions >
                                 <Grid container spacing={2}>
-                                    <Grid item lg={6}  md={6} sm={12}  xs={12} >
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <Button type="submit" variant="contained" style={{ width: "100%", backgroundColor: "#536dfe" }}>
                                             Guardar
                                         </Button>
                                     </Grid>
-                                    <Grid item lg={6}  md={6} sm={12}  xs={12} >
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <Button variant="contained" style={{ width: "100%", backgroundColor: "#f57f17" }}>
                                             Cancelar
                                         </Button>

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Card, Grid, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
@@ -109,6 +109,27 @@ const ModalNuevoProveedor = (props) => {
                                 <br />
                                 <Grid container spacing={2}>
                                     <Grid container item spacing={2}>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
+                                            <FormControl sx={{ minWidth: '100%' }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Tipo Proveedor</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="tipoContribuyente"
+                                                    name="tipoContribuyente"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    placeholder="Número de secuencia inicial (1)"
+                                                    label="Tipo Contribuyente"
+                                                    {...register("proveedorTipo")}
+                                                >
+                                                    <MenuItem value={10}>Persona Natural</MenuItem>
+                                                    <MenuItem value={20}>Sociedad</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+                                        <Grid item lg={6} md={6} sm={12} xs={12} >
+
+                                        </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Tipo Contribuyente</InputLabel>
@@ -345,8 +366,37 @@ const ModalNuevoProveedor = (props) => {
                                                             {...register("secuencialMax")}
                                                         />
                                                     </Grid>
+                                                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                                                        <Button aria-label="settings" style={{ width: "100%" }} variant="outlined" >
+                                                            Guardar
+                                                        </Button>
+                                                    </Grid>
                                                 </Grid>
                                             </Grid>
+                                            <div>
+                                                <TableContainer component={Paper}>
+                                                    <Table sx={{ minWidth: 650 }} aria-label="caption table">
+
+                                                        <TableHead>
+                                                            <TableRow>
+                                                                <TableCell>Nombres</TableCell>
+                                                                <TableCell align="center">Identificación</TableCell>
+                                                                <TableCell align="center">Telefono</TableCell>
+                                                                <TableCell align="center">Email</TableCell>
+                                                                <TableCell align="center">Dirección</TableCell>
+                                                                <TableCell align="center">Opciones</TableCell>
+                                                            </TableRow>
+                                                        </TableHead>
+                                                        <TableBody>
+
+                                                            <TableRow hover >
+
+                                                            </TableRow>
+
+                                                        </TableBody>
+                                                    </Table>
+                                                </TableContainer>
+                                            </div>
                                         </AccordionDetails>
                                     </Accordion>
                                 </div>

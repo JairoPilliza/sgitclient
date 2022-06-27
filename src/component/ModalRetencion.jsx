@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, Typography } from '@mui/material';
+import { FormControlLabel, Grid, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 import SubCard from 'ui-component/cards/SubCard';
 import TextField from '@mui/material/TextField';
@@ -28,7 +28,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 const ModalRetencion = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [factBuscadorPtoEmision, setBuscadorPtoEmision] = useState(false);
-
+    const [checked, setChecked] = useState(true);
     const style = {
         position: 'absolute',
         top: '50%',
@@ -103,6 +103,21 @@ const ModalRetencion = (props) => {
         console.log(data);
 
     }
+    var txtSecuencial;
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        if (event.target.checked === false) {
+            txtSecuencial = <TextField
+                id="secuencial"
+                name="secuencial"
+                label="N° Secuencial:"
+                style={{ width: "100%" }}
+                {...register("secuencial")} />;
+
+        }
+
+
+    };
 
     return (
         <div>
@@ -129,15 +144,26 @@ const ModalRetencion = (props) => {
 
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item lg={3} md={3} sm={12} xs={12} >
-                                            <label style={{ width: "100%" }}><b>Retención electronica</b></label>
-                                        </Grid>
+
                                         <Grid item lg={3} md={3} sm={12} xs={12}  >
-                                            <Checkbox
+                                            {/* <Checkbox
                                                 id="retencionElectronica"
                                                 name="retencionElectronica"
                                                 style={{ width: "100%" }}
-                                                {...register("retencionElectronica")} />
+                                                checked={checked}
+                                                onChange={handleChange}
+                                                {...register("retencionElectronica")} /> */}
+                                            <FormControlLabel
+                                                labelPlacement="start"
+                                                label="Retencion Electronica"
+                                                control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
+                                                    name="retencionElectronica"
+                                                />}
+
+                                            />
+                                        </Grid>
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
+                                            {/* <label style={{ width: "100%" }}><b>Retención electronica</b></label> */}
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%" }}>
@@ -164,12 +190,12 @@ const ModalRetencion = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2} >
-                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
+                                        <Grid item lg={3} md={3} sm={12} xs={12}  >
                                             <label style={{ width: "100%" }} >
                                                 <b>N. Retencion: *</b>
                                             </label>
                                         </Grid>
-                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
+                                        <Grid item lg={3} md={3} sm={12} xs={12}  >
 
                                             <TextField
                                                 id="numeroEstablecimiento"
@@ -179,7 +205,7 @@ const ModalRetencion = (props) => {
                                                 {...register("numeroEstablecimiento")}
                                             />
                                         </Grid>
-                                        <Grid item lg={4} md={4} sm={12} xs={12} >
+                                        <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: "100%" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Pto emisión</InputLabel>
                                                 <Select
@@ -195,6 +221,12 @@ const ModalRetencion = (props) => {
                                                     <MenuItem value={30}>Thirty</MenuItem>
                                                 </Select>
                                             </FormControl>
+                                        </Grid>
+                                        <Grid item lg={3} md={3} sm={12} xs={12}  >
+
+                                            {
+                                                txtSecuencial
+                                            }
                                         </Grid>
                                     </Grid>
 

@@ -267,27 +267,7 @@ const Aviacion = () => {
                             </Grid>
                         </Grid>
                         <br></br>
-                        <div >
-                            <TableContainer >
-                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                    <TableHead style={{ backgroundColor: "skyblue", color: "black" }}>
-                                        <TableRow>
-                                            <TableCell>#</TableCell>
-
-                                            <TableCell align="center">Cant.</TableCell>
-                                            <TableCell align="center" >Tipo Base</TableCell>
-                                            <TableCell align="center">Descripción</TableCell>
-                                            <TableCell align="center">Precio Unit.</TableCell>
-                                            <TableCell align="center">Total</TableCell>
-                                            <TableCell align="center">Opcion</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                        <Divider/>
                         <br></br>
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
