@@ -65,11 +65,12 @@ const ListarProveedor = () => {
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
                                     <TextField
+                                     {...register("razonSocial")}
                                         id="outlined-basic"
                                         label="Razón Social, Nombre o Ruc"
                                         style={{ width: "70%" }}
                                         placeholder="Razón Social, Nombre o Ruc"
-                                        {...register("razonSocial")}
+                                       
                                     />
                                     <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
                                         <SearchIcon />

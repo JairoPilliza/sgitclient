@@ -74,13 +74,14 @@ const ModalRegistroLiquidacion = (props) => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Establecimiento</InputLabel>
                                             <Select
+                                                {...register("establecimiento")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="establecimiento"
                                                 name="establecimiento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Establecimiento"
-                                                {...register("establecimiento")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -89,66 +90,53 @@ const ModalRegistroLiquidacion = (props) => {
                                     </Grid>
                                     <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField
+                                            {...register("numeroAutorizacion")}
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
                                             label="N° Autorización:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroAutorizacion")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField
+                                            {...register("puntoEmision")}
                                             id="puntoEmision"
                                             name="puntoEmision"
                                             label="Punto Emisión:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("puntoEmision")}
+
                                         />
                                     </Grid>
 
                                     <Grid item lg={6} md={6} sm={12} xs={12}>
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Secuencial Inicial</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-helper-label"
-                                                id="secuencialIni"
-                                                name="secuencialIni"
-                                                style={{ width: "100%" }}
-                                                required
-                                                placeholder="Número de secuencia inicial (1)"
-                                                label="Secuencial Inicial"
-                                                {...register("secuencialIni")}
-                                            >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
+                                    <TextField
+                                            {...register("secuencialInicial")}
+                                            id="secuencialInicial"
+                                            name="secuencialInicial"
+                                            label="Secuencial Inicial:"
+                                            style={{ width: "100%" }}
+                                            required
 
-                                            </Select>
-
-                                        </FormControl>
+                                        />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Secuencial Fin</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-helper-label"
-                                                id="secuencialFin"
-                                                name="secuencialFin"
-                                                style={{ width: "100%" }}
-                                                required
-                                                placeholder="Número de secuencia Final (100)"
-                                                label="Secuencial Fin"
-                                                {...register("secuencialFin")}
-                                            >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                            </Select>
-                                        </FormControl>
+                                    <TextField
+                                            {...register("secuencialFin")}
+                                            id="secuencialFin"
+                                            name="secuencialFin"
+                                            label="Secuencial Fin:"
+                                            style={{ width: "100%" }}
+                                            required
+
+                                        />
                                     </Grid>
 
                                     <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
+                                            {...register("fechaApertura")}
                                             id="fechaApertura"
                                             name="fechaApertura"
                                             label="Fecha Apertura:"
@@ -158,7 +146,7 @@ const ModalRegistroLiquidacion = (props) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            {...register("fechaApertura")}
+
                                         />
                                     </Grid>
                                 </Grid>

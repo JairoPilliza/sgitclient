@@ -50,20 +50,21 @@ const ListarPersonaLiquidacion = () => {
     return (
         <MainCard title="Listado de Personas Liquidación" >
             <Grid container spacing={gridSpacing} >
-                <Grid item lg={12}  md={12} sm={12} xs={12} >
+                <Grid item lg={12} md={12} sm={12} xs={12} >
 
 
                     <Grid container spacing={2}>
                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                             <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Agregar Persona Liquidacion </Button>
                         </Grid>
-                        <Grid item lg={6}  md={6}  sm={12} xs={12} >
+                        <Grid item lg={6} md={6} sm={12} xs={12} >
                             <TextField
+                                {...register("razonSocial")}
                                 id="outlined-basic"
                                 label="Ingrese persona o Identificación"
                                 style={{ width: "70%" }}
                                 placeholder="Ingrese persona o Identificación"
-                                {...register("razonSocial")}
+
                             />
                             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
                                 <SearchIcon />

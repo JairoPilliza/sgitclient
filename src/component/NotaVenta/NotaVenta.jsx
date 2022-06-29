@@ -58,11 +58,12 @@ const NotaVenta = (props) => {
                                         <FormControl sx={{ minWidth: 120 }} style={{ width: "100%" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sustento Tributario:</InputLabel>
                                             <Select
+                                                {...register("sustentoTributario")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sustentoTributario"
                                                 name="sustentoTributario"
                                                 label="Sustento Tributario:"
-                                                {...register("sustentoTributario")}
+
                                             >
                                                 <MenuItem value={10} >Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -72,13 +73,13 @@ const NotaVenta = (props) => {
                                         </FormControl>
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
+                                        <TextField {...register("ruc")} id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
+                                        <TextField {...register("telefono")} id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}   {...register("numeroAutorizacion")} />
+                                        <TextField {...register("numeroAutorizacion")} id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                 </Grid>
                                 <Grid container item lg={6} md={6} sm={12} xs={12}  >
@@ -89,35 +90,38 @@ const NotaVenta = (props) => {
                                             </Grid>
                                             <Grid item lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
+                                                    {...register("emision")}
                                                     id="emision"
                                                     name="emision"
                                                     label="000"
                                                     style={{ width: "100%" }}
-                                                    {...register("emision")}
+
                                                 />
                                             </Grid>
                                             <Grid item lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
+                                                    {...register("puntoEmision")}
                                                     id="puntoEmision"
                                                     name="puntoEmision"
                                                     label="000 "
                                                     style={{ width: "100%" }}
-                                                    {...register("puntoEmision")}
+
                                                 />
                                             </Grid>
                                             <Grid item lg={3} md={3} sm={12} xs={12}>
                                                 <TextField
+                                                    {...register("secuencial")}
                                                     id="secuencial"
                                                     name="secuencial"
                                                     label="000000000"
                                                     multiline
                                                     style={{ width: "100%" }}
-                                                    {...register("secuencial")}
+
                                                 />
                                             </Grid>
                                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                                 <TextField
-
+                                                    {...register("fechaEmision")}
                                                     id="fechaEmision"
                                                     name="fechaEmision"
                                                     label="F. Emisión:"
@@ -126,12 +130,12 @@ const NotaVenta = (props) => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaEmision")}
+
                                                 />
                                             </Grid>
                                             <Grid item lg={12} md={12} sm={12} xs={12} >
                                                 <TextField
-
+                                                    {...register("fechaRegistro")}
                                                     id="fechaRegistro"
                                                     name="fechaRegistro"
                                                     label="F. Registro:"
@@ -140,7 +144,7 @@ const NotaVenta = (props) => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaRegistro")}
+
                                                 />
                                             </Grid>
                                         </Grid>
@@ -161,13 +165,14 @@ const NotaVenta = (props) => {
                                         <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                             <Select
+                                                {...register("departamento")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="departamento"
                                                 name="departamento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Departamento"
-                                                {...register("departamento")}
+
                                             >
                                                 <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
                                                 <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
@@ -180,13 +185,14 @@ const NotaVenta = (props) => {
                                         <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                             <Select
+                                                {...register("subcuenta")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="subcuenta"
                                                 name="subcuenta"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Subcuenta"
-                                                {...register("subcuenta")}
+
                                             >
                                                 <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
                                                 <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
@@ -211,6 +217,7 @@ const NotaVenta = (props) => {
                                         <TableBody>
                                             <TableCell>
                                                 <TextField
+                                                    {...register("cantidad")}
                                                     id="cantidad"
                                                     name="cantidad"
                                                     type="number"
@@ -219,10 +226,11 @@ const NotaVenta = (props) => {
                                                         shrink: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("cantidad")} />
+                                                />
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
+                                                    {...register("descripcion")}
                                                     id="descripcion"
                                                     name="descripcion"
                                                     style={{ width: "300px" }}
@@ -230,10 +238,11 @@ const NotaVenta = (props) => {
                                                         shrink: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("descripcion")} />
+                                                />
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
+                                                    {...register("valorUnit")}
                                                     id="valorUnit"
                                                     name="valorUnit"
                                                     type="number"
@@ -242,10 +251,11 @@ const NotaVenta = (props) => {
                                                         shrink: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("valorUnit")} />
+                                                />
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
+                                                    {...register("total")}
                                                     id="total"
                                                     name="total"
                                                     style={{ width: "70px" }}
@@ -253,7 +263,7 @@ const NotaVenta = (props) => {
                                                         readOnly: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("total")} />
+                                                />
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Button variant="contained">
@@ -292,11 +302,11 @@ const NotaVenta = (props) => {
 
                                 <Grid item lg={6} md={6} sm={12} xs={12} />
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"
+                                    <TextField {...register("valorTotal")} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"
                                         InputProps={{
                                             readOnly: true,
                                         }} style={{ width: "100%", float: "right" }}
-                                        {...register("valorTotal")} />
+                                    />
                                 </Grid>
                             </Grid>
                             <br />

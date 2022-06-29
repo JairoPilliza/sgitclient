@@ -72,13 +72,14 @@ const ModalAperturaEntidad = (props) => {
                                         <FormControl sx={{ minWidth: "100%" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
                                             <Select
-                                                labelId="demo-simple-select-helper-label"
+                                               {...register("entidad")}
+                                               labelId="demo-simple-select-helper-label"
                                                 id="entidad"
                                                 name="entidad"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Entidad"
-                                                {...register("entidad")}
+                                                
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -88,6 +89,7 @@ const ModalAperturaEntidad = (props) => {
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                        {...register("fechaApertura")}
                                             id="fechaApertura"
                                             name="fechaApertura"
                                             label="Fecha Apertura:"
@@ -97,31 +99,33 @@ const ModalAperturaEntidad = (props) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            {...register("fechaApertura")}
+                                            
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                          {...register("gestion")}
                                             id="gestion"
                                             name="gestion"
                                             label="Gestion:"
                                             placeholder="Ej. 2022"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("gestion")}
+                                          
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <FormControl sx={{ minWidth: "100%" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                             <Select
+                                             {...register("estado")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="estado"
                                                 name="estado"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Estado"
-                                                {...register("estado")}
+                                               
                                             >
                                                 <MenuItem value={1}>Activo</MenuItem>
                                                 <MenuItem value={2}>Inactivo</MenuItem>

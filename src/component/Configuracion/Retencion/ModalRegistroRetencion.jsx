@@ -78,13 +78,14 @@ const ModalRegistroRetencion = (props) => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
                                             <Select
+                                                {...register("sucursal")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sucursal"
                                                 name="sucursal"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Sucursal"
-                                                {...register("sucursal")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -95,47 +96,52 @@ const ModalRegistroRetencion = (props) => {
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <TextField
+                                            {...register("numeroAutorizacion")}
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
                                             label="N° Autorización:"
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroAutorizacion")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                            {...register("puntoEmision")}
                                             id="puntoEmision"
                                             name="puntoEmision"
                                             label="Punto de Emisión:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("puntoEmision")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                            {...register("secuencialMin")}
                                             id="secuencialMin"
                                             name="secuencialMin"
                                             label="Secuencial Min:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("secuencialMin")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                            {...register("secuencialMax")}
                                             id="secuencialMax"
                                             name="secuencialMax"
                                             label="Secuencial Max:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("secuencialMax")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                            {...register("fechaCaducidad")}
                                             id="fechaCaducidad"
                                             name="fechaCaducidad"
                                             label="Fecha Caducidad:"
@@ -145,7 +151,7 @@ const ModalRegistroRetencion = (props) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            {...register("fechaCaducidad")}
+
                                         />
                                     </Grid>
                                 </Grid>

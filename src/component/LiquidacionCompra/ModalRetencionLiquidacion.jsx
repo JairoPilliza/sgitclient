@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid, Typography } from '@mui/material';
+import { FormControlLabel, Grid, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 import SubCard from 'ui-component/cards/SubCard';
 import TextField from '@mui/material/TextField';
@@ -28,7 +28,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 const ModalRetencionLiquidacion = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [factBuscadorPtoEmision, setBuscadorPtoEmision] = useState(false);
-
+    const [checked, setChecked] = useState(true);
+    const [secuencial, setSecuencial] = useState(false);
     const style = {
         position: 'absolute',
         top: '50%',
@@ -112,6 +113,66 @@ const ModalRetencionLiquidacion = (props) => {
 
     }
 
+
+    var txtSecuencial;
+    var fact;
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        if (event.target.checked == false) {
+
+            setSecuencial(true);
+
+        } else {
+            setSecuencial(false);
+        }
+    };
+    if (secuencial) {
+        fact = "Factura Fisica"
+        txtSecuencial = <Grid container spacing={2}>
+            <Grid item lg={3} md={3} sm={12} xs={12} >
+                <small style={{ width: "100%" }} ><b>Nro :</b></small>
+            </Grid>
+            <Grid item lg={3} md={3} sm={12} xs={12} >
+                <TextField
+                    {...register("emision")}
+                    id="emision"
+                    name="emision"
+                    label="000"
+                    style={{ width: "100%" }}
+
+                />
+            </Grid>
+            <Grid item lg={3} md={3} sm={12} xs={12} >
+                <TextField
+                    {...register("puntoEmision")}
+                    id="puntoEmision"
+                    name="puntoEmision"
+                    label="000 "
+                    style={{ width: "100%" }}
+
+                />
+            </Grid>
+            <Grid item lg={3} md={3} sm={12} xs={12} >
+                <TextField
+                    {...register("secuencial")}
+                    id="secuencial"
+                    name="secuencial"
+                    label="000000000"
+                    multiline
+                    style={{ width: "100%" }}
+
+                />
+            </Grid>
+        </Grid>;
+
+    } else {
+        fact = "Factura ELectronica"
+        txtSecuencial = <Typography variant="body1" gutterBottom component="div">
+            <small>El número de la retención electronica se genera automaticamente</small>
+        </Typography>;
+    }
+
+
     return (
         <div>
             <Dialog
@@ -135,15 +196,15 @@ const ModalRetencionLiquidacion = (props) => {
 
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
-                                        <Grid item lg={4} md={4} sm={12} xs={12}  >
-                                            <label style={{ width: "100%" }}><b>Retención electronica</b></label>
-                                        </Grid>
+
                                         <Grid item lg={4} md={4} sm={12} xs={12} >
-                                            <Checkbox
-                                                id="retencionElectronica"
-                                                name="retencionElectronica"
-                                                style={{ width: "100%", transform: "scale(2)" }}
-                                                {...register("retencionElectronica")} />
+                                            <FormControlLabel
+                                                labelPlacement="start"
+                                                label={fact}
+                                                control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
+                                                    name="retencionElectronica"
+                                                />}
+                                            />
                                         </Grid>
 
                                         <Grid item lg={4} md={4} sm={12} xs={12} >
@@ -161,9 +222,7 @@ const ModalRetencionLiquidacion = (props) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container item>
-                                        <Typography variant="body1" gutterBottom component="div">
-                                            <small>El número de la retención electronica se genera automaticamente</small>
-                                        </Typography>
+                                        {txtSecuencial}
 
                                     </Grid>
                                 </Grid>
@@ -318,17 +377,18 @@ const ModalRetencionLiquidacion = (props) => {
                                                         <TableCell align="right">
                                                             <label align="left"><b>Bienes</b> </label>
                                                         </TableCell>
-                                                        <TableCell align="left">  <TextField id="bienes" name="bienes" type="number" label="-" variant="outlined"  {...register("bienes")} /></TableCell>
+                                                        <TableCell align="left">  <TextField {...register("bienes")} id="bienes" name="bienes" type="number" label="-" variant="outlined" /></TableCell>
                                                         <TableCell align="left">
                                                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                                                 <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
                                                                 <Select
+                                                                    {...register("codRetencionBien")}
                                                                     labelId="demo-simple-select-helper-label"
                                                                     id="codRetencionBien"
                                                                     name="codRetencionBien"
                                                                     style={{ width: "280px", float: "right" }}
                                                                     label="::Seleccione::"
-                                                                    {...register("codRetencionBien")}
+
                                                                 >
                                                                     <MenuItem value={10}>Ten</MenuItem>
                                                                     <MenuItem value={20}>Twenty</MenuItem>
@@ -338,23 +398,24 @@ const ModalRetencionLiquidacion = (props) => {
                                                             </FormControl>
 
                                                         </TableCell>
-                                                        <TableCell align="left">  <TextField id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined"  {...register("porcentajeBien")} /></TableCell>
-                                                        <TableCell align="left">  <TextField id="totalBien" name="totalBien" type="number" label="-" variant="outlined"   {...register("totalBien")} /></TableCell>
+                                                        <TableCell align="left">  <TextField  {...register("porcentajeBien")} id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined" /></TableCell>
+                                                        <TableCell align="left">  <TextField  {...register("totalBien")} id="totalBien" name="totalBien" type="number" label="-" variant="outlined" /></TableCell>
                                                     </TableRow>
                                                     <TableRow hover>
                                                         <TableCell align="right">
                                                             <label align="left"><b>Servicios</b> </label>
                                                         </TableCell>
-                                                        <TableCell align="left">  <TextField id="servicios" name="servicios" type="number" label="-" variant="outlined"  {...register("servicios")} /></TableCell>
+                                                        <TableCell align="left">  <TextField  {...register("servicios")} id="servicios" name="servicios" type="number" label="-" variant="outlined" /></TableCell>
                                                         <TableCell align="left">
                                                             <FormControl sx={{ m: 1, minWidth: 120 }}>
                                                                 <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
                                                                 <Select
+                                                                    {...register("codRetencionServicio")}
                                                                     labelId="demo-simple-select-helper-label"
                                                                     id="codRetencionServicio"
                                                                     style={{ width: "280px", float: "right" }}
                                                                     label="::Seleccione::"
-                                                                    {...register("codRetencionServicio")}
+
                                                                 >
                                                                     <MenuItem value={10}>Ten</MenuItem>
                                                                     <MenuItem value={20}>Twenty</MenuItem>
@@ -364,8 +425,8 @@ const ModalRetencionLiquidacion = (props) => {
                                                             </FormControl>
 
                                                         </TableCell>
-                                                        <TableCell align="left">  <TextField id="porcentajeServicio" name="porcentajeServicio" type="number" label="-" variant="outlined"  {...register("porcentajeServicio")} /></TableCell>
-                                                        <TableCell align="left">  <TextField id="totalServicio" name="totalServicio" type="number" label="-" variant="outlined"  {...register("totalServicio")} /></TableCell>
+                                                        <TableCell align="left">  <TextField {...register("porcentajeServicio")} id="porcentajeServicio" name="porcentajeServicio" type="number" label="-" variant="outlined" /></TableCell>
+                                                        <TableCell align="left">  <TextField {...register("totalServicio")} id="totalServicio" name="totalServicio" type="number" label="-" variant="outlined" /></TableCell>
                                                     </TableRow>
                                                     <TableRow hover>
                                                         <TableCell colSpan={3} />

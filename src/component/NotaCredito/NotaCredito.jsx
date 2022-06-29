@@ -201,13 +201,14 @@ const NotaCredito = () => {
                                     <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                         <Select
+                                            {...register("sustentoTributario")}
                                             labelId="demo-simple-select-helper-label"
                                             id="sustentoTributario"
                                             name="sustentoTributario"
                                             style={{ width: "100%" }}
                                             required
                                             label="Sustento Tributario"
-                                            {...register("sustentoTributario")}
+
                                         >
                                             <MenuItem value={10}>FACTURA</MenuItem>
                                             <MenuItem value={20}>NOTA DE VENTA</MenuItem>
@@ -223,35 +224,38 @@ const NotaCredito = () => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("emision")}
                                                 id="emision"
                                                 name="emision"
                                                 label="000"
                                                 style={{ width: "100%" }}
-                                                {...register("emision")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("puntoEmision")}
                                                 id="puntoEmision"
                                                 name="puntoEmision"
                                                 label="000 "
                                                 style={{ width: "100%" }}
-                                                {...register("puntoEmision")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("secuencial")}
                                                 id="secuencial"
                                                 name="secuencial"
                                                 label="000000000"
                                                 multiline
                                                 style={{ width: "100%" }}
-                                                {...register("secuencial")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-
+                                                {...register("fechaEmsion")}
                                                 id="fechaEmsion"
                                                 name="fechaEmsion"
                                                 label="F. Emisión:"
@@ -261,11 +265,12 @@ const NotaCredito = () => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                {...register("fechaEmsion")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
+                                                {...register("fechaRegistro")}
                                                 id="fechaRegistro"
                                                 name="fechaRegistro"
                                                 label="F. Registro:"
@@ -274,7 +279,7 @@ const NotaCredito = () => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                {...register("fechaRegistro")}
+
                                             />
                                         </Grid>
                                     </Grid>
@@ -295,24 +300,27 @@ const NotaCredito = () => {
                                             <Grid container spacing={2} >
                                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                                     <TextField
+                                                        {...register("proveedor")}
                                                         id="proveedor"
                                                         name="proveedor"
                                                         label="Proveedor: "
                                                         style={{ width: "100%" }}
-                                                        {...register("proveedor")}
+
                                                     />
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
+                                                        {...register("numeroFactura")}
                                                         id="numeroFactura"
                                                         name="numeroFactura"
                                                         label="N° Factura:"
                                                         style={{ width: "100%" }}
-                                                        {...register("numeroFactura")}
+
                                                     />
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
+                                                        {...register("fechaEmision")}
                                                         id="fechaEmision"
                                                         name="fechaEmision"
                                                         label="Fecha de Emision:"
@@ -321,7 +329,7 @@ const NotaCredito = () => {
                                                         InputLabelProps={{
                                                             shrink: true,
                                                         }}
-                                                        {...register("fechaEmision")}
+
                                                     />
                                                 </Grid>
                                             </Grid>
@@ -338,20 +346,22 @@ const NotaCredito = () => {
                                             <Grid container spacing={2}>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
+                                                        {...register("numeroAutorizacion")}
                                                         id="numeroAutorizacion"
                                                         name="numeroAutorizacion"
                                                         label="Numero Autorización: "
                                                         style={{ width: "100%" }}
-                                                        {...register("numeroAutorizacion")}
+
                                                     />
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                                     <TextField
+                                                        {...register("razonModificacion")}
                                                         id="razonModificacion"
                                                         name="razonModificacion"
                                                         label="Razón de Modificación:"
                                                         style={{ width: "100%" }}
-                                                        {...register("razonModificacion")}
+
                                                     />
                                                 </Grid>
                                             </Grid>
@@ -422,6 +432,7 @@ const NotaCredito = () => {
                                             <small>Devolucion</small>
                                         </center>
 
+                                       
 
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >

@@ -113,17 +113,19 @@ const EjecucionPresupuestaria = (props) => {
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
+                                                {...register("nombreProyecto")}
                                                 id="nombreProyecto"
                                                 name="nombreProyecto"
                                                 label="Nombre del Proyecto:"
                                                 placeholder="Departamento"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("nombreProyecto")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
+                                                {...register("fechaInicial")}
                                                 id="fechaInicial"
                                                 name="fechaInicial"
                                                 label="Fecha Inicial:"
@@ -133,13 +135,14 @@ const EjecucionPresupuestaria = (props) => {
                                                     shrink: true,
                                                 }}
                                                 required
-                                                {...register("fechaInicial")}
+
                                             />
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
+                                                {...register("fechaFin")}
                                                 id="fechaFin"
                                                 name="fechaFin"
                                                 label="Fecha Fin:"
@@ -149,42 +152,45 @@ const EjecucionPresupuestaria = (props) => {
                                                     shrink: true,
                                                 }}
                                                 required
-                                                {...register("fechaFin")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
+                                                {...register("nombreResponsable")}
                                                 id="nombreResponsable"
                                                 name="nombreResponsable"
                                                 label="Nombre Responsable:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("nombreResponsable")}
+
                                             />
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
+                                                {...register("presupuestoProyecto")}
                                                 id="presupuestoProyecto"
                                                 name="presupuestoProyecto"
                                                 label="Presupuesto del proyecto:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("presupuestoProyecto")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                                 <Select
+                                                    {...register("estado")}
                                                     labelId="demo-simple-select-helper-label"
                                                     id="estado"
                                                     name="estado"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Estado"
-                                                    {...register("estado")}
+
                                                 >
                                                     <MenuItem value={10}>Activo</MenuItem>
                                                     <MenuItem value={20}>Finalizado</MenuItem>

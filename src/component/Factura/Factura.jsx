@@ -142,13 +142,14 @@ const Factura = () => {
                                         <FormControl sx={{ minWidth: '100%' }} xs={12} md={6} sm={6} lg={6}>
                                             <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                             <Select
+                                                {...register("sustentoTributario")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sustentoTributario"
                                                 name="sustentoTributario"
                                                 style={{ width: "100%", float: "right" }}
                                                 required
                                                 label="Sustento Tributario"
-                                                {...register("sustentoTributario")}
+
                                             >
                                                 <MenuItem value={10}>FACTURA</MenuItem>
                                                 <MenuItem value={20}>NOTA DE VENTA</MenuItem>
@@ -163,35 +164,38 @@ const Factura = () => {
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={3} lg={3}>
                                                 <TextField
+                                                    {...register("emision")}
                                                     id="emision"
                                                     name="emision"
                                                     label="000"
                                                     style={{ width: "100%" }}
-                                                    {...register("emision")}
+
                                                 />
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={3} lg={3}>
                                                 <TextField
+                                                    {...register("puntoEmision")}
                                                     id="puntoEmision"
                                                     name="puntoEmision"
                                                     label="000 "
                                                     style={{ width: "100%" }}
-                                                    {...register("puntoEmision")}
+
                                                 />
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={3} lg={3}>
                                                 <TextField
+                                                    {...register("secuencial")}
                                                     id="secuencial"
                                                     name="secuencial"
                                                     label="000000000"
                                                     multiline
                                                     style={{ width: "100%" }}
-                                                    {...register("secuencial")}
+
                                                 />
                                             </Grid>
                                             <Grid item xs={12} sm={12} md={6} lg={6}>
                                                 <TextField
-
+                                                    {...register("fechaEmsion")}
                                                     id="fechaEmsion"
                                                     name="fechaEmsion"
                                                     label="F. Emisión:"
@@ -200,11 +204,12 @@ const Factura = () => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaEmsion")}
+
                                                 />
                                             </Grid>
                                             <Grid item xs={12} md={6} sm={12} lg={6}>
                                                 <TextField
+                                                    {...register("fechaRegistro")}
                                                     id="fechaRegistro"
                                                     name="fechaRegistro"
                                                     label="F. Registro:"
@@ -213,7 +218,7 @@ const Factura = () => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaRegistro")}
+
                                                 />
                                             </Grid>
                                         </Grid>
@@ -247,20 +252,22 @@ const Factura = () => {
 
                                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                                             <TextField
+                                                                {...register("ruc")}
                                                                 id="ruc"
                                                                 name="ruc"
                                                                 label="Numero Ruc: "
                                                                 style={{ width: "100%" }}
-                                                                {...register("ruc")}
+
                                                             />
                                                         </Grid>
                                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                                             <TextField
+                                                                {...register("numeroAutorizacion")}
                                                                 id="numeroAutorizacion"
                                                                 name="numeroAutorizacion"
                                                                 label="Numero Autorización:"
                                                                 style={{ width: "100%" }}
-                                                                {...register("numeroAutorizacion")}
+
                                                             />
                                                         </Grid>
                                                     </Grid>
@@ -271,29 +278,32 @@ const Factura = () => {
                                                     <Grid container spacing={2} >
                                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                                             <TextField
+                                                                {...register("telefono")}
                                                                 id="telefono"
                                                                 name="telefono"
                                                                 label="Telefono: "
                                                                 style={{ width: "100%" }}
-                                                                {...register("telefono")}
+
                                                             />
                                                         </Grid>
                                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                                             <TextField
+                                                                {...register("direccionDomiciliaria")}
                                                                 id="direccionDomiciliaria"
                                                                 name="direccionDomiciliaria"
                                                                 label="Dirección:"
                                                                 style={{ width: "100%" }}
-                                                                {...register("direccionDomiciliaria")}
+
                                                             />
                                                         </Grid>
                                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                                             <TextField
+                                                                {...register("correo")}
                                                                 id="correo"
                                                                 name="correo"
                                                                 label="Email:"
                                                                 style={{ width: "100%" }}
-                                                                {...register("correo")}
+
                                                             />
                                                         </Grid>
                                                     </Grid>
@@ -313,13 +323,14 @@ const Factura = () => {
                                         <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Iva</InputLabel>
                                             <Select
+                                                {...register("sustentoTributario")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sustentoTributario"
                                                 name="sustentoTributario"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Iva"
-                                                {...register("sustentoTributario")}
+
                                             >
                                                 <MenuItem value={10}>Iva 12%</MenuItem>
                                                 <MenuItem value={20}>Iva 8%</MenuItem>
@@ -330,13 +341,14 @@ const Factura = () => {
                                         <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                             <Select
+                                                {...register("departamento")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="departamento"
                                                 name="departamento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Departamento"
-                                                {...register("departamento")}
+
                                             >
                                                 <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
                                                 <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
@@ -349,13 +361,14 @@ const Factura = () => {
                                         <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                             <Select
+                                                {...register("subcuenta")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="subcuenta"
                                                 name="subcuenta"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Subcuenta"
-                                                {...register("subcuenta")}
+
                                             >
                                                 <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
                                                 <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
@@ -384,10 +397,11 @@ const Factura = () => {
                                                     <TableCell>
                                                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                                                             <Select
+                                                                {...register("tipoBase")}
                                                                 labelId="demo-simple-select-standard-label"
                                                                 id="tipoBase"
                                                                 name="tipoBase"
-                                                                {...register("tipoBase")}>
+                                                            >
                                                                 <MenuItem value={"Bienes"}>Bienes</MenuItem>
                                                                 <MenuItem value={"Servicios"}>Servicios</MenuItem>
                                                             </Select>
@@ -396,17 +410,19 @@ const Factura = () => {
                                                     <TableCell>
                                                         <center>
                                                             <Checkbox
+                                                                {...register("grabaIva")}
                                                                 id="grabaIva"
                                                                 name="grabaIva"
                                                                 style={{
                                                                     transform: "scale(1)",
 
                                                                 }}
-                                                                {...register("grabaIva")} />
+                                                            />
                                                         </center>
                                                     </TableCell>
                                                     <TableCell>
                                                         <TextField
+                                                            {...register("cantidad")}
                                                             id="cantidad"
                                                             name="cantidad"
                                                             type="number"
@@ -415,10 +431,11 @@ const Factura = () => {
                                                                 shrink: true
                                                             }}
                                                             variant="standard"
-                                                            {...register("cantidad")} />
+                                                        />
                                                     </TableCell>
                                                     <TableCell>
                                                         <TextField
+                                                            {...register("descripcion")}
                                                             id="descripcion"
                                                             name="descripcion"
                                                             style={{ width: "300px" }}
@@ -426,10 +443,11 @@ const Factura = () => {
                                                                 shrink: true
                                                             }}
                                                             variant="standard"
-                                                            {...register("descripcion")} />
+                                                        />
                                                     </TableCell>
                                                     <TableCell>
                                                         <TextField
+                                                            {...register("precioUnit")}
                                                             id="precioUnit"
                                                             name="precioUnit"
                                                             type="number"
@@ -438,10 +456,11 @@ const Factura = () => {
                                                                 shrink: true
                                                             }}
                                                             variant="standard"
-                                                            {...register("precioUnit")} />
+                                                        />
                                                     </TableCell>
                                                     <TableCell>
                                                         <TextField
+                                                            {...register("total")}
                                                             id="total"
                                                             name="total"
                                                             style={{ width: "70px" }}
@@ -449,7 +468,7 @@ const Factura = () => {
                                                                 readOnly: true
                                                             }}
                                                             variant="standard"
-                                                            {...register("total")} />
+                                                        />
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <Button variant="contained" startIcon={<AddIcon />}>
@@ -487,49 +506,52 @@ const Factura = () => {
 
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} id="subtotal12" name="subtotal12" label="Subtotal 12%" variant="outlined" {...register("subtotal12")} />
+                                        <TextField  {...register("subtotal12")} style={{ width: "100%" }} id="subtotal12" name="subtotal12" label="Subtotal 12%" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} id="baseObjIVA" name="baseObjIVA" label="Base No Objeto IVA:" variant="outlined"  {...register("baseObjIVA")} />
+                                        <TextField {...register("baseObjIVA")} style={{ width: "100%" }} id="baseObjIVA" name="baseObjIVA" label="Base No Objeto IVA:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} id="subtotal" name="subtotal" label="Subtotal:" variant="outlined" {...register("subtotal")} />
+                                        <TextField  {...register("subtotal")} style={{ width: "100%" }} id="subtotal" name="subtotal" label="Subtotal:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                                        <TextField style={{ width: "100%" }} id="subtotal0" name="subtotal0" label="Subtotal 0%:" variant="outlined"  {...register("subtotal0")} />
+                                        <TextField {...register("subtotal0")} style={{ width: "100%" }} id="subtotal0" name="subtotal0" label="Subtotal 0%:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
                                         <label>
                                             <Checkbox
+                                                {...register("usaIce")}
                                                 id="usaIce"
                                                 name="usaIce"
                                                 style={{
                                                     width: "20%",
                                                     transform: "scale(1)",
                                                 }}
-                                                {...register("usaIce")} />
+                                            />
                                         </label>
-                                        <TextField style={{
-                                            width: "80%",
-                                        }} id="ice" name="ice" label="Ice:" variant="outlined" {...register("ice")} />
+                                        <TextField
+                                            {...register("ice")}
+                                            style={{
+                                                width: "80%",
+                                            }} id="ice" name="ice" label="Ice:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} {...register("iva12")} id="iva12" name="iva12" label="Iva 12 %:" variant="outlined" />
+                                        <TextField {...register("iva12")} style={{ width: "100%" }} id="iva12" name="iva12" label="Iva 12 %:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                                        <TextField style={{ width: "100%" }} id="descuento12" name="descuento12" label="Descuento 12%:" variant="outlined" {...register("descuento12")} />
+                                        <TextField  {...register("descuento12")} style={{ width: "100%" }} id="descuento12" name="descuento12" label="Descuento 12%:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} id="propina" name="propina" label="Propina Tip (Serv. 10%):" variant="outlined" {...register("propina")} />
+                                        <TextField {...register("propina")} style={{ width: "100%" }} id="propina" name="propina" label="Propina Tip (Serv. 10%):" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                                        <TextField style={{ width: "100%" }} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" {...register("valorTotal")} />
+                                        <TextField  {...register("valorTotal")} style={{ width: "100%" }} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField style={{ width: "100%" }} id="descuento0" name="descuento0" label="Descuento 0%:" variant="outlined" {...register("descuento0")} />
+                                        <TextField {...register("descuento0")} style={{ width: "100%" }} id="descuento0" name="descuento0" label="Descuento 0%:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                                        <TextField style={{ width: "100%" }} id="impIRBPNR" name="impIRBPNR" label="IMP. IRBPNR:" variant="outlined" {...register("impIRBPNR")} />
+                                        <TextField {...register("impIRBPNR")} style={{ width: "100%" }} id="impIRBPNR" name="impIRBPNR" label="IMP. IRBPNR:" variant="outlined" />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
                                         <Button style={{ width: "100%" }} variant="contained" onClick={handleClickOpenMFP('paper')}>Forma de Pago</Button>

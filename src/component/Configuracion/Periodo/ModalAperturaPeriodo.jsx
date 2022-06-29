@@ -67,9 +67,11 @@ const ModalAperturaPeriodo = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
+
+                <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
+                
                     <DialogContent dividers={scroll === 'paper'}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <DialogContentText
                             id="scroll-dialog-description"
                             tabIndex={-1}
@@ -86,13 +88,14 @@ const ModalAperturaPeriodo = (props) => {
                                             <FormControl sx={{ minWidth: "100%" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
                                                 <Select
+                                                    {...register("entidad")}
                                                     labelId="demo-simple-select-helper-label"
                                                     id="entidad"
                                                     name="entidad"
                                                     style={{ width: "100%", float: "right" }}
                                                     required
                                                     label="Entidad"
-                                                    {...register("entidad")}
+
                                                 >
                                                     <MenuItem value={10}>Ten</MenuItem>
                                                     <MenuItem value={20}>Twenty</MenuItem>
@@ -101,9 +104,35 @@ const ModalAperturaPeriodo = (props) => {
 
                                             </FormControl>
                                         </Grid>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
+                                            <TextField
+                                                {...register("gestion")}
+                                                id="gestion"
+                                                name="gestion"
+                                                label="Gestion:"
+                                                style={{ width: "100%" }}
+                                                required
+
+                                            />
+
+                                        </Grid>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
+
+                                            <TextField
+                                                {...register("mes")}
+                                                id="mes"
+                                                name="mes"
+                                                label="Mes:"
+
+                                                style={{ width: "100%" }}
+                                                required
+
+                                            />
+                                        </Grid>
 
                                         <Grid item lg={12} md={12} sm={12} xs={12}>
                                             <TextField
+                                                {...register("fechaApertura")}
                                                 id="fechaApertura"
                                                 name="fechaApertura"
                                                 label="Fecha Apertura:"
@@ -113,7 +142,22 @@ const ModalAperturaPeriodo = (props) => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                {...register("fechaApertura")}
+
+                                            />
+                                        </Grid>
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
+                                            <TextField
+                                                {...register("fechaCierre")}
+                                                id="fechaCierre"
+                                                name="fechaCierre"
+                                                label="Fecha Cierre:"
+                                                type="date"
+                                                style={{ width: "100%" }}
+                                                required
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+
                                             />
                                         </Grid>
                                     </Grid>
@@ -121,13 +165,15 @@ const ModalAperturaPeriodo = (props) => {
                             </Card>
 
                         </DialogContentText>
+                        </form>
                     </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit">Registar Apertura</Button>
-                    </DialogActions>
+                
+                <DialogActions>
+                    <Button onClick={props.onClose}>Cancelar</Button>
+                    <Button type="submit">Registar Apertura</Button>
+                </DialogActions>
 
-                </form>
+
             </Dialog>
         </div>
 

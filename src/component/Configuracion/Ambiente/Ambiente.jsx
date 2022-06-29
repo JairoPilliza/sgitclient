@@ -41,8 +41,8 @@ const Ambiente = () => {
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 name="row-radio-buttons-group"
                             >
-                                <FormControlLabel value="Pruebas" control={<Radio />} label="Pruebas" {...register("pruebas")} />
-                                <FormControlLabel value="Produccion" control={<Radio />} label="Produccion" {...register("produccion")} />
+                                <FormControlLabel value="Pruebas" control={<Radio  {...register("pruebas")} />} label="Pruebas" />
+                                <FormControlLabel value="Produccion" control={<Radio  {...register("produccion")}/>} label="Produccion" />
                             </RadioGroup>
                         </FormControl>
                     </center>

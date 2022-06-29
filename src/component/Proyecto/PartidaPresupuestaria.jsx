@@ -86,13 +86,14 @@ const PartidaPresupuestaria = () => {
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
                                     <TextField
+                                        {...register("actividad")}
                                         id="actividad"
                                         name="actividad"
                                         label="Nombre del Actividad:"
 
                                         style={{ width: "100%" }}
                                         required
-                                        {...register("actividad")}
+                                    
                                     />
                                 </Grid>
                                 <ActividadPresupuestaria />

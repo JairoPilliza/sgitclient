@@ -72,81 +72,87 @@ const ModalUsuario = (props) => {
                                 <Grid container spacing={2}>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                            {...register("nombreCompleto")}
                                             id="nombreCompleto"
                                             name="nombreCompleto"
                                             label="Nombre Completo:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("nombreCompleto")}
+
                                         />
                                     </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    {/* <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sucursal</InputLabel>
                                             <Select
+                                                {...register("sucursal")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sucursal"
                                                 name="sucursal"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Sucursal"
-                                                {...register("sucursal")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
                                             </Select>
                                         </FormControl>
-                                    </Grid>
+                                    </Grid> */}
                                     <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
+                                            {...register("correo")}
                                             id="correo"
                                             name="correo"
                                             label="Email:"
                                             placeholder="Example@gmail.com "
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("correo")}
+
                                         />
                                     </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    {/* <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Politica</InputLabel>
                                             <Select
+                                                {...register("politica")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="politica"
                                                 name="politica"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Politica"
-                                                {...register("politica")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
                                             </Select>
                                         </FormControl>
-                                    </Grid>
+                                    </Grid> */}
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                            {...register("usuario")}
                                             id="usuario"
                                             name="usuario"
                                             label="Usuario:"
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("usuario")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
                                             <Select
+                                                {...register("estado")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="estado"
                                                 name="estado"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Estado"
-                                                {...register("estado")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -157,12 +163,13 @@ const ModalUsuario = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                            {...register("contraseña")}
                                             id="contraseña"
                                             name="contraseña"
                                             label="Contraseña:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("contraseña")}
+
                                         />
                                     </Grid>
 

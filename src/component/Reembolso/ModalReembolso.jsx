@@ -74,13 +74,14 @@ const ModalReembolso = (props) => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Identificación</InputLabel>
                                             <Select
+                                                {...register("tipoIdentificacion")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="tipoIdentificacion"
                                                 name="tipoIdentificacion"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Tipo Identificación"
-                                                {...register("tipoIdentificacion")}
+
                                             >
                                                 <MenuItem value={10}>RUC</MenuItem>
                                                 <MenuItem value={20}>CEDULA</MenuItem>
@@ -92,25 +93,27 @@ const ModalReembolso = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("numeroIdentificacion")}
                                             id="numeroIdentificacion"
                                             name="numeroIdentificacion"
                                             label="Número de Identificación:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroIdentificacion")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
                                             <Select
+                                                {...register("tipoComprobante")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="tipoComprobante"
                                                 name="tipoComprobante"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Tipo Comprobante"
-                                                {...register("tipoComprobante")}
+
                                             >
                                                 <MenuItem value={10}>FACTURA</MenuItem>
                                                 <MenuItem value={20}>NOTA DE VENTA</MenuItem>
@@ -119,48 +122,53 @@ const ModalReembolso = (props) => {
                                     </Grid>
                                     <Grid item lg={2} md={2} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("establecimiento")}
                                             id="establecimiento"
                                             name="establecimiento"
                                             label="Establecimiento:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("establecimiento")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={2} md={2} sm={12} xs={12} >
                                         <TextField
+                                            {...register("puntoEmision")}
                                             id="puntoEmision"
                                             name="puntoEmision"
                                             label="Punto Emisión:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("puntoEmision")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={2} md={2} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("secuencial")}
                                             id="secuencial"
                                             name="secuencial"
                                             label="secuencial:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("secuencial")}
+
                                         />
                                     </Grid>
 
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("numeroAutorizacion")}
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
                                             label="N° Autorización:"
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroAutorizacion")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("fechaEmision")}
                                             id="fechaEmision"
                                             name="fechaEmision"
                                             label="Fecha Emision:"
@@ -170,7 +178,7 @@ const ModalReembolso = (props) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            {...register("fechaEmision")}
+
                                         />
                                     </Grid>
                                 </Grid>
@@ -180,52 +188,57 @@ const ModalReembolso = (props) => {
                                     <Grid container spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
+                                                {...register("tarIVA0")}
                                                 id="tarIVA0"
                                                 name="tarIVA0"
                                                 label="Tarifa IVA 0%:"
                                                 type="number"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("tarIVA0")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} />
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
+                                                {...register("tarIVAdif0")}
                                                 id="tarIVAdif0"
                                                 name="tarIVAdif0"
                                                 label="Tarifa IVA diferente 0%:"
                                                 style={{ width: "100%" }}
                                                 required
                                                 type="number"
-                                                {...register("tarIVAdif0")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
+                                                {...register("montoIVA")}
                                                 id="montoIVA"
                                                 name="montoIVA"
                                                 label="Monto de IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("montoIVA")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
+                                                {...register("tarnoObjIVA")}
                                                 id="tarnoObjIVA"
                                                 name="tarnoObjIVA"
                                                 label="Tarifa No Objeto de IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("tarnoObjIVA")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
+                                                {...register("montoIce")}
                                                 id="montoIce"
                                                 name="montoIce"
                                                 label="Monto de ICE:"
@@ -233,20 +246,21 @@ const ModalReembolso = (props) => {
                                                 style={{ width: "100%" }}
                                                 required
 
-                                                {...register("montoIce")}
+
                                             />
                                         </Grid>
 
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
+                                                {...register("baseExIVA")}
                                                 id="baseExIVA"
                                                 name="baseExIVA"
                                                 label="Base Exenta IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("baseExIVA")}
+
                                             />
                                         </Grid>
                                     </Grid>

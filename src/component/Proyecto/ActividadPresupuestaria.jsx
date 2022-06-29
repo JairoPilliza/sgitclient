@@ -53,7 +53,7 @@ const ActividadPresupuestaria = (props) => {
     const gridCols = { width: "100%" };
     return (
         <Grid container item spacing={2}>
-            
+
             <Grid item lg={12} md={12} sm={12} xs={12} >
                 <Accordion>
                     <AccordionSummary
@@ -76,13 +76,14 @@ const ActividadPresupuestaria = (props) => {
                                     <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Cuenta:</InputLabel>
                                         <Select
+                                            {...register("cuenta")}
                                             labelId="demo-simple-select-helper-label"
                                             id="cuenta"
                                             name="cuenta"
                                             style={{ width: "100%" }}
                                             required
                                             label="Cuenta:"
-                                            {...register("cuenta")}
+
                                         >
                                             <MenuItem value={10}>Personal</MenuItem>
                                             <MenuItem value={20}>Muebles</MenuItem>
@@ -92,25 +93,25 @@ const ActividadPresupuestaria = (props) => {
                                     </FormControl>
                                 </Grid>
                                 <Grid item lg={9} md={9} sm={12} xs={12}>
-                                    <TextField type="text" style={gridCols} multiline {...register("descripcion")} id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
+                                    <TextField {...register("descripcion")} type="text" style={gridCols} multiline id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
                                 </Grid>
 
                             </Grid>
                             <Grid container item spacing={1}>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField type="number" style={gridCols}  {...register("cantidad")} id="cantidad" name="cantidad" label="Cantidad:" variant="outlined" />
+                                    <TextField {...register("cantidad")} type="number" style={gridCols} id="cantidad" name="cantidad" label="Cantidad:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField type="number" style={gridCols}  {...register("tiempo")} id="tiempo" name="tiempo" label="Tiempo:" variant="outlined" />
+                                    <TextField  {...register("tiempo")} type="number" style={gridCols} id="tiempo" name="tiempo" label="Tiempo:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12} >
-                                    <TextField type="number" style={gridCols} {...register("precio")} id="precio" name="precio" label="Precio Unitario:" variant="outlined" />
+                                    <TextField  {...register("precio")} type="number" style={gridCols} id="precio" name="precio" label="Precio Unitario:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField type="number" style={gridCols} {...register("porcentaje")} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
+                                    <TextField {...register("porcentaje")} type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12}>
-                                    <TextField type="number" style={gridCols} {...register("total")} id="total" name="total" label="Total:" variant="outlined" />
+                                    <TextField {...register("total")} type="number" style={gridCols} id="total" name="total" label="Total:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                     <Button variant="contained" type="submit" style={gridCols}>Agregar</Button>

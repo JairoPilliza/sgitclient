@@ -29,6 +29,8 @@ const ModalRetencion = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [factBuscadorPtoEmision, setBuscadorPtoEmision] = useState(false);
     const [checked, setChecked] = useState(true);
+    const [secuencial, setSecuencial] = useState(false);
+    const [count, setCount] = useState(0);
     const style = {
         position: 'absolute',
         top: '50%',
@@ -82,6 +84,18 @@ const ModalRetencion = (props) => {
 
 
 
+
+    const clickAyuda = () => {
+
+        setCount(count + 1)
+        setBuscadorPtoEmision(true);
+        if(count == 1){
+            setCount(0)
+            setBuscadorPtoEmision(false)
+        }
+    }
+
+
     var muestraBuscador;
     if (factBuscadorPtoEmision) {
         muestraBuscador =
@@ -96,28 +110,36 @@ const ModalRetencion = (props) => {
     }
     else {
 
+        muestraBuscador ="";
     }
-
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);
 
     }
+
     var txtSecuencial;
     const handleChange = (event) => {
         setChecked(event.target.checked);
-        if (event.target.checked === false) {
-            txtSecuencial = <TextField
-                id="secuencial"
-                name="secuencial"
-                label="N° Secuencial:"
-                style={{ width: "100%" }}
-                {...register("secuencial")} />;
+        if (event.target.checked == false) {
 
+            setSecuencial(true);
+
+        } else {
+            setSecuencial(false);
         }
-
-
     };
+    if (secuencial) {
+        txtSecuencial = <TextField
+            id="secuencial"
+            name="secuencial"
+            label="N° Secuencial:"
+            style={{ width: "100%" }}
+            {...register("secuencial")} />;
+
+    } else {
+        txtSecuencial = '';
+    }
 
     return (
         <div>
@@ -146,27 +168,20 @@ const ModalRetencion = (props) => {
                                     <Grid container item spacing={2}>
 
                                         <Grid item lg={3} md={3} sm={12} xs={12}  >
-                                            {/* <Checkbox
-                                                id="retencionElectronica"
-                                                name="retencionElectronica"
-                                                style={{ width: "100%" }}
-                                                checked={checked}
-                                                onChange={handleChange}
-                                                {...register("retencionElectronica")} /> */}
+
                                             <FormControlLabel
                                                 labelPlacement="start"
                                                 label="Retencion Electronica"
                                                 control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
                                                     name="retencionElectronica"
                                                 />}
-
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             {/* <label style={{ width: "100%" }}><b>Retención electronica</b></label> */}
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
-                                            <Button variant="outlined" startIcon={<SearchIcon />} onClick={e => setBuscadorPtoEmision(true)} style={{ width: "100%" }}>
+                                            <Button variant="outlined" startIcon={<SearchIcon />} onClick={clickAyuda} style={{ width: "100%" }}>
                                                 <small>Ayuda</small>
                                             </Button>
                                         </Grid>
@@ -174,7 +189,7 @@ const ModalRetencion = (props) => {
                                             <TextField
                                                 id="fecha"
                                                 name="fecha"
-                                                label="Fecha:"
+                                                label="Fecha Emisión:"
                                                 type="date"
                                                 style={{ width: "100%" }}
                                                 InputLabelProps={{

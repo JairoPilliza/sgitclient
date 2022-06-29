@@ -70,10 +70,11 @@ const ModalNuevaPersona = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                
                     <DialogTitle id="scroll-dialog-title">Registrar Persona Liquidación</DialogTitle>
 
                     <DialogContent dividers={scroll === 'paper'}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <DialogContentText
                             id="scroll-dialog-description"
                             ref={descriptionElementRef}
@@ -84,6 +85,7 @@ const ModalNuevaPersona = (props) => {
                                 <Grid container spacing={2}>
                                     <Grid item lg={12} md={12} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("apellidosNombres")}
                                             id="apellidosNombres"
                                             name="apellidosNombres"
                                             label="Apellidos y Nombres:"
@@ -91,7 +93,7 @@ const ModalNuevaPersona = (props) => {
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("apellidosNombres")}
+
                                         />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -99,13 +101,14 @@ const ModalNuevaPersona = (props) => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Documento:</InputLabel>
                                             <Select
+                                                {...register("tipoDocumento")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="tipoDocumento"
                                                 name="tipoDocumento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Tipo Documento:"
-                                                {...register("tipoDocumento")}
+
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -116,40 +119,77 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("numeroIdentificacion")}
                                             id="numeroIdentificacion"
                                             name="numeroIdentificacion"
                                             label="Doc Identificación:"
                                             placeholder="Ingrese Cédula o Ruc"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroIdentificacion")}
+
                                         />
 
                                     </Grid>
-                                    <Grid item lg={12} md={12} sm={12} xs={12} >
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                            {...register("telefono")}
                                             id="telefono"
                                             name="telefono"
                                             label="Teléfono:"
                                             placeholder="Ingrese número telefónico"
                                             style={{ width: "100%" }}
-                                            required
-                                            {...register("telefono")}
+                                           
+
                                         />
                                     </Grid>
-                                    <Grid item lg={12} md={12} sm={12} xs={12} >
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                            {...register("telefono")}
+                                            id="celular"
+                                            name="celular"
+                                            label="Celular:"
+                                            placeholder="Ingrese número celular"
+                                            style={{ width: "100%" }}
+                                            
+
+                                        />
+                                    </Grid>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Profesión:</InputLabel>
+                                            <Select
+                                                {...register("profesionTipo")}
+                                                labelId="demo-simple-select-helper-label"
+                                                id="profesionTipo"
+                                                name="profesionTipo"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Profesión:"
+
+                                            >
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+
+                                            </Select>
+
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                        <TextField
+                                            {...register("correo")}
                                             id="correo"
                                             name="correo"
                                             label="Email:"
                                             placeholder="gold@example.com"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("correo")}
+
                                         />
                                     </Grid>
-                                    <Grid item lg={12} md={12} sm={12} xs={12}  >
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
+                                            {...register("direccionDomiciliaria")}
                                             id="direccionDomiciliaria"
                                             name="direccionDomiciliaria"
                                             label="Dirección:"
@@ -157,18 +197,32 @@ const ModalNuevaPersona = (props) => {
                                             style={{ width: "100%" }}
                                             multiline
                                             required
-                                            {...register("direccionDomiciliaria")}
+
+                                        />
+                                    </Grid>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                        <TextField
+                                            {...register("observacion")}
+                                            id="observacion"
+                                            name="observacion"
+                                            label="Observación:"
+
+                                            style={{ width: "100%" }}
+                                            multiline
+                                           
+
                                         />
                                     </Grid>
                                 </Grid>
                             </Card>
                         </DialogContentText>
+                        </form>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Registar Persona</Button>
                     </DialogActions>
-                </form>
+               
             </Dialog>
 
         </div >

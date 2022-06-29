@@ -74,13 +74,14 @@ const ModalComprobanteFisico = (props) => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
                                             <Select
+                                            {...register("sucursal")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="tipoComprobante"
                                                 name="tipoComprobante"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Tipo comprobante"
-                                                {...register("sucursal")}
+                                                
                                             >
                                                 <MenuItem value={10}>Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -94,56 +95,61 @@ const ModalComprobanteFisico = (props) => {
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12} >
                                         <TextField
+                                        {...register("establecimiento")}
                                             id="establecimiento"
                                             name="establecimiento"
                                             label="Establecimiento:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("establecimiento")}
+                                            
                                         />
                                     </Grid>
                                     <Grid item lg={4} md={4} sm={12} xs={12}>
                                         <TextField
+                                        {...register("puntoEmision")}
                                             id="puntoEmision"
                                             name="puntoEmision"
                                             label="Punto Emisión:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("puntoEmision")}
+                                            
                                         />
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
+                                        {...register("secuencialDesde")}
                                             id="secuencialDesde"
                                             name="secuencialDesde"
                                             label="Secuencial desde:"
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("secuencialDesde")}
+                                            
                                         />
                                     </Grid>
 
                                     <Grid item lg={6} md={6} sm={12} xs={12}>
                                         <TextField
+                                         {...register("secuencialHasta")}
                                             id="secuencialHasta"
                                             name="secuencialHasta"
                                             label="Secuencial hasta:"
 
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("secuencialHasta")}
+                                           
                                         />
                                     </Grid>
 
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <TextField
+                                        {...register("numeroAutorizacion")}
                                             id="numeroAutorizacion"
                                             name="numeroAutorizacion"
                                             label="N° Autorización:"
                                             style={{ width: "100%" }}
                                             required
-                                            {...register("numeroAutorizacion")}
+                                            
                                         />
                                     </Grid>
 

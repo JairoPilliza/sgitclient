@@ -57,13 +57,14 @@ const LiquidacionCompra = () => {
                                     <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Sustento Tributario</InputLabel>
                                         <Select
+                                            {...register("sustentoTributario")}
                                             labelId="demo-simple-select-helper-label"
                                             id="sustentoTributario"
                                             name="sustentoTributario"
                                             style={{ width: "100%" }}
                                             required
                                             label="Sustento Tributario"
-                                            {...register("sustentoTributario")}
+
                                         >
                                             <MenuItem value={10}>FACTURA</MenuItem>
                                             <MenuItem value={20}>NOTA DE VENTA</MenuItem>
@@ -75,13 +76,14 @@ const LiquidacionCompra = () => {
                             <Grid container spacing={2}>
                                 <Grid item lg={4} md={4} sm={12} xs={12}  >
                                     <TextField
+                                        {...register("nombrePersona")}
                                         id="nombrePersona"
                                         name="nombrePersona"
                                         label="Sr/Sra:"
                                         placeholder="Ingrese el nombre de la persona"
 
                                         style={{ width: "100%" }}
-                                        {...register("nombrePersona")}
+
                                     />
 
                                 </Grid>
@@ -97,6 +99,7 @@ const LiquidacionCompra = () => {
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12} >
                                     <TextField
+                                        {...register("fechaRegistro")}
                                         id="fechaRegistro"
                                         name="fechaRegistro"
                                         helperText="Ingrese una fecha"
@@ -106,7 +109,7 @@ const LiquidacionCompra = () => {
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                        {...register("fechaRegistro")}
+
                                     />
                                 </Grid>
                             </Grid>
@@ -114,13 +117,14 @@ const LiquidacionCompra = () => {
                             <Grid container spacing={2} >
                                 <Grid item lg={4} md={4} sm={12} xs={12} >
                                     <TextField
+                                        {...register("lugarTransaccion")}
                                         id="lugarTransaccion"
                                         name="lugarTransaccion"
                                         label="Lugar de Transacción:"
                                         placeholder="Escriba lugar donde se realiza la Transfacción"
                                         multiline
                                         style={{ width: "100%", float: "left" }}
-                                        {...register("lugarTransaccion")}
+
                                     />
 
                                 </Grid>
@@ -132,26 +136,29 @@ const LiquidacionCompra = () => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("emision")}
                                                 id="emision"
                                                 name="emision"
                                                 label="Emision"
                                                 helperText="emision"
                                                 style={{ width: "100%" }}
-                                                {...register("emision")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("puntoEmision")}
                                                 id="puntoEmision"
                                                 name="puntoEmision"
                                                 label="punto emision "
                                                 helperText="punto emision "
                                                 style={{ width: "100%" }}
-                                                {...register("puntoEmision")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("secuencial")}
                                                 id="secuencial"
                                                 name="secuencial"
                                                 label="Secuencial de la liquidacion"
@@ -159,7 +166,7 @@ const LiquidacionCompra = () => {
                                                 placeholder="Diguite Secuencial"
 
                                                 style={{ width: "100%" }}
-                                                {...register("secuencial")}
+
                                             />
                                         </Grid>
 
@@ -182,36 +189,39 @@ const LiquidacionCompra = () => {
                                         </Grid>
                                         <Grid item lg={12} md={12} sm={12} xs={12}>
                                             <TextField
+                                                {...register("nombreCompleto")}
                                                 id="nombreCompleto"
                                                 name="nombreCompleto"
                                                 label="Nombres:"
                                                 placeholder="Nombres Completos de la persona"
 
                                                 style={{ width: "100%" }}
-                                                {...register("nombreCompleto")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
+                                                {...register("tipoIdentificacion")}
                                                 id="tipoIdentificacion"
                                                 name="tipoIdentificacion"
                                                 label="Tipo Identificación:"
                                                 placeholder="Tipo Identificación"
 
                                                 style={{ width: "100%" }}
-                                                {...register("tipoIdentificacion")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={5} sm={12} xs={12}>
                                             <Grid container spacing={1} lg={12} >
                                                 <Grid item lg={10} md={10} sm={8} xs={8}>
                                                     <TextField
+                                                        {...register("numeroIdentificacion")}
                                                         id="numeroIdentificacion"
                                                         name="numeroIdentificacion"
                                                         label="CI/Pasaporte:"
                                                         placeholder="Numero de Identificación"
                                                         style={{ width: "100%" }}
-                                                        {...register("numeroIdentificacion")}
+
                                                     />
                                                 </Grid>
                                                 <Grid item lg={2} md={2} sm={4} xs={4}>
@@ -223,32 +233,35 @@ const LiquidacionCompra = () => {
 
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
+                                                {...register("telefonoCelular")}
                                                 id="telefonoCelular"
                                                 name="telefonoCelular"
                                                 label="Telefono:"
                                                 placeholder="Telefono convencional o celular"
                                                 style={{ width: "100%" }}
-                                                {...register("telefonoCelular")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
+                                                {...register("correo")}
                                                 id="correo"
                                                 name="correo"
                                                 label="Email:"
                                                 placeholder="gold@example.com"
                                                 style={{ width: "100%" }}
-                                                {...register("correo")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                             <TextField
+                                                {...register("direccionDomiciliaria")}
                                                 id="direccionDomiciliaria"
                                                 name="direccionDomiciliaria"
                                                 label="Dirección:"
                                                 placeholder="Dirección domiciliaria"
                                                 style={{ width: "100%" }}
-                                                {...register("direccionDomiciliaria")}
+
                                             />
                                         </Grid>
                                     </Grid>

@@ -111,13 +111,14 @@ const ModalEjecPresupuestaria = (props) => {
                                             <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                                 <Select
+                                                    {...register("departamento")}
                                                     labelId="demo-simple-select-helper-label"
                                                     id="departamento"
                                                     name="departamento"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Departamento"
-                                                    {...register("departamento")}
+
                                                 >
                                                     <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
                                                     <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
@@ -130,13 +131,14 @@ const ModalEjecPresupuestaria = (props) => {
                                             <FormControl sx={{ minWidth: '100%', float: "left" }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                                 <Select
+                                                    {...register("subcuenta")}
                                                     labelId="demo-simple-select-helper-label"
                                                     id="subcuenta"
                                                     name="subcuenta"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Subcuenta"
-                                                    {...register("subcuenta")}
+
                                                 >
                                                     <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
                                                     <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
@@ -147,12 +149,13 @@ const ModalEjecPresupuestaria = (props) => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
+                                                {...register("valor")}
                                                 id="valor"
                                                 name="valor"
                                                 label="Valor: "
                                                 type="number"
                                                 style={{ width: "100%" }}
-                                                {...register("valor")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
