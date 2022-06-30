@@ -73,13 +73,13 @@ const NotaVenta = (props) => {
                                         </FormControl>
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField {...register("ruc")} id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }} />
+                                        <TextField {...register("ciRuc")} id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <TextField {...register("telefono")} id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField {...register("numeroAutorizacion")} id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }} />
+                                        <TextField {...register("autorizacion")} id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                 </Grid>
                                 <Grid container item lg={6} md={6} sm={12} xs={12}  >
@@ -90,9 +90,9 @@ const NotaVenta = (props) => {
                                             </Grid>
                                             <Grid item lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
-                                                    {...register("emision")}
-                                                    id="emision"
-                                                    name="emision"
+                                                    {...register("establecimiento")}
+                                                    id="establecimiento"
+                                                    name="establecimiento"
                                                     label="000"
                                                     style={{ width: "100%" }}
 
@@ -100,9 +100,9 @@ const NotaVenta = (props) => {
                                             </Grid>
                                             <Grid item lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
-                                                    {...register("puntoEmision")}
-                                                    id="puntoEmision"
-                                                    name="puntoEmision"
+                                                    {...register("puntoFacturacion")}
+                                                    id="puntoFacturacion"
+                                                    name="puntoFacturacion"
                                                     label="000 "
                                                     style={{ width: "100%" }}
 
@@ -242,9 +242,9 @@ const NotaVenta = (props) => {
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    {...register("valorUnit")}
-                                                    id="valorUnit"
-                                                    name="valorUnit"
+                                                    {...register("valorUnitario")}
+                                                    id="valorUnitario"
+                                                    name="valorUnitario"
                                                     type="number"
                                                     style={{ width: "70px" }}
                                                     InputLabelProps={{
@@ -255,9 +255,9 @@ const NotaVenta = (props) => {
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    {...register("total")}
-                                                    id="total"
-                                                    name="total"
+                                                    {...register("valorUnitario")}
+                                                    id="valorUnitario"
+                                                    name="valorUnitario"
                                                     style={{ width: "70px" }}
                                                     InputProps={{
                                                         readOnly: true

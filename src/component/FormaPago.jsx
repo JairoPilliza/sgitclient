@@ -109,7 +109,7 @@ const ModalFormaPago = (props) => {
                                             </FormControl>
                                         </Grid>
                                         <Grid item lg={4} md={4} sm={12} xs={12} >
-                                            <TextField type="number" style={{ width: "100%" }} {...register("valor")} id="valor" name="valor" label="Valor:" variant="outlined" />
+                                            <TextField {...register("valor")}  type="number" style={{ width: "100%" }} id="valor" name="valor" label="Valor:" variant="outlined" />
                                         </Grid>
                                         <Grid item lg={4} md={4} sm={12} xs={12}>
                                             <Button variant="contained" type="submit" style={{ width: "100%" }}>Agregar</Button>

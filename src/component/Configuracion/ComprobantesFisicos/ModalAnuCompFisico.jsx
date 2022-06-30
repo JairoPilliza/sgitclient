@@ -60,112 +60,114 @@ const ModalComprobanteFisico = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="scroll-dialog-title">Comrobante anulado</DialogTitle>
-                    <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
 
-                            tabIndex={-1}
-                        >
-                            <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
-                                <Grid container spacing={2}>
-                                    <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
-                                            <Select
+                <DialogTitle id="scroll-dialog-title">Comprobante anulado</DialogTitle>
+                <DialogContent dividers={scroll === 'paper'}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <DialogContentText
+                        id="scroll-dialog-description"
+
+                        tabIndex={-1}
+                    >
+                        <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
+                            <Grid container spacing={2}>
+                                <Grid item lg={12} md={12} sm={12} xs={12} >
+                                    <FormControl sx={{ minWidth: '100%' }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
+                                        <Select
                                             {...register("sucursal")}
-                                                labelId="demo-simple-select-helper-label"
-                                                id="tipoComprobante"
-                                                name="tipoComprobante"
-                                                style={{ width: "100%" }}
-                                                required
-                                                label="Tipo comprobante"
-                                                
-                                            >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-                                    <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <label>
-                                            <b>N° Serie</b>
-                                        </label>
-                                    </Grid>
-                                    <Grid item lg={4} md={4} sm={12} xs={12} >
-                                        <TextField
-                                        {...register("establecimiento")}
-                                            id="establecimiento"
-                                            name="establecimiento"
-                                            label="Establecimiento:"
+                                            labelId="demo-simple-select-helper-label"
+                                            id="tipoComprobante"
+                                            name="tipoComprobante"
                                             style={{ width: "100%" }}
                                             required
-                                            
-                                        />
-                                    </Grid>
-                                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                                        <TextField
-                                        {...register("puntoEmision")}
-                                            id="puntoEmision"
-                                            name="puntoEmision"
-                                            label="Punto Emisión:"
-                                            style={{ width: "100%" }}
-                                            required
-                                            
-                                        />
-                                    </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
-                                        <TextField
-                                        {...register("secuencialDesde")}
-                                            id="secuencialDesde"
-                                            name="secuencialDesde"
-                                            label="Secuencial desde:"
+                                            label="Tipo comprobante"
 
-                                            style={{ width: "100%" }}
-                                            required
-                                            
-                                        />
-                                    </Grid>
-
-                                    <Grid item lg={6} md={6} sm={12} xs={12}>
-                                        <TextField
-                                         {...register("secuencialHasta")}
-                                            id="secuencialHasta"
-                                            name="secuencialHasta"
-                                            label="Secuencial hasta:"
-
-                                            style={{ width: "100%" }}
-                                            required
-                                           
-                                        />
-                                    </Grid>
-
-                                    <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField
-                                        {...register("numeroAutorizacion")}
-                                            id="numeroAutorizacion"
-                                            name="numeroAutorizacion"
-                                            label="N° Autorización:"
-                                            style={{ width: "100%" }}
-                                            required
-                                            
-                                        />
-                                    </Grid>
-
-
+                                        >
+                                            <MenuItem value={10}>Ten</MenuItem>
+                                            <MenuItem value={20}>Twenty</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                 </Grid>
-                            </SubCard>
-                            <br />
+                                <Grid item lg={4} md={4} sm={12} xs={12} >
+                                    <label>
+                                        <b>N° Serie</b>
+                                    </label>
+                                </Grid>
+                                <Grid item lg={4} md={4} sm={12} xs={12} >
+                                    <TextField
+                                        {...register("establecimiento")}
+                                        id="establecimiento"
+                                        name="establecimiento"
+                                        label="Establecimiento:"
+                                        style={{ width: "100%" }}
+                                        required
 
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancel</Button>
-                        <Button type="submit" >Aceptar</Button>
-                    </DialogActions>
+                                    />
+                                </Grid>
+                                <Grid item lg={4} md={4} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("puntoEmision")}
+                                        id="puntoEmision"
+                                        name="puntoEmision"
+                                        label="Punto Emisión:"
+                                        style={{ width: "100%" }}
+                                        required
+
+                                    />
+                                </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    <TextField
+                                        {...register("secuencialDesde")}
+                                        id="secuencialDesde"
+                                        name="secuencialDesde"
+                                        label="Secuencial desde:"
+
+                                        style={{ width: "100%" }}
+                                        required
+
+                                    />
+                                </Grid>
+
+                                <Grid item lg={6} md={6} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("secuencialHasta")}
+                                        id="secuencialHasta"
+                                        name="secuencialHasta"
+                                        label="Secuencial hasta:"
+
+                                        style={{ width: "100%" }}
+                                        required
+
+                                    />
+                                </Grid>
+
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("numeroAutorizacion")}
+                                        id="numeroAutorizacion"
+                                        name="numeroAutorizacion"
+                                        label="N° Autorización:"
+                                        style={{ width: "100%" }}
+                                        required
+
+                                    />
+                                </Grid>
+
+
+                            </Grid>
+                        </SubCard>
+                        <br />
+
+                    </DialogContentText>
                 </form>
-            </Dialog>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={props.onClose}>Cancel</Button>
+                <Button type="submit" >Aceptar</Button>
+            </DialogActions>
+
+        </Dialog>
         </div >
 
     );

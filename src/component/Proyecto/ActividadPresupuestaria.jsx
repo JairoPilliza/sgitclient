@@ -99,13 +99,16 @@ const ActividadPresupuestaria = (props) => {
                             </Grid>
                             <Grid container item spacing={1}>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField {...register("cantidad")} type="number" style={gridCols} id="cantidad" name="cantidad" label="Cantidad:" variant="outlined" />
+                                    <TextField {...register("unidadMedida")} type="number" style={gridCols} id="unidadMedida" name="unidadMedida" label="Cantidad:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField  {...register("tiempo")} type="number" style={gridCols} id="tiempo" name="tiempo" label="Tiempo:" variant="outlined" />
+                                    <TextField  {...register("unidadMedida")} type="text" style={gridCols} id="unidadMedida" name="unidadMedida" label="Unidad Medida:" variant="outlined" />
+                                </Grid>
+                                <Grid item lg={2} md={2} sm={12} xs={12}>
+                                    <TextField  {...register("numeroUnidadMedida")} type="number" style={gridCols} id="numeroUnidadMedida" name="numeroUnidadMedida" label="Tiempo:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12} >
-                                    <TextField  {...register("precio")} type="number" style={gridCols} id="precio" name="precio" label="Precio Unitario:" variant="outlined" />
+                                    <TextField  {...register("costoUnitario")} type="number" style={gridCols} id="costoUnitario" name="costoUnitario" label="Costo Unitario:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
                                     <TextField {...register("porcentaje")} type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
@@ -126,6 +129,7 @@ const ActividadPresupuestaria = (props) => {
                                         <TableCell align="center">Cuenta</TableCell>
                                         <TableCell align="center">Descripcion</TableCell>
                                         <TableCell align="center">Cantidad</TableCell>
+                                        <TableCell align="center">Unidad Medida</TableCell>
                                         <TableCell align="center">Tiempo</TableCell>
                                         <TableCell align="center">Precio</TableCell>
                                         <TableCell align="center">Porcentaje</TableCell>

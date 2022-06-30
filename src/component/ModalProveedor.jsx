@@ -150,14 +150,14 @@ const ModalNuevoProveedor = (props) => {
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-                                                id="ruc"
-                                                name="ruc"
+                                                id="numeroRuc"
+                                                name="numeroRuc"
                                                 label="RUC:"
                                                 placeholder="13 dígitos"
                                                 helperText='Clickee fuera para validar el "RUC"'
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("ruc")}
+                                                {...register("numeroRuc")}
                                             />
                                         </Grid>
                                     </Grid>
@@ -186,23 +186,23 @@ const ModalNuevoProveedor = (props) => {
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-                                                id="direccionDomiciliaria"
-                                                name="direccionDomiciliaria"
+                                                id="direccion"
+                                                name="direccion"
                                                 label="Dirección:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("direccionDomiciliaria")}
+                                                {...register("direccion")}
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
-                                                id="correo"
-                                                name="correo"
+                                                id="email"
+                                                name="email"
                                                 label="Email:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("correo")}
+                                                {...register("email")}
                                             />
                                         </Grid>
                                     </Grid>
@@ -313,11 +313,11 @@ const ModalNuevoProveedor = (props) => {
                                                     </Grid>
                                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                                         <TextField
-                                                            id="numeroAutorizacion"
-                                                            name="numeroAutorizacion"
+                                                            id="autorizacion"
+                                                            name="autorizacion"
                                                             label="N° Autorización:"
                                                             style={{ width: "100%" }}
-                                                            {...register("numeroAutorizacion")}
+                                                            {...register("autorizacion")}
                                                         />
                                                     </Grid>
                                                 </Grid>

@@ -233,9 +233,9 @@ const LiquidacionCompra = () => {
 
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
-                                                {...register("telefonoCelular")}
-                                                id="telefonoCelular"
-                                                name="telefonoCelular"
+                                                {...register("telefono")}
+                                                id="telefono"
+                                                name="telefono"
                                                 label="Telefono:"
                                                 placeholder="Telefono convencional o celular"
                                                 style={{ width: "100%" }}
@@ -244,9 +244,9 @@ const LiquidacionCompra = () => {
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
-                                                {...register("correo")}
-                                                id="correo"
-                                                name="correo"
+                                                {...register("email")}
+                                                id="email"
+                                                name="email"
                                                 label="Email:"
                                                 placeholder="gold@example.com"
                                                 style={{ width: "100%" }}
@@ -255,9 +255,9 @@ const LiquidacionCompra = () => {
                                         </Grid>
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                             <TextField
-                                                {...register("direccionDomiciliaria")}
-                                                id="direccionDomiciliaria"
-                                                name="direccionDomiciliaria"
+                                                {...register("direccion")}
+                                                id="direccion"
+                                                name="direccion"
                                                 label="Dirección:"
                                                 placeholder="Dirección domiciliaria"
                                                 style={{ width: "100%" }}
@@ -385,26 +385,26 @@ const LiquidacionCompra = () => {
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    id="valorUnit"
-                                                    name="valorUnit"
+                                                    id="valorUnitario"
+                                                    name="valorUnitario"
                                                     type="number"
                                                     style={{ width: "70px" }}
                                                     InputLabelProps={{
                                                         shrink: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("valorUnit")} />
+                                                    {...register("valorUnitario")} />
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    id="total"
-                                                    name="total"
+                                                    id="valorTotal"
+                                                    name="valorTotal"
                                                     style={{ width: "70px" }}
                                                     InputProps={{
                                                         readOnly: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("total")} />
+                                                    {...register("valorTotal")} />
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Button variant="contained">
@@ -443,13 +443,13 @@ const LiquidacionCompra = () => {
                                         <TextField id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA0")} />
+                                        <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIvaCero")} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIVA12")} />
+                                        <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIvaDoce")} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}   >
-                                        <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("Iva12")} />
+                                        <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("ivaDoce")} />
                                     </Grid>
                                 </Grid>
                                 <Grid container item lg={6} md={6} sm={12} xs={12}>

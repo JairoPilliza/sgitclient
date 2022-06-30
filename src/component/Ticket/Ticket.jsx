@@ -71,13 +71,13 @@ const Ticket = () => {
                                         </Button>
                                     </Grid>
                                     <Grid item   lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("ruc")} />
+                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("numeroRuc")} />
                                     </Grid>
                                     <Grid item  lg={12}  md={12} sm={12} xs={12}>
                                         <TextField id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12}  xs={12} >
-                                        <TextField id="numeroAutorizacion" name="numeroAutorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("numeroAutorizacion")} />
+                                        <TextField id="autorizacion" name="autorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("autorizacion")} />
                                     </Grid>
                                 </Grid>
 
@@ -106,11 +106,11 @@ const Ticket = () => {
                                             </Grid>
                                             <Grid item  lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
-                                                    id="emision"
-                                                    name="emision"
+                                                    id="establecimiento"
+                                                    name="establecimiento"
                                                     label="000"
                                                     style={{ width: "100%" }}
-                                                    {...register("emision")}
+                                                    {...register("establecimiento")}
                                                 />
                                             </Grid>
                                             <Grid item  lg={3}  md={3} sm={12} xs={12}> 
@@ -260,14 +260,14 @@ const Ticket = () => {
                                                 </TableCell>
                                                 <TableCell>
                                                     <TextField
-                                                        id="total"
-                                                        name="total"
+                                                        id="valorTotal"
+                                                        name="valorTotal"
                                                         style={{ width: "70px" }}
                                                         InputProps={{
                                                             readOnly: true
                                                         }}
                                                         variant="standard"
-                                                        {...register("total")} />
+                                                        {...register("valorTotal")} />
                                                 </TableCell>
                                                 <TableCell align="center">
                                                     <Button variant="contained" onClick={() => setShowTableDatosTicket(true)}>

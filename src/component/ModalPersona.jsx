@@ -85,9 +85,9 @@ const ModalNuevaPersona = (props) => {
                                 <Grid container spacing={2}>
                                     <Grid item lg={12} md={12} sm={12} xs={12}  >
                                         <TextField
-                                            {...register("apellidosNombres")}
-                                            id="apellidosNombres"
-                                            name="apellidosNombres"
+                                            {...register("nombreCompleto")}
+                                            id="nombreCompleto"
+                                            name="nombreCompleto"
                                             label="Apellidos y Nombres:"
                                             placeholder="Ingrese Apellidos y Nombres de la persona"
 
@@ -144,7 +144,7 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
-                                            {...register("telefono")}
+                                            {...register("celular")}
                                             id="celular"
                                             name="celular"
                                             label="Celular:"
@@ -177,9 +177,9 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <TextField
-                                            {...register("correo")}
-                                            id="correo"
-                                            name="correo"
+                                            {...register("email")}
+                                            id="email"
+                                            name="email"
                                             label="Email:"
                                             placeholder="gold@example.com"
                                             style={{ width: "100%" }}
@@ -189,9 +189,9 @@ const ModalNuevaPersona = (props) => {
                                     </Grid>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
-                                            {...register("direccionDomiciliaria")}
-                                            id="direccionDomiciliaria"
-                                            name="direccionDomiciliaria"
+                                            {...register("direccion")}
+                                            id="direccion"
+                                            name="direccion"
                                             label="Dirección:"
                                             placeholder="Ingrese dirección domiciliaria"
                                             style={{ width: "100%" }}

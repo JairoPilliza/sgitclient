@@ -34,10 +34,10 @@ const NotaCredito = () => {
     }
 
     const devolucion = () => {
-
+        setCheckDescuento(false);
         setDisable(true);
         setShowTableDtNotaCredito(true);
-        setCheckDescuento(false);
+        
         setCheckDevolucion(true);
 
     }
@@ -99,37 +99,37 @@ const NotaCredito = () => {
                                     </TableCell>
                                     <TableCell>
                                         <TextField
-                                            id="detalle"
-                                            name="detalle"
+                                            id="descripcion"
+                                            name="descripcion"
                                             style={{ width: "300px" }}
                                             InputLabelProps={{
                                                 shrink: true
                                             }}
                                             variant="standard"
-                                            {...register("detalle")} />
+                                            {...register("descripcion")} />
                                     </TableCell>
                                     <TableCell>
                                         <TextField
-                                            id="precioUnit"
-                                            name="precioUnit"
+                                            id="valorUnitario"
+                                            name="valorUnitario"
                                             type="number"
                                             style={{ width: "70px" }}
                                             InputLabelProps={{
                                                 shrink: true
                                             }}
                                             variant="standard"
-                                            {...register("precioUnit")} />
+                                            {...register("valorUnitario")} />
                                     </TableCell>
                                     <TableCell>
                                         <TextField
-                                            id="total"
-                                            name="total"
+                                            id="valorTotal"
+                                            name="valorTotal"
                                             style={{ width: "70px" }}
                                             InputProps={{
                                                 readOnly: true
                                             }}
                                             variant="standard"
-                                            {...register("total")} />
+                                            {...register("valorTotal")} />
                                     </TableCell>
                                     <TableCell align="center">
                                         <Button variant="contained" >
@@ -224,9 +224,9 @@ const NotaCredito = () => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
-                                                {...register("emision")}
-                                                id="emision"
-                                                name="emision"
+                                                {...register("establecimiento")}
+                                                id="establecimiento"
+                                                name="establecimiento"
                                                 label="000"
                                                 style={{ width: "100%" }}
 
@@ -234,9 +234,9 @@ const NotaCredito = () => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
                                             <TextField
-                                                {...register("puntoEmision")}
-                                                id="puntoEmision"
-                                                name="puntoEmision"
+                                                {...register("puntoFacturacion")}
+                                                id="puntoFacturacion"
+                                                name="puntoFacturacion"
                                                 label="000 "
                                                 style={{ width: "100%" }}
 
@@ -346,9 +346,9 @@ const NotaCredito = () => {
                                             <Grid container spacing={2}>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
-                                                        {...register("numeroAutorizacion")}
-                                                        id="numeroAutorizacion"
-                                                        name="numeroAutorizacion"
+                                                        {...register("autorizacion")}
+                                                        id="autorizacion"
+                                                        name="autorizacion"
                                                         label="Numero Autorización: "
                                                         style={{ width: "100%" }}
 
@@ -417,40 +417,61 @@ const NotaCredito = () => {
                                     </Grid>
                                 </Grid>
                                 <Grid container>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
                                         <center>
-                                            <Checkbox
+                                            {/* <Checkbox
                                                 id="devolucion"
                                                 name="devolucion"
 
-                                                onChange={checkDevolucion}
+                                                
                                                 style={{
                                                     transform: "scale(1)",
                                                 }}    {...register("devolucion")}
-                                                onClick={() => devolucion()} />
+                                               />
 
-                                            <small>Devolucion</small>
+                                            <small>Devolucion</small> */}
+                                            
+                                                    <FormControlLabel
+                                                        labelPlacement="start"
+                                                        label="Devolucion"
+                                                        control={<Checkbox  {...register("devolucionDescuento")} value='0' id="devolucion"
+                                                            name="devolucion"
+                                                            checked={checkDevolucion}
+                                                            onChange={() => devolucion()} 
+                                                        />}
+                                                    />
+                                                    <FormControlLabel
+                                                        labelPlacement="start"
+                                                        label="Devolucion"
+                                                        control={<Checkbox  {...register("devolucionDescuento")} value='1' id="devolucion"
+                                                            name="devolucion"
+                                                            checked={checkDescuento}
+                                                            onChange={() => descuento()}
+                                                        />}
+                                                    />
+                                               
+
                                         </center>
 
-                                       
+
 
                                     </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    {/* <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <center>
                                             <Checkbox
                                                 id="descuento"
                                                 name="devolucion"
 
-                                                onChange={checkDescuento}
+                                               
                                                 style={{
                                                     transform: "scale(1)",
                                                 }}
                                                 {...register("descuento")}
-                                                onClick={() => descuento()} />
+                                                 />
                                             <small>Descuento</small>
                                         </center>
 
-                                    </Grid>
+                                    </Grid> */}
 
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <Typography variant="h5" gutterBottom component="div">
@@ -473,14 +494,14 @@ const NotaCredito = () => {
                                     <TextField id="descuento" disabled={disable} name="descuento" label="Descuento:" variant="outlined" style={{ width: "100%" }}  {...register("descuento")} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField id="subtotal12" disabled name="subtotal12" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal12")} />
+                                    <TextField id="subtotal12" disabled name="subtotal12" label="Subtotal 12%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotalDoce")} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField id="iva12" disabled name="iva12" label="Iva 12%:" variant="outlined" style={{ width: "100%" }}  {...register("iva12")} />
+                                    <TextField id="iva12" disabled name="iva12" label="Iva 12%:" variant="outlined" style={{ width: "100%" }}  {...register("ivaDoce")} />
                                 </Grid>
 
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField id="subtotal0" disabled name="subtotal0" label="Subtotal 0%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotal0")} />
+                                    <TextField id="subtotal0" disabled name="subtotal0" label="Subtotal 0%:" variant="outlined" style={{ width: "100%" }}  {...register("subtotalCero")} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
                                     <TextField id="valorTotal" disabled name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
