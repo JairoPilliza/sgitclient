@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Checkbox, Divider, Grid, InputLabel } from '@mui/material';
+import { Checkbox, Divider, FormControlLabel, Grid, InputLabel } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -317,17 +317,16 @@ const LiquidacionCompra = () => {
                                 </Grid>
                                 <Grid container >
                                     <Grid item >
-                                        <label><b>Grava Iva</b></label>
+                                      
 
-                                        <Checkbox
-                                            id="grabaIva"
-                                            name="grabaIva"
-                                            checked
-                                            style={{
-                                                transform: "scale(1)",
-
-                                            }}
-                                            {...register("grabaIva")} />
+                                        <FormControlLabel
+                                            labelPlacement="start"
+                                            label='Grava Iva'
+                                            
+                                            control={<Checkbox {...register("gravaIva")}  id="gravaIva"
+                                                name="gravaIva"
+                                            />}
+                                        />
 
                                     </Grid>
 
@@ -440,22 +439,22 @@ const LiquidacionCompra = () => {
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                                 <Grid container item rowSpacing={2} lg={6} md={6} sm={12} xs={12}>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
+                                        <TextField   {...register("subtotal")} id="subtotal" name="subtotal" label="Subtotal" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField id="baseIVA0" name="baseIVA0" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIvaCero")} />
+                                        <TextField  {...register("baseIvaCero")} id="baseIvaCero" name="baseIvaCero" label="Base IVA 0%:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="baseIVA12" name="baseIVA12" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }}  {...register("baseIvaDoce")} />
+                                        <TextField {...register("baseIvaDoce")} id="baseIvaDoce" name="baseIvaDoce" label="Base IVA 12%:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}   >
-                                        <TextField id="Iva12" name="Iva12" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} {...register("ivaDoce")} />
+                                        <TextField  {...register("ivaDoce")} id="ivaDoce" name="ivaDoce" label="Iva 12 %:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                 </Grid>
                                 <Grid container item lg={6} md={6} sm={12} xs={12}>
 
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                                        <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
+                                        <TextField {...register("valorTotal")} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" style={{ width: "100%" }} />
                                     </Grid>
                                 </Grid>
                             </Grid>

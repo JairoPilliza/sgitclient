@@ -96,12 +96,12 @@ const ModalFormaPago = (props) => {
                                                 <InputLabel id="demo-simple-select-helper-label">Forma de Pago:</InputLabel>
                                                 <Select
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoPago"
-                                                    name="tipoPago"
+                                                    id="idFormaPagoSri"
+                                                    name="idFormaPagoSri"
                                                     style={{ width: "100%" }}
                                                     required
                                                     label="Forma de Pago:"
-                                                    {...register("tipoPago")}
+                                                    {...register("idFormaPagoSri")}
                                                 >
                                                     <MenuItem value={10}>Tarjeta Debito</MenuItem>
                                                     <MenuItem value={20}>Tarjeta Credito</MenuItem>
@@ -124,7 +124,6 @@ const ModalFormaPago = (props) => {
                                             <TableCell align="center">#</TableCell>
                                             <TableCell align="center">Forma de pago</TableCell>
                                             <TableCell align="center">Valor</TableCell>
-
                                             <TableCell align="center">Acciones</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -143,7 +142,7 @@ const ModalFormaPago = (props) => {
                                                 </TableCell>
                                                 <TableCell align="center">{row.fat}</TableCell>
 
-                                                <TableCell align="center"><Button variant="contained" startIcon={<DeleteForeverIcon />} ></Button></TableCell>
+                                                <TableCell align="center"><Button variant="contained"><DeleteForeverIcon /></Button></TableCell>
                                             </TableRow>
                                         ))}
                                         <TableRow >
@@ -165,7 +164,7 @@ const ModalFormaPago = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button type="submit" >Guardar</Button>
+                    <Button  >Guardar</Button>
                 </DialogActions>
             </Dialog>
 

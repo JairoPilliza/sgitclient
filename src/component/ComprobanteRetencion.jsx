@@ -90,14 +90,15 @@ const ModalComprobanteRetencion = (props) => {
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Pago a resiedente o no residente</InputLabel>
                                                 <Select
+                                                    {...register("idPagoTipo")}
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoContribuyente"
-                                                    name="tipoContribuyente"
+                                                    id="idPagoTipo"
+                                                    name="idPagoTipo"
                                                     style={{ width: "100%" }}
                                                     required
                                                     placeholder="Número de secuencia inicial (1)"
                                                     label="Pago a resiedente o no residente"
-                                                    {...register("proveedorTipo")}
+
                                                 >
                                                     <MenuItem value={10}>Persona Natural</MenuItem>
                                                     <MenuItem value={20}>Sociedad</MenuItem>
@@ -108,14 +109,14 @@ const ModalComprobanteRetencion = (props) => {
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">Tipo de régimien fisacal del exterior</InputLabel>
                                                 <Select
+                                                    {...register("idRegimenFiscalExteriorTipo")}
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoContribuyente"
-                                                    name="tipoContribuyente"
+                                                    id="idRegimenFiscalExteriorTipo"
+                                                    name="idRegimenFiscalExteriorTipo"
                                                     style={{ width: "100%" }}
                                                     required
-
                                                     label="Tipo de régimien fisacal del exterior"
-                                                    {...register("proveedorTipo")}
+
                                                 >
                                                     <MenuItem value={10}>Persona Natural</MenuItem>
                                                     <MenuItem value={20}>Sociedad</MenuItem>
@@ -127,14 +128,14 @@ const ModalComprobanteRetencion = (props) => {
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">País al que se realiza el pago en régimen General</InputLabel>
                                                 <Select
+                                                    {...register("idPais")}
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoContribuyente"
-                                                    name="tipoContribuyente"
+                                                    id="idPais"
+                                                    name="idPais"
                                                     style={{ width: "100%" }}
                                                     required
-
                                                     label="País al que se realiza el pago en régimen General"
-                                                    {...register("proveedorTipo")}
+
                                                 >
                                                     <MenuItem value={10}>Persona Natural</MenuItem>
                                                     <MenuItem value={20}>Sociedad</MenuItem>
@@ -145,14 +146,15 @@ const ModalComprobanteRetencion = (props) => {
                                             <FormControl sx={{ minWidth: '100%' }}>
                                                 <InputLabel id="demo-simple-select-helper-label">País al que se realiza el pago en Paraíso Fiscal</InputLabel>
                                                 <Select
+                                                    {...register("idParaisoFiscal")}
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoContribuyente"
-                                                    name="tipoContribuyente"
+                                                    id="idParaisoFiscal"
+                                                    name="idParaisoFiscal"
                                                     style={{ width: "100%" }}
                                                     required
 
                                                     label="País al que se realiza el pago en Paraíso Fiscal"
-                                                    {...register("proveedorTipo")}
+
                                                 >
                                                     <MenuItem value={10}>Persona Natural</MenuItem>
                                                     <MenuItem value={20}>Sociedad</MenuItem>
@@ -161,13 +163,14 @@ const ModalComprobanteRetencion = (props) => {
                                         </Grid>
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                             <TextField
-                                                id="ruc"
-                                                name="ruc"
+                                                {...register("descripcionRegimenFiscal")}
+                                                id="descripcionRegimenFiscal"
+                                                name="descripcionRegimenFiscal"
                                                 label="Régimen fiscal preferente:"
                                                 placeholder="Denominación del régimen fiscal preferente o jurisdicción de menor imposición"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("ruc")}
+
                                             />
                                         </Grid>
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
@@ -175,13 +178,13 @@ const ModalComprobanteRetencion = (props) => {
                                                 <InputLabel id="demo-simple-select-helper-label">País al que efectua el pago</InputLabel>
                                                 <Select
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="tipoContribuyente"
-                                                    name="tipoContribuyente"
+                                                    id="idPaisPago"
+                                                    name="idPaisPago"
                                                     style={{ width: "100%" }}
                                                     required
 
                                                     label="País al que efectua el pago"
-                                                    {...register("proveedorTipo")}
+                                                    {...register("idPaisPago")}
                                                 >
                                                     <MenuItem value={10}>Persona Natural</MenuItem>
                                                     <MenuItem value={20}>Sociedad</MenuItem>
@@ -202,8 +205,8 @@ const ModalComprobanteRetencion = (props) => {
                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                     name="row-radio-buttons-group"
                                                 >
-                                                    <FormControlLabel value="SI" control={<Radio />} label="SI" />
-                                                    <FormControlLabel value="NO" control={<Radio />} label="NO" />
+                                                    <FormControlLabel value="SI" control={<Radio    {...register("convenioDobleTributacion")} />} label="SI" />
+                                                    <FormControlLabel value="NO" control={<Radio    {...register("convenioDobleTributacion")} />} label="NO" />
 
 
                                                 </RadioGroup>
@@ -223,8 +226,8 @@ const ModalComprobanteRetencion = (props) => {
                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                     name="row-radio-buttons-group"
                                                 >
-                                                    <FormControlLabel value="SI" control={<Radio />} label="SI" />
-                                                    <FormControlLabel value="NO" control={<Radio />} label="NO" />
+                                                    <FormControlLabel value="SI" control={<Radio   {...register("pagoSujetoRetencion")} />} label="SI" />
+                                                    <FormControlLabel value="NO" control={<Radio   {...register("pagoSujetoRetencion")} />} label="NO" />
 
 
                                                 </RadioGroup>
@@ -232,11 +235,11 @@ const ModalComprobanteRetencion = (props) => {
                                         </Grid>
 
                                     </Grid>
-                                    
+
                                     <Grid container item spacing={2}>
-                                    <br/>
-                                    <Divider/>
-                                    <br/>
+                                        <br />
+                                        <Divider />
+                                        <br />
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                             <Typography variant="h3" gutterBottom component="div">
                                                 Comprobante Retención
@@ -251,66 +254,66 @@ const ModalComprobanteRetencion = (props) => {
                                             <FormControlLabel
                                                 labelPlacement="start"
                                                 label=""
-                                                control={<Checkbox {...register("retencionElectronica")} id="retencionElectronica"
-                                                    name="retencionElectronica"
+                                                control={<Checkbox {...register("retencion")} id="retencion"
+                                                    name="retencion"
                                                 />}
 
                                             />
                                         </Grid>
                                         <Grid item lg={4} md={4} sm={12} xs={12}  >
                                             <TextField
-                                                id="razonSocial"
-                                                name="razonSocial"
+                                                id="establecimiento"
+                                                name="establecimiento"
                                                 label="Establecimiento:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("razonSocial")}
+                                                {...register("establecimiento")}
                                             />
                                         </Grid>
                                         <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <TextField
-                                                id="nombre"
-                                                name="nombre"
+                                                id="puntoEmision"
+                                                name="puntoEmision"
                                                 label="Punto Emisión:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("nombre")}
+                                                {...register("puntoEmision")}
                                             />
                                         </Grid>
                                         <Grid item lg={4} md={4} sm={12} xs={12} >
                                             <TextField
-                                                id="nombre"
-                                                name="nombre"
+                                                id="secuencial"
+                                                name="secuencial"
                                                 label="Secuencial:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("nombre")}
+                                                {...register("secuencial")}
                                             />
                                         </Grid>
                                     </Grid>
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-                                                id="direccionDomiciliaria"
-                                                name="direccionDomiciliaria"
+                                                id="autorizacion"
+                                                name="autorizacion"
                                                 label="N° Autorización:"
                                                 style={{ width: "100%" }}
                                                 required
-                                                {...register("direccionDomiciliaria")}
+                                                {...register("autorizacion")}
                                             />
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
-                                                id="fechaCaducidad"
-                                                name="fechaCaducidad"
+                                                id="fechaEmision"
+                                                name="fechaEmision"
                                                 label="Fecha Emisión Comprobante:"
                                                 type="date"
                                                 style={{ width: "100%" }}
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                {...register("fechaCaducidad")}
+                                                {...register("fechaEmision")}
                                             />
                                         </Grid>
                                     </Grid>

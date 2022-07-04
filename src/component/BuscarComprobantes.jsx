@@ -87,12 +87,13 @@ const BuscarComprobantes = () => {
                     <Grid container spacing={2}>
                         <Grid item lg={6} md={6} sm={6} xs={12}   >
                             <TextField
+                                {...register("proveedor")}
                                 required
                                 id="outlined-basic"
                                 label="Ruc | Proveedor| N° Fact.:"
                                 placeholder="N° Factura - Proveedor - Ruc"
                                 style={{ width: "100%" }}
-                                {...register("proveedor")}
+
                             />
                         </Grid>
                         <Grid item lg={6} md={6} sm={6} xs={12}   >

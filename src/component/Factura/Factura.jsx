@@ -595,7 +595,7 @@ const Factura = () => {
                 onClose={handleCloseMR}
                 scroll={scroll}
             />
-            <ModalComprobanteRetencion
+            <ModalFormaPago
                 open={openMFP}
                 onClose={handleCloseMFP} />
             <ModalSubirXML

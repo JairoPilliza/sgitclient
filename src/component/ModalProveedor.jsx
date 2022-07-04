@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Card, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
@@ -128,7 +128,26 @@ const ModalNuevoProveedor = (props) => {
                                             </FormControl>
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
-
+                                            <FormControl sx={{ minWidth: '100%' }}>
+                                                <InputLabel id="demo-simple-select-helper-label">Tipo Identificación</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="tipoContribuyente"
+                                                    name="tipoContribuyente"
+                                                    style={{ width: "100%" }}
+                                                    required
+                                                    placeholder="Número de secuencia inicial (1)"
+                                                    label="Tipo Contribuyente"
+                                                    {...register("proveedorTipo")}
+                                                >
+                                                    <MenuItem value={10}>RUC</MenuItem>
+                                                    <MenuItem value={20}>CEDULA</MenuItem>
+                                                    <MenuItem value={20}>PASAPORTE</MenuItem>
+                                                    <MenuItem value={20}>VENTA A CONSUMIDOR FINAL</MenuItem>
+                                                    <MenuItem value={20}>INDENTIFICACION DEL EXTERIOR</MenuItem>
+                                                    <MenuItem value={20}>PLACA</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <FormControl sx={{ minWidth: '100%' }}>
@@ -279,6 +298,20 @@ const ModalNuevoProveedor = (props) => {
                                                 {...register("observacion")}
                                             />
                                         </Grid>
+                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                            <FormControl>
+                                                <FormLabel id="demo-row-radio-buttons-group-label">Es parte relacionada</FormLabel>
+                                                <RadioGroup
+                                                    row
+                                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                                    name="row-radio-buttons-group"
+                                                >
+                                                    <FormControlLabel value="female" control={<Radio />} label="SI" />
+                                                    <FormControlLabel value="male" control={<Radio />} label="NO" />
+                                                    
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </Grid>
 
                                     </Grid>
                                 </Grid>
@@ -373,17 +406,19 @@ const ModalNuevoProveedor = (props) => {
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
+                                            <br/>
                                             <div>
                                                 <TableContainer component={Paper}>
                                                     <Table sx={{ minWidth: 650 }} aria-label="caption table">
 
-                                                        <TableHead>
+                                                        <TableHead >
                                                             <TableRow>
-                                                                <TableCell>Nombres</TableCell>
-                                                                <TableCell align="center">Identificación</TableCell>
-                                                                <TableCell align="center">Telefono</TableCell>
-                                                                <TableCell align="center">Email</TableCell>
-                                                                <TableCell align="center">Dirección</TableCell>
+                                                                <TableCell>Fecha Caducidad</TableCell>
+                                                                <TableCell align="center">Autorizacion</TableCell>
+                                                                <TableCell align="center">Establecimiento</TableCell>
+                                                                <TableCell align="center">Punto emision</TableCell>
+                                                                <TableCell align="center">Secuencial Min</TableCell>
+                                                                <TableCell align="center">Secuencial Max</TableCell>
                                                                 <TableCell align="center">Opciones</TableCell>
                                                             </TableRow>
                                                         </TableHead>

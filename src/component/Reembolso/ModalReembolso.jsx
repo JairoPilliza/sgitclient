@@ -156,9 +156,9 @@ const ModalReembolso = (props) => {
 
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
                                         <TextField
-                                            {...register("numeroAutorizacion")}
-                                            id="numeroAutorizacion"
-                                            name="numeroAutorizacion"
+                                            {...register("autorizacion")}
+                                            id="autorizacion"
+                                            name="autorizacion"
                                             label="N° Autorización:"
 
                                             style={{ width: "100%" }}
@@ -188,9 +188,9 @@ const ModalReembolso = (props) => {
                                     <Grid container spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                                             <TextField
-                                                {...register("tarIVA0")}
-                                                id="tarIVA0"
-                                                name="tarIVA0"
+                                                {...register("baseImponibleIvaCero")}
+                                                id="baseImponibleIvaCero"
+                                                name="baseImponibleIvaCero"
                                                 label="Tarifa IVA 0%:"
                                                 type="number"
                                                 style={{ width: "100%" }}
@@ -201,9 +201,9 @@ const ModalReembolso = (props) => {
                                         <Grid item lg={6} md={6} sm={12} xs={12} />
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-                                                {...register("tarIVAdif0")}
-                                                id="tarIVAdif0"
-                                                name="tarIVAdif0"
+                                                {...register("baseImponibleDiferenteCero")}
+                                                id="baseImponibleDiferenteCero"
+                                                name="baseImponibleDiferenteCero"
                                                 label="Tarifa IVA diferente 0%:"
                                                 style={{ width: "100%" }}
                                                 required
@@ -213,9 +213,9 @@ const ModalReembolso = (props) => {
                                         </Grid>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
                                             <TextField
-                                                {...register("montoIVA")}
-                                                id="montoIVA"
-                                                name="montoIVA"
+                                                {...register("montoIva")}
+                                                id="montoIva"
+                                                name="montoIva"
                                                 label="Monto de IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}
@@ -226,9 +226,9 @@ const ModalReembolso = (props) => {
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
-                                                {...register("tarnoObjIVA")}
-                                                id="tarnoObjIVA"
-                                                name="tarnoObjIVA"
+                                                {...register("baseImponibleNoObjetoIva")}
+                                                id="baseImponibleNoObjetoIva"
+                                                name="baseImponibleNoObjetoIva"
                                                 label="Tarifa No Objeto de IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}
@@ -253,9 +253,9 @@ const ModalReembolso = (props) => {
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
 
                                             <TextField
-                                                {...register("baseExIVA")}
-                                                id="baseExIVA"
-                                                name="baseExIVA"
+                                                {...register("baseImponibleExentaIva")}
+                                                id="baseImponibleExentaIva"
+                                                name="baseImponibleExentaIva"
                                                 label="Base Exenta IVA:"
                                                 type="number"
                                                 style={{ width: "100%" }}

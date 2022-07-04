@@ -255,9 +255,9 @@ const NotaVenta = (props) => {
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    {...register("valorUnitario")}
-                                                    id="valorUnitario"
-                                                    name="valorUnitario"
+                                                    {...register("valorTotal")}
+                                                    id="valorTotal"
+                                                    name="valorTotal"
                                                     style={{ width: "70px" }}
                                                     InputProps={{
                                                         readOnly: true

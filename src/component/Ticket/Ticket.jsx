@@ -64,33 +64,34 @@ const Ticket = () => {
                         <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }}>
                             <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
-                                <Grid container item spacing={2} rowSpacing={2}   lg={6} md={6} sm={12} xs={12}  >
+                                <Grid container item spacing={2} rowSpacing={2} lg={6} md={6} sm={12} xs={12}  >
                                     <Grid item xs={12} md={12} sm={12} lg={12}>
                                         <Button aria-label="settings" style={{ width: "100%" }} variant="outlined" startIcon={<EditIcon />} onClick={handleOpen}>
                                             Editar Proveedor
                                         </Button>
                                     </Grid>
-                                    <Grid item   lg={12} md={12} sm={12} xs={12}>
-                                        <TextField id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  {...register("numeroRuc")} />
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                                        <TextField  {...register("numeroRuc")} id="ruc" name="ruc" label="RUC:" variant="outlined" style={{ width: "100%" }}  />
                                     </Grid>
-                                    <Grid item  lg={12}  md={12} sm={12} xs={12}>
-                                        <TextField id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}  {...register("telefono")} />
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                                        <TextField {...register("telefono")} id="telefono" name="telefono" label="Telefono:" variant="outlined" style={{ width: "100%" }}   />
                                     </Grid>
-                                    <Grid item lg={12} md={12} sm={12}  xs={12} >
-                                        <TextField id="autorizacion" name="autorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  {...register("autorizacion")} />
+                                    <Grid item lg={12} md={12} sm={12} xs={12} >
+                                        <TextField {...register("autorizacion")}  id="autorizacion" name="autorizacion" label="N° Autorización:" variant="outlined" style={{ width: "100%" }}  />
                                     </Grid>
                                 </Grid>
 
-                                <Grid container spacing={2} item   lg={6} md={6} sm={12} xs={12}>
-                                    <Grid item  lg={12} md={12} sm={12} xs={12}>
+                                <Grid container spacing={2} item lg={6} md={6} sm={12} xs={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <FormControl sx={{ minWidth: "1005" }} style={{ width: "100%" }}>
                                             <InputLabel id="demo-simple-select-helper-label">Sustento Tributario:</InputLabel>
                                             <Select
+                                                {...register("sustentoTributario")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="sustentoTributario"
                                                 name="sustentoTributario"
                                                 label="Sustento Tributario:"
-                                                {...register("sustentoTributario")}
+
                                             >
                                                 <MenuItem value={10} >Ten</MenuItem>
                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -99,42 +100,45 @@ const Ticket = () => {
 
                                         </FormControl>
                                     </Grid>
-                                    <Grid item   lg={12} md={12} sm={12} xs={12}>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <Grid container spacing={2} >
                                             <Grid item lg={3} md={3} sm={12} xs={12}>
                                                 <small style={{ width: "100%" }} ><b>N° Ticket:</b></small>
                                             </Grid>
-                                            <Grid item  lg={3} md={3} sm={12} xs={12} >
+                                            <Grid item lg={3} md={3} sm={12} xs={12} >
                                                 <TextField
+                                                    {...register("establecimiento")}
                                                     id="establecimiento"
                                                     name="establecimiento"
                                                     label="000"
                                                     style={{ width: "100%" }}
-                                                    {...register("establecimiento")}
+
                                                 />
                                             </Grid>
-                                            <Grid item  lg={3}  md={3} sm={12} xs={12}> 
+                                            <Grid item lg={3} md={3} sm={12} xs={12}>
                                                 <TextField
+                                                    {...register("puntoEmision")}
                                                     id="puntoEmision"
                                                     name="puntoEmision"
                                                     label="000 "
                                                     style={{ width: "100%" }}
-                                                    {...register("puntoEmision")}
+
                                                 />
                                             </Grid>
-                                            <Grid item  lg={3}  md={3} sm={12} xs={12}>
+                                            <Grid item lg={3} md={3} sm={12} xs={12}>
                                                 <TextField
+                                                    {...register("secuencial")}
                                                     id="secuencial"
                                                     name="secuencial"
                                                     label="000000000"
                                                     multiline
                                                     style={{ width: "100%" }}
-                                                    {...register("secuencial")}
+
                                                 />
                                             </Grid>
-                                            <Grid item  lg={12} md={12} sm={12} xs={12}>
+                                            <Grid item lg={12} md={12} sm={12} xs={12}>
                                                 <TextField
-
+                                                    {...register("fechaEmsion")}
                                                     id="fechaEmsion"
                                                     name="fechaEmsion"
                                                     label="F. Emisión:"
@@ -144,12 +148,12 @@ const Ticket = () => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaEmsion")}
+
                                                 />
                                             </Grid>
-                                            <Grid item  lg={12} md={12} sm={12} xs={12}>
+                                            <Grid item lg={12} md={12} sm={12} xs={12}>
                                                 <TextField
-
+                                                    {...register("fechaRegistro")}
                                                     id="fechaRegistro"
                                                     name="fechaRegistro"
                                                     label="F. Registro:"
@@ -159,7 +163,7 @@ const Ticket = () => {
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    {...register("fechaRegistro")}
+
                                                 />
                                             </Grid>
                                         </Grid>
@@ -176,13 +180,14 @@ const Ticket = () => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Departamento</InputLabel>
                                             <Select
+                                                {...register("departamento")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="departamento"
                                                 name="departamento"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Departamento"
-                                                {...register("departamento")}
+
                                             >
                                                 <MenuItem value={"Huaquillas"}>Huaquillas</MenuItem>
                                                 <MenuItem value={"Santo Domingo"}>Santo Domingo</MenuItem>
@@ -194,13 +199,14 @@ const Ticket = () => {
                                         <FormControl sx={{ minWidth: '100%' }}>
                                             <InputLabel id="demo-simple-select-helper-label">Subcuenta</InputLabel>
                                             <Select
+                                                {...register("subcuenta")}
                                                 labelId="demo-simple-select-helper-label"
                                                 id="subcuenta"
                                                 name="subcuenta"
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Subcuenta"
-                                                {...register("subcuenta")}
+
                                             >
                                                 <MenuItem value={"Insumos Medicos"}>Insumos Medicos</MenuItem>
                                                 <MenuItem value={"Tecnologico"}>Tecnologico</MenuItem>
@@ -224,6 +230,7 @@ const Ticket = () => {
                                             <TableBody>
                                                 <TableCell>
                                                     <TextField
+                                                        {...register("cantidad")}
                                                         id="cantidad"
                                                         name="cantidad"
                                                         type="number"
@@ -232,10 +239,11 @@ const Ticket = () => {
                                                             shrink: true
                                                         }}
                                                         variant="standard"
-                                                        {...register("cantidad")} />
+                                                    />
                                                 </TableCell>
                                                 <TableCell>
                                                     <TextField
+                                                        {...register("descripcion")}
                                                         id="descripcion"
                                                         name="descripcion"
                                                         style={{ width: "300px" }}
@@ -244,10 +252,11 @@ const Ticket = () => {
                                                             shrink: true
                                                         }}
                                                         variant="standard"
-                                                        {...register("descripcion")} />
+                                                    />
                                                 </TableCell>
                                                 <TableCell>
                                                     <TextField
+                                                        {...register("valorUnitario")}
                                                         id="valorUnitario"
                                                         name="valorUnitario"
                                                         type="number"
@@ -256,10 +265,11 @@ const Ticket = () => {
                                                             shrink: true
                                                         }}
                                                         variant="standard"
-                                                        {...register("valorUnitario")} />
+                                                    />
                                                 </TableCell>
                                                 <TableCell>
                                                     <TextField
+                                                        {...register("valorTotal")}
                                                         id="valorTotal"
                                                         name="valorTotal"
                                                         style={{ width: "70px" }}
@@ -267,7 +277,7 @@ const Ticket = () => {
                                                             readOnly: true
                                                         }}
                                                         variant="standard"
-                                                        {...register("valorTotal")} />
+                                                    />
                                                 </TableCell>
                                                 <TableCell align="center">
                                                     <Button variant="contained" onClick={() => setShowTableDatosTicket(true)}>
@@ -287,11 +297,11 @@ const Ticket = () => {
 
                                 <Grid item lg={6} md={6} sm={12} xs={12} />
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" InputProps={{
+                                    <TextField {...register("valorTotal")} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined" InputProps={{
                                         readOnly: true,
                                         type: "number"
                                     }} style={{ width: "100%" }}
-                                        {...register("valorTotal")} />
+                                    />
                                 </Grid>
                             </Grid>
                             <CardActions >

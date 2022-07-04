@@ -184,9 +184,10 @@ const ModalRetencionLiquidacion = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="scroll-dialog-title">Registrar Retención</DialogTitle>
-                    <DialogContent dividers={scroll === 'paper'}>
+
+                <DialogTitle id="scroll-dialog-title">Registrar Retención</DialogTitle>
+                <DialogContent dividers={scroll === 'paper'}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <DialogContentText
                             id="scroll-dialog-description"
                             ref={descriptionElementRef}
@@ -456,12 +457,13 @@ const ModalRetencionLiquidacion = (props) => {
                                 </div>
                             </SubCard>
                         </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={props.onClose}>Cancel</Button>
-                        <Button type="submit" >Guardar Retención</Button>
-                    </DialogActions>
-                </form>
+                    </form>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={props.onClose}>Cancel</Button>
+                    <Button type="submit" >Guardar Retención</Button>
+                </DialogActions>
+
             </Dialog>
         </div >
 

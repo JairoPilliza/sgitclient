@@ -110,8 +110,12 @@ const ModalNuevaPersona = (props) => {
                                                 label="Tipo Documento:"
 
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={10}>RUC</MenuItem>
+                                                    <MenuItem value={20}>CEDULA</MenuItem>
+                                                    <MenuItem value={20}>PASAPORTE</MenuItem>
+                                                    <MenuItem value={20}>VENTA A CONSUMIDOR FINAL</MenuItem>
+                                                    <MenuItem value={20}>INDENTIFICACION DEL EXTERIOR</MenuItem>
+                                                    <MenuItem value={20}>PLACA</MenuItem>
 
                                             </Select>
 

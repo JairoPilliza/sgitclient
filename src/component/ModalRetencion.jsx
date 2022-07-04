@@ -89,7 +89,7 @@ const ModalRetencion = (props) => {
 
         setCount(count + 1)
         setBuscadorPtoEmision(true);
-        if(count == 1){
+        if (count == 1) {
             setCount(0)
             setBuscadorPtoEmision(false)
         }
@@ -110,7 +110,7 @@ const ModalRetencion = (props) => {
     }
     else {
 
-        muestraBuscador ="";
+        muestraBuscador = "";
     }
     const onSubmit = (data, evento) => {
         alert();
@@ -131,11 +131,11 @@ const ModalRetencion = (props) => {
     };
     if (secuencial) {
         txtSecuencial = <TextField
-            id="secuencial"
-            name="secuencial"
+            id="secuencialRetencion"
+            name="secuencialRetencion"
             label="N° Secuencial:"
             style={{ width: "100%" }}
-            {...register("secuencial")} />;
+            {...register("secuencialRetencion")} />;
 
     } else {
         txtSecuencial = '';
@@ -172,8 +172,11 @@ const ModalRetencion = (props) => {
                                             <FormControlLabel
                                                 labelPlacement="start"
                                                 label="Retencion Electronica"
-                                                control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
-                                                    name="retencionElectronica"
+                                                control={<Checkbox {...register("electronica")}
+                                                    checked={checked}
+                                                    onChange={handleChange}
+                                                    id="electronica"
+                                                    name="electronica"
                                                 />}
                                             />
                                         </Grid>
@@ -187,15 +190,15 @@ const ModalRetencion = (props) => {
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12}  >
                                             <TextField
-                                                id="fecha"
-                                                name="fecha"
+                                                id="fechaEmisionRetencion"
+                                                name="fechaEmisionRetencion"
                                                 label="Fecha Emisión:"
                                                 type="date"
                                                 style={{ width: "100%" }}
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
-                                                {...register("fecha")}
+                                                {...register("fechaEmisionRetencion")}
                                             />
                                         </Grid>
                                     </Grid>
@@ -213,11 +216,11 @@ const ModalRetencion = (props) => {
                                         <Grid item lg={3} md={3} sm={12} xs={12}  >
 
                                             <TextField
-                                                id="numeroEstablecimiento"
-                                                name="numeroEstablecimiento"
+                                                id="establecimientoRetencion"
+                                                name="establecimientoRetencion"
                                                 label="N° Establecimiento:"
                                                 style={{ width: "100%" }}
-                                                {...register("numeroEstablecimiento")}
+                                                {...register("establecimientoRetencion")}
                                             />
                                         </Grid>
                                         <Grid item lg={3} md={3} sm={12} xs={12} >
@@ -225,11 +228,11 @@ const ModalRetencion = (props) => {
                                                 <InputLabel id="demo-simple-select-helper-label">Pto emisión</InputLabel>
                                                 <Select
                                                     labelId="demo-simple-select-helper-label"
-                                                    id="puntoEmision"
-                                                    name="puntoEmision"
+                                                    id="puntoFacturacionRetencion"
+                                                    name="puntoFacturacionRetencion"
                                                     style={{ width: "100%" }}
                                                     label="Pto emisión"
-                                                    {...register("puntoEmision")}
+                                                    {...register("puntoFacturacionRetencion")}
                                                 >
                                                     <MenuItem value={10}>Ten</MenuItem>
                                                     <MenuItem value={20}>Twenty</MenuItem>
@@ -300,15 +303,15 @@ const ModalRetencion = (props) => {
 
                                             <TableCell>
                                                 <TextField
-                                                    id="base"
-                                                    name="base"
+                                                    id="valorBase"
+                                                    name="valorBase"
                                                     type="number"
                                                     style={{ width: "50px" }}
                                                     InputLabelProps={{
                                                         shrink: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("base")} />
+                                                    {...register("valorBase")} />
                                             </TableCell>
                                             <TableCell>
                                                 <FormControl sx={{ m: 1, minWidth: 150 }}>
@@ -342,14 +345,14 @@ const ModalRetencion = (props) => {
                                             </TableCell>
                                             <TableCell>
                                                 <TextField
-                                                    id="total"
-                                                    name="total"
+                                                    id="valorTotal"
+                                                    name="valorTotal"
                                                     style={{ width: "70px" }}
                                                     InputProps={{
                                                         readOnly: true
                                                     }}
                                                     variant="standard"
-                                                    {...register("total")} />
+                                                    {...register("valorTotal")} />
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Button type="submit" variant="contained">
@@ -424,12 +427,13 @@ const ModalRetencion = (props) => {
                                                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                                                             <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
                                                             <Select
+                                                                {...register("codRetencion")}
                                                                 labelId="demo-simple-select-helper-label"
-                                                                id="codRetencionBien"
-                                                                name="codRetencionBien"
+                                                                id="codRetencionIva"
+                                                                name="codRetencionIva"
                                                                 style={{ width: "280px", float: "right" }}
                                                                 label="::Seleccione::"
-                                                                {...register("codRetencionBien")}
+
                                                             >
                                                                 <MenuItem value={10}>Ten</MenuItem>
                                                                 <MenuItem value={20}>Twenty</MenuItem>
@@ -439,34 +443,32 @@ const ModalRetencion = (props) => {
                                                         </FormControl>
 
                                                     </TableCell>
-                                                    <TableCell align="left">  <TextField id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined"  {...register("porcentajeBien")} /></TableCell>
-                                                    <TableCell align="left">  <TextField id="totalBien" name="totalBien" type="number" label="-" variant="outlined"   {...register("totalBien")} /></TableCell>
+                                                    <TableCell align="left">  <TextField  {...register("porcentaje")} id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined" /></TableCell>
+                                                    <TableCell align="left">  <TextField  {...register("valorTotal")} id="totalBien" name="totalBien" type="number" label="-" variant="outlined" /></TableCell>
                                                 </TableRow>
                                                 <TableRow hover>
                                                     <TableCell align="right">
                                                         <label align="left"><b>Servicios</b> </label>
                                                     </TableCell>
-                                                    <TableCell align="left">  <TextField id="servicios" name="servicios" type="number" label="-" variant="outlined"  {...register("servicios")} /></TableCell>
+                                                    <TableCell align="left">  <TextField {...register("servicios")} id="servicios" name="servicios" type="number" label="-" variant="outlined" /></TableCell>
                                                     <TableCell align="left">
                                                         <FormControl sx={{ m: 1, minWidth: 120 }}>
                                                             <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
                                                             <Select
+                                                                {...register("codRetencion")}
                                                                 labelId="demo-simple-select-helper-label"
                                                                 id="codRetencionServicio"
                                                                 style={{ width: "280px", float: "right" }}
                                                                 label="::Seleccione::"
-                                                                {...register("codRetencionServicio")}
                                                             >
                                                                 <MenuItem value={10}>Ten</MenuItem>
                                                                 <MenuItem value={20}>Twenty</MenuItem>
                                                                 <MenuItem value={30}>Thirty</MenuItem>
                                                             </Select>
-
                                                         </FormControl>
-
                                                     </TableCell>
-                                                    <TableCell align="left">  <TextField id="porcentajeServicio" name="porcentajeServicio" type="number" label="-" variant="outlined"  {...register("porcentajeServicio")} /></TableCell>
-                                                    <TableCell align="left">  <TextField id="totalServicio" name="totalServicio" type="number" label="-" variant="outlined"  {...register("totalServicio")} /></TableCell>
+                                                    <TableCell  {...register("porcentaje")} align="left">  <TextField id="porcentajeIva" name="porcentajeIva" type="number" label="-" variant="outlined" /></TableCell>
+                                                    <TableCell {...register("valorTotal")} align="left">  <TextField id="valorTotal" name="valorTotal" type="number" label="-" variant="outlined" /></TableCell>
                                                 </TableRow>
                                                 <TableRow hover>
                                                     <TableCell colSpan={3} />

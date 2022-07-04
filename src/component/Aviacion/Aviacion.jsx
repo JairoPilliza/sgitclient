@@ -79,9 +79,9 @@ const Aviacion = () => {
                                     </Grid>
                                     <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField
-                                        {...register("emision")}
-                                            id="emision"
-                                            name="emision"
+                                        {...register("establecimiento")}
+                                            id="establecimiento"
+                                            name="establecimiento"
                                             label="000"
                                             style={{ width: "100%" }}
                                             
@@ -167,9 +167,9 @@ const Aviacion = () => {
                                             <Grid container spacing={2} >
                                                 <Grid item lg={12} md={12} sm={12} xs={12}  >
                                                     <TextField
-                                                    {...register("ruc")}
-                                                        id="ruc"
-                                                        name="ruc"
+                                                    {...register("numeroRuc")}
+                                                        id="numeroRuc"
+                                                        name="numeroRuc"
                                                         label="Numero Ruc: "
                                                         style={{ width: "100%" }}
                                                         
@@ -177,9 +177,9 @@ const Aviacion = () => {
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
-                                                     {...register("numeroAutorizacion")}
-                                                        id="numeroAutorizacion"
-                                                        name="numeroAutorizacion"
+                                                     {...register("autorizacion")}
+                                                        id="autorizacion"
+                                                        name="autorizacion"
                                                         label="Numero Autorización:"
                                                         style={{ width: "100%" }}
                                                        
@@ -203,9 +203,9 @@ const Aviacion = () => {
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                                     <TextField
-                                                     {...register("direccionDomiciliaria")}
-                                                        id="direccionDomiciliaria"
-                                                        name="direccionDomiciliaria"
+                                                     {...register("direccion")}
+                                                        id="direccion"
+                                                        name="direccion"
                                                         label="Dirección:"
                                                         style={{ width: "100%" }}
                                                        
@@ -213,9 +213,9 @@ const Aviacion = () => {
                                                 </Grid>
                                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                                     <TextField
-                                                    {...register("correo")}
-                                                        id="correo"
-                                                        name="correo"
+                                                    {...register("email")}
+                                                        id="email"
+                                                        name="email"
                                                         label="Email:"
                                                         style={{ width: "100%" }}
                                                         
@@ -285,16 +285,16 @@ const Aviacion = () => {
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid item lg={4} md={4} sm={12} xs={12}  >
-                                <TextField {...register("subtotal12")} style={{ width: "100%" }} id="subtotal12" name="subtotal12" label="Subtotal 12%" variant="outlined"  />
+                                <TextField {...register("baseImponibleDiferenteCero")} style={{ width: "100%" }} id="baseImponibleDiferenteCero" name="baseImponibleDiferenteCero" label="Subtotal 12%" variant="outlined"  />
                             </Grid>
                             <Grid item lg={4} md={4} sm={12} xs={12} >
-                                <TextField  {...register("baseObjIVA")} style={{ width: "100%" }} id="baseObjIVA" name="baseObjIVA" label="Base No Objeto IVA:" variant="outlined"  />
+                                <TextField  {...register("baseImponibleNoObjetoIva")} style={{ width: "100%" }} id="baseImponibleNoObjetoIva" name="baseImponibleNoObjetoIva" label="Base No Objeto IVA:" variant="outlined"  />
                             </Grid>
                             <Grid item lg={4} md={4} sm={12} xs={12}>
                                 <TextField {...register("subtotal")} style={{ width: "100%" }} id="subtotal" name="subtotal" label="Subtotal:" variant="outlined"  />
                             </Grid>
                             <Grid item lg={4} md={4} sm={12} xs={12}>
-                                <TextField  {...register("subtotal0")} style={{ width: "100%" }} id="subtotal0" name="subtotal0" label="Subtotal 0%:" variant="outlined"  />
+                                <TextField  {...register("baseImponibleIvaCero")} style={{ width: "100%" }} id="baseImponibleIvaCero" name="baseImponibleIvaCero" label="Subtotal 0%:" variant="outlined"  />
                             </Grid>
                             <Grid item lg={4} md={4} sm={12} xs={12}>
                                 <label>
@@ -309,10 +309,10 @@ const Aviacion = () => {
                                          />
                                 </label>
                                 <TextField 
-                                {...register("ice")}
+                                {...register("montoIce")}
                                 style={{
                                     width: "80%",
-                                }} id="ice" name="ice" label="Ice:" variant="outlined"  />
+                                }} id="montoIce" name="montoIce" label="Ice:" variant="outlined"  />
                             </Grid>
                             <Grid item lg={4} md={4} sm={12} xs={12}>
                             <TextField  {...register("valorTotal")}  style={{ width: "100%" }} id="valorTotal" name="valorTotal" label="Valor Total:" variant="outlined"/>
