@@ -42,7 +42,7 @@ const Documentos = () => {
                                 <Select
                                     labelId="demo-simple-select-helper-label"
                                     id="comprobante"
-                                    name="comprobante"
+                                    // name="comprobante"
                                     style={{ width: "100%" }}
                                     label="Escoga el comprobante:"
                                     {...register("comprobante")}

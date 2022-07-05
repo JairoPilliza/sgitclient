@@ -14,14 +14,14 @@ const proveedor = {
     children: [    
       
         {
-            id: 'proveedor',
+            id: 'proveedor2',
             title: 'Proveedores',
             type: 'collapse',
             icon: PeopleAltIcon,
 
             children: [
                 {
-                    id: 'proveedores',
+                    id: 'proveedores3',
                     title: 'Proveedores',
                     type: 'item',
                     url: '/Proveedor/ListarProveedor',

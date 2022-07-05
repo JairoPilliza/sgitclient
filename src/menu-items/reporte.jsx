@@ -7,7 +7,7 @@ import CreditScoreIcon from '@mui/icons-material/CreditScore';
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
 const reporte = {
-    id: 'comprobante',
+    id: 'Reporte',
     type: 'group',
     children: [    
        

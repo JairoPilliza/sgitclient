@@ -13,7 +13,7 @@ const config = {
     children: [    
       
         {
-            id: 'config',
+            id: 'config2',
             title: 'Configuración',
             type: 'collapse',
             icon: SettingsIcon,

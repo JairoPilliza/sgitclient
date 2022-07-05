@@ -138,10 +138,10 @@ const ListarProveedor = () => {
                     <ModalNuevoProveedor
                         open={open}
                         onClose={handleClose} />
-                    <ModalDetalleProveedor
+                    {/* <ModalDetalleProveedor
                         open={openDetalle}
                         onClose={closeDetalle}
-                    />
+                    /> */}
                 </Grid>
             </Grid>
         </MainCard>

@@ -8,9 +8,9 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const comprobante = {
     id: 'comprobante',
-   title:'',
+    title: '',
     type: 'group',
-    children: [    
+    children: [
         {
             id: 'genATS',
             title: 'Generar ATS',
@@ -20,7 +20,7 @@ const comprobante = {
             icon: FileDownloadIcon,
             breadcrumbs: false
         },
-      
+
         {
             id: 'compr',
             title: 'Comprobantes',
@@ -49,8 +49,8 @@ const comprobante = {
                     url: '/Comprobante/LiquidacionSinReten',
                     breadcrumbs: false
                 },
-                
-             
+
+
             ]
         },
         {
