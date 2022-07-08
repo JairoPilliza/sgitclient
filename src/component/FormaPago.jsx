@@ -57,9 +57,7 @@ const ModalFormaPago = (props) => {
 
 
     return (
-        <div>
-
-
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -72,13 +70,9 @@ const ModalFormaPago = (props) => {
                 <DialogTitle id="scroll-dialog-title">Información del pago de la transaccion</DialogTitle>
 
                 <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        tabIndex={-1}
-                    >
-                        <Card className="col-12" container style={{ textAlign: "center" }} >
-                            <br />
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                   
+                      
+                            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -116,7 +110,7 @@ const ModalFormaPago = (props) => {
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                            </form>
+                            {/* </form> */}
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                     <TableHead>
@@ -158,9 +152,8 @@ const ModalFormaPago = (props) => {
                                 </Table>
                             </TableContainer>
 
-                        </Card>
+                     
 
-                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancelar</Button>
@@ -169,7 +162,7 @@ const ModalFormaPago = (props) => {
             </Dialog>
 
 
-        </div >
+        </Fragment >
 
     );
 }

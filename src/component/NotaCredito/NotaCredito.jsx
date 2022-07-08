@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Alert, AlertTitle, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, RadioGroup, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, AlertTitle, Chip, Divider, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, RadioGroup, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -57,7 +57,7 @@ const NotaCredito = () => {
         tableDetalleNotaCredito =
             <div>
                 <div>
-                    <form >
+                   
                         <TableContainer >
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
@@ -139,7 +139,7 @@ const NotaCredito = () => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                    </form>
+                 
                 </div>
 
                 <div >
@@ -184,7 +184,7 @@ const NotaCredito = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        // <form onSubmit={handleSubmit(onSubmit)}>
             < MainCard title="Nota de Credito" >
 
                 <Grid container spacing={gridSpacing}>
@@ -194,7 +194,9 @@ const NotaCredito = () => {
                         }
                     </Grid>
                     <Grid item xs={12} sm={12}>
-                        <SubCard className="col-12" container title="DATOS DE NOTA DE CREDITO" style={{ textAlign: "center" }} >
+                    <Divider><Chip label="DATOS DE NOTA DE CREDITO" /></Divider>
+                    <br/>
+                        {/* <SubCard className="col-12" container title="DATOS DE NOTA DE CREDITO" style={{ textAlign: "center" }} > */}
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                                 <Grid item lg={6} md={6} sm={12} xs={12} />
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -369,12 +371,14 @@ const NotaCredito = () => {
                                     </Card>
                                 </Grid>
                             </Grid>
-                        </SubCard>
+                        {/* </SubCard> */}
 
                     </Grid>
 
                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                        <SubCard className="col-12" container title="Detalle de Nota de credito" style={{ textAlign: "center" }} >
+                    <Divider><Chip label="Detalle de Nota de credito" /></Divider>
+                    <br/>
+                        {/* <SubCard className="col-12" container title="Detalle de Nota de credito" style={{ textAlign: "center" }} > */}
                             <div>
                                 <Grid container spacing={2}>
                                     <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -449,12 +453,8 @@ const NotaCredito = () => {
                                                             onChange={() => descuento()}
                                                         />}
                                                     />
-                                               
-
+                                            
                                         </center>
-
-
-
                                     </Grid>
                                     {/* <Grid item lg={6} md={6} sm={12} xs={12} >
                                         <center>
@@ -472,7 +472,6 @@ const NotaCredito = () => {
                                         </center>
 
                                     </Grid> */}
-
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <Typography variant="h5" gutterBottom component="div">
                                             Total Factura Restante:
@@ -485,9 +484,7 @@ const NotaCredito = () => {
                             }
                             <br></br>
                             <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
-
                                     <TextField id="subtotal" disabled name="subtotal" label="Subtotal " variant="outlined" style={{ width: "100%" }}  {...register("subtotal")} />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -507,7 +504,7 @@ const NotaCredito = () => {
                                     <TextField id="valorTotal" disabled name="valorTotal" label="Valor Total:" variant="outlined"  {...register("valorTotal")} style={{ width: "100%" }} />
                                 </Grid>
                             </Grid>
-                        </SubCard>
+                        {/* </SubCard> */}
                         <CardActions >
                             <Grid container>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -520,7 +517,7 @@ const NotaCredito = () => {
                     </Grid>
                 </Grid>
             </MainCard >
-        </form>
+        // </form>
     );
 }
 

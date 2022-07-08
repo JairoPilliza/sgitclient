@@ -82,14 +82,9 @@ const ModalEjecPresupuestaria = (props) => {
                 <DialogTitle id="scroll-dialog-title">Cuentas</DialogTitle>
 
                 <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        ref={descriptionElementRef}
-                        tabIndex={-1}
-                    >
-                        <Card className="col-12" container style={{ textAlign: "center" }} >
-                            <br />
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                    
+                      
+                            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                                 <Grid container spacing={2} >
                                     <Grid container item spacing={2}>
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -164,7 +159,7 @@ const ModalEjecPresupuestaria = (props) => {
                                     </Grid>
 
                                 </Grid>
-                            </form>
+                            {/* </form> */}
 
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -204,9 +199,9 @@ const ModalEjecPresupuestaria = (props) => {
                                 </Table>
                             </TableContainer>
 
-                        </Card>
+                   
 
-                    </DialogContentText>
+                
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancelar</Button>

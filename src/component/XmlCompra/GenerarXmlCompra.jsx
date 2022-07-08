@@ -27,7 +27,7 @@ const XmlCompra = () => {
                 <Divider />
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <CardContent>
-                        <Grid container spacing={2} lg={12} md={12} sm={12} xs={12} >
+                        <Grid container spacing={2}  >
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <FormControl sx={{ minWidth: "100%" }}>
                                     <InputLabel id="demo-simple-select-helper-label">Seleccione Periodo </InputLabel>

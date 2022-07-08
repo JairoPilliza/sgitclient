@@ -17,15 +17,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const ModalAperturaPeriodo = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const [form, setForm] = useState({ });
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 1000,
-        p: 4,
-    };
 
 
     const [open, setOpen] = React.useState(false);
@@ -56,8 +49,20 @@ const ModalAperturaPeriodo = (props) => {
 
     }
 
+    
+    const handleChange = (e) => {
+        var name = e.target.name;
+        var value = e.target.value;
+
+       setForm({
+            ...form,
+            [name]: value
+        })
+
+        console.log(form);
+    }
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -71,16 +76,16 @@ const ModalAperturaPeriodo = (props) => {
                 <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
                 
                     <DialogContent dividers={scroll === 'paper'}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <DialogContentText
+                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                        {/* <DialogContentText
                             id="scroll-dialog-description"
                             tabIndex={-1}
-                        >
-                            <Card className="col-12" container style={{ border: '1' }}>
+                        > */}
+                            {/* <Card className="col-12" container style={{ border: '1' }}>
                                 <CardHeader title="Registro de Periodos "
                                     subheader=" se recomienda escoger el 1er día de cada mes.
-                            " />
-                                <Divider></Divider>
+                            " /> */}
+                                
                                 <CardContent>
                                     <Grid container spacing={2}>
                                         <Grid item lg={12} md={12} sm={12} xs={12}>
@@ -95,6 +100,8 @@ const ModalAperturaPeriodo = (props) => {
                                                     style={{ width: "100%", float: "right" }}
                                                     required
                                                     label="Entidad"
+                                                    value={form.entidad}
+                                                    onChange={handleChange}
 
                                                 >
                                                     <MenuItem value={10}>Ten</MenuItem>
@@ -112,7 +119,8 @@ const ModalAperturaPeriodo = (props) => {
                                                 label="Gestion:"
                                                 style={{ width: "100%" }}
                                                 required
-
+                                                value={form.gestion}
+                                                onChange={handleChange}
                                             />
 
                                         </Grid>
@@ -123,9 +131,10 @@ const ModalAperturaPeriodo = (props) => {
                                                 id="mes"
                                                 name="mes"
                                                 label="Mes:"
-
                                                 style={{ width: "100%" }}
                                                 required
+                                                value={form.mes}
+                                                onChange={handleChange}
 
                                             />
                                         </Grid>
@@ -142,6 +151,8 @@ const ModalAperturaPeriodo = (props) => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
+                                                value={form.fechaApertura}
+                                                onChange={handleChange}
 
                                             />
                                         </Grid>
@@ -157,15 +168,17 @@ const ModalAperturaPeriodo = (props) => {
                                                 InputLabelProps={{
                                                     shrink: true,
                                                 }}
+                                                value={form.fechaCierre}
+                                                onChange={handleChange}
 
                                             />
                                         </Grid>
                                     </Grid>
                                 </CardContent>
-                            </Card>
+                            {/* </Card> */}
 
-                        </DialogContentText>
-                        </form>
+                        {/* </DialogContentText> */}
+                        {/* </form> */}
                     </DialogContent>
                 
                 <DialogActions>
@@ -175,7 +188,7 @@ const ModalAperturaPeriodo = (props) => {
 
 
             </Dialog>
-        </div>
+        </Fragment>
 
     );
 }

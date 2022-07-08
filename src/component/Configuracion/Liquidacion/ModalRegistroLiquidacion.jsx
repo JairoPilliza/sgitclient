@@ -48,7 +48,7 @@ const ModalRegistroLiquidacion = (props) => {
 
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -58,16 +58,12 @@ const ModalRegistroLiquidacion = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                     <DialogTitle id="scroll-dialog-title">Crear registro de autorización de liquidación</DialogTitle>
                     <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
+                       
 
-                            tabIndex={-1}
-                        >
-
-                            <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
+                            {/* <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} > */}
                                 <br></br>
                                 <Grid container spacing={2}>
                                     <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -150,16 +146,16 @@ const ModalRegistroLiquidacion = (props) => {
                                         />
                                     </Grid>
                                 </Grid>
-                            </Card>
-                        </DialogContentText>
+                            {/* </Card> */}
+                        {/* </DialogContentText> */}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit">Registar Usuario</Button>
                     </DialogActions>
-                </form>
+                {/* </form> */}
             </Dialog>
-        </div >
+        </Fragment >
 
     );
 }

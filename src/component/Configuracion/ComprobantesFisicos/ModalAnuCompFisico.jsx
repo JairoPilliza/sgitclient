@@ -50,7 +50,7 @@ const ModalComprobanteFisico = (props) => {
     }
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -63,13 +63,9 @@ const ModalComprobanteFisico = (props) => {
 
                 <DialogTitle id="scroll-dialog-title">Comprobante anulado</DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-
-                        tabIndex={-1}
-                    >
-                        <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
+                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                  
+                        {/* <SubCard className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} > */}
                             <Grid container spacing={2}>
                                 <Grid item lg={12} md={12} sm={12} xs={12} >
                                     <FormControl sx={{ minWidth: '100%' }}>
@@ -156,11 +152,11 @@ const ModalComprobanteFisico = (props) => {
 
 
                             </Grid>
-                        </SubCard>
+                        {/* </SubCard> */}
                         <br />
 
-                    </DialogContentText>
-                </form>
+                   
+                {/* </form> */}
             </DialogContent>
             <DialogActions>
                 <Button onClick={props.onClose}>Cancel</Button>
@@ -168,7 +164,7 @@ const ModalComprobanteFisico = (props) => {
             </DialogActions>
 
         </Dialog>
-        </div >
+        </Fragment >
 
     );
 }

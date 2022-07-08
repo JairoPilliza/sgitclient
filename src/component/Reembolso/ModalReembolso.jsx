@@ -48,7 +48,7 @@ const ModalReembolso = (props) => {
     }
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -61,213 +61,206 @@ const ModalReembolso = (props) => {
 
                 <DialogTitle id="scroll-dialog-title">Reembolso</DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
-                    <DialogContentText
-                        id="scroll-dialog-description"
-                        tabIndex={-1}
-                    >
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <Card className="col-12" container title="Datos del Usuario" style={{ textAlign: "center" }} >
-                                <br></br>
-                                <Grid container spacing={2}>
-                                    <Grid item lg={6} md={6} sm={12} xs={12} >
-
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Tipo Identificación</InputLabel>
-                                            <Select
-                                                {...register("tipoIdentificacion")}
-                                                labelId="demo-simple-select-helper-label"
-                                                id="tipoIdentificacion"
-                                                name="tipoIdentificacion"
-                                                style={{ width: "100%" }}
-                                                required
-                                                label="Tipo Identificación"
-
-                                            >
-                                                <MenuItem value={10}>RUC</MenuItem>
-                                                <MenuItem value={20}>CEDULA</MenuItem>
-                                                <MenuItem value={20}>PASAPORTE</MenuItem>
-
-                                            </Select>
-
-                                        </FormControl>
-                                    </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                        <TextField
-                                            {...register("numeroIdentificacion")}
-                                            id="numeroIdentificacion"
-                                            name="numeroIdentificacion"
-                                            label="Número de Identificación:"
-                                            style={{ width: "100%" }}
-                                            required
-
-                                        />
-                                    </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                        <FormControl sx={{ minWidth: '100%' }}>
-                                            <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
-                                            <Select
-                                                {...register("tipoComprobante")}
-                                                labelId="demo-simple-select-helper-label"
-                                                id="tipoComprobante"
-                                                name="tipoComprobante"
-                                                style={{ width: "100%" }}
-                                                required
-                                                label="Tipo Comprobante"
-
-                                            >
-                                                <MenuItem value={10}>FACTURA</MenuItem>
-                                                <MenuItem value={20}>NOTA DE VENTA</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-                                    <Grid item lg={2} md={2} sm={12} xs={12}  >
-                                        <TextField
-                                            {...register("establecimiento")}
-                                            id="establecimiento"
-                                            name="establecimiento"
-                                            label="Establecimiento:"
-                                            style={{ width: "100%" }}
-                                            required
-
-                                        />
-                                    </Grid>
-                                    <Grid item lg={2} md={2} sm={12} xs={12} >
-                                        <TextField
-                                            {...register("puntoEmision")}
-                                            id="puntoEmision"
-                                            name="puntoEmision"
-                                            label="Punto Emisión:"
-                                            style={{ width: "100%" }}
-                                            required
-
-                                        />
-                                    </Grid>
-                                    <Grid item lg={2} md={2} sm={12} xs={12}  >
-                                        <TextField
-                                            {...register("secuencial")}
-                                            id="secuencial"
-                                            name="secuencial"
-                                            label="secuencial:"
-                                            style={{ width: "100%" }}
-                                            required
-
-                                        />
-                                    </Grid>
-
-                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                        <TextField
-                                            {...register("autorizacion")}
-                                            id="autorizacion"
-                                            name="autorizacion"
-                                            label="N° Autorización:"
-
-                                            style={{ width: "100%" }}
-                                            required
-
-                                        />
-                                    </Grid>
-                                    <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                        <TextField
-                                            {...register("fechaEmision")}
-                                            id="fechaEmision"
-                                            name="fechaEmision"
-                                            label="Fecha Emision:"
-                                            type="date"
-                                            style={{ width: "100%" }}
-                                            required
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Card>
-                                    <CardHeader title="Bases Imponibles" style={{ textAlign: "left" }} />
-                                    <Divider />
-                                    <Grid container spacing={2}>
-                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                            <TextField
-                                                {...register("baseImponibleIvaCero")}
-                                                id="baseImponibleIvaCero"
-                                                name="baseImponibleIvaCero"
-                                                label="Tarifa IVA 0%:"
-                                                type="number"
-                                                style={{ width: "100%" }}
-                                                required
-
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} />
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
-                                            <TextField
-                                                {...register("baseImponibleDiferenteCero")}
-                                                id="baseImponibleDiferenteCero"
-                                                name="baseImponibleDiferenteCero"
-                                                label="Tarifa IVA diferente 0%:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                type="number"
-
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
-                                            <TextField
-                                                {...register("montoIva")}
-                                                id="montoIva"
-                                                name="montoIva"
-                                                label="Monto de IVA:"
-                                                type="number"
-                                                style={{ width: "100%" }}
-                                                required
-
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
-
-                                            <TextField
-                                                {...register("baseImponibleNoObjetoIva")}
-                                                id="baseImponibleNoObjetoIva"
-                                                name="baseImponibleNoObjetoIva"
-                                                label="Tarifa No Objeto de IVA:"
-                                                type="number"
-                                                style={{ width: "100%" }}
-                                                required
-
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                            <TextField
-                                                {...register("montoIce")}
-                                                id="montoIce"
-                                                name="montoIce"
-                                                label="Monto de ICE:"
-                                                type="number"
-                                                style={{ width: "100%" }}
-                                                required
 
 
-                                            />
-                                        </Grid>
 
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
+                    <Grid container spacing={2}>
+                        <Grid item lg={6} md={6} sm={12} xs={12} >
 
-                                            <TextField
-                                                {...register("baseImponibleExentaIva")}
-                                                id="baseImponibleExentaIva"
-                                                name="baseImponibleExentaIva"
-                                                label="Base Exenta IVA:"
-                                                type="number"
-                                                style={{ width: "100%" }}
-                                                required
+                            <FormControl sx={{ minWidth: '100%' }}>
+                                <InputLabel id="demo-simple-select-helper-label">Tipo Identificación</InputLabel>
+                                <Select
+                                    {...register("tipoIdentificacion")}
+                                    labelId="demo-simple-select-helper-label"
+                                    id="tipoIdentificacion"
+                                    name="tipoIdentificacion"
+                                    style={{ width: "100%" }}
+                                    required
+                                    label="Tipo Identificación"
 
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                </Card>
-                            </Card>
-                        </form>
-                    </DialogContentText>
+                                >
+                                    <MenuItem value={10}>RUC</MenuItem>
+                                    <MenuItem value={20}>CEDULA</MenuItem>
+                                    <MenuItem value={20}>PASAPORTE</MenuItem>
+
+                                </Select>
+
+                            </FormControl>
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={12} xs={12}  >
+                            <TextField
+                                {...register("numeroIdentificacion")}
+                                id="numeroIdentificacion"
+                                name="numeroIdentificacion"
+                                label="Número de Identificación:"
+                                style={{ width: "100%" }}
+                                required
+
+                            />
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={12} xs={12}  >
+                            <FormControl sx={{ minWidth: '100%' }}>
+                                <InputLabel id="demo-simple-select-helper-label">Tipo Comprobante</InputLabel>
+                                <Select
+                                    {...register("tipoComprobante")}
+                                    labelId="demo-simple-select-helper-label"
+                                    id="tipoComprobante"
+                                    name="tipoComprobante"
+                                    style={{ width: "100%" }}
+                                    required
+                                    label="Tipo Comprobante"
+
+                                >
+                                    <MenuItem value={10}>FACTURA</MenuItem>
+                                    <MenuItem value={20}>NOTA DE VENTA</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item lg={2} md={2} sm={12} xs={12}  >
+                            <TextField
+                                {...register("establecimiento")}
+                                id="establecimiento"
+                                name="establecimiento"
+                                label="Establecimiento:"
+                                style={{ width: "100%" }}
+                                required
+
+                            />
+                        </Grid>
+                        <Grid item lg={2} md={2} sm={12} xs={12} >
+                            <TextField
+                                {...register("puntoEmision")}
+                                id="puntoEmision"
+                                name="puntoEmision"
+                                label="Punto Emisión:"
+                                style={{ width: "100%" }}
+                                required
+
+                            />
+                        </Grid>
+                        <Grid item lg={2} md={2} sm={12} xs={12}  >
+                            <TextField
+                                {...register("secuencial")}
+                                id="secuencial"
+                                name="secuencial"
+                                label="secuencial:"
+                                style={{ width: "100%" }}
+                                required
+
+                            />
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={12} xs={12}  >
+                            <TextField
+                                {...register("autorizacion")}
+                                id="autorizacion"
+                                name="autorizacion"
+                                label="N° Autorización:"
+
+                                style={{ width: "100%" }}
+                                required
+
+                            />
+                        </Grid>
+                        <Grid item lg={6} md={6} sm={12} xs={12}  >
+                            <TextField
+                                {...register("fechaEmision")}
+                                id="fechaEmision"
+                                name="fechaEmision"
+                                label="Fecha Emision:"
+                                type="date"
+                                style={{ width: "100%" }}
+                                required
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+
+                            />
+                        </Grid>
+                    </Grid>
+                    <Card>
+                        <CardHeader title="Bases Imponibles" style={{ textAlign: "left" }} />
+                        <Divider />
+                        <Grid container spacing={2}>
+                            <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                <TextField
+                                    {...register("baseImponibleIvaCero")}
+                                    id="baseImponibleIvaCero"
+                                    name="baseImponibleIvaCero"
+                                    label="Tarifa IVA 0%:"
+                                    type="number"
+                                    style={{ width: "100%" }}
+                                    required
+
+                                />
+                            </Grid>
+                            <Grid item lg={6} md={6} sm={12} xs={12} />
+                            <Grid item lg={6} md={6} sm={12} xs={12} >
+                                <TextField
+                                    {...register("baseImponibleDiferenteCero")}
+                                    id="baseImponibleDiferenteCero"
+                                    name="baseImponibleDiferenteCero"
+                                    label="Tarifa IVA diferente 0%:"
+                                    style={{ width: "100%" }}
+                                    required
+                                    type="number"
+
+                                />
+                            </Grid>
+                            <Grid item lg={6} md={6} sm={12} xs={12} >
+                                <TextField
+                                    {...register("montoIva")}
+                                    id="montoIva"
+                                    name="montoIva"
+                                    label="Monto de IVA:"
+                                    type="number"
+                                    style={{ width: "100%" }}
+                                    required
+
+                                />
+                            </Grid>
+                            <Grid item lg={6} md={6} sm={12} xs={12} >
+
+                                <TextField
+                                    {...register("baseImponibleNoObjetoIva")}
+                                    id="baseImponibleNoObjetoIva"
+                                    name="baseImponibleNoObjetoIva"
+                                    label="Tarifa No Objeto de IVA:"
+                                    type="number"
+                                    style={{ width: "100%" }}
+                                    required
+
+                                />
+                            </Grid>
+                            <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                <TextField
+                                    {...register("montoIce")}
+                                    id="montoIce"
+                                    name="montoIce"
+                                    label="Monto de ICE:"
+                                    type="number"
+                                    style={{ width: "100%" }}
+                                    required
+
+
+                                />
+                            </Grid>
+
+                            <Grid item lg={6} md={6} sm={12} xs={12} >
+
+                                <TextField
+                                    {...register("baseImponibleExentaIva")}
+                                    id="baseImponibleExentaIva"
+                                    name="baseImponibleExentaIva"
+                                    label="Base Exenta IVA:"
+                                    type="number"
+                                    style={{ width: "100%" }}
+                                    required
+
+                                />
+                            </Grid>
+                        </Grid>
+                    </Card>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancelar</Button>
@@ -275,7 +268,7 @@ const ModalReembolso = (props) => {
                 </DialogActions>
 
             </Dialog>
-        </div >
+        </Fragment >
 
     );
 }

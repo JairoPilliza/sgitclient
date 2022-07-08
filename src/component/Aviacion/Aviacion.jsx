@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid } from '@mui/material';
+import { Chip, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -47,7 +47,9 @@ const Aviacion = () => {
             <Grid container spacing={gridSpacing}>
 
                 <Grid item lg={12} md={12} sm={12} xs={12} >
-                    <SubCard container title="Datos de Factura" style={{ textAlign: "center" }} >
+                <Divider><Chip label="Datos de Factura" /></Divider>
+                    <br/>
+                    {/* <SubCard container title="Datos de Factura" style={{ textAlign: "center" }} > */}
 
                         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
                             <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -150,7 +152,7 @@ const Aviacion = () => {
                             />
                             <CardContent >
                                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }} >
-                                    <Grid container item lg={12} md={12} sm={12} xs={12}>
+                                    <Grid container item >
                                         <Grid item lg={12} md={12} sm={12} xs={12} >
                                             <Grid container spacing={2}>
                                                 {/* <Grid item xs={12} md={6} sm={12} lg={6} /> */}
@@ -162,10 +164,9 @@ const Aviacion = () => {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item lg={6} md={6} sm={12} xs={12}>
-                                        <Grid item spacing={2} lg={12} md={12} sm={12} xs={12}>
-                                            <Grid container spacing={2} >
-                                                <Grid item lg={12} md={12} sm={12} xs={12}  >
+                                    <Grid container item spacing={2}>
+                                        
+                                                <Grid item lg={6} md={6} sm={12} xs={12}  >
                                                     <TextField
                                                     {...register("numeroRuc")}
                                                         id="numeroRuc"
@@ -175,7 +176,7 @@ const Aviacion = () => {
                                                         
                                                     />
                                                 </Grid>
-                                                <Grid item lg={12} md={12} sm={12} xs={12} >
+                                                <Grid item lg={6} md={6} sm={12} xs={12} >
                                                     <TextField
                                                      {...register("autorizacion")}
                                                         id="autorizacion"
@@ -185,13 +186,11 @@ const Aviacion = () => {
                                                        
                                                     />
                                                 </Grid>
-                                            </Grid>
-                                        </Grid>
+                                           
                                     </Grid>
-                                    <Grid container item lg={6} md={6} sm={12} xs={12}>
-                                        <Grid item spacing={2} lg={12} md={12} sm={12} xs={12} >
-                                            <Grid container spacing={2} >
-                                                <Grid item lg={12} md={12} sm={12} xs={12}  >
+                                    <Grid container item spacing={2} >
+                                        
+                                                <Grid item lg={6} md={6} sm={12} xs={12}  >
                                                     <TextField
                                                     {...register("telefono")}
                                                         id="telefono"
@@ -201,7 +200,7 @@ const Aviacion = () => {
                                                         
                                                     />
                                                 </Grid>
-                                                <Grid item lg={12} md={12} sm={12} xs={12} >
+                                                <Grid item lg={6} md={6} sm={12} xs={12} >
                                                     <TextField
                                                      {...register("direccion")}
                                                         id="direccion"
@@ -211,7 +210,7 @@ const Aviacion = () => {
                                                        
                                                     />
                                                 </Grid>
-                                                <Grid item lg={12} md={12} sm={12} xs={12}>
+                                                <Grid item lg={6} md={6} sm={12} xs={12}>
                                                     <TextField
                                                     {...register("email")}
                                                         id="email"
@@ -221,8 +220,7 @@ const Aviacion = () => {
                                                         
                                                     />
                                                 </Grid>
-                                            </Grid>
-                                        </Grid>
+                                          
                                     </Grid>
 
 
@@ -230,13 +228,15 @@ const Aviacion = () => {
                                 </Grid>
                             </CardContent>
                         </Card>
-                    </SubCard>
+                    {/* </SubCard> */}
                 </Grid>
 
                 <Grid item lg={12} md={12} sm={12} xs={12}>
-                    <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} >
+                <Divider><Chip label="Detalle de Factura" /></Divider>
+                    <br/>
+                    {/* <SubCard className="col-12" container title="Detalle de Factura" style={{ textAlign: "center" }} > */}
 
-                        <Grid container lg={12} md={12} sm={12} xs={12} spacing={2}>
+                        <Grid container  spacing={2}>
 
                             <Grid item lg={4} md={4} sm={12} xs={12}>
                                 <FormControl sx={{ minWidth: '100%', float: "left" }}>
@@ -354,7 +354,7 @@ const Aviacion = () => {
                                 </Grid>
                             </Grid>
                         </CardActions>
-                    </SubCard>
+                    {/* </SubCard> */}
                 </Grid>
             </Grid>
             <ModalRetencion

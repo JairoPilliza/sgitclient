@@ -12,11 +12,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { ThemeProvider } from "@mui/styles";
+import { Form } from "formik";
 
 
 const ModalNuevoProyecto = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-
+    const [form, setForm] = useState({descripcion:"",donante:"",coordinador:"",fechaInicio:"",presupuesto:"",estado:0});
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
 
@@ -29,44 +31,43 @@ const ModalNuevoProyecto = (props) => {
         setOpen(false);
     };
 
-
-    const TAX_RATE = 0.07;
-
-    function ccyFormat(num) {
-        return `${num.toFixed(2)}`;
-    }
-
-    function priceRow(qty, unit) {
-        return qty * unit;
-    }
-
-    function createRow(desc, qty, unit) {
-        const price = priceRow(qty, unit);
-        return { desc, qty, unit, price };
-    }
-
-    function subtotal(items) {
-        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-    }
-
-    const rows = [
-        createRow('Paperclips (Box)', 100, 1.15),
-        createRow('Paper (Case)', 10, 45.99),
-        createRow('Waste Basket', 2, 17.99),
-    ];
-
-    const invoiceSubtotal = subtotal(rows);
-    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-    const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
-    const onSubmit = (data, evento) => {
-        alert();
-        console.log(data);
+    const onSubmit = (e) => {
+       
+     
 
     }
+
+
+    const handleChange = (e) => {
+        var name = e.target.name;
+        var value = e.target.value;
+
+        setForm({
+            ...form,
+            [name]: value
+        })
+
+        console.log(form);
+       
+        
+    }
+
+    const Save = (e) => {
+        // var name = e.target.name;
+        // var value = e.target.value;
+
+        // setForm({
+        //     ...form,
+        //     [name]: value
+        // })
+
+        console.log(form);
+    }
+
+
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -76,90 +77,116 @@ const ModalNuevoProyecto = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                
                     <DialogTitle id="scroll-dialog-title">Registrar Proyecto - Departamento</DialogTitle>
                     <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            tabIndex={-1}
-                        >
-                            <Card container style={{ textAlign: "center" }} >
-                                <br />
-                                <Grid container spacing={2}>
-                                    <Grid container item spacing={2}>
-                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                            <TextField
-                                                {...register("nombreProyecto")}
-                                                id="nombreProyecto"
-                                                name="nombreProyecto"
-                                                label="Nombre del Proyecto:"
-                                                placeholder="Departamento"
-                                                style={{ width: "100%" }}
-                                                required
+                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                        <Grid container spacing={2}>
+                            <Grid container item spacing={2}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                    <TextField
+                                        {...register("descripcion")}
+                                        id="descripcion"
+                                        name="descripcion"
+                                        label="Nombre del Proyecto:"
+                                        placeholder="Departamento"
+                                        style={{ width: "100%" }}
+                                        required
+                                        value={form.descripcion}
+                                        onChange={handleChange}
 
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
-                                            <TextField
-                                                {...register("fechaInicial")}
-                                                id="fechaInicial"
-                                                name="fechaInicial"
-                                                label="Fecha Inicial:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                required
-
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    
-                                    <Grid container item spacing={2}>
-                                        <Grid item lg={6} md={6} sm={12} xs={12}  >
-                                            <TextField
-                                                {...register("presupuestoProyecto")}
-                                                id="presupuestoProyecto"
-                                                name="presupuestoProyecto"
-                                                label="Presupuesto del proyecto:"
-                                                style={{ width: "100%" }}
-                                                required
-
-                                            />
-                                        </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} >
-                                            <FormControl sx={{ minWidth: '100%' }}>
-                                                <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
-                                                <Select
-                                                    {...register("estado")}
-                                                    labelId="demo-simple-select-helper-label"
-                                                    id="estado"
-                                                    name="estado"
-                                                    style={{ width: "100%" }}
-                                                    required
-                                                    label="Estado"
-
-                                                >
-                                                    <MenuItem value={10}>Activo</MenuItem>
-                                                    <MenuItem value={20}>Finalizado</MenuItem>
-                                                </Select>
-                                            </FormControl>
-                                        </Grid>
-                                    </Grid>
-
+                                    />
                                 </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                    <TextField
+                                        {...register("donante")}
+                                        id="donante"
+                                        name="donante"
+                                        label="Donante:"
+                                        placeholder="Donante"
+                                        style={{ width: "100%" }}
+                                        required
+                                        value={form.donante}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                    <TextField
+                                        {...register("coordinador")}
+                                        id="coordinador"
+                                        name="coordinador"
+                                        label="Coordinador:"
+                                        placeholder="Coordinador"
+                                        style={{ width: "100%" }}
+                                        required
+                                        value={form.coordinador}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    <TextField
+                                        {...register("fechaInicio")}
+                                        id="fechaInicio"
+                                        name="fechaInicio"
+                                        label="Fecha Inicial:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        required
+                                        value={form.fechaInicio}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+                            </Grid>
 
-                            </Card>
-                        </DialogContentText>
+                            <Grid container item spacing={2}>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                    <TextField
+                                        {...register("presupuesto")}
+                                        id="presupuesto"
+                                        name="presupuesto"
+                                        label="Presupuesto del proyecto:"
+                                        style={{ width: "100%" }}
+                                        required
+                                        value={form.presupuesto}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12} >
+                                    <FormControl sx={{ minWidth: '100%' }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Estado</InputLabel>
+                                        <Select
+                                            {...register("estado")}
+                                            labelId="demo-simple-select-helper-label"
+                                            id="estado"
+                                            name="estado"
+                                            style={{ width: "100%" }}
+                                            required
+                                            label="Estado"
+                                            value={form.estado}
+                                            onChange={handleChange}
+                                        >
+                                            <MenuItem value={1}>Activo</MenuItem>
+                                            <MenuItem value={0}>Inactivo</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+
+
+                        {/* </form> */}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button type="submit">Registar Proveedor</Button>
+                        <Button onClick={Save}>Registar Proveedor</Button>
                     </DialogActions>
-                </form>
+               
             </Dialog>
-        </div >
+        </Fragment >
 
     );
 }

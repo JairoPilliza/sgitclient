@@ -51,7 +51,7 @@ const ModalRegistroRetencion = (props) => {
 
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -61,15 +61,15 @@ const ModalRegistroRetencion = (props) => {
                 fullWidth
                 maxWidth="sm"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                     <DialogTitle id="scroll-dialog-title">Retenciones Fisicas</DialogTitle>
                     <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
+                        {/* <DialogContentText
                             id="scroll-dialog-description"
 
                             tabIndex={-1}
-                        >
-                            <SubCard className="col-12" container title="Registro de Talonarios" style={{ textAlign: "center" }} >
+                        > */}
+                            {/* <SubCard className="col-12" container title="Registro de Talonarios" style={{ textAlign: "center" }} > */}
 
 
                                 <Grid container spacing={2}>
@@ -155,16 +155,16 @@ const ModalRegistroRetencion = (props) => {
                                         />
                                     </Grid>
                                 </Grid>
-                            </SubCard>
-                        </DialogContentText>
+                            {/* </SubCard> */}
+                        {/* </DialogContentText> */}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Guardar</Button>
                     </DialogActions>
-                </form>
+                {/* </form> */}
             </Dialog>
-        </div>
+        </Fragment>
 
     );
 }

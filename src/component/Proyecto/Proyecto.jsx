@@ -87,8 +87,10 @@ const Proyecto = () => {
                                             <TableCell>#</TableCell>
                                             <TableCell align="center">Departamento</TableCell>
                                             <TableCell align="center">Fecha Ini</TableCell>
-                                            <TableCell align="center">Fecha Fin</TableCell>
-                                            <TableCell align="center">Responsable</TableCell>
+                                            <TableCell align="center">Donante</TableCell>
+                                            <TableCell align="center">Coordinador</TableCell>
+                                            <TableCell align="center">Presupuesto</TableCell>
+                                            
                                             <TableCell align="center">Estado</TableCell>
                                             <TableCell align="center">Acciones</TableCell>
                                         </TableRow>
@@ -100,24 +102,26 @@ const Proyecto = () => {
                                                     {cont = cont + 1}
                                                 </TableCell>
                                                 <TableCell align="center">{row.calories}</TableCell>
+                                                <TableCell align="center">{row.calories}</TableCell>
+
                                                 <TableCell align="center">{row.fat}</TableCell>
                                                 <TableCell align="center">{row.carbs}</TableCell>
                                                 <TableCell align="center">{row.protein}</TableCell>
                                                 <TableCell align="center">{row.estado}</TableCell>
-                                                <TableCell align="center">
+                                                <TableCell align="center" width="800px">
                                                     <Grid container spacing={2}>
                                                         <Grid item>
-                                                            <Button variant="contained" style={{ width: "100%" }} onClick={(event) => handleListItemClick(event, 1, '/Proyecto/PartidaPresupuestaria', row)}>
+                                                            <Button size="small" variant="contained" style={{ width: "100%" }} onClick={(event) => handleListItemClick(event, 1, '/Proyecto/PartidaPresupuestaria', row)}>
                                                                 <AddIcon />
                                                             </Button>
                                                         </Grid>
                                                         <Grid item>
-                                                            <Button variant="contained" style={{ width: "100%", backgroundColor: "#ffac33" }} >
+                                                            <Button size="small"  variant="contained" style={{ width: "100%", backgroundColor: "#ffac33" }} >
                                                                 <EditIcon />
                                                             </Button>
                                                         </Grid>
                                                         <Grid item>
-                                                            <Button variant="contained" style={{ width: "100%", backgroundColor: "#e91e63" }} >
+                                                            <Button size="small"  variant="contained" style={{ width: "100%", backgroundColor: "#e91e63" }} >
                                                                 <DeleteIcon />
                                                             </Button>
                                                         </Grid>

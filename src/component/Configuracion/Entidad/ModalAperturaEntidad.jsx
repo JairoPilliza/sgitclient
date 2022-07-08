@@ -18,28 +18,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 const ModalAperturaEntidad = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 1000,
-        p: 4,
-    };
+    
 
 
-    const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+ 
 
     const onSubmit = (data, evento) => {
         alert();
@@ -49,23 +33,23 @@ const ModalAperturaEntidad = (props) => {
 
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
-                scroll={scroll}
+                scroll={props.scroll}
                 aria-labelledby="scroll-dialog-title"
                 aria-describedby="scroll-dialog-description"
                 fullWidth
                 maxWidth="sm"
             >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={handleSubmit(onSubmit)}> */}
                     <DialogTitle id="scroll-dialog-title">Registrar Apertura de Entidad</DialogTitle>
                     <DialogContent dividers={scroll === 'paper'}>
-                        <DialogContentText
+                        {/* <DialogContentText
                             id="scroll-dialog-description"
                             tabIndex={-1}
-                        >
+                        > */}
                             <SubCard className="col-12" container title="Datos de la Apertura" style={{ textAlign: "center" }} >
                                 <Grid container spacing={2}>
                                     <Grid item lg={12} md={12} sm={12} xs={12} >
@@ -134,15 +118,15 @@ const ModalAperturaEntidad = (props) => {
                                     </Grid>
                                 </Grid>
                             </SubCard>
-                        </DialogContentText>
+                        {/* </DialogContentText> */}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Registar Apertura</Button>
                     </DialogActions>
-                </form>
+                {/* </form> */}
             </Dialog>
-        </div>
+        </Fragment>
 
     );
 }

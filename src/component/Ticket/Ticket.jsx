@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
+import { Chip, Divider, FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { useForm } from "react-hook-form"
 // project imports
@@ -54,14 +54,16 @@ const Ticket = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        // <form onSubmit={handleSubmit(onSubmit)}>
             <MainCard title="Registrar Ticket">
                 <Grid container spacing={gridSpacing}>
                     <Grid item lg={12} md={12} sm={12} xs={12} >
                         <BusquedaPr />
                     </Grid>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                        <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }}>
+                    <Divider><Chip label="Datos de Ticket" /></Divider>
+                    <br/>
+                        {/* <SubCard className="col-12" container title="Datos de Ticket" style={{ textAlign: "center" }}> */}
                             <Grid container spacing={2} rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                                 <Grid container item spacing={2} rowSpacing={2} lg={6} md={6} sm={12} xs={12}  >
@@ -170,10 +172,12 @@ const Ticket = () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </SubCard>
+                        {/* </SubCard> */}
                     </Grid>
                     <Grid item lg={12} md={12} sm={12} xs={12} >
-                        <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }} >
+                    <Divider><Chip label="Datos de la nota de venta" /></Divider>
+                    <br/>
+                        {/* <SubCard className="col-12" container title="Datos de la nota de venta" style={{ textAlign: "center" }} > */}
                             <div>
                                 <Grid container spacing={2}>
                                     <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -215,7 +219,7 @@ const Ticket = () => {
                                         </FormControl>
                                     </Grid>
                                 </Grid>
-                                <from>
+                               
                                     <TableContainer >
                                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                             <TableHead>
@@ -228,6 +232,7 @@ const Ticket = () => {
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
+                                                <TableRow>
                                                 <TableCell>
                                                     <TextField
                                                         {...register("cantidad")}
@@ -284,10 +289,11 @@ const Ticket = () => {
                                                         <AddIcon />
                                                     </Button>
                                                 </TableCell>
+                                                </TableRow>
                                             </TableBody>
                                         </Table>
                                     </TableContainer>
-                                </from>
+                               
                             </div>
                             <div>
                                 {tableDatosTicket}
@@ -318,11 +324,11 @@ const Ticket = () => {
                                     </Grid>
                                 </Grid>
                             </CardActions>
-                        </SubCard>
+                        {/* </SubCard> */}
                     </Grid>
                 </Grid >
             </MainCard >
-        </form>
+        // </form>
     );
 }
 

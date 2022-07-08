@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { FormControlLabel, Grid, Typography } from '@mui/material';
+import { Chip, Divider, FormControlLabel, Grid, Typography } from '@mui/material';
 import { useForm } from "react-hook-form"
 import SubCard from 'ui-component/cards/SubCard';
 import TextField from '@mui/material/TextField';
@@ -174,7 +174,7 @@ const ModalRetencionLiquidacion = (props) => {
 
 
     return (
-        <div>
+        <Fragment>
             <Dialog
                 open={props.open}
                 onClose={props.onClose}
@@ -187,277 +187,278 @@ const ModalRetencionLiquidacion = (props) => {
 
                 <DialogTitle id="scroll-dialog-title">Registrar Retención</DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <DialogContentText
-                            id="scroll-dialog-description"
-                            ref={descriptionElementRef}
-                            tabIndex={-1}
-                        >
-                            <SubCard className="col-12" container title="Datos de Retención" style={{ textAlign: "center" }} >
+                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                    <Divider><Chip label="Datos de Retención" /></Divider>
+                    <br/>
+                    {/* <SubCard className="col-12" container title="Datos de Retención" style={{ textAlign: "center" }} > */}
 
-                                <Grid container spacing={2} >
-                                    <Grid container item spacing={2}>
+                        <Grid container spacing={2} >
+                            <Grid container item spacing={2}>
 
-                                        <Grid item lg={4} md={4} sm={12} xs={12} >
-                                            <FormControlLabel
-                                                labelPlacement="start"
-                                                label={fact}
-                                                control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
-                                                    name="retencionElectronica"
-                                                />}
-                                            />
-                                        </Grid>
-
-                                        <Grid item lg={4} md={4} sm={12} xs={12} >
-                                            <TextField
-                                                id="fecha"
-                                                name="fecha"
-                                                label="Fecha:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                {...register("fecha")}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container item>
-                                        {txtSecuencial}
-
-                                    </Grid>
+                                <Grid item lg={4} md={4} sm={12} xs={12} >
+                                    <FormControlLabel
+                                        labelPlacement="start"
+                                        label={fact}
+                                        control={<Checkbox {...register("retencionElectronica")} checked={checked} onChange={handleChange} id="retencionElectronica"
+                                            name="retencionElectronica"
+                                        />}
+                                    />
                                 </Grid>
 
-                            </SubCard>
-                            <br></br>
-                            <SubCard className="col-12" container title="Retención de Renta" style={{ textAlign: "center" }} >
-                                <div>
-                                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-                                    <TableContainer >
-                                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell>Tipo Base</TableCell>
-                                                    <TableCell align="center">Base</TableCell>
-                                                    <TableCell align="center">Cod. Retención</TableCell>
-                                                    <TableCell align="center">Porcentaje</TableCell>
-                                                    <TableCell align="center">Total</TableCell>
-                                                    <TableCell align="center"></TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                <TableCell>
-                                                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                                        <Select
-                                                            labelId="demo-simple-select-standard-label"
-                                                            id="tipoBase"
-                                                            name="tipoBase"
-                                                            {...register("tipoBase")}>
-                                                            <MenuItem value={"Bienes"}>Bienes</MenuItem>
-                                                            <MenuItem value={"Servicios"}>Servicios</MenuItem>
-                                                        </Select>
-                                                    </FormControl>
-                                                </TableCell>
+                                <Grid item lg={4} md={4} sm={12} xs={12} >
+                                    <TextField
+                                        id="fecha"
+                                        name="fecha"
+                                        label="Fecha:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        {...register("fecha")}
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Grid container item>
+                                {txtSecuencial}
 
-                                                <TableCell>
-                                                    <TextField
-                                                        id="base"
-                                                        name="base"
-                                                        type="number"
-                                                        style={{ width: "50px" }}
-                                                        InputLabelProps={{
-                                                            shrink: true
-                                                        }}
-                                                        variant="standard"
-                                                        {...register("base")} />
-                                                </TableCell>
-                                                <TableCell>
-                                                    <FormControl sx={{ m: 1, minWidth: 150 }}>
-                                                        <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
-                                                        <Select
-                                                            labelId="demo-simple-select-helper-label"
-                                                            id="codRetencion"
-                                                            name="codRetencion"
-                                                            style={{ width: "280px", float: "right" }}
-                                                            label="::Seleccione::"
-                                                            {...register("codRetencion")}
-                                                        >
-                                                            <MenuItem value={10}>Ten</MenuItem>
-                                                            <MenuItem value={20}>Twenty</MenuItem>
-                                                            <MenuItem value={30}>Thirty</MenuItem>
-                                                        </Select>
+                            </Grid>
+                        </Grid>
 
-                                                    </FormControl>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <TextField
-                                                        id="porcentaje"
-                                                        name="porcentaje"
-                                                        type="number"
-                                                        style={{ width: "70px" }}
-                                                        InputLabelProps={{
-                                                            shrink: true
-                                                        }}
-                                                        variant="standard"
-                                                        {...register("porcentaje")} />
-                                                </TableCell>
-                                                <TableCell>
-                                                    <TextField
-                                                        id="total"
-                                                        name="total"
-                                                        style={{ width: "70px" }}
-                                                        InputProps={{
-                                                            readOnly: true
-                                                        }}
-                                                        variant="standard"
-                                                        {...register("total")} />
-                                                </TableCell>
-                                                <TableCell align="center">
-                                                    <Button type="submit" variant="contained">
-                                                        <AddIcon />
-                                                    </Button>
-                                                </TableCell>
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                    {/* </form> */}
-                                </div>
-                                <div >
-                                    <TableContainer component={Paper}>
-                                        <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell><b>Base</b></TableCell>
-                                                    <TableCell align="center"><b>Cod. Retención</b></TableCell>
-                                                    <TableCell align="center"><b>Porcentaje</b></TableCell>
-                                                    <TableCell align="center"><b>Total</b></TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                {rows.map((row) => (
-                                                    <TableRow hover key={row.desc}>
-                                                        <TableCell>{row.desc}</TableCell>
-                                                        <TableCell align="center">{row.qty}</TableCell>
-                                                        <TableCell align="center">{row.unit}</TableCell>
-                                                        <TableCell align="center">{ccyFormat(row.price)}</TableCell>
-                                                    </TableRow>
-                                                ))}
+                    {/* </SubCard> */}
+                    <br></br>
+                    <Divider>Retención de Renta</Divider>
+                    <br/>
+                    {/* <SubCard className="col-12" container title="Retención de Renta" style={{ textAlign: "center" }} > */}
+                        <div>
+                            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                            <TableContainer >
+                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Tipo Base</TableCell>
+                                            <TableCell align="center">Base</TableCell>
+                                            <TableCell align="center">Cod. Retención</TableCell>
+                                            <TableCell align="center">Porcentaje</TableCell>
+                                            <TableCell align="center">Total</TableCell>
+                                            <TableCell align="center"></TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell>
+                                                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                                                    <Select
+                                                        labelId="demo-simple-select-standard-label"
+                                                        id="tipoBase"
+                                                        name="tipoBase"
+                                                        {...register("tipoBase")}>
+                                                        <MenuItem value={"Bienes"}>Bienes</MenuItem>
+                                                        <MenuItem value={"Servicios"}>Servicios</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </TableCell>
 
-                                                <TableRow>
-                                                    <TableCell colSpan={3}></TableCell>
-                                                    <TableCell align="right" >
-                                                        <Typography variant="h6" gutterBottom component="div">
-                                                            Total Renta: {ccyFormat(invoiceTotal)}
-                                                        </Typography>
-                                                    </TableCell>
-                                                </TableRow>
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                </div>
-                            </SubCard>
-                            <br></br>
-                            <SubCard className="col-12" container title="Retención de Iva" style={{ textAlign: "center" }} >
+                                            <TableCell>
+                                                <TextField
+                                                    id="base"
+                                                    name="base"
+                                                    type="number"
+                                                    style={{ width: "50px" }}
+                                                    InputLabelProps={{
+                                                        shrink: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("base")} />
+                                            </TableCell>
+                                            <TableCell>
+                                                <FormControl sx={{ m: 1, minWidth: 150 }}>
+                                                    <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-helper-label"
+                                                        id="codRetencion"
+                                                        name="codRetencion"
+                                                        style={{ width: "280px", float: "right" }}
+                                                        label="::Seleccione::"
+                                                        {...register("codRetencion")}
+                                                    >
+                                                        <MenuItem value={10}>Ten</MenuItem>
+                                                        <MenuItem value={20}>Twenty</MenuItem>
+                                                        <MenuItem value={30}>Thirty</MenuItem>
+                                                    </Select>
 
-                                <div >
-                                    <form onSubmit={handleSubmit(onSubmit)}>
-                                        <TableContainer component={Paper}>
-                                            <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell><b>Base</b></TableCell>
-                                                        <TableCell></TableCell>
-                                                        <TableCell align="center"><b>Cod. Retención</b></TableCell>
-                                                        <TableCell align="center"><b>Porcentaje</b></TableCell>
-                                                        <TableCell align="center"><b>Total</b></TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody >
+                                                </FormControl>
+                                            </TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    id="porcentaje"
+                                                    name="porcentaje"
+                                                    type="number"
+                                                    style={{ width: "70px" }}
+                                                    InputLabelProps={{
+                                                        shrink: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("porcentaje")} />
+                                            </TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    id="total"
+                                                    name="total"
+                                                    style={{ width: "70px" }}
+                                                    InputProps={{
+                                                        readOnly: true
+                                                    }}
+                                                    variant="standard"
+                                                    {...register("total")} />
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                <Button type="submit" variant="contained">
+                                                    <AddIcon />
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                            {/* </form> */}
+                        </div>
+                        <div >
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell><b>Base</b></TableCell>
+                                            <TableCell align="center"><b>Cod. Retención</b></TableCell>
+                                            <TableCell align="center"><b>Porcentaje</b></TableCell>
+                                            <TableCell align="center"><b>Total</b></TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rows.map((row) => (
+                                            <TableRow hover key={row.desc}>
+                                                <TableCell>{row.desc}</TableCell>
+                                                <TableCell align="center">{row.qty}</TableCell>
+                                                <TableCell align="center">{row.unit}</TableCell>
+                                                <TableCell align="center">{ccyFormat(row.price)}</TableCell>
+                                            </TableRow>
+                                        ))}
 
-                                                    <TableRow hover>
-                                                        <TableCell align="right">
-                                                            <label align="left"><b>Bienes</b> </label>
-                                                        </TableCell>
-                                                        <TableCell align="left">  <TextField {...register("bienes")} id="bienes" name="bienes" type="number" label="-" variant="outlined" /></TableCell>
-                                                        <TableCell align="left">
-                                                            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                                                <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
-                                                                <Select
-                                                                    {...register("codRetencionBien")}
-                                                                    labelId="demo-simple-select-helper-label"
-                                                                    id="codRetencionBien"
-                                                                    name="codRetencionBien"
-                                                                    style={{ width: "280px", float: "right" }}
-                                                                    label="::Seleccione::"
+                                        <TableRow>
+                                            <TableCell colSpan={3}></TableCell>
+                                            <TableCell align="right" >
+                                                <Typography variant="h6" gutterBottom component="div">
+                                                    Total Renta: {ccyFormat(invoiceTotal)}
+                                                </Typography>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
+                    {/* </SubCard> */}
+                    <br></br>
+                    <Divider><Chip label="Retención de Iva" /></Divider>
+                    <br/>
+                    {/* <SubCard className="col-12" container title="Retención de Iva" style={{ textAlign: "center" }} > */}
 
-                                                                >
-                                                                    <MenuItem value={10}>Ten</MenuItem>
-                                                                    <MenuItem value={20}>Twenty</MenuItem>
-                                                                    <MenuItem value={30}>Thirty</MenuItem>
-                                                                </Select>
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell><b>Base</b></TableCell>
+                                        <TableCell></TableCell>
+                                        <TableCell align="center"><b>Cod. Retención</b></TableCell>
+                                        <TableCell align="center"><b>Porcentaje</b></TableCell>
+                                        <TableCell align="center"><b>Total</b></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody >
 
-                                                            </FormControl>
+                                    <TableRow hover>
+                                        <TableCell align="right">
+                                            <label align="left"><b>Bienes</b> </label>
+                                        </TableCell>
+                                        <TableCell align="left">  <TextField {...register("bienes")} id="bienes" name="bienes" type="number" label="-" variant="outlined" /></TableCell>
+                                        <TableCell align="left">
+                                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                                <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
+                                                <Select
+                                                    {...register("codRetencionBien")}
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="codRetencionBien"
+                                                    name="codRetencionBien"
+                                                    style={{ width: "280px", float: "right" }}
+                                                    label="::Seleccione::"
 
-                                                        </TableCell>
-                                                        <TableCell align="left">  <TextField  {...register("porcentajeBien")} id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined" /></TableCell>
-                                                        <TableCell align="left">  <TextField  {...register("totalBien")} id="totalBien" name="totalBien" type="number" label="-" variant="outlined" /></TableCell>
-                                                    </TableRow>
-                                                    <TableRow hover>
-                                                        <TableCell align="right">
-                                                            <label align="left"><b>Servicios</b> </label>
-                                                        </TableCell>
-                                                        <TableCell align="left">  <TextField  {...register("servicios")} id="servicios" name="servicios" type="number" label="-" variant="outlined" /></TableCell>
-                                                        <TableCell align="left">
-                                                            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                                                <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
-                                                                <Select
-                                                                    {...register("codRetencionServicio")}
-                                                                    labelId="demo-simple-select-helper-label"
-                                                                    id="codRetencionServicio"
-                                                                    style={{ width: "280px", float: "right" }}
-                                                                    label="::Seleccione::"
+                                                >
+                                                    <MenuItem value={10}>Ten</MenuItem>
+                                                    <MenuItem value={20}>Twenty</MenuItem>
+                                                    <MenuItem value={30}>Thirty</MenuItem>
+                                                </Select>
 
-                                                                >
-                                                                    <MenuItem value={10}>Ten</MenuItem>
-                                                                    <MenuItem value={20}>Twenty</MenuItem>
-                                                                    <MenuItem value={30}>Thirty</MenuItem>
-                                                                </Select>
+                                            </FormControl>
 
-                                                            </FormControl>
+                                        </TableCell>
+                                        <TableCell align="left">  <TextField  {...register("porcentajeBien")} id="porcentajeBien" name="porcentajeBien" type="number" label="-" variant="outlined" /></TableCell>
+                                        <TableCell align="left">  <TextField  {...register("totalBien")} id="totalBien" name="totalBien" type="number" label="-" variant="outlined" /></TableCell>
+                                    </TableRow>
+                                    <TableRow hover>
+                                        <TableCell align="right">
+                                            <label align="left"><b>Servicios</b> </label>
+                                        </TableCell>
+                                        <TableCell align="left">  <TextField  {...register("servicios")} id="servicios" name="servicios" type="number" label="-" variant="outlined" /></TableCell>
+                                        <TableCell align="left">
+                                            <FormControl sx={{ m: 1, minWidth: 120 }}>
+                                                <InputLabel id="demo-simple-select-helper-label">::Seleccione::</InputLabel>
+                                                <Select
+                                                    {...register("codRetencionServicio")}
+                                                    labelId="demo-simple-select-helper-label"
+                                                    id="codRetencionServicio"
+                                                    style={{ width: "280px", float: "right" }}
+                                                    label="::Seleccione::"
 
-                                                        </TableCell>
-                                                        <TableCell align="left">  <TextField {...register("porcentajeServicio")} id="porcentajeServicio" name="porcentajeServicio" type="number" label="-" variant="outlined" /></TableCell>
-                                                        <TableCell align="left">  <TextField {...register("totalServicio")} id="totalServicio" name="totalServicio" type="number" label="-" variant="outlined" /></TableCell>
-                                                    </TableRow>
-                                                    <TableRow hover>
-                                                        <TableCell colSpan={3} />
-                                                        <TableCell colSpan={2} align="right" >
-                                                            <Typography variant="h6" gutterBottom component="div">
-                                                                Valor Total IVA: ${ccyFormat(invoiceTotal)}
-                                                            </Typography>
-                                                        </TableCell>
-                                                    </TableRow>
-                                                    <TableRow hover>
-                                                        <TableCell />
-                                                        <TableCell ></TableCell>
-                                                        <TableCell align="center" >
-                                                            <Typography variant="h6" gutterBottom component="div">
-                                                                Valor Total Retiene liquidacion: ${ccyFormat(invoiceTotal)}
-                                                            </Typography>
-                                                        </TableCell>
-                                                        <TableCell></TableCell>
-                                                        <TableCell ></TableCell>
+                                                >
+                                                    <MenuItem value={10}>Ten</MenuItem>
+                                                    <MenuItem value={20}>Twenty</MenuItem>
+                                                    <MenuItem value={30}>Thirty</MenuItem>
+                                                </Select>
+
+                                            </FormControl>
+
+                                        </TableCell>
+                                        <TableCell align="left">  <TextField {...register("porcentajeServicio")} id="porcentajeServicio" name="porcentajeServicio" type="number" label="-" variant="outlined" /></TableCell>
+                                        <TableCell align="left">  <TextField {...register("totalServicio")} id="totalServicio" name="totalServicio" type="number" label="-" variant="outlined" /></TableCell>
+                                    </TableRow>
+                                    <TableRow hover>
+                                        <TableCell colSpan={3} />
+                                        <TableCell colSpan={2} align="right" >
+                                            <Typography variant="h6" gutterBottom component="div">
+                                                Valor Total IVA: ${ccyFormat(invoiceTotal)}
+                                            </Typography>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow hover>
+                                        <TableCell />
+                                        <TableCell ></TableCell>
+                                        <TableCell align="center" >
+                                            <Typography variant="h6" gutterBottom component="div">
+                                                Valor Total Retiene liquidacion: ${ccyFormat(invoiceTotal)}
+                                            </Typography>
+                                        </TableCell>
+                                        <TableCell></TableCell>
+                                        <TableCell ></TableCell>
 
 
-                                                    </TableRow>
-                                                </TableBody>
-                                            </Table>
-                                        </TableContainer>
-                                    </form>
-                                </div>
-                            </SubCard>
-                        </DialogContentText>
-                    </form>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+
+
+                    {/* </SubCard> */}
+
+                    {/* </form> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={props.onClose}>Cancel</Button>
@@ -465,7 +466,7 @@ const ModalRetencionLiquidacion = (props) => {
                 </DialogActions>
 
             </Dialog>
-        </div >
+        </Fragment >
 
     );
 }
