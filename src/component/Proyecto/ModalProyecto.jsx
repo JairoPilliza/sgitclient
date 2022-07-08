@@ -52,14 +52,7 @@ const ModalNuevoProyecto = (props) => {
         
     }
 
-    const Save = (e) => {
-        // var name = e.target.name;
-        // var value = e.target.value;
-
-        // setForm({
-        //     ...form,
-        //     [name]: value
-        // })
+    const Save = (e) => {        
 
         console.log(form);
     }
