@@ -1,8 +1,0 @@
-.button-cursor-hover-event:hover {
-    cursor: not-allowed !important;
-    
-}
-
-.pointer-events-none {
-    pointer-events: none;
-}
