@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Divider, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 import { gridSpacing } from 'store/constant';
@@ -15,13 +15,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ModalSubirXML from "./ModalSubirXML";
 const BusquedaPr = () => {
-    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const { register } = useForm();
     const [table, setTable] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [scroll, setScroll] = React.useState('paper');
-    const [muestraXML, setMuestraXML] = useState(false);
+    // const [scroll, setScroll] = React.useState('paper');
+    // const [muestraXML, setMuestraXML] = useState(false);
 
 
     function createData(name, calories, fat, carbs, protein) {
@@ -35,10 +35,10 @@ const BusquedaPr = () => {
 
     const [openXML, setOpenXML] = React.useState(false);
 
-    const handleClickOpenXML = (scrollType) => () => {
-        setOpenXML(true);
-        setScroll(scrollType);
-    };
+    // const handleClickOpenXML = (scrollType) => () => {
+    //     setOpenXML(true);
+    //     setScroll(scrollType);
+    // };
     const handleCloseXML = () => {
         setOpenXML(false);
     };

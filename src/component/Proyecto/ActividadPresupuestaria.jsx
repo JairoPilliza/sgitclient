@@ -26,10 +26,25 @@ import { useNavigate } from "react-router";
 
 const ActividadPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const [form, setForm] = useState({idDepartamentoActividad : "", codigoCuentaAASINet : "", descripcion : "", cantidadUnidadMedida : "", unidadMedida : "", numeroUnidadMedida : "", costoUnitario : "", porcentaje : "", total : ""})
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
     const [total, setTotal] = React.useState(0);
+
+    const handleChange = (e) => {
+        var name = e.target.name;
+        var value = e.target.value;
+
+        setForm({
+            ...form,
+            [name]: value
+        })
+
+        console.log(form);
+
+
+    }
 
     function createData(cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total) {
         return { cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total };
@@ -76,13 +91,15 @@ const ActividadPresupuestaria = (props) => {
                                     <FormControl sx={{ minWidth: '100%' }}>
                                         <InputLabel id="demo-simple-select-helper-label">Cuenta:</InputLabel>
                                         <Select
-                                            {...register("cuenta")}
+                                            {...register("codigoCuentaAASINet")}
                                             labelId="demo-simple-select-helper-label"
-                                            id="cuenta"
-                                            name="cuenta"
+                                            id="codigoCuentaAASINet"
+                                            name="codigoCuentaAASINet"
                                             style={{ width: "100%" }}
                                             required
                                             label="Cuenta:"
+                                            value={form.codigoCuentaAASINet}
+                                            onChange={handleChange}
 
                                         >
                                             <MenuItem value={10}>Personal</MenuItem>
@@ -93,28 +110,49 @@ const ActividadPresupuestaria = (props) => {
                                     </FormControl>
                                 </Grid>
                                 <Grid item lg={9} md={9} sm={12} xs={12}>
-                                    <TextField {...register("descripcion")} type="text" style={gridCols} multiline id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
+                                    <TextField {...register("descripcion")}
+                                        value={form.descripcion}
+                                        onChange={handleChange}
+                                         type="text" style={gridCols} multiline id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
                                 </Grid>
 
                             </Grid>
                             <Grid container item spacing={1}>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField {...register("unidadMedida")} type="number" style={gridCols} id="unidadMedida" name="unidadMedida" label="Cantidad:" variant="outlined" />
+                                    <TextField {...register("cantidadUnidadMedida")}
+                                    value={form.cantidadUnidadMedida}
+                                    onChange={handleChange}
+                                    type="number" style={gridCols} id="cantidadUnidadMedida" name="cantidadUnidadMedida" label="Cantidad:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField  {...register("unidadMedida")} type="text" style={gridCols} id="unidadMedida" name="unidadMedida" label="Unidad Medida:" variant="outlined" />
+                                    <TextField  {...register("unidadMedida")} 
+                                    value={form.descripcion}
+                                    onChange={handleChange}
+                                    type="text" style={gridCols} id="unidadMedida" name="unidadMedida" label="Unidad Medida:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField  {...register("numeroUnidadMedida")} type="number" style={gridCols} id="numeroUnidadMedida" name="numeroUnidadMedida" label="Tiempo:" variant="outlined" />
+                                    <TextField  {...register("numeroUnidadMedida")}
+                                    value={form.numeroUnidadMedida}
+                                    onChange={handleChange}
+                                    type="number" style={gridCols} id="numeroUnidadMedida" name="numeroUnidadMedida" label="Tiempo:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12} >
-                                    <TextField  {...register("costoUnitario")} type="number" style={gridCols} id="costoUnitario" name="costoUnitario" label="Costo Unitario:" variant="outlined" />
+                                    <TextField  {...register("costoUnitario")}
+                                    value={form.costoUnitario}
+                                    onChange={handleChange}
+                                    type="number" style={gridCols} id="costoUnitario" name="costoUnitario" label="Costo Unitario:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField {...register("porcentaje")} type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
+                                    <TextField {...register("porcentaje")}
+                                     value={form.porcentaje}
+                                     onChange={handleChange}
+                                    type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={3} md={3} sm={12} xs={12}>
-                                    <TextField {...register("total")} type="number" style={gridCols} id="total" name="total" label="Total:" variant="outlined" />
+                                    <TextField {...register("total")} 
+                                    value={form.total}
+                                    onChange={handleChange}
+                                    type="number" style={gridCols} id="total" name="total" label="Total:" variant="outlined" />
                                 </Grid>
                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                     <Button variant="contained" type="submit" style={gridCols}>Agregar</Button>

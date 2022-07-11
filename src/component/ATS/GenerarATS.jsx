@@ -1,5 +1,5 @@
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainCard from 'ui-component/cards/MainCard';
 
 import Card from '@mui/material/Card';
@@ -18,7 +18,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const ATS = () => {
 
-    const [value, setValue] = React.useState('1');
+   // const [value, setValue] = React.useState('1');
     const [showTable, setShowTable] = useState(false);
     const [btnEye, setBtnEye] = useState(false);
 

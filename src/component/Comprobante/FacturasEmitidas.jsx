@@ -11,23 +11,23 @@ import BuscarComprobantes from 'component/BuscarComprobantes';
 
 
 const  FacturasEmitidas = () =>  {
-    const [value, setValue] = React.useState('1');
+    // const [value, setValue] = React.useState('1');
 
-    const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
+    // const [open, setOpen] = React.useState(false);
+    // const [scroll, setScroll] = React.useState('paper');
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
+    // const handleClickOpen = (scrollType) => () => {
+    //     setOpen(true);
+    //     setScroll(scrollType);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    // const handleChange = (event, newValue) => {
+    //     setValue(newValue);
+    // };
 
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };

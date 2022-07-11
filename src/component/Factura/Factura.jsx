@@ -33,7 +33,7 @@ import ModalFormaPago from "component/FormaPago";
 import { styled } from '@mui/material/styles';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import ModalSubirXML from "component/ModalSubirXML";
-import ModalComprobanteRetencion from "component/ComprobanteRetencion";
+
 const Factura = () => {
 
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();

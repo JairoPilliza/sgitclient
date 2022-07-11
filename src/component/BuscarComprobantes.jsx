@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Divider, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
@@ -17,19 +17,19 @@ import Paper from '@mui/material/Paper';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const BuscarComprobantes = () => {
-    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const { register} = useForm();
     const [table, setTable] = useState(false);
-    const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
+   // const [open, setOpen] = React.useState(false);
+    //const [scroll, setScroll] = React.useState('paper');
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
+    // const handleClickOpen = (scrollType) => () => {
+    //     setOpen(true);
+    //     setScroll(scrollType);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     function createData(name, tipo, fat, carbs, protein) {
         return { name, tipo, fat, carbs, protein };

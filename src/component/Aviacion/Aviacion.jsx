@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import { Chip, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 // project imports
-import SubCard from 'ui-component/cards/SubCard';
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
 import Checkbox from '@mui/material/Checkbox';
@@ -16,22 +15,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+
 import Divider from '@mui/material/Divider';
 import CardActions from '@mui/material/CardActions';
 import ModalRetencion from "component/ModalRetencion";
 import EditIcon from '@mui/icons-material/Edit';
 import ModalNuevoProveedor from "component/ModalProveedor";
 const Aviacion = () => {
-    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const { register } = useForm();
     /////////MODAL RETENCION
     const [openMR, setOpenMR] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
+   const [scroll, setScroll] = React.useState('paper');
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -360,10 +354,12 @@ const Aviacion = () => {
             <ModalRetencion
                 open={openMR}
                 onClose={handleCloseMR}
+                scroll={scroll}
             />
             <ModalNuevoProveedor
                 open={open}
-                onClose={handleClose} />
+                onClose={handleClose}
+                scroll={scroll} />
 
         </MainCard>
     );

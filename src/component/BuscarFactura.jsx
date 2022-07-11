@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Divider, Grid } from '@mui/material';
 import { useForm } from "react-hook-form"
 import SubCard from 'ui-component/cards/SubCard';
@@ -16,19 +16,19 @@ import Paper from '@mui/material/Paper';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const BuscarFactura = () => {
-    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
+    const { register} = useForm();
     const [table, setTable] = useState(false);
-    const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
+    // const [open, setOpen] = React.useState(false);
+    // const [scroll, setScroll] = React.useState('paper');
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
+    // const handleClickOpen = (scrollType) => () => {
+    //     setOpen(true);
+    //     setScroll(scrollType);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
