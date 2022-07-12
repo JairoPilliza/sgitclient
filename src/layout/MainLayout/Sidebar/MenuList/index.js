@@ -11,7 +11,7 @@ const MenuList = () => {
     const navItems = menuItem.items.map((item) => {
         switch (item.type) {
             case 'group':
-                console.log("Id: "+item.id.toString())
+                //console.log("Id: "+item.id.toString())
                 return <NavGroup key={item.id} item={item} />;
             default:
                 return (

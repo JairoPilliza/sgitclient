@@ -17,7 +17,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const ModalAperturaPeriodo = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [form, setForm] = useState({ });
+    const [form, setForm] = useState({idSucursal : "",   gestion : "",   mes : "",   fechaApertura : "",   fechaCierre : "",   fechaRegistro : "",   estado : "" });
 
 
 

@@ -23,6 +23,7 @@
         "formik": "^2.2.6",
         "framer-motion": "^4.1.13",
         "history": "^5.0.0",
+        "material-react-toastify": "^1.0.1",
         "material-ui-popup-state": "^1.8.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
@@ -35,7 +36,9 @@
         "react-router": "6.0.0-beta.0",
         "react-router-dom": "6.0.0-beta.0",
         "react-scripts": "^4.0.3",
+        "react-toastify": "^9.0.5",
         "redux": "^4.0.5",
+        "sweetalert2": "^11.4.20",
         "yup": "^0.32.9"
     },
     "scripts": {

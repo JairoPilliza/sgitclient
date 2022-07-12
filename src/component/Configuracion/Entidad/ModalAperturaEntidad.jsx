@@ -18,13 +18,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 const ModalAperturaEntidad = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
 
-    
-
+    const[form , setForm] = useState({codigo : "",	codigoSri : "",	nombre : "",	nombreLegal : "",	numeroRuc : "",	direccion : "",	telefono : "",	ciudad : "",	pais : "",	emailRetencion : "",	emailPass : "",	usuario : "",	clave : "",	estado : ""})
 
     const [scroll, setScroll] = React.useState('paper');
-
- 
-
     const onSubmit = (data, evento) => {
         alert();
         console.log(data);

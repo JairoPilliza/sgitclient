@@ -24,45 +24,62 @@ import AddIcon from '@mui/icons-material/Add';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import { useNavigate } from "react-router";
 import ActividadPresupuestaria from "./ActividadPresupuestaria";
-const PartidaPresupuestaria = () => {
+import DepartamentoActividad from "services/DepartamentoActividad/DepartamentoActividadService";
+const PartidaPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
     const [acording, setAcording] = useState(false);
+    const [load, setLoad] = useState(0)
+    const [listaDepartamentoActividad, setListaDepartamentoActividad] = useState([])
+
+    const qs = JSON.stringify({ id: 0 });
     const navigate = useNavigate();
-
-    const titleProject = localStorage.getItem("nameProject");
-
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
+    const titleProject = localStorage.getItem("departamento");
     const handleClose = () => setOpen(false);
-    ///////////////  
-    const back = (event, index, route = '/Proyecto/Proyecto') => {
 
-        handleClose(event);
+    useEffect(() => {
+        DepartamentoActividad.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaDepartamentoActividad(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, [load]);
 
-        if (route && route !== '') {
-            navigate(route);
-        }
-    };
+    const Save = (data) => {
+        //alert("2") 
+        DepartamentoActividad.Post(data).then(async (result) => {
+            if (result.code === "1") {
+                setLoad(load + 1)
+            } else {
+                alert(result.message);
 
-    function createData(cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total) {
-        return { cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total };
+            }
+        });
     }
 
-    const rows = [
-        createData('Personal', '-----------', '10', 1, 25, 700, 700),
-        createData('Muebles', '-----------', '10', 1, 30, 500, 500),
-        createData('Pasaje', '-----------', '10', 2, 10, 100, 200),
-    ];
+    const Update = (data) => {
+        //data.idDepartamento=id
+        DepartamentoActividad.Put(qs, data).then(async (result) => {
+            if (result.code === "1") {
+                setLoad(load + 1)
+                //props.history.push("./TableAtencionEstudiante")
+            } else {
+                alert(result.message);
+            }
+        });
+    }
 
-    var cont = 0;
-    var newItem;
-    if (acording) {
-        newItem = <ActividadPresupuestaria />;
+    const onSubmit = (data, evento) => {
+        //alert("1"); 
+        data.idRol = 1;
+        data.idDepartamento = localStorage.getItem("dep");
+        Save(data);
     }
 
 
@@ -75,31 +92,40 @@ const PartidaPresupuestaria = () => {
 
                         </CardHeader>
                         <CardContent >
-                            <Grid container spacing={2}>
-                                <Grid container item spacing={2}>
-                                    <Grid item lg={2} md={2} sm={12} xs={12}>
-                                        <Button variant='contained' onClick={(event) => back(event, 1, '/Proyecto/Proyecto')} ><KeyboardReturnIcon /></Button>
+
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <Grid container spacing={2}>
+                                    <Grid item lg={6} md={6} sm={12} xs={12}>
+                                        <TextField
+                                            {...register("descripcion")}
+                                            id="descripcion"
+                                            name="descripcion"
+                                            label="Nombre del Actividad:"
+
+                                            style={{ width: "100%" }}
+                                            required
+
+                                        />
                                     </Grid>
-                                    <Grid item lg={10} md={10} sm={12} xs={12} >
-                                        <Button variant='contained' startIcon={<AddIcon />} onClick={() => setAcording(true)} > Nueva Actividad</Button>
+                                    <Grid item lg={6} md={6} sm={12} xs={12} >
+                                        <Button variant='contained' type="submit" startIcon={<AddIcon />} > Nueva Actividad</Button>
                                     </Grid>
                                 </Grid>
-                                <Grid item lg={6} md={6} sm={12} xs={12}>
-                                    <TextField
-                                        {...register("descripcion")}
-                                        id="descripcion"
-                                        name="descripcion"
-                                        label="Nombre del Actividad:"
 
-                                        style={{ width: "100%" }}
-                                        required
-                                    
-                                    />
-                                </Grid>
-                                <ActividadPresupuestaria />
+                            </form>
+                            <br />
+                            {
+                                listaDepartamentoActividad.map((row, index) => {
+                                    return (<ActividadPresupuestaria 
+                                        key={index}
+                                        index ={index}
+                                        descripcion = {row.descripcion}
+                                        id={row.idDepartamentoActividad}
+                                    />)
+                                })
+                            }
 
-                                {newItem}
-                            </Grid>
+
                         </CardContent>
                     </Card>
 

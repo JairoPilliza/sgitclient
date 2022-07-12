@@ -12,31 +12,84 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { ThemeProvider } from "@mui/styles";
-import { Form } from "formik";
-
+import sitem1 from "services/DepartamentoService/DepartamentoService";
+import Resource from "resource/resource";
 
 const ModalNuevoProyecto = (props) => {
-    const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [form, setForm] = useState({descripcion:"",donante:"",coordinador:"",fechaInicio:"",presupuesto:"",estado:0});
+    const { register, handleSubmit, setValue, reset } = useForm();
+    const [form, setForm] = useState({});
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
-
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const onSubmit = (e) => {
+   
+    const [editMode, setEditMode] = useState(false);
+    const id = props.departamento.idDepartamento;
+    const qs = Resource.convertObjectToQueryStringUnique("json", { id: id });
+    useEffect(() => { reset(form) }, [form]);
+    useEffect(() => {
+        if(id >0){
+            setEditMode(true)
+             setForm(props.departamento)
        
-     
+        }else{
+            setEditMode(false)
+            setForm(null)
+        }
+           
+       
+        //setEditMode(true)
+        // if(props.departamento != null){
+        // }
 
+        //props.setDepartamento(props.departamento) 
+    })
+
+   
+
+    // useEffect(() => {
+    //     if (id > 0) {
+    //         sitem1.GetT(qs).then(async (result) => {
+    //             if (result.code === "1") {
+    //                 setDepartamento(result.payload ? JSON.parse(result.payload) : [])
+    //                 setEditMode(true)
+    //             } else {
+    //                 console.log(result.message + "vacio");
+    //             }
+    //         });
+    //     }
+    // }, []);
+
+    const Save = (data) => {
+        //alert("2") 
+        sitem1.Post(data).then(async (result) => {
+            if (result.code === "1") {
+                props.onClose(false);
+                props.setLoad(props.load+1)
+            } else {
+                alert(result.message);
+
+            }
+        });
     }
-
+    const Update = (data) => {
+        //data.idDepartamento=id
+        sitem1.Put(qs, data).then(async (result) => {
+            if (result.code === "1") {
+                props.onClose(false);
+                props.setLoad(props.load+1)
+                //props.history.push("./TableAtencionEstudiante")
+            } else {
+                alert(result.message);
+            }
+        });
+    }
+    const onSubmit = (data, evento) => {
+        //alert("1"); 
+        data.idRol = 1;
+        (editMode) ? Update(data) : Save(data);
+    }
+    // const back = () => {
+    //     props.history.push("./TableAtencionEstudiante");
+    // }
 
     const handleChange = (e) => {
         var name = e.target.name;
@@ -48,14 +101,10 @@ const ModalNuevoProyecto = (props) => {
         })
 
         console.log(form);
-       
-        
+
     }
 
-    const Save = (e) => {        
 
-        console.log(form);
-    }
 
 
 
@@ -70,10 +119,10 @@ const ModalNuevoProyecto = (props) => {
                 fullWidth
                 maxWidth="md"
             >
-                
-                    <DialogTitle id="scroll-dialog-title">Registrar Proyecto - Departamento</DialogTitle>
+                <DialogTitle id="scroll-dialog-title">Registrar Proyecto - Departamento</DialogTitle>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogContent dividers={scroll === 'paper'}>
-                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+
                         <Grid container spacing={2}>
                             <Grid container item spacing={2}>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -85,8 +134,8 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Departamento"
                                         style={{ width: "100%" }}
                                         required
-                                        value={form.descripcion}
-                                        onChange={handleChange}
+                                    //value={form.descripcion}
+                                    // onChange={handleChange}
 
                                     />
                                 </Grid>
@@ -99,8 +148,8 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Donante"
                                         style={{ width: "100%" }}
                                         required
-                                        value={form.donante}
-                                        onChange={handleChange}
+                                    // value={form.donante}
+                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -112,8 +161,8 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Coordinador"
                                         style={{ width: "100%" }}
                                         required
-                                        value={form.coordinador}
-                                        onChange={handleChange}
+                                    //value={form.coordinador}
+                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -128,8 +177,8 @@ const ModalNuevoProyecto = (props) => {
                                             shrink: true,
                                         }}
                                         required
-                                        value={form.fechaInicio}
-                                        onChange={handleChange}
+                                    //value={form.fechaInicio}
+                                    //onChange={handleChange}
                                     />
                                 </Grid>
                             </Grid>
@@ -140,11 +189,12 @@ const ModalNuevoProyecto = (props) => {
                                         {...register("presupuesto")}
                                         id="presupuesto"
                                         name="presupuesto"
+                                        type="number"
                                         label="Presupuesto del proyecto:"
                                         style={{ width: "100%" }}
                                         required
-                                        value={form.presupuesto}
-                                        onChange={handleChange}
+                                    //value={form.presupuesto}
+                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -154,15 +204,16 @@ const ModalNuevoProyecto = (props) => {
                                             {...register("estado")}
                                             labelId="demo-simple-select-helper-label"
                                             id="estado"
-                                            name="estado"
                                             style={{ width: "100%" }}
                                             required
                                             label="Estado"
-                                            value={form.estado}
-                                            onChange={handleChange}
+                                            defaultValue={true}
+                                        //value=""
+                                        // onChange={handleChange}
                                         >
-                                            <MenuItem value={1}>Activo</MenuItem>
-                                            <MenuItem value={0}>Inactivo</MenuItem>
+
+                                            <MenuItem value={true}>Activo</MenuItem>
+                                            <MenuItem value={false}>Inactivo</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Grid>
@@ -171,13 +222,14 @@ const ModalNuevoProyecto = (props) => {
                         </Grid>
 
 
-                        {/* </form> */}
+
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={props.onClose}>Cancelar</Button>
-                        <Button onClick={Save}>Registar Proveedor</Button>
+                        <Button type="submit">Registar </Button>
                     </DialogActions>
-               
+                </form>
+
             </Dialog>
         </Fragment >
 
