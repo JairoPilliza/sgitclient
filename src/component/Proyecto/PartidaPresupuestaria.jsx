@@ -10,9 +10,12 @@ import AddIcon from '@mui/icons-material/Add';
 import ActividadPresupuestaria from "./ActividadPresupuestaria";
 import DepartamentoActividad from "services/DepartamentoActividad/DepartamentoActividadService";
 import { useSearchParams, useParams, useLocation  } from "react-router-dom";
+import useNavigateParamsSearch from "hooks/useNavigateParamsSearch";
 
 const PartidaPresupuestaria = (props) => {
-    const {search }  = useLocation();
+    const search  = useNavigateParamsSearch();
+    console.log(search);
+    
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [load, setLoad] = useState(0)
     const [listaDepartamentoActividad, setListaDepartamentoActividad] = useState([])

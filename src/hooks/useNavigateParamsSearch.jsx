@@ -1,10 +1,8 @@
+import { useLocation } from "react-router";
 
-const { useNavigate, createSearchParams } = require("react-router-dom");
-
-const useNavigateParamsCreate = () => {
-    const {search }  = useLocation();
-    return (pathname, params) =>
-        navigate({ pathname, search: `?${createSearchParams(params)}` });
+const useNavigateParamsSearch = () => {
+    const { search } = useLocation();
+    return JSON.parse('{"' + decodeURI(search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
 };
 
-export default useNavigateParamsCreate;
+export default useNavigateParamsSearch;
