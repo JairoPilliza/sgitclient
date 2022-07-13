@@ -19,8 +19,10 @@ import { saveNotification } from "utils/toastify";
 import { ToastContainer, toast } from "material-react-toastify";
 import Swal from "sweetalert2";
 import Resource from "resource/resource";
+import useNavigateSearch from "hooks/useNavigateParamsCreate";
 const Proyecto = (props) => {
-    const navigate = useNavigate();
+    const navigate = useNavigateSearch();
+
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
     const [departamento, setDepartamento] = useState({});
@@ -56,11 +58,11 @@ const Proyecto = (props) => {
     }
 
     const RowAdd = (item) => {
-      
-        localStorage.setItem("dep", item.idDepartamento)
-        localStorage.setItem("departamento","Proyecto " +item.descripcion)
 
-        navigate('/Proyecto/PartidaPresupuestaria');
+        localStorage.setItem("dep", 0)
+        localStorage.setItem("departamento", "Proyecto " + item.descripcion)
+
+        navigate('/Proyecto/PartidaPresupuestaria', { id: item.idDepartamento });
 
     };
     const deleteItem = (item) => {
