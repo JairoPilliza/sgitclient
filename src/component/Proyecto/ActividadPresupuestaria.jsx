@@ -1,10 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
 // project imports
-import MainCard from 'ui-component/cards/MainCard';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,58 +10,106 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from "@mui/material/TextField";
 import { Accordion, AccordionDetails, AccordionSummary, CardHeader, FormControl, Grid, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Paper from '@mui/material/Paper';
-import { gridSpacing } from "store/constant";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AddIcon from '@mui/icons-material/Add';
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
-import { useNavigate } from "react-router";
+import DepartamentoActividadDetalle from "services/DepartamentoActividadDetalle/DepartamentoActividadDetalleService";
+import Resource from "resource/resource";
+import { ButtonDelete, ButtonEdit } from "utils/custom-all";
+import Swal from "sweetalert2";
 
 const ActividadPresupuestaria = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [form, setForm] = useState({ idDepartamentoActividad: "", codigoCuentaAASINet: "", descripcion: "", cantidadUnidadMedida: "", unidadMedida: "", numeroUnidadMedida: "", costoUnitario: "", porcentaje: "", total: "" })
-    /////////MODAL PROVEEDOR
-    const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
-    const [total, setTotal] = React.useState(0);
+    const [form, setForm] = useState({})
+    const [load, setLoad] = useState(0);
+    const [listaDepartamentoActividadDetalle, setlistaDepartamentoActividadDetalle] = useState([]);
+    const [editMode, setEditMode] = useState(false);
+    const [idDepartamentoActividadDetalle, setidDepartamentoActividadDetalle] = useState(0);
 
-    const handleChange = (e) => {
-        var name = e.target.name;
-        var value = e.target.value;
 
-        setForm({
-            ...form,
-            [name]: value
+    useEffect(() => {
+        DepartamentoActividadDetalle.Get().then(async (result) => {
+            //DepartamentoActividadDetalle.Get(JSON.stringify({ id: props.id })).then(async (result) => {
+            if (result.code === "1") {
+                setlistaDepartamentoActividadDetalle(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, [load]);
+
+    useEffect(() => { reset(form) }, [form]);
+
+    const Save = (data) => {
+        alert("2")
+        DepartamentoActividadDetalle.Post(data).then(async (result) => {
+            if (result.code === "1") {
+                setLoad(load + 1)
+            } else {
+                alert(result.message);
+            }
+        });
+    }
+
+    const Update = (data) => {
+
+        DepartamentoActividadDetalle.Put(JSON.stringify(), data).then(async (result) => {
+            if (result.code === "1") {
+                setLoad(load + 1)
+            } else {
+                alert(result.message);
+            }
+        });
+    }
+
+    const onSubmit = (data, evento) => {
+        console.log(data);
+
+        data.idRol = 1;
+        data.presupuesto = data.total;
+        data.idDepartamento = localStorage.getItem("dep");
+
+        (editMode) ? Update(data) : Save(data);
+    }
+
+    const RowChange = (item) => {
+        setidDepartamentoActividadDetalle(Resource.convertObjectToQueryStringUnique("json", { id: item.idDepartamentoActividadDetalle }));
+        setForm(item);
+        setEditMode(true);
+    };
+    const deleteItem = (item) => {
+        Swal.fire({
+            title: "Esta seguro de eliminar?",
+            text: "¡No se podrá revertir este proceso!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminarlo!',
+            cancelButtonText: 'Cancelar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const re = Resource.convertObjectToQueryStringUnique("json", { id: item.idDepartamentoActividadDetalle });
+                DepartamentoActividadDetalle.Delete(re).then(async (result) => {
+                    if (result.code === "1") {
+                        setLoad(load + 1)
+                        Swal.fire(
+                            'Eliminado!',
+                            'El registro ha sido eliminado.',
+                            'success'
+                        )
+                    } else {
+                        Swal.fire(
+                            result.message + '!',
+                            'El registro no ha sido eliminado.',
+                            'error'
+                        )
+                    }
+                });
+            }
         })
-
-        console.log(form);
-
-
     }
-
-    function createData(cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total) {
-        return { cuenta, descripcion, porcentaje, cantidad, tiempo, precio, total };
-    }
-
-    // useEffect(()=>{
-
-    // },[])
-    const CalcularTotalHandler = (e, item) => {
-        alert();
-        console.log(e)
-    }
-
-    const rows = [
-        createData('Personal', '-----------', '10', 1, 25, 700, 700),
-        createData('Muebles', '-----------', '10', 1, 30, 500, 500),
-        createData('Pasaje', '-----------', '10', 2, 10, 100, 200),
-    ];
-
-    var cont = 0;
     const gridCols = { width: "100%" };
     return (
         <Grid container item spacing={2}>
@@ -77,7 +122,6 @@ const ActividadPresupuestaria = (props) => {
                         aria-controls={"panel" + (props.index + 1) + "1a-content"}
                         id={"panel" + (props.index + 1) + "1a-header"}
                         style={{ background: "#f3e5f5" }}
-
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>
                             {/* Item */}
@@ -86,84 +130,90 @@ const ActividadPresupuestaria = (props) => {
 
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Grid container spacing={2} >
-                            <Grid container item spacing={1} >
-                                <Grid item lg={3} md={3} sm={12} xs={12}>
-                                    <FormControl sx={{ minWidth: '100%' }}>
-                                        <InputLabel id="demo-simple-select-helper-label">Cuenta:</InputLabel>
-                                        <Select
-                                            {...register("codigoCuentaAASINet")}
-                                            labelId="demo-simple-select-helper-label"
-                                            id="codigoCuentaAASINet"
-                                            name="codigoCuentaAASINet"
-                                            style={{ width: "100%" }}
-                                            required
-                                            label="Cuenta:"
-                                            defaultValue={0}
-                                        // value={form.codigoCuentaAASINet}
-                                        // onChange={handleChange}
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <Grid container spacing={2} >
+                                <TextField {...register("idDepartamentoActividad")} style={{ display: "none" }} id="idda" name="idda" value={props.id} />
+                                <TextField {...register("idDepartamentoActividadDetalle")} style={{ display: "none" }} id="iddad" name="iddad" />
+                                <Grid container item spacing={1} >
+                                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                                        <FormControl sx={{ minWidth: '100%' }}>
+                                            <InputLabel id="demo-simple-select-helper-label">Cuenta:</InputLabel>
+                                            <Select
+                                                {...register("codigoCuentaAASINet")}
+                                                labelId="demo-simple-select-helper-label"
+                                                id="codigoCuentaAASINet"
+                                                style={{ width: "100%" }}
+                                                required
+                                                label="Cuenta:"
+                                                defaultValue={0}
+                                            // value={form.codigoCuentaAASINet}
+                                            // onChange={handleChange}
 
-                                        >
-                                            <MenuItem value={10}>Personal</MenuItem>
-                                            <MenuItem value={20}>Muebles</MenuItem>
-                                            <MenuItem value={20}>Pasajes</MenuItem>
+                                            > <MenuItem value={0}>::SELECCIONAR::</MenuItem>
+                                                <MenuItem value={10}>Personal</MenuItem>
+                                                <MenuItem value={20}>Muebles</MenuItem>
+                                                <MenuItem value={30}>Pasajes</MenuItem>
 
-                                        </Select>
-                                    </FormControl>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item lg={7} md={7} sm={12} xs={12}>
+
+                                        <TextField {...register("descripcion")}
+                                            // value={form.descripcion}
+                                            // onChange={handleChange}
+                                            type="text" style={gridCols} multiline id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={2} md={2} sm={12} xs={12} >
+                                        <TextField {...register("cantidadUnidadMedida")}
+                                            // value={form.cantidadUnidadMedida}
+                                            // onChange={handleChange}
+                                            type="number"
+                                            style={gridCols}
+                                            id="cantidadUnidadMedida"
+                                            name="cantidadUnidadMedida"
+                                            label="Cantidad:"
+                                            variant="outlined" />
+                                    </Grid>
                                 </Grid>
-                                <Grid item lg={9} md={9} sm={12} xs={12}>
-                                    <TextField  {...register("idDepartamentoActividad")}
+                                <Grid container item spacing={1}>
 
-                                        type="text" style={gridCols} multiline id="iddt" name="iddt" label="Descripcion:" variant="outlined" value={props.id} />
-                                    <TextField {...register("descripcion")}
-                                        value={form.descripcion}
-                                        onChange={handleChange}
-                                        type="text" style={gridCols} multiline id="descripcion" name="descripcion" label="Descripcion:" variant="outlined" />
+                                    <Grid item lg={2} md={2} sm={12} xs={12}>
+                                        <TextField  {...register("unidadMedida")}
+                                            // value={form.descripcion}
+                                            // onChange={handleChange}
+                                            type="text" style={gridCols} id="unidadMedida" name="unidadMedida" label="Unidad Medida:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={2} md={2} sm={12} xs={12}>
+                                        <TextField  {...register("numeroUnidadMedida")}
+                                            // value={form.numeroUnidadMedida}
+                                            // onChange={handleChange}
+                                            type='number' style={gridCols} id="numeroUnidadMedida" name="numeroUnidadMedida" label="Tiempo:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={3} md={3} sm={12} xs={12} >
+                                        <TextField  {...register("costoUnitario")}
+                                            // value={form.costoUnitario}
+                                            // onChange={handleChange}
+                                            type="number" style={gridCols} id="costoUnitario" name="costoUnitario" label="Costo Unitario:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={2} md={2} sm={12} xs={12} >
+                                        <TextField {...register("porcentaje")}
+                                            // value={form.porcentaje}
+                                            // onChange={handleChange}
+                                            type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                                        <TextField {...register("total")}
+                                            // value={form.total}
+                                            // onChange={handleChange}
+                                            type="number" style={gridCols} id="total" name="total" label="Total:" variant="outlined" />
+                                    </Grid>
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                                        <Button variant="contained" type="submit" style={gridCols}>GUARDAR</Button>
+                                    </Grid>
                                 </Grid>
-
                             </Grid>
-                            <Grid container item spacing={1}>
-                                <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField {...register("cantidadUnidadMedida")}
-                                        value={form.cantidadUnidadMedida}
-                                        onChange={handleChange}
-                                        type="number" style={gridCols} id="cantidadUnidadMedida" name="cantidadUnidadMedida" label="Cantidad:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField  {...register("unidadMedida")}
-                                        value={form.descripcion}
-                                        onChange={handleChange}
-                                        type="text" style={gridCols} id="unidadMedida" name="unidadMedida" label="Unidad Medida:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={2} md={2} sm={12} xs={12}>
-                                    <TextField  {...register("numeroUnidadMedida")}
-                                        value={form.numeroUnidadMedida}
-                                        onChange={handleChange}
-                                        type="number" style={gridCols} id="numeroUnidadMedida" name="numeroUnidadMedida" label="Tiempo:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={3} md={3} sm={12} xs={12} >
-                                    <TextField  {...register("costoUnitario")}
-                                        value={form.costoUnitario}
-                                        onChange={handleChange}
-                                        type="number" style={gridCols} id="costoUnitario" name="costoUnitario" label="Costo Unitario:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={2} md={2} sm={12} xs={12} >
-                                    <TextField {...register("porcentaje")}
-                                        value={form.porcentaje}
-                                        onChange={handleChange}
-                                        type="number" style={gridCols} id="porcentaje" name="porcentaje" label="Porcentaje:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={3} md={3} sm={12} xs={12}>
-                                    <TextField {...register("total")}
-                                        value={form.total}
-                                        onChange={handleChange}
-                                        type="number" style={gridCols} id="total" name="total" label="Total:" variant="outlined" />
-                                </Grid>
-                                <Grid item lg={12} md={12} sm={12} xs={12}>
-                                    <Button variant="contained" type="submit" style={gridCols}>Agregar</Button>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                        </form>
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 650 }} aria-label="caption table">
                                 <TableHead>
@@ -183,27 +233,35 @@ const ActividadPresupuestaria = (props) => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {rows.map((row) => (
-                                        <TableRow hover key={row.cuenta}>
+                                    {listaDepartamentoActividadDetalle.map((row, index) => (
+                                        <TableRow hover key={index + 1}>
                                             <TableCell >
-                                                {cont = cont + 1}
+                                                {index + 1}
                                             </TableCell>
-                                            <TableCell align="center">{row.cuenta}</TableCell>
+                                            <TableCell align="center">#</TableCell>
                                             <TableCell align="center">{row.descripcion}</TableCell>
-                                            <TableCell align="center">{row.cantidad}</TableCell>
-                                            <TableCell align="center">{row.tiempo} dias</TableCell>
-                                            <TableCell align="center">$ {row.precio}</TableCell>
+                                            <TableCell align="center">{row.cantidadUnidadMedida}</TableCell>
+                                            <TableCell align="center">{row.unidadMedida}</TableCell>
+                                            <TableCell align="center">{row.numeroUnidadMedida}</TableCell>
+                                            <TableCell align="center">${row.costoUnitario}</TableCell>
                                             <TableCell align="center">{row.porcentaje} %</TableCell>
-                                            <TableCell align="center">$ {row.total}</TableCell>
+                                            <TableCell align="center">${row.total}</TableCell>
 
                                             <TableCell align="center">
                                                 <Grid container spacing={2}>
-
                                                     <Grid item>
-                                                        <Button variant="contained" style={{ width: "100%", backgroundColor: "#e91e63" }} >
-                                                            <DeleteIcon />
-                                                        </Button>
+                                                        <ButtonEdit onClick={() => RowChange(row)}></ButtonEdit>
+                                                        {/* <Button onClick={() => RowChange(row)} variant="contained" style={{ width: "100%", backgroundColor: "#ffac33" }}  >
+                                                            <EditIcon />
+                                                        </Button> */}
                                                     </Grid>
+                                                    <Grid item>
+                                                        <ButtonDelete onClick={() => deleteItem(row)}></ButtonDelete>
+                                                        {/* <Button variant="contained" style={{ width: "100%", backgroundColor: "#e91e63" }} >
+                                                            <DeleteIcon />
+                                                        </Button> */}
+                                                    </Grid>
+
                                                 </Grid>
                                             </TableCell>
                                         </TableRow>

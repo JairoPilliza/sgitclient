@@ -8,12 +8,12 @@ import retencion from './retencion'
 import comprobante from './comprobante';
 import reporte from './reporte';
 import proyecto from './proyecto';
-
+import contabilizacion from './contabilizacion'
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, pages,configuracion,proyecto,proveedor,retencion ,comprobante,reporte, utilities]
+    items: [dashboard, pages,configuracion,proyecto,proveedor,retencion ,contabilizacion, comprobante,reporte, utilities]
 };
 
 export default menuItems;

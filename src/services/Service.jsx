@@ -31,12 +31,12 @@ const methods = {
     },
 
     async Post(url, data) {
-        //alert("124s")
+        alert("124s")
         config.method = "POST";
         config.body = JSON.stringify(data);
-       // console.log(data)
+        console.log(data)
         const response = await fetch(URL + url, config);
-       // console.log(URL + url);
+        console.log(URL + url);
         const result = await response.json();
         return result;
     },

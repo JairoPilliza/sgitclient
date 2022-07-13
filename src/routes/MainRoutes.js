@@ -33,6 +33,10 @@ const RetencionNoAut = Loadable(lazy(() => import('component/Retencion/Retencion
 const Proyecto = Loadable(lazy(() => import('component/Proyecto/Proyecto')));
 const PartidaPresupuestaria = Loadable(lazy(() => import('component/Proyecto/PartidaPresupuestaria')));
 
+//contabilidad 
+const ConstruirAsiento = Loadable(lazy(() => import('component/Contabilizacion/ContruirAsientoContable')));
+const ListarAsiento = Loadable(lazy(() => import('component/Contabilizacion/ListaAsientoContable')));
+
 
 
 
@@ -139,6 +143,14 @@ const MainRoutes = {
         {
             path: '/Proyecto/PartidaPresupuestaria',
             element: <PartidaPresupuestaria />
+        },
+        {
+            path: '/Contabilizacion/ConstruirAsiento',
+            element: <ConstruirAsiento />
+        },
+        {
+            path: '/Contabilizacion/ListaAsientoContable',
+            element: <ListarAsiento />
         },
       
         {

@@ -20,7 +20,7 @@ const utilities = {
     children: [
         {
             id: 'ejecucionPresupuestaria',
-            title: 'Contabilización',
+            title: 'Partida Presupuetaria',
             type: 'item',
             url: '/Contabilizacion/EjecucionPresupuestaria',
             icon: PointOfSaleIcon,

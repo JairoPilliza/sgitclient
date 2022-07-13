@@ -35,28 +35,7 @@ const ModalNuevoProyecto = (props) => {
             setForm(null)
         }
            
-       
-        //setEditMode(true)
-        // if(props.departamento != null){
-        // }
-
-        //props.setDepartamento(props.departamento) 
     })
-
-   
-
-    // useEffect(() => {
-    //     if (id > 0) {
-    //         sitem1.GetT(qs).then(async (result) => {
-    //             if (result.code === "1") {
-    //                 setDepartamento(result.payload ? JSON.parse(result.payload) : [])
-    //                 setEditMode(true)
-    //             } else {
-    //                 console.log(result.message + "vacio");
-    //             }
-    //         });
-    //     }
-    // }, []);
 
     const Save = (data) => {
         //alert("2") 
@@ -87,9 +66,6 @@ const ModalNuevoProyecto = (props) => {
         data.idRol = 1;
         (editMode) ? Update(data) : Save(data);
     }
-    // const back = () => {
-    //     props.history.push("./TableAtencionEstudiante");
-    // }
 
     const handleChange = (e) => {
         var name = e.target.name;
@@ -103,8 +79,6 @@ const ModalNuevoProyecto = (props) => {
         console.log(form);
 
     }
-
-
 
 
 
