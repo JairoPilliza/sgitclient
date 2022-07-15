@@ -3,7 +3,7 @@ import { Grid, IconButton } from '@mui/material';
 import { useForm } from "react-hook-form"
 import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
-import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,24 +15,17 @@ import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
 import ModalNuevaPersona from "component/ModalPersona";
 import { ButtonAdd, ButtonDelete, ButtonEdit } from "utils/custom-all";
-import { ToastContainer, toast } from "material-react-toastify";
 import Swal from "sweetalert2";
 import PersonaLiquidacion from "services/PersonaLiquidacion/PersonaLiquidacionService";
-import Resource from "resource/resource";
+import useNavigateParamsCreate from "hooks/useNavigateParamsCreate";
+
 const ListarPersonaLiquidacion = () => {
+    const navigate = useNavigate();
+    const navigateParam = useNavigateParamsCreate();
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    //  const [open, setOpen] = React.useState(false);
-    //const handleOpen = () => setOpen(true);
-    //  const handleClose = () => setOpen(false);
-
-
     const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
-    const [personaLiquidacion, setPersonaLiquidacion] = useState(false);
+    const [personaLiquidacion, setPersonaLiquidacion] = useState({});
     const [listaPersonaLiquidacion, setListaPersonaLiquidacion] = useState([]);
-
-
-
     const [load, setLoad] = useState(0)
     const [edit, setEdit] = useState(false);
 
@@ -48,17 +41,18 @@ const ListarPersonaLiquidacion = () => {
         });
     }, [load]);
 
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const RowChange = (item) => {
-
         if (typeof item === "object" && item) {
             setPersonaLiquidacion(item);
-
+            navigateParam('/Proveedor/ListarPersonaLiquidacion', { id: item.idPersonaLiquidacion });
         }
         setOpen(true);//setScroll('paper');
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        navigate('/Proveedor/ListarPersonaLiquidacion');
     };
 
     const deleteItem = (item) => {
@@ -73,9 +67,9 @@ const ListarPersonaLiquidacion = () => {
             cancelButtonText: 'Cancelar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const re = Resource.convertObjectToQueryStringUnique("json", { id: item.idPersonaLiquidacion});
-                PersonaLiquidacion.Delete(re).then(async (result) => {
-                    if (result.code === "1") {                       
+                ;
+                PersonaLiquidacion.Delete({ id: item.idPersonaLiquidacion }).then(async (result) => {
+                    if (result.code === "1") {
                         setLoad(load + 1)
                         Swal.fire(
                             'Eliminado!',
@@ -101,7 +95,7 @@ const ListarPersonaLiquidacion = () => {
                     <Grid container spacing={2}>
                         <Grid item lg={6} md={6} sm={12} xs={12}  >
                             {/* <Button variant='contained' startIcon={<EditIcon />} onClick={() => RowChange()}> Agregar Persona Liquidacion </Button> */}
-                            <ButtonAdd onClick={() => RowChange()}> Agregar Persona Liquidacion</ButtonAdd>
+                            <ButtonAdd name="Agregar Persona Liquidacion" onClick={() => RowChange()}></ButtonAdd>
                         </Grid>
                         <Grid item lg={6} md={6} sm={12} xs={12} >
                             <TextField
@@ -134,8 +128,8 @@ const ListarPersonaLiquidacion = () => {
                             </TableHead>
                             <TableBody>
                                 {listaPersonaLiquidacion.map((row, index) => (
-                                    <TableRow hover key={index+1}>
-                                         <TableCell align="center">{index+1}</TableCell>
+                                    <TableRow hover key={index + 1}>
+                                        <TableCell align="center">{index + 1}</TableCell>
                                         <TableCell component="th" scope="row">
                                             {row.nombreCompleto}
                                         </TableCell>
@@ -144,7 +138,7 @@ const ListarPersonaLiquidacion = () => {
                                         <TableCell align="center">{row.email}</TableCell>
                                         <TableCell align="center">{row.direccion}</TableCell>
                                         <TableCell align="center">
-                                            <Grid container spacing={2}>                                                
+                                            <Grid container spacing={2}>
                                                 <Grid item>
                                                     <ButtonEdit onClick={() => RowChange(row)}></ButtonEdit>
                                                 </Grid>

@@ -10,76 +10,55 @@ import Button from "@mui/material/Button";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import sitem1 from "services/DepartamentoService/DepartamentoService";
-import Resource from "resource/resource";
+import useNavigateParamsSearch from "hooks/useNavigateParamsSearch";
 
 const ModalNuevoProyecto = (props) => {
+    const params = useNavigateParamsSearch();
     const { register, handleSubmit, setValue, reset } = useForm();
     const [form, setForm] = useState({});
-    const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
-   
+    const [scroll, setScroll] = useState('paper');
     const [editMode, setEditMode] = useState(false);
-    const id = props.departamento.idDepartamento;
-    const qs = Resource.convertObjectToQueryStringUnique("json", { id: id });
+
     useEffect(() => { reset(form) }, [form]);
+
     useEffect(() => {
-        if(id >0){
-            setEditMode(true)
-             setForm(props.departamento)
-       
-        }else{
+        if (typeof params === "object") {
+            setEditMode(true)        
+            setForm(props.departamento)
+        } else {
             setEditMode(false)
-            setForm(null)
+            setForm({})
         }
-           
-    })
+    }, []);
 
     const Save = (data) => {
-        //alert("2") 
         sitem1.Post(data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
-                props.setLoad(props.load+1)
+                props.setLoad(!props.load)
             } else {
                 alert(result.message);
 
             }
         });
     }
+    
     const Update = (data) => {
-        //data.idDepartamento=id
-        sitem1.Put(qs, data).then(async (result) => {
+        sitem1.Put(params.id, data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
-                props.setLoad(props.load+1)
-                //props.history.push("./TableAtencionEstudiante")
+                props.setLoad(!props.load)
             } else {
                 alert(result.message);
             }
         });
     }
     const onSubmit = (data, evento) => {
-        //alert("1"); 
         data.idRol = 1;
         (editMode) ? Update(data) : Save(data);
     }
-
-    const handleChange = (e) => {
-        var name = e.target.name;
-        var value = e.target.value;
-
-        setForm({
-            ...form,
-            [name]: value
-        })
-
-        console.log(form);
-
-    }
-
 
 
     return (
@@ -101,6 +80,16 @@ const ModalNuevoProyecto = (props) => {
                             <Grid container item spacing={2}>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
                                     <TextField
+                                        {...register("codigoDepartamentoAASINet")}
+                                        id="codigoDepartamentoAASINet"
+                                        name="codigoDepartamentoAASINet"
+                                        label="Codigo de Proyecto:"
+                                        style={{ width: "100%" }}
+                                        required
+                                    />
+                                </Grid>
+                                <Grid item lg={6} md={6} sm={12} xs={12}  >
+                                    <TextField
                                         {...register("descripcion")}
                                         id="descripcion"
                                         name="descripcion"
@@ -108,9 +97,6 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Departamento"
                                         style={{ width: "100%" }}
                                         required
-                                    //value={form.descripcion}
-                                    // onChange={handleChange}
-
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -122,8 +108,6 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Donante"
                                         style={{ width: "100%" }}
                                         required
-                                    // value={form.donante}
-                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
@@ -135,8 +119,6 @@ const ModalNuevoProyecto = (props) => {
                                         placeholder="Coordinador"
                                         style={{ width: "100%" }}
                                         required
-                                    //value={form.coordinador}
-                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -151,13 +133,9 @@ const ModalNuevoProyecto = (props) => {
                                             shrink: true,
                                         }}
                                         required
-                                    //value={form.fechaInicio}
-                                    //onChange={handleChange}
                                     />
-                                </Grid>
-                            </Grid>
 
-                            <Grid container item spacing={2}>
+                                </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
                                     <TextField
                                         {...register("presupuesto")}
@@ -167,8 +145,6 @@ const ModalNuevoProyecto = (props) => {
                                         label="Presupuesto del proyecto:"
                                         style={{ width: "100%" }}
                                         required
-                                    //value={form.presupuesto}
-                                    //onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -182,8 +158,6 @@ const ModalNuevoProyecto = (props) => {
                                             required
                                             label="Estado"
                                             defaultValue={true}
-                                        //value=""
-                                        // onChange={handleChange}
                                         >
 
                                             <MenuItem value={true}>Activo</MenuItem>
@@ -192,10 +166,7 @@ const ModalNuevoProyecto = (props) => {
                                     </FormControl>
                                 </Grid>
                             </Grid>
-
                         </Grid>
-
-
 
                     </DialogContent>
                     <DialogActions>

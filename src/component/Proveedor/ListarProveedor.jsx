@@ -119,7 +119,7 @@ const ListarProveedor = () => {
                             <Grid container spacing={2}>
                                 <Grid item lg={6} md={6} sm={12} xs={12}  >
                                     {/* <Button variant='contained' startIcon={<EditIcon />} onClick={handleClickOpen('paper')}> Registrar Proveedor</Button> */}
-                                    <ButtonAdd onClick={() => RowChange()}> Registrar Proveedor</ButtonAdd>
+                                    <ButtonAdd name="Registrar Proveedor" onClick={() => RowChange()}> </ButtonAdd>
                                 </Grid>
                                 <Grid item lg={6} md={6} sm={12} xs={12} >
                                     <TextField

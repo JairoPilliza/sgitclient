@@ -6,10 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const ButtonAdd = (props) => {
     const {name, ...other} = props;
-    // console.log(one);
-    // console.log(...other);
-    // console.log(other);
-     console.log(props);
+   
     return (
         <Fragment>
             <Button {...other} size="small" variant="contained" style={{ width: "100%" }} >

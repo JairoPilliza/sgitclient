@@ -10,26 +10,84 @@ import Button from "@mui/material/Button";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import ContribuyenteTipo from "services/Contribuyente/ContribuyenteService";
+import ProveedorTipo from "services/Proveedor/ProveedorTipoService";
+import IdentificacionTipo from "services/Identificacion/IdentificacionService";
+import Pais from "services/Pais/PaisService";
+import Canton from "services/Pais/CantonService";
 const ModalNuevoProveedor = (props) => {
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [form, setForm] = useState({ idContribuyenteTipo: "", idProveedorTipo: "", idParteRelacionada: "", idIdentificacionTipo: "", idPais: "", idCanton: "", numeroIdentificacion: "", razonSocial: "", direccion: "", telefono: "", celular: "", email: "", observacion: "", estado: "" });
-    const [formTalonario, setFormTalonario] = useState({idProveedor : 0,	idCanton : 0,	nombreComercial : "",	direccion : "",	telefono : "",	celular : "",	email : "",	establecimiento : "",	puntoEmision : "",	autorizacion : "",	secuencialMin : "",	secuencialMax : "",	fechaCaducidad : ""});
-
+    const [formTalonario, setFormTalonario] = useState({ idProveedor: 0, idCanton: 0, nombreComercial: "", direccion: "", telefono: "", celular: "", email: "", establecimiento: "", puntoEmision: "", autorizacion: "", secuencialMin: "", secuencialMax: "", fechaCaducidad: "" });
     const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState('paper');
+    const [listaContribuyenteTipo, setListaContribuyenteTipo] = useState([]);
+    const [listaProveedorTipo, setListaProveedorTipo] = useState([]);
+    const [listaIdentificacionTipo, setIdentificacionTipo] = useState([]);
+    const [listaPais, setListaPais] = useState([]);
+    const [listaCanton, setListaCanton] = useState([])
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
+    useEffect(() => {
+        ContribuyenteTipo.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaContribuyenteTipo(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    useEffect(() => {
+        ProveedorTipo.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaProveedorTipo(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
+
+    useEffect(() => {
+        IdentificacionTipo.Get().then(async (result) => {
+            if (result.code === "1") {
+                setIdentificacionTipo(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
+
+    useEffect(() => {
+        Pais.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaPais(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
+
+    useEffect(() => {
+        Canton.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaCanton(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
 
     const descriptionElementRef = React.useRef(null);
     React.useEffect(() => {
@@ -144,13 +202,14 @@ const ModalNuevoProveedor = (props) => {
                                         name="idProveedorTipo"
                                         style={{ width: "100%" }}
                                         required
-                                        label="Tipo Proveedor"
-                                        value={form.idProveedorTipo}
-                                        onChange={handleChange}
+                                        label="Tipo Proveedor"                                        
 
                                     >
-                                        <MenuItem value={'Persona Natural'}>Persona Natural</MenuItem>
-                                        <MenuItem value={'Sociedad'}>Sociedad</MenuItem>
+                                        {
+                                            listaProveedorTipo.map((row, index) => {
+                                                <MenuItem value={row.idProveedorTipo}>{row.descripcion}</MenuItem>
+                                            })
+                                        }
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -165,18 +224,14 @@ const ModalNuevoProveedor = (props) => {
                                         name="idIdentificacionTipo"
                                         style={{ width: "100%" }}
                                         required
-                                        label="Tipo Identificación"
-                                        value={form.idIdentificacionTipo}
-                                        onChange={handleChange}
-
-
+                                        label="Tipo Identificación"                                     
                                     >
-                                        <MenuItem value={10}>RUC</MenuItem>
-                                        <MenuItem value={20}>CEDULA</MenuItem>
-                                        <MenuItem value={20}>PASAPORTE</MenuItem>
-                                        <MenuItem value={20}>VENTA A CONSUMIDOR FINAL</MenuItem>
-                                        <MenuItem value={20}>INDENTIFICACION DEL EXTERIOR</MenuItem>
-                                        <MenuItem value={20}>PLACA</MenuItem>
+                                        {
+                                            listaIdentificacionTipo.map((row, index) => {
+                                                <MenuItem value={row.idIdentificacionTipo}>{row.codigoSri} - {row.descripcion}</MenuItem>
+                                            })
+                                        }
+
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -190,14 +245,15 @@ const ModalNuevoProveedor = (props) => {
                                         name="idContribuyenteTipo"
                                         style={{ width: "100%" }}
                                         required
-                                        label="Tipo Contribuyente"
-                                        value={form.idContribuyenteTipo}
-                                        onChange={handleChange}
-
-
+                                        label="Tipo Contribuyente"                                       
                                     >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
+                                        {
+                                            listaContribuyenteTipo.map((row, index) => {
+                                                <MenuItem value={row.idContribuyenteTipo}>{row.descriocion} </MenuItem>
+                                            })
+                                        }
+
+
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -211,8 +267,7 @@ const ModalNuevoProveedor = (props) => {
                                     style={{ width: "100%" }}
                                     required
                                     {...register("numeroIdentificacion")}
-                                    value={form.numeroIdentificacion}
-                                    onChange={handleChange}
+                                   
                                 />
                             </Grid>
                         </Grid>
@@ -225,8 +280,7 @@ const ModalNuevoProveedor = (props) => {
                                     style={{ width: "100%" }}
                                     required
                                     {...register("razonSocial")}
-                                    value={form.razonSocial}
-                                    onChange={handleChange}
+                                    
                                 />
                             </Grid>
 
@@ -240,8 +294,7 @@ const ModalNuevoProveedor = (props) => {
                                     style={{ width: "100%" }}
                                     required
                                     {...register("direccion")}
-                                    value={form.direccion}
-                                    onChange={handleChange}
+                                   
                                 />
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12} >
@@ -253,8 +306,7 @@ const ModalNuevoProveedor = (props) => {
                                     style={{ width: "100%" }}
                                     required
                                     {...register("email")}
-                                    value={form.email}
-                                    onChange={handleChange}
+                                    
                                 />
                             </Grid>
                         </Grid>
@@ -267,8 +319,7 @@ const ModalNuevoProveedor = (props) => {
                                     style={{ width: "100%" }}
                                     required
                                     {...register("telefono")}
-                                    value={form.telefono}
-                                    onChange={handleChange}
+                                    
                                 />
 
                             </Grid>
@@ -279,8 +330,7 @@ const ModalNuevoProveedor = (props) => {
                                     label="Celular:"
                                     style={{ width: "100%" }}
                                     {...register("celular")}
-                                    value={form.celular}
-                                    onChange={handleChange}
+                                  
                                 />
                             </Grid>
                         </Grid>
@@ -296,11 +346,14 @@ const ModalNuevoProveedor = (props) => {
                                         required
                                         label="País"
                                         {...register("idPais")}
-                                        value={form.idPais}
-                                        onChange={handleChange}
                                     >
-                                        <MenuItem value={10}>Ecuador</MenuItem>
-                                        <MenuItem value={20}>Peru</MenuItem>
+
+                                    {
+                                        listaPais.map((row, index)=>{
+                                            <MenuItem value={row.idPais}>{row.descripcion}</MenuItem>
+                                        })
+                                    }                                       
+                                      
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -314,13 +367,13 @@ const ModalNuevoProveedor = (props) => {
                                         name="idCanton"
                                         style={{ width: "100%" }}
                                         required
-                                        label="Cantón"
-                                        value={form.idCanton}
-                                        onChange={handleChange}
-
+                                        label="Cantón"                                      
                                     >
-                                        <MenuItem value={10}>Pujili</MenuItem>
-                                        <MenuItem value={20}>Quito</MenuItem>
+                                        {
+                                        listaCanton.map((row, index)=>{
+                                            <MenuItem value={row.idCanton}>{row.descripcion}</MenuItem>
+                                        })
+                                    }  
                                     </Select>
 
                                 </FormControl>
@@ -337,9 +390,7 @@ const ModalNuevoProveedor = (props) => {
                                     multiline
                                     style={{ width: "100%" }}
                                     required
-                                    {...register("observacion")}
-                                    value={form.observacion}
-                                    onChange={handleChange}
+                                    {...register("observacion")}                                   
                                 />
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -348,10 +399,7 @@ const ModalNuevoProveedor = (props) => {
                                     <RadioGroup
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="idParteRelacionada"
-                                        value={form.idParteRelacionada}
-                                        onChange={handleChange}
-
+                                        name="idParteRelacionada"                                       
                                     >
                                         <FormControlLabel value="1" control={<Radio />} label="SI" />
                                         <FormControlLabel value="2" control={<Radio />} label="NO" />

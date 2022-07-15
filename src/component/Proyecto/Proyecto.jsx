@@ -15,21 +15,19 @@ import { gridSpacing } from "store/constant";
 import ModalNuevoProyecto from "./ModalProyecto";
 import sitem1 from "services/DepartamentoService/DepartamentoService";
 import { ButtonAdd, ButtonDelete, ButtonEdit } from "utils/custom-all";
-import { saveNotification } from "utils/toastify";
 import { ToastContainer, toast } from "material-react-toastify";
 import Swal from "sweetalert2";
-import Resource from "resource/resource";
-import useNavigateSearch from "hooks/useNavigateParamsCreate";
-const Proyecto = (props) => {
-    const navigate = useNavigateSearch();
+import useNavigateParamsCreate from "hooks/useNavigateParamsCreate";
+
+const Proyecto = (props) => {    
+    const navigate = useNavigate();
+    const navigateParam = useNavigateParamsCreate();
 
     const [open, setOpen] = React.useState(false);
-    const [scroll, setScroll] = React.useState('paper');
     const [departamento, setDepartamento] = useState({});
     const [edit, setEdit] = useState(false);
     const [listaDepartamento, setListaDepartamento] = useState([]);
-    const [load, setLoad] = useState(0)
-    const qs = JSON.stringify({ id: 0 });
+    const [load, setLoad] = useState(true);
 
     useEffect(() => {
         sitem1.GetT().then(async (result) => {
@@ -45,26 +43,23 @@ const Proyecto = (props) => {
 
 
     const RowChange = (item) => {
-
+        
         if (typeof item === "object" && item) {
             setDepartamento(item);
-
+            navigateParam('/Proyecto/Proyecto', { id: item.idDepartamento });
         }
-        setOpen(true);//setScroll('paper');
+        setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
-    }
+        navigate('/Proyecto/Proyecto');
+    };
 
     const RowAdd = (item) => {
-
-        localStorage.setItem("dep", 0)
-        localStorage.setItem("departamento", "Proyecto " + item.descripcion)
-
-        navigate('/Proyecto/PartidaPresupuestaria', { id: item.idDepartamento });
-
+        navigateParam('/Proyecto/PartidaPresupuestaria', { id: item.idDepartamento, name: item.descripcion });
     };
+
     const deleteItem = (item) => {
         Swal.fire({
             title: "Esta seguro de eliminar?",
@@ -76,9 +71,8 @@ const Proyecto = (props) => {
             confirmButtonText: 'Si, eliminarlo!',
             cancelButtonText: 'Cancelar!'
         }).then((result) => {
-            if (result.isConfirmed) {
-                const re = Resource.convertObjectToQueryStringUnique("json", { id: item.idDepartamento });
-                sitem1.Delete(re).then(async (result) => {
+            if (result.isConfirmed) {                
+                sitem1.Delete({ id: item.idDepartamento }).then(async (result) => {
                     if (result.code === "1") {
                         setLoad(load + 1)
                         Swal.fire(
@@ -118,6 +112,7 @@ const Proyecto = (props) => {
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>#</TableCell>
+                                            <TableCell align="center">Codigo</TableCell>
                                             <TableCell align="center">Departamento</TableCell>
                                             <TableCell align="center">Fecha Ini</TableCell>
                                             <TableCell align="center">Donante</TableCell>
@@ -134,13 +129,14 @@ const Proyecto = (props) => {
                                                 <TableRow hover key={index}
                                                 >
                                                     <TableCell>{index + 1}</TableCell>
-                                                    <TableCell align="center" width="800px">{row.descripcion}</TableCell>
+                                                    <TableCell align="center" >{row.codigoDepartamentoAASINet}</TableCell>
+                                                    <TableCell align="center" >{row.descripcion}</TableCell>
                                                     <TableCell align="center">{row.fechaInicio}</TableCell>
                                                     <TableCell align="center">{row.donante}</TableCell>
                                                     <TableCell align="center">{row.coordinador}</TableCell>
                                                     <TableCell align="center">${row.presupuesto}</TableCell>
                                                     <TableCell align="center">{"#"}</TableCell>
-                                                    <TableCell align="center" width="800px">
+                                                    <TableCell align="center">
                                                         <Grid container spacing={2}>
                                                             <Grid item>
                                                                 <ButtonAdd onClick={() => RowAdd(row)} ></ButtonAdd>

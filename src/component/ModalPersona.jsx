@@ -14,33 +14,33 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IdentificacionTipo from "services/Identificacion/IdentificacionService";
 import ProfesionTipo from "services/Profesion/ProfesionTipoService";
 import PersonaLiquidacion from "services/PersonaLiquidacion/PersonaLiquidacionService";
-import Resource from "resource/resource"; 
+import useNavigateParamsSearch from "hooks/useNavigateParamsSearch"; 
 
 const ModalNuevaPersona = (props) => {
+    const params = useNavigateParamsSearch();
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     const [form, setForm] = useState({});
     const [identificacionTipo, setIdentificacionTipo] = useState([])
     const [profesionTipo, setProfesionTipo] = useState([])
-    const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState('paper');
     const [editMode, setEditMode] = useState(false);
-    const id = props.personaLiquidacion.idPersonaLiquidacion;
-    const qs = Resource.convertObjectToQueryStringUnique("json", { id: id });
+    console.log(params)
+
     useEffect(() => { reset(form) }, [form]);
+
     useEffect(() => {
-        if(id >0){
+        if (typeof params === "object") {
             setEditMode(true)
-             setForm(props.personaLiquidacion)
-       
-        }else{
+            setForm(props.personaLiquidacion)           
+        } else {
             setEditMode(false)
-            setForm(null)
-        } 
-    })
-
+            setForm({})
+        }
+    },[]);
+    
 
     useEffect(() => {
-        IdentificacionTipo.Get(qs).then(async (result) => {
+        IdentificacionTipo.Get().then(async (result) => {
             if (result.code === "1") {
                 setIdentificacionTipo(result.payload ? JSON.parse(result.payload) : [])
                 return;
@@ -52,7 +52,7 @@ const ModalNuevaPersona = (props) => {
     }, []);
 
     useEffect(() => {
-       ProfesionTipo.Get().then(async (result) => {
+        ProfesionTipo.Get().then(async (result) => {
             if (result.code === "1") {
                 setProfesionTipo(result.payload ? JSON.parse(result.payload) : [])
                 return;
@@ -64,11 +64,10 @@ const ModalNuevaPersona = (props) => {
     }, []);
 
     const Save = (data) => {
-        //alert("2") 
         PersonaLiquidacion.Post(data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
-                props.setLoad(props.load+1)
+                props.setLoad(props.load + 1)
             } else {
                 alert(result.message);
 
@@ -76,33 +75,21 @@ const ModalNuevaPersona = (props) => {
         });
     }
     const Update = (data) => {
-        //data.idDepartamento=id
-        PersonaLiquidacion.Put(qs, data).then(async (result) => {
+        PersonaLiquidacion.Put({id:params.id}, data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
-                props.setLoad(props.load+1)
-                //props.history.push("./TableAtencionEstudiante")
+                props.setLoad(props.load + 1)
             } else {
                 alert(result.message);
             }
         });
-    }
+    };
+
     const onSubmit = (data, evento) => {
         data.idRol = 1;
         data.estado = true;
         (editMode) ? Update(data) : Save(data);
 
-    }
-    const handleChange = (e) => {
-        var name = e.target.name;
-        var value = e.target.value;
-
-        setForm({
-            ...form,
-            [name]: value
-        })
-
-        console.log(form);
     }
 
 
@@ -123,20 +110,10 @@ const ModalNuevaPersona = (props) => {
                 <DialogTitle id="scroll-dialog-title">Registrar Persona Liquidación</DialogTitle>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogContent dividers={scroll === 'paper'}>
-
-                        {/* <DialogContentText
-                            id="scroll-dialog-description"
-                            ref={descriptionElementRef}
-                            tabIndex={-1}
-                        > */}
-                        {/* <Card className="col-12" container style={{ textAlign: "center" }} >
-                                <br /> */}
                         <Grid container spacing={2}>
                             <Grid item lg={12} md={12} sm={12} xs={12}  >
                                 <TextField
                                     {...register("nombreCompleto")}
-                                    // value={form.nombreCompleto}
-                                    // onChange={handleChange}
                                     id="nombreCompleto"
                                     name="nombreCompleto"
                                     label="Apellidos y Nombres:"
@@ -152,8 +129,6 @@ const ModalNuevaPersona = (props) => {
                                     <InputLabel id="demo-simple-select-helper-label">Tipo Documento:</InputLabel>
                                     <Select
                                         {...register("idIdentificacionTipo")}
-                                        // value={form.idIdentificacionTipo}
-                                        // onChange={handleChange}
                                         labelId="demo-simple-select-helper-label"
                                         id="idIdentificacionTipo"
                                         name="idIdentificacionTipo"
@@ -166,10 +141,10 @@ const ModalNuevaPersona = (props) => {
                                         <MenuItem value={0}>::SELECCIONAR:: </MenuItem>
                                         {
                                             identificacionTipo.map((row, index) => (
-                                                <MenuItem key={index+1} value={row.idIdentificacionTipo}> {row.codigoSri}-{row.descripcion} </MenuItem>
+                                                <MenuItem key={index + 1} value={row.idIdentificacionTipo}> {row.codigoSri}-{row.descripcion} </MenuItem>
                                             ))
                                         }
-                                       
+
 
                                     </Select>
 
@@ -178,8 +153,6 @@ const ModalNuevaPersona = (props) => {
                             <Grid item lg={6} md={6} sm={12} xs={12}  >
                                 <TextField
                                     {...register("numeroIdentificacion")}
-                                    // value={form.numeroIdentificacion}
-                                    // onChange={handleChange}
                                     id="numeroIdentificacion"
                                     name="numeroIdentificacion"
                                     label="Doc Identificación:"
@@ -193,8 +166,6 @@ const ModalNuevaPersona = (props) => {
                             <Grid item lg={6} md={6} sm={12} xs={12} >
                                 <TextField
                                     {...register("telefono")}
-                                    // value={form.telefono}
-                                    // onChange={handleChange}
                                     id="telefono"
                                     name="telefono"
                                     label="Teléfono:"
@@ -207,8 +178,6 @@ const ModalNuevaPersona = (props) => {
                             <Grid item lg={6} md={6} sm={12} xs={12} >
                                 <TextField
                                     {...register("celular")}
-                                    // value={form.celular}
-                                    // onChange={handleChange}
                                     id="celular"
                                     name="celular"
                                     label="Celular:"
@@ -224,8 +193,6 @@ const ModalNuevaPersona = (props) => {
                                     <InputLabel id="demo-simple-select-helper-label">Profesión:</InputLabel>
                                     <Select
                                         {...register("idProfesionTipo")}
-                                        // value={form.idProfesionTipo}
-                                        // onChange={handleChange}
                                         labelId="demo-simple-select-helper-label"
                                         id="idProfesionTipo"
                                         name="idProfesionTipo"
@@ -235,40 +202,32 @@ const ModalNuevaPersona = (props) => {
                                         defaultValue={0}
 
                                     >
-                                         <MenuItem value={0}>::SELECCIONAR:: </MenuItem>
-                                         {
+                                        <MenuItem value={0}>::SELECCIONAR:: </MenuItem>
+                                        {
                                             profesionTipo.map((row, index) => (
-                                                <MenuItem key={index+1} value={row.idProfesionTipo}> {row.descripcion} </MenuItem>
+                                                <MenuItem key={index + 1} value={row.idProfesionTipo}> {row.descripcion} </MenuItem>
                                             ))
                                         }
-                                        
-                                        {/* <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem> */}
 
                                     </Select>
-
                                 </FormControl>
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12} >
                                 <TextField
                                     {...register("email")}
-                                    // // value={form.email}
-                                    // onChange={handleChange}
                                     id="email"
                                     name="email"
                                     label="Email:"
                                     placeholder="gold@example.com"
                                     style={{ width: "100%" }}
                                     required
-                                   
+
 
                                 />
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}  >
                                 <TextField
                                     {...register("direccion")}
-                                    // value={form.direccion}
-                                    // onChange={handleChange}
                                     id="direccion"
                                     name="direccion"
                                     label="Dirección:"
@@ -282,16 +241,12 @@ const ModalNuevaPersona = (props) => {
                             <Grid item lg={6} md={6} sm={12} xs={12}  >
                                 <TextField
                                     {...register("observacion")}
-                                    // value={form.observacion}
-                                    // onChange={handleChange}
                                     id="observacion"
                                     name="observacion"
                                     label="Observación:"
 
                                     style={{ width: "100%" }}
                                     multiline
-
-
                                 />
                             </Grid>
                         </Grid>
@@ -300,7 +255,7 @@ const ModalNuevaPersona = (props) => {
                         <Button onClick={props.onClose}>Cancelar</Button>
                         <Button type="submit" >Registar Persona</Button>
                     </DialogActions>
-               </form>
+                </form>
             </Dialog>
 
         </Fragment >
