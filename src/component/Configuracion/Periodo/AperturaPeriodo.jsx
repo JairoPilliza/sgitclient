@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React, { Fragment, useEffect, useState } from "react";
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,31 +13,44 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import ModalAperturaPeriodo from './ModalAperturaPeriodo';
 import ClearIcon from '@mui/icons-material/Clear';
 import ArticleIcon from '@mui/icons-material/Article';
-
+import { ButtonAdd } from 'utils/custom-all';
+import Periodo from "services/Periodo/Periodo";
+import useNavigateParamsCreate from "hooks/useNavigateParamsCreate";
 const AperturaPeriodo = () => {
-
+    const navigate = useNavigate();
+    const navigateParam = useNavigateParamsCreate();
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
+    const [recarga, setRecarga] = useState(false);
+    const [listaPeriodo,setListaPeriodo] = useState([]);
+    const [load, setLoad] = useState(true);
+    
+    useEffect(() => {
+        Periodo.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaPeriodo(result.payload ? JSON.parse(result.payload) : [])
+                return;
+            }
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, [load]);
 
-    const handleClickOpen = (scrollType) => () => {
+    
+    const RowChange = (item) => {
+        setRecarga(!recarga)
+        if (typeof item === "object" && item) {
+            //setProveedor(item);
+            navigateParam('/Configuracion/AperturaPeriodo', { id: item.idPeriodo });
+        }
         setOpen(true);
-        setScroll(scrollType);
+        setScroll('paper');
     };
-
     const handleClose = () => {
         setOpen(false);
-    };
-
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
+        navigate('/Configuracion/AperturaPeriodo');
     }
-
-    const rows = [
-        createData('1', 159, 6.0, 24, 4.0),
-        createData('2', 237, 9.0, 37, 4.3),
-        createData('3', 262, 16.0, 24, 6.0),
-    ];
-
     return (
         <Box sx={{ width: '100%', typography: 'body1' }}>
             <Card>
@@ -47,7 +61,8 @@ const AperturaPeriodo = () => {
 
                 <CardContent>
                     <center>
-                        <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')} >Aperturar</Button>
+                        <ButtonAdd   onClick={() => RowChange()} name="Aperturar"  icon={<EventNoteIcon /> } style={{ width: "50%" }}> </ButtonAdd>
+                        {/* <Button variant='contained' style={{ width: "50%" }} startIcon={<EventNoteIcon />} onClick={handleClickOpen('paper')} >Aperturar</Button> */}
                     </center>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: "50%" }} aria-label="caption table">
@@ -55,29 +70,25 @@ const AperturaPeriodo = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>#</TableCell>
-                                    <TableCell align="center">Periodo</TableCell>
-                                    <TableCell align="center">Año</TableCell>
                                     <TableCell align="center">Sucursal</TableCell>
+                                    <TableCell align="center">Gestion</TableCell>
+                                    <TableCell align="center">Mes</TableCell>
                                     <TableCell align="center">Fecha Apertura</TableCell>
                                     <TableCell align="center">Fecha Cierre</TableCell>
-                                    <TableCell align="center">Estado</TableCell>
-                                    <TableCell align="center">Periodo Anterior</TableCell>
+                                    <TableCell align="center">Estado</TableCell>                                   
                                     <TableCell align="center">Acciones</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow hover key={row.name}>
-                                        <TableCell >
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="center">{row.calories}</TableCell>
-                                        <TableCell align="center">{row.fat}</TableCell>
-                                        <TableCell align="center">{row.carbs}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
-                                        <TableCell align="center">{row.protein}</TableCell>
+                                {listaPeriodo.map((row, index) => (
+                                    <TableRow hover key={index +1 }>
+                                        <TableCell >{index + 1}</TableCell>
+                                        <TableCell align="center">{row.descripcion}</TableCell>
+                                        <TableCell align="center">{row.gestion}</TableCell>
+                                        <TableCell align="center">{row.mes}</TableCell>
+                                        <TableCell align="center">{row.fechaApertura}</TableCell>
+                                        <TableCell align="center">{row.fechaCierre}</TableCell>
+                                        <TableCell align="center">#</TableCell>                                       
                                         <TableCell align="center">
                                             <Grid container spacing={2}>
                                                 <Grid item>
@@ -97,7 +108,9 @@ const AperturaPeriodo = () => {
             </Card >
             <ModalAperturaPeriodo
                 open={open}
-                onClose={handleClose} />
+                onClose={handleClose} 
+                load={load}
+                setLoad={setLoad} />
         </Box>
     );
 }

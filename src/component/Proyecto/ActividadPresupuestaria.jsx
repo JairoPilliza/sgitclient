@@ -25,8 +25,9 @@ const ActividadPresupuestaria = (props) => {
     const [listaDepartamentoActividadDetalle, setlistaDepartamentoActividadDetalle] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [idDepartamentoActividadDetalle, setidDepartamentoActividadDetalle] = useState(0);
+  
 
-    useEffect(() => {reset(form) }, [form]);
+    useEffect(() => { reset(form) }, [form]);
 
     useEffect(() => {
         DepartamentoActividadDetalle.Get({ id: props.id }).then(async (result) => {
@@ -46,7 +47,8 @@ const ActividadPresupuestaria = (props) => {
         DepartamentoActividadDetalle.Post(data).then(async (result) => {
             if (result.code === "1") {
                 setLoad(!load);
-                reset(form)
+                setForm({})
+                reset(form);
             } else {
                 alert(result.message);
             }
@@ -58,6 +60,7 @@ const ActividadPresupuestaria = (props) => {
             if (result.code === "1") {
                 setLoad(!load)
                 setForm({});
+                
             } else {
                 alert(result.message);
             }
@@ -65,7 +68,6 @@ const ActividadPresupuestaria = (props) => {
     };
 
     const onSubmit = (data, evento) => {
-        console.log(data);
         data.idRol = 1;
         data.presupuesto = data.total;
         data.idDepartamento = parseInt(props.idDepartamento);
@@ -75,7 +77,7 @@ const ActividadPresupuestaria = (props) => {
 
     const RowChange = (item) => {
         setidDepartamentoActividadDetalle({ id: item.idDepartamentoActividadDetalle });
-        setForm(item);
+        setForm(item);       
         setEditMode(true);
     };
 
@@ -91,7 +93,7 @@ const ActividadPresupuestaria = (props) => {
             cancelButtonText: 'Cancelar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                
+
                 DepartamentoActividadDetalle.Delete({ id: item.idDepartamentoActividadDetalle }).then(async (result) => {
                     if (result.code === "1") {
                         setLoad(load + 1)
@@ -150,7 +152,7 @@ const ActividadPresupuestaria = (props) => {
                                                 style={{ width: "100%" }}
                                                 required
                                                 label="Cuenta:"
-                                                defaultValue={"0"}
+                                                defaultValue={form.codigoCuentaAASINet || 0}
 
                                             >
                                                 <MenuItem value={"0"}>::SELECCIONAR::</MenuItem>
@@ -224,8 +226,8 @@ const ActividadPresupuestaria = (props) => {
                                             id="porcentaje"
                                             name="porcentaje"
                                             label="Porcentaje:"
-                                            variant="outlined" 
-                                            defaultValue="100"/>
+                                            variant="outlined"
+                                            defaultValue="100" />
                                     </Grid>
                                     <Grid item lg={3} md={3} sm={12} xs={12}>
                                         <TextField

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form"
 import MainCard from 'ui-component/cards/MainCard';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -19,16 +20,17 @@ import { ToastContainer, toast } from "material-react-toastify";
 import Swal from "sweetalert2";
 import useNavigateParamsCreate from "hooks/useNavigateParamsCreate";
 
-const Proyecto = (props) => {    
+const Proyecto = (props) => {
     const navigate = useNavigate();
     const navigateParam = useNavigateParamsCreate();
-
+    const { register, handleSubmit, setValue, reset } = useForm();
     const [open, setOpen] = React.useState(false);
     const [departamento, setDepartamento] = useState({});
     const [edit, setEdit] = useState(false);
     const [listaDepartamento, setListaDepartamento] = useState([]);
-    const [load, setLoad] = useState(true);
-
+    const [load, setLoad] = useState(0);
+    const [recarga, setRecarga] = useState(true)
+    
     useEffect(() => {
         sitem1.GetT().then(async (result) => {
             if (result.code === "1") {
@@ -43,17 +45,22 @@ const Proyecto = (props) => {
 
 
     const RowChange = (item) => {
-        
+
+        setRecarga(!recarga)      
         if (typeof item === "object" && item) {
+           
             setDepartamento(item);
             navigateParam('/Proyecto/Proyecto', { id: item.idDepartamento });
         }
         setOpen(true);
+
     };
 
     const handleClose = () => {
         setOpen(false);
         navigate('/Proyecto/Proyecto');
+        setRecarga(!recarga)
+       
     };
 
     const RowAdd = (item) => {
@@ -71,7 +78,7 @@ const Proyecto = (props) => {
             confirmButtonText: 'Si, eliminarlo!',
             cancelButtonText: 'Cancelar!'
         }).then((result) => {
-            if (result.isConfirmed) {                
+            if (result.isConfirmed) {
                 sitem1.Delete({ id: item.idDepartamento }).then(async (result) => {
                     if (result.code === "1") {
                         setLoad(load + 1)
@@ -162,6 +169,8 @@ const Proyecto = (props) => {
                 </Grid>
             </Grid>
             <ModalNuevoProyecto
+                recarga={recarga}
+                setRecarga={setRecarga}
                 open={open}
                 onClose={handleClose}
                 departamento={departamento}

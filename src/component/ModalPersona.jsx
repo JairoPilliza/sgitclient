@@ -24,19 +24,24 @@ const ModalNuevaPersona = (props) => {
     const [profesionTipo, setProfesionTipo] = useState([])
     const [scroll, setScroll] = useState('paper');
     const [editMode, setEditMode] = useState(false);
-    console.log(params)
-
+   
+ 
     useEffect(() => { reset(form) }, [form]);
 
     useEffect(() => {
+        
         if (typeof params === "object") {
+           
             setEditMode(true)
-            setForm(props.personaLiquidacion)           
+           
+            setForm(props.personaLiquidacion); 
         } else {
+           
             setEditMode(false)
             setForm({})
         }
-    },[]);
+    },[props.recarga]);
+
     
 
     useEffect(() => {
@@ -135,7 +140,8 @@ const ModalNuevaPersona = (props) => {
                                         style={{ width: "100%" }}
                                         required
                                         label="Tipo Documento:"
-                                        defaultValue={0}
+                                        defaultValue={props.personaLiquidacion.idIdentificacionTipo}
+
 
                                     >
                                         <MenuItem value={0}>::SELECCIONAR:: </MenuItem>
@@ -199,7 +205,7 @@ const ModalNuevaPersona = (props) => {
                                         style={{ width: "100%" }}
                                         required
                                         label="Profesión:"
-                                        defaultValue={0}
+                                        defaultValue={props.personaLiquidacion.idProfesionTipo}
 
                                     >
                                         <MenuItem value={0}>::SELECCIONAR:: </MenuItem>

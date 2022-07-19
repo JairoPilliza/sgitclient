@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
-// project imports
+import { useNavigate } from 'react-router-dom';
 import MainCard from 'ui-component/cards/MainCard';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -25,8 +25,11 @@ import { ButtonAdd, ButtonDelete, ButtonEdit } from "utils/custom-all";
 import { ToastContainer, toast } from "material-react-toastify";
 import Swal from "sweetalert2";
 import PersonaLiquidacion from "services/PersonaLiquidacion/PersonaLiquidacionService";
-import Resource from "resource/resource";
+
+import useNavigateParamsCreate from "hooks/useNavigateParamsCreate";
 const ListarProveedor = () => {
+    const navigate = useNavigate();
+    const navigateParam = useNavigateParamsCreate();
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
     /////////MODAL PROVEEDOR
     const [open, setOpen] = React.useState(false);
@@ -35,15 +38,10 @@ const ListarProveedor = () => {
     const [proveedor, setProveedor] = useState(false);
     const [listaProveedor, setListaProveedor] = useState([]);
     const [load, setLoad] = useState(0)
-    const [edit, setEdit] = useState(false);
+    const [recarga, setRecarga] = useState(false);
 
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
-    const handleClose = () => setOpen(false);
-    ///////////////  
+
     const openDetalleClick = (scrollType) => () => {
         setOpenDetalle(true);
         setScroll(scrollType);
@@ -62,17 +60,20 @@ const ListarProveedor = () => {
         });
     }, [load]);
 
-   
-
-
     const RowChange = (item) => {
-
+        setRecarga(!recarga)
         if (typeof item === "object" && item) {
             setProveedor(item);
-
+            navigateParam('/Proveedor/ListarProveedor', { id: item.idProveedor });
         }
-        setOpen(true);//setScroll('paper');
+        setOpen(true);
+        setScroll('paper');
     };
+
+    const handleClose = () => {
+        setOpen(false);
+        navigate('/Proveedor/ListarProveedor');
+    }
 
     const deleteItem = (item) => {
         Swal.fire({
@@ -86,9 +87,8 @@ const ListarProveedor = () => {
             cancelButtonText: 'Cancelar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const re = Resource.convertObjectToQueryStringUnique("json", { id: item.idPersonaLiquidacion});
-                PersonaLiquidacion.Delete(re).then(async (result) => {
-                    if (result.code === "1") {                       
+                Proveedor.Delete({ id: item.idProveedor }).then(async (result) => {
+                    if (result.code === "1") {
                         setLoad(load + 1)
                         Swal.fire(
                             'Eliminado!',
@@ -144,7 +144,7 @@ const ListarProveedor = () => {
                                     <TableHead>
                                         <TableRow>
                                             <TableCell>#</TableCell>
-                                            <TableCell align="center">Código</TableCell>
+
                                             <TableCell align="center">Razón Social</TableCell>
                                             <TableCell align="center">Ruc</TableCell>
                                             <TableCell align="center">Teléfono</TableCell>
@@ -154,22 +154,19 @@ const ListarProveedor = () => {
                                     </TableHead>
                                     <TableBody>
                                         {listaProveedor.map((row, index) => (
-                                            <TableRow hover key={index+1}>
-                                                <TableCell >
-                                                    {row.cod}
-                                                </TableCell>
+                                            <TableRow hover key={index + 1}>
+                                                <TableCell >{index + 1} </TableCell>
                                                 <TableCell align="center">{row.razonSocial}</TableCell>
                                                 <TableCell align="center">{row.numeroIdentificacion}</TableCell>
                                                 <TableCell align="center">{row.telefono}</TableCell>
                                                 <TableCell align="center">{row.email}</TableCell>
-                                                
-                                                <TableCell align="center">                               
+                                                <TableCell align="center">
                                                     <Grid container spacing={2}>
                                                         <Grid item>
                                                             <ButtonEdit onClick={() => RowChange(row)}></ButtonEdit>
                                                         </Grid>
                                                         <Grid item>
-                                                            <Button variant="contained" onClick={() => openDetalleClick('paper')}  >
+                                                            <Button variant="contained" size="small" onClick={() => openDetalleClick('paper')}  >
                                                                 <FormatListBulletedIcon />
                                                             </Button>
                                                         </Grid>
@@ -177,9 +174,6 @@ const ListarProveedor = () => {
                                                             <ButtonDelete onClick={() => deleteItem(row)}></ButtonDelete>
                                                         </Grid>
                                                     </Grid>
-
-
-
                                                 </TableCell>
                                             </TableRow>
                                         ))}
@@ -191,12 +185,13 @@ const ListarProveedor = () => {
                     </Card>
                     <ModalNuevoProveedor
                         open={open}
-                        onClose={handleClose} 
+                        onClose={handleClose}
                         proveedor={proveedor}
-                        edit={edit}
+                        recarga={recarga}
                         load={load}
-                        setLoad={setLoad} 
-                        />
+                        setLoad={setLoad}
+                        scroll={scroll}
+                    />
                     <ModalDetalleProveedor
                         open={openDetalle}
                         onClose={closeDetalle}

@@ -27,7 +27,7 @@ const ListarPersonaLiquidacion = () => {
     const [personaLiquidacion, setPersonaLiquidacion] = useState({});
     const [listaPersonaLiquidacion, setListaPersonaLiquidacion] = useState([]);
     const [load, setLoad] = useState(0)
-    const [edit, setEdit] = useState(false);
+    const [recarga, setRecarga] = useState(true);
 
     useEffect(() => {
         PersonaLiquidacion.Get().then(async (result) => {
@@ -43,6 +43,7 @@ const ListarPersonaLiquidacion = () => {
 
 
     const RowChange = (item) => {
+        setRecarga(!recarga)
         if (typeof item === "object" && item) {
             setPersonaLiquidacion(item);
             navigateParam('/Proveedor/ListarPersonaLiquidacion', { id: item.idPersonaLiquidacion });
@@ -53,6 +54,7 @@ const ListarPersonaLiquidacion = () => {
     const handleClose = () => {
         setOpen(false);
         navigate('/Proveedor/ListarPersonaLiquidacion');
+        setRecarga(!recarga)
     };
 
     const deleteItem = (item) => {
@@ -119,7 +121,8 @@ const ListarPersonaLiquidacion = () => {
                                 <TableRow>
                                     <TableCell>#</TableCell>
                                     <TableCell>Nombres</TableCell>
-                                    <TableCell align="center">Identificación</TableCell>
+                                    <TableCell align="center">Tipo Identificación</TableCell>
+                                    <TableCell align="center">N° Identificación</TableCell>
                                     <TableCell align="center">Telefono</TableCell>
                                     <TableCell align="center">Email</TableCell>
                                     <TableCell align="center">Dirección</TableCell>
@@ -134,6 +137,8 @@ const ListarPersonaLiquidacion = () => {
                                             {row.nombreCompleto}
                                         </TableCell>
                                         <TableCell align="center">{row.identificacion}</TableCell>
+                                        <TableCell align="center">{row.numeroIdentificacion}</TableCell>
+
                                         <TableCell align="center">{row.telefono}</TableCell>
                                         <TableCell align="center">{row.email}</TableCell>
                                         <TableCell align="center">{row.direccion}</TableCell>
@@ -158,7 +163,7 @@ const ListarPersonaLiquidacion = () => {
                         open={open}
                         onClose={handleClose}
                         personaLiquidacion={personaLiquidacion}
-                        edit={edit}
+                        recarga={recarga}
                         load={load}
                         setLoad={setLoad} />
                 </Grid>

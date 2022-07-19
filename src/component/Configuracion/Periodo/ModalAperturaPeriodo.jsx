@@ -13,54 +13,65 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import Sucursal from "services/Sucursal/SucursalService";
+import useNavigateParamsSearch from "hooks/useNavigateParamsSearch";
+import Periodo from "services/Periodo/Periodo";
 
 const ModalAperturaPeriodo = (props) => {
+    const params = useNavigateParamsSearch();
     const { register, formState: { errors }, handleSubmit, setValue, reset } = useForm();
-    const [form, setForm] = useState({idSucursal : "",   gestion : "",   mes : "",   fechaApertura : "",   fechaCierre : "",   fechaRegistro : "",   estado : "" });
-
-
-
-    const [open, setOpen] = React.useState(false);
+    const [form, setForm] = useState({});
     const [scroll, setScroll] = React.useState('paper');
+    const [listaSucursal, setListaSucursal] = useState([])
+    const [editMode, setEditMode] = useState(false);
+    const [load, setLoad] = useState(true)
 
-    const handleClickOpen = (scrollType) => () => {
-        setOpen(true);
-        setScroll(scrollType);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const { current: descriptionElement } = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
+    useEffect(() => {
+        Sucursal.Get().then(async (result) => {
+            if (result.code === "1") {
+                setListaSucursal(result.payload ? JSON.parse(result.payload) : [])
+                return;
             }
-        }
-    }, [open]);
+            console.log(result.message);
+        }).catch(e => {
+            console.log(e.message);
+        });
+    }, []);
+
+    const Save = (data) => {
+        Periodo.Post(data).then(async (result, data) => {
+            if (result.code === "1") {
+
+                props.onClose(false);
+                props.setLoad(!load)
+            } else {
+                alert(result.message);
+
+            }
+        });
+    }
+    const Update = (data) => {
+
+        Periodo.Put({ id: params.id }, data).then(async (result) => {
+            if (result.code === "1") {
+                props.onClose(false);
+                props.setLoad(!load)
+            } else {
+                alert(result.message);
+            }
+        });
+
+    };
 
     const onSubmit = (data, evento) => {
-        alert();
-        console.log(data);
+        data.idRol = 1;
+        data.estado = true;
+        (editMode) ? Update(data) : Save(data);
 
     }
 
-    
-    const handleChange = (e) => {
-        var name = e.target.name;
-        var value = e.target.value;
 
-       setForm({
-            ...form,
-            [name]: value
-        })
 
-        console.log(form);
-    }
     return (
         <Fragment>
             <Dialog
@@ -74,118 +85,104 @@ const ModalAperturaPeriodo = (props) => {
             >
 
                 <DialogTitle id="scroll-dialog-title">Apertura de Periodo</DialogTitle>
-                
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogContent dividers={scroll === 'paper'}>
-                    {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-                        {/* <DialogContentText
-                            id="scroll-dialog-description"
-                            tabIndex={-1}
-                        > */}
-                            {/* <Card className="col-12" container style={{ border: '1' }}>
-                                <CardHeader title="Registro de Periodos "
-                                    subheader=" se recomienda escoger el 1er día de cada mes.
-                            " /> */}
-                                
-                                <CardContent>
-                                    <Grid container spacing={2}>
-                                        <Grid item lg={12} md={12} sm={12} xs={12}>
 
-                                            <FormControl sx={{ minWidth: "100%" }}>
-                                                <InputLabel id="demo-simple-select-helper-label">Entidad</InputLabel>
-                                                <Select
-                                                    {...register("entidad")}
-                                                    labelId="demo-simple-select-helper-label"
-                                                    id="entidad"
-                                                    name="entidad"
-                                                    style={{ width: "100%", float: "right" }}
-                                                    required
-                                                    label="Entidad"
-                                                    value={form.entidad}
-                                                    onChange={handleChange}
 
-                                                >
-                                                    <MenuItem value={10}>Ten</MenuItem>
-                                                    <MenuItem value={20}>Twenty</MenuItem>
-                                                    <MenuItem value={30}>Thirty</MenuItem>
-                                                </Select>
+                        <CardContent>
+                            <Grid container spacing={2}>
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
 
-                                            </FormControl>
-                                        </Grid>
-                                        <Grid item lg={12} md={12} sm={12} xs={12}>
-                                            <TextField
-                                                {...register("gestion")}
-                                                id="gestion"
-                                                name="gestion"
-                                                label="Gestion:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                value={form.gestion}
-                                                onChange={handleChange}
-                                            />
+                                    <FormControl sx={{ minWidth: "100%" }}>
+                                        <InputLabel id="demo-simple-select-helper-label">Entidad - Sucursal</InputLabel>
+                                        <Select
+                                            {...register("idSucursal")}
+                                            labelId="demo-simple-select-helper-label"
+                                            id="idSucursal"
+                                            name="idSucursal"
+                                            style={{ width: "100%", float: "right" }}
+                                            required
+                                            label="Entidad - Sucursal"
+                                        >
+                                            {
+                                                listaSucursal.map((row, index) => (
+                                                    <MenuItem key={index + 1} value={row.idSucursal}>{row.nombre} - {row.descripcion} </MenuItem>
+                                                ))
+                                            }
 
-                                        </Grid>
-                                        <Grid item lg={12} md={12} sm={12} xs={12}>
 
-                                            <TextField
-                                                {...register("mes")}
-                                                id="mes"
-                                                name="mes"
-                                                label="Mes:"
-                                                style={{ width: "100%" }}
-                                                required
-                                                value={form.mes}
-                                                onChange={handleChange}
+                                        </Select>
 
-                                            />
-                                        </Grid>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("gestion")}
+                                        id="gestion"
+                                        name="gestion"
+                                        label="Gestion:"
+                                        style={{ width: "100%" }}
+                                        required
 
-                                        <Grid item lg={12} md={12} sm={12} xs={12}>
-                                            <TextField
-                                                {...register("fechaApertura")}
-                                                id="fechaApertura"
-                                                name="fechaApertura"
-                                                label="Fecha Apertura:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                required
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                value={form.fechaApertura}
-                                                onChange={handleChange}
+                                    />
 
-                                            />
-                                        </Grid>
-                                        <Grid item lg={12} md={12} sm={12} xs={12}>
-                                            <TextField
-                                                {...register("fechaCierre")}
-                                                id="fechaCierre"
-                                                name="fechaCierre"
-                                                label="Fecha Cierre:"
-                                                type="date"
-                                                style={{ width: "100%" }}
-                                                required
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                value={form.fechaCierre}
-                                                onChange={handleChange}
+                                </Grid>
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
 
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                </CardContent>
-                            {/* </Card> */}
+                                    <TextField
+                                        {...register("mes")}
+                                        id="mes"
+                                        name="mes"
+                                        label="Mes:"
+                                        style={{ width: "100%" }}
+                                        required
 
-                        {/* </DialogContentText> */}
-                        {/* </form> */}
+
+                                    />
+                                </Grid>
+
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("fechaApertura")}
+                                        id="fechaApertura"
+                                        name="fechaApertura"
+                                        label="Fecha Apertura:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        required
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+
+
+                                    />
+                                </Grid>
+                                <Grid item lg={12} md={12} sm={12} xs={12}>
+                                    <TextField
+                                        {...register("fechaCierre")}
+                                        id="fechaCierre"
+                                        name="fechaCierre"
+                                        label="Fecha Cierre:"
+                                        type="date"
+                                        style={{ width: "100%" }}
+                                        required
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+
+                                    />
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+
                     </DialogContent>
-                
-                <DialogActions>
-                    <Button onClick={props.onClose}>Cancelar</Button>
-                    <Button type="submit">Registar Apertura</Button>
-                </DialogActions>
 
+                    <DialogActions>
+                        <Button onClick={props.onClose}>Cancelar</Button>
+                        <Button type="submit">Registar Apertura</Button>
+                    </DialogActions>
+
+                </form>
 
             </Dialog>
         </Fragment>

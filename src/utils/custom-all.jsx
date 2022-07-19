@@ -5,12 +5,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const ButtonAdd = (props) => {
-    const {name, ...other} = props;
+    const {name,icon, ...other} = props;
    
     return (
         <Fragment>
             <Button {...other} size="small" variant="contained" style={{ width: "100%" }} >
-            <AddIcon /> {name || ""} 
+            {icon ||  <AddIcon />} {name || ""} 
             </Button>
         </Fragment>
     );

@@ -20,33 +20,38 @@ const ModalNuevoProyecto = (props) => {
     const [form, setForm] = useState({});
     const [scroll, setScroll] = useState('paper');
     const [editMode, setEditMode] = useState(false);
+    
 
     useEffect(() => { reset(form) }, [form]);
 
     useEffect(() => {
-        if (typeof params === "object") {
-            setEditMode(true)        
-            setForm(props.departamento)
-        } else {
+        if (typeof params === "object") {          
+            setEditMode(true)
+            setForm(props.departamento)          
+        }
+        else {          
             setEditMode(false)
             setForm({})
         }
-    }, []);
+
+    }, [props.recarga]);
+
+    
 
     const Save = (data) => {
         sitem1.Post(data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
-                props.setLoad(!props.load)
+                props.setLoad(props.load + 1)
             } else {
                 alert(result.message);
 
             }
         });
     }
-    
+
     const Update = (data) => {
-        sitem1.Put(params.id, data).then(async (result) => {
+        sitem1.Put({id:params.id} , data).then(async (result) => {
             if (result.code === "1") {
                 props.onClose(false);
                 props.setLoad(!props.load)
@@ -157,7 +162,7 @@ const ModalNuevoProyecto = (props) => {
                                             style={{ width: "100%" }}
                                             required
                                             label="Estado"
-                                            defaultValue={true}
+                                            defaultValue={props.departamento.estado}
                                         >
 
                                             <MenuItem value={true}>Activo</MenuItem>
